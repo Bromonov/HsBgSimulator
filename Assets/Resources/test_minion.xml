@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+ 
+<minions>
+	<minion name = "Alleycat" tavernTier = "1">
+		<attack>1</attack>
+		<hp>1</hp>
+		<tribe>Beast</tribe>
+		<ds>false</ds>
+		<poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Battlecry: Summon a 1/1 Cat.</skill>
+    <goldenSkill>Battlecry: Summon a 2/2 Golden Cat.</goldenSkill>
+	</minion>
+  <minion name = "Fiendish Servant" tavernTier = "1">
+    <attack>2</attack>
+    <hp>1</hp>
+    <tribe>Demon</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Deathrattle: Give this minion's Attack to a random friendly minion.</skill>
+    <goldenSkill>Deathrattle: Give this minion's Attack to two random friendly minions.</goldenSkill>
+  </minion>
+  <minion name = "Micro Mummy" tavernTier = "1">
+    <attack>1</attack>
+    <hp>2</hp>
+    <tribe>Mech</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>At the end of your turn, give another random friendly minion +1 Attack.</skill>
+    <goldenSkill>At the end of your turn, give two another random friendly minions +1 Attack.</goldenSkill>
+  </minion>
+  <minion name = "Murloc Tidecaller" tavernTier = "1">
+    <attack>1</attack>
+    <hp>2</hp>
+    <tribe>Murloc</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Whenever you summon a Murloc, gain +1 Attack.</skill>
+    <goldenSkill>Whenever you summon a Murloc, gain +2 Attack.</goldenSkill>
+  </minion>
+  <minion name = "Murloc Tidehunter" tavernTier = "1">
+    <attack>2</attack>
+    <hp>1</hp>
+    <tribe>Murloc</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Battlecry: Summon a 1/1 Murloc Scout.</skill>
+    <goldenSkill>Battlecry: Summon a 2/2 Golden Murloc Scout.</goldenSkill>
+  </minion>
+  <minion name = "Rockpool Hunter" tavernTier = "1">
+    <attack>2</attack>
+    <hp>3</hp>
+    <tribe>Murloc</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Battlecry: Give random friendly Murloc +1/+1.</skill>
+    <goldenSkill>Battlecry: Give random friendly Murloc +2/+2.</goldenSkill>
+  </minion>
+  <minion name = "Scavenging Hyena" tavernTier = "1">
+    <attack>2</attack>
+    <hp>2</hp>
+    <tribe>Beast</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Whenever a friendly Beast dies, gain +2/+1.</skill>
+    <goldenSkill>Whenever a friendly Beast dies, gain +4/+2.</goldenSkill>
+  </minion>
+  <minion name = "Rat Pack" tavernTier = "3">
+    <attack>2</attack>
+    <hp>2</hp>
+    <tribe>Beast</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Deathrattle: Summon a number of 1/1 Rats equal to this minion's attack.</skill>
+    <goldenSkill>Deathrattle: Summon a number of 2/2 Golden Rats equal to this minion's attack.</goldenSkill>
+  </minion>
+  <minion name = "Spawn of NZoth" tavernTier = "2">
+    <attack>2</attack>
+    <hp>2</hp>
+    <tribe></tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Deathrattle: Give your minions +1/+1.</skill>
+    <goldenSkill>Deathrattle: Give your minions +2/+2.</goldenSkill>
+  </minion>
+  <minion name = "Imprisoner" tavernTier = "2">
+    <attack>3</attack>
+    <hp>3</hp>
+    <tribe>Demon</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>true</taunt>
+    <skill>Deathrattle: Summon a 1/1 Imp.</skill>
+    <goldenSkill>Deathrattle: Summon a 2/2 Golden Imp.</goldenSkill>
+  </minion>
+  <minion name = "Harvest Golem" tavernTier = "2">      <!-- nie dodany deathrattle -->
+    <attack>2</attack>
+    <hp>3</hp>
+    <tribe>Mech</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Deathrattle: Summon a 2/1 Damaged Golem.</skill>
+    <goldenSkill>Deathrattle: Summon a 4/2 Golden Damaged Golem.</goldenSkill>
+  </minion>
+</minions>
