@@ -100,6 +100,9 @@ public class GameController : MonoBehaviour
     //public GameObject[] discoverSlotsAI;
     public Text playerGoldAI;
 
+    public GameObject AllPlayer;
+    public GameObject AllAI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -119,7 +122,9 @@ public class GameController : MonoBehaviour
         player1.Initialize();
         player2.Initialize();
         ShowMinionsInTavern(player1, shopSlots);
+        ShowMinionsInTavern(player2, shopSlotsAI);
         SetPLayerGoldStatus(player1);
+        SetPLayerGoldStatus(player2);
         //freeSpaceInHand = true;
         //freeSpaceOnBoard = true;
         ShowHideFightPanel(false);
@@ -139,6 +144,7 @@ public class GameController : MonoBehaviour
 
         SetupDiscoverSlots();
         ShowHideDiscoverPanel(false);
+        ChangeCanvasObjects("Player");
     }
 
     // Update is called once per frame
@@ -151,15 +157,18 @@ public class GameController : MonoBehaviour
         //RefreshBlanks(minionSlots);
         //}
 
-        /*
+        
         if(Input.GetKeyDown(KeyCode.Space))
         {
+            /*
             fight.ShowFightBefore(0);
             Fight(player1, player2);
             fight.ShowFightBefore(1);
             ShowHideFightPanel(true);
+            */
+            EndTurnAI(minionSlotsAI);
         }
-        */
+        
     }
 
     public void CreatePool()
@@ -646,6 +655,8 @@ public class GameController : MonoBehaviour
             }
         }
         temp.Clear();
+        ChangeCanvasObjects("AI");
+        ShowMinionsInTavern(player2, shopSlotsAI);
     }
 
     public void EndTurnAI(GameObject[] minionSlots)               // czy na pewno zalezne od playera? jak dwaj gracze naraz to chyba nie, 
@@ -701,11 +712,15 @@ public class GameController : MonoBehaviour
         player1.turnNumber++;
         player2.turnNumber++;
 
+        UpdateTavernPrice();
+
         UpdateTavernTierCostText(player1, tavernTierCostText);
         UpdateTavernTierText(player1, tavernTierText);
 
         UpdateTavernTierCostText(player2, tavernTierCostTextAI);
         UpdateTavernTierText(player2, tavernTierTextAI);
+        ChangeCanvasObjects("Player");
+        ShowMinionsInTavern(player1, shopSlots);
     }
 
     public void PlayMinionOnBoard(Player player, GameObject handSlot, GameObject minionSlot, GameObject[] handSlots, GameObject[] minionSlots)
@@ -879,14 +894,17 @@ public class GameController : MonoBehaviour
 
     public void SetPLayerGoldStatus(Player player)
     {
-        playerGold.text = "Gold: " + player.GetPlayerGold().ToString();
+        if (player == player1)
+            playerGold.text = "Gold: " + player1.GetPlayerGold().ToString();
+        else if (player == player2)
+            playerGoldAI.text = "Gold: " + player2.GetPlayerGold().ToString();
     }
-
+    /*
     public void SetPLayerGoldStatusAI(Player player)
     {
         playerGoldAI.text = "Gold: " + player.GetPlayerGold().ToString();
     }
-    
+    */
     public void SetupHandSlots(Player player)
     {
         for (int i = 0; i < handSlots.Length; i++)
@@ -1517,6 +1535,7 @@ public class GameController : MonoBehaviour
         ShowHideDiscoverPanel(false);
     }
 
+    
     public void ChooseDiscoveredMinionAI(Player player, GameObject minion)
     {
         if (player.GetPlayerGold() >= 3)
@@ -1530,8 +1549,39 @@ public class GameController : MonoBehaviour
             player.AddPlayerGold(3);
             BuyMinionAI(player, minion);
         }
-        SetPLayerGoldStatusAI(player);
+        SetPLayerGoldStatus(player);
         ShowHideDiscoverPanel(false);
+    }
+    
+
+    //AI        -> show AI canvas & hide player Canvas
+    //Player    -> show player canvas & hide ai Canvas
+    public void ChangeCanvasObjects(string option)
+    {
+        if(option == "AI")
+        {
+            AllPlayer.SetActive(false);
+            AllAI.SetActive(true);
+
+            tavernTierCostText.transform.parent.gameObject.SetActive(false);
+            tavernTierText.transform.parent.gameObject.SetActive(false);
+            tavernTierCostTextAI.transform.parent.gameObject.SetActive(true);
+            tavernTierTextAI.transform.parent.gameObject.SetActive(true);
+            playerGold.transform.parent.gameObject.SetActive(false);
+            playerGoldAI.transform.parent.gameObject.SetActive(true);
+        }
+        else if (option == "Player")
+        {
+            AllAI.SetActive(false);
+            AllPlayer.SetActive(true);
+            
+            tavernTierCostTextAI.transform.parent.gameObject.SetActive(false);
+            tavernTierTextAI.transform.parent.gameObject.SetActive(false);
+            tavernTierCostText.transform.parent.gameObject.SetActive(true);
+            tavernTierText.transform.parent.gameObject.SetActive(true);
+            playerGoldAI.transform.parent.gameObject.SetActive(false);
+            playerGold.transform.parent.gameObject.SetActive(true);
+        }
     }
 
     //BATTLECRIES:
