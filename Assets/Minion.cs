@@ -17,6 +17,7 @@ public class Minion : MonoBehaviour
     public Color ds;
     public GameObject taunt;
     public Text skill;
+    public Text goldenSkill;
 
     XmlDocument minionDataXML;
     public XmlNode curNode;
@@ -60,6 +61,7 @@ public class Minion : MonoBehaviour
         minionName.text = minion.Name;
         tavernTier.text = minion.TavernTier.ToString();
         skill.text = minion.Skill;
+        goldenSkill.text = minion.GoldenSkill;
 
         if (minion.DivineShield == true)
             this.gameObject.GetComponent<Image>().color = ds;
@@ -75,6 +77,8 @@ public class Minion : MonoBehaviour
 
         blank = false;
         golden = false;
+        skill.gameObject.SetActive(true);
+        goldenSkill.gameObject.SetActive(false);
     }
 
     public void InitializeMinion(MinionData curNode, bool newGolden)
@@ -91,9 +95,17 @@ public class Minion : MonoBehaviour
         minionName.text = minion.Name;
         tavernTier.text = minion.TavernTier.ToString();
         if (newGolden == false)
-            skill.text = minion.Skill;
+        {
+            skill.gameObject.SetActive(true);
+            goldenSkill.gameObject.SetActive(false);
+        }
         else if (newGolden == true)
-            skill.text = minion.GoldenSkill;
+        {
+            skill.gameObject.SetActive(false);
+            goldenSkill.gameObject.SetActive(true);
+        }
+        skill.text = minion.Skill;
+        goldenSkill.text = minion.GoldenSkill;
 
         if (minion.DivineShield == true)
             this.gameObject.GetComponent<Image>().color = ds;
@@ -109,6 +121,7 @@ public class Minion : MonoBehaviour
 
         blank = false;
         golden = newGolden;
+        
     }
 
     public void InitializeBlank()

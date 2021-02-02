@@ -87,9 +87,18 @@ public class GameController : MonoBehaviour
 
     public Text tavernTierText;
     public Text tavernTierCostText;
+    public Text tavernTierTextAI;
+    public Text tavernTierCostTextAI;
 
     public GameObject discoverPanel;
     public GameObject[] discoverSlots;
+
+    //ai
+    public GameObject[] shopSlotsAI;
+    public GameObject[] handSlotsAI;
+    public GameObject[] minionSlotsAI;
+    //public GameObject[] discoverSlotsAI;
+    public Text playerGoldAI;
 
     // Start is called before the first frame update
     void Start()
@@ -122,8 +131,11 @@ public class GameController : MonoBehaviour
         player1.tavernTierUpgradeGold = 5;
         player2.tavernTierUpgradeGold = 5;
         //tavernTierText.text = player1.tavernTierLevel.ToString();
-        UpdateTavernTierCostText();
-        UpdateTavernTierText();
+        UpdateTavernTierCostText(player1, tavernTierCostText);
+        UpdateTavernTierText(player1, tavernTierText);
+
+        UpdateTavernTierCostText(player2, tavernTierCostTextAI);
+        UpdateTavernTierText(player2, tavernTierTextAI);
 
         SetupDiscoverSlots();
         ShowHideDiscoverPanel(false);
@@ -282,15 +294,10 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void BuyMinion(Player player)
+    public void BuyMinion(Player player, GameObject minion, GameObject[] handSlots, GameObject[] minionSlots)
     {
         if (player.GetPlayerGold() >= 3) //&& freeSpaceInHand == true)
         {
-            GameObject minionButton = EventSystem.current.currentSelectedGameObject;
-            GameObject minion = minionButton.transform.parent.gameObject;
-            //string minionName = minion.GetComponent<Minion>().minionName.text;
-            //XmlNode minionNode = minionData.GetMinionByName(minionName, minionDataXML);
-            //MinionData minionInstance = new MinionData();
             MinionData minionInstance = minion.GetComponent<Minion>().GetMinion();
             minionInstance.Initialize(minionInstance);
 
@@ -387,60 +394,8 @@ public class GameController : MonoBehaviour
             if ((tempHandPos.Count + tempBoardPos.Count) == 3)
             {
                 List<int> tokenPos = new List<int>();
-                GoldenMinion(player, newHandPos, tempHandPos, tempBoardPos, minion, "simple", "", tokenPos);
-                /*
-                //combine minions
-                MinionData[] tempMinions = new MinionData[3];
-
-                if (tempHandPos.Count == 3)
-                {
-                    tempMinions[0] = handSlots[tempHandPos[0]].GetComponent<Minion>().GetMinion();
-                    tempMinions[1] = handSlots[tempHandPos[1]].GetComponent<Minion>().GetMinion();
-                }
-                else if (tempHandPos.Count == 2 && tempBoardPos.Count == 1)
-                {
-                    tempMinions[0] = minionSlots[tempBoardPos[0]].GetComponent<Minion>().GetMinion();
-                    tempMinions[1] = handSlots[tempHandPos[1]].GetComponent<Minion>().GetMinion();
-                }
-                else if (tempHandPos.Count == 1 && tempBoardPos.Count == 2)
-                {
-                    tempMinions[0] = minionSlots[tempBoardPos[0]].GetComponent<Minion>().GetMinion();
-                    tempMinions[1] = minionSlots[tempBoardPos[1]].GetComponent<Minion>().GetMinion();
-                }
-
-                bool ds = false;
-                bool poison = false;
-                bool taunt = false;
-                bool golden = true;
-
-                if (tempMinions[0].DivineShield == true || tempMinions[1].DivineShield == true)
-                    ds = true;
-                if (tempMinions[0].Poison == true || tempMinions[1].Poison == true)
-                    poison = true;
-                if (tempMinions[0].Taunt == true || tempMinions[1].Taunt == true)
-                    taunt = true;
-                MinionData newMinion = new MinionData();
-                newMinion.Initialize(tempMinions[0].Name, tempMinions[0].Attack + tempMinions[1].Attack, tempMinions[0].Hp + tempMinions[1].Hp,
-                    tempMinions[0].Tribe, tempMinions[0].TavernTier, ds, poison, taunt, tempMinions[0].GoldenSkill, golden);
-                handSlots[newHandPos].GetComponent<Minion>().InitializeMinion(newMinion, golden);
-
-                if (tempBoardPos.Count == 2)
-                {
-                    minionSlots[tempBoardPos[0]].GetComponent<Minion>().InitializeBlank();
-                    minionSlots[tempBoardPos[1]].GetComponent<Minion>().InitializeBlank();
-                }
-                else if (tempHandPos.Count == 3)
-                {
-                    handSlots[tempHandPos[0]].GetComponent<Minion>().InitializeBlank();
-                    handSlots[tempHandPos[1]].GetComponent<Minion>().InitializeBlank();
-                }
-                else if (tempHandPos.Count == 2 && tempBoardPos.Count == 1)
-                {
-                    minionSlots[tempBoardPos[0]].GetComponent<Minion>().InitializeBlank();
-                    handSlots[tempHandPos[0]].GetComponent<Minion>().InitializeBlank();
-                }
-
-                minion.GetComponent<ShopMinion>().triple = false;*/
+                GoldenMinion(player, newHandPos, tempHandPos, tempBoardPos, minion, "simple", "", tokenPos, minionSlots, handSlots);
+                
             }
 
             minion.GetComponent<Minion>().InitializeBlank();
@@ -466,29 +421,30 @@ public class GameController : MonoBehaviour
             Debug.Log("Not enough gold!");
     }
 
-    public void SellMinion(Player player)
+    //function for buy button on a scene(for a player)
+    public void BuyMinionPlayer(Player player)
     {
-        Debug.Log("Pool Size = " + pool.Count);
         GameObject minionButton = EventSystem.current.currentSelectedGameObject;
         GameObject minion = minionButton.transform.parent.gameObject;
+        BuyMinion(player, minion, handSlots, minionSlots);
+    }
+
+    //function for buy button on a scene(for a AI)
+    public void BuyMinionAI(Player player, GameObject minion)
+    {
+        //GameObject minionButton = EventSystem.current.currentSelectedGameObject;
+        //GameObject minion = minionButton.transform.parent.gameObject;
+        BuyMinion(player, minion, handSlotsAI, minionSlotsAI);
+    }
+
+    public void SellMinion(Player player, GameObject minion)
+    {
+        Debug.Log("Pool Size = " + pool.Count);
         
-        //string minionName = minion.GetComponent<Minion>().minionName.text;
-        //XmlNode minionNode;
-        //MinionData minionek = minion.GetComponent<Minion>().GetMinion();
-        /*
-        if(minionName == "Murloc Scout" || minionName == "Tabbycat")
-        {
-            minionNode = minionData.GetMinionByName(minionName, tokenMinionsDataXML);
-        }
-        else
-        {
-            minionNode = minionData.GetMinionByName(minionName, minionDataXML);
-        } 
-        */
         //MinionData minionInstance = new MinionData();
         MinionData minionInstance = minion.GetComponent<Minion>().GetMinion();
         //minionInstance.Initialize(minionNode, false);
-
+        Debug.Log("przed sellnieciem count = " + player.GetPlayerBoard().Count);
         //remove from the player board
         for(int i = 0; i < player.GetPlayerBoard().Count; i++)
         {
@@ -498,7 +454,7 @@ public class GameController : MonoBehaviour
                 break;
             }
         }
-
+        Debug.Log("po sellnieciem count = " + player.GetPlayerBoard().Count);
         //add gold, but check if player has no more than 10 gold
         if (player.GetPlayerGold() < 10)
         {
@@ -523,6 +479,18 @@ public class GameController : MonoBehaviour
         Debug.Log("Pool Size = " + pool.Count);
     }
 
+    public void SellMinionPlayer(Player player)
+    {
+        GameObject minionButton = EventSystem.current.currentSelectedGameObject;
+        GameObject minion = minionButton.transform.parent.gameObject;
+        SellMinion(player, minion);
+    }
+
+    public void SellMinionAI(Player player, GameObject minion)
+    {
+        SellMinion(player, minion);
+    }
+
     public void RefreshMinionsInTavern(Player player, GameObject[] slots)
     {
         if (player.GetPlayerGold() >= 1)
@@ -535,12 +503,25 @@ public class GameController : MonoBehaviour
             Debug.Log("Not enough gold for reroll!");
     }
 
-    //function for a scene
-    public void RefreshMinionsInTavern(Player player)
+    //function for a scene (player)
+    public void RefreshMinionsInTavernPlayer(Player player)
     {
         if (player.GetPlayerGold() >= 1)
         {
             ShowMinionsInTavern(player, shopSlots);
+            player.AddPlayerGold(-1);
+            SetPLayerGoldStatus(player);
+        }
+        else
+            Debug.Log("Not enough gold for reroll!");
+    }
+
+    //function for a scene(AI)
+    public void RefreshMinionsInTavernAI(Player player)
+    {
+        if (player.GetPlayerGold() >= 1)
+        {
+            ShowMinionsInTavern(player, shopSlotsAI);
             player.AddPlayerGold(-1);
             SetPLayerGoldStatus(player);
         }
@@ -559,9 +540,13 @@ public class GameController : MonoBehaviour
             player1.tavernTierUpgradeGold--;
         if (player2.tavernTierLevel <= 6 && player2.tavernTierUpgradeGold > 0)
             player2.tavernTierUpgradeGold--;
-            
-        UpdateTavernTierText();
-        UpdateTavernTierCostText();
+
+
+        UpdateTavernTierCostText(player1, tavernTierCostText);
+        UpdateTavernTierText(player1, tavernTierText);
+
+        UpdateTavernTierCostText(player2, tavernTierCostTextAI);
+        UpdateTavernTierText(player2, tavernTierTextAI);
     }
 
     public void UpgradeTavernLevel(Player player)
@@ -611,62 +596,80 @@ public class GameController : MonoBehaviour
             tavernTierCostText.text = "0";
         }
 
-        UpdateTavernTierCostText();
-        UpdateTavernTierText();
+        UpdateTavernTierCostText(player1, tavernTierCostText);
+        UpdateTavernTierText(player1, tavernTierText);
+
+        UpdateTavernTierCostText(player2, tavernTierCostTextAI);
+        UpdateTavernTierText(player2, tavernTierTextAI);
     }
 
-    public void UpdateTavernTierText()
+    public void UpdateTavernTierText(Player player, Text tavernTierText)
     {
-        tavernTierText.text = "Level: " + player1.tavernTierLevel.ToString();
+        tavernTierText.text = "Level: " + player.tavernTierLevel.ToString();
     }
-    public void UpdateTavernTierCostText()
+    public void UpdateTavernTierCostText(Player player, Text tavernTierCostText)
     {
-        tavernTierCostText.text = player1.tavernTierUpgradeGold.ToString();
+        tavernTierCostText.text = player.tavernTierUpgradeGold.ToString();
 
-        if (player1.tavernTierLevel == 6)
+        if (player.tavernTierLevel == 6)
         {
             tavernTierCostText.text = "";
         }
-
-        /*
-        if (player1.tavernTierLevel == 1)
-            tavernTierCostText.text = "5";
-        else if (player1.tavernTierLevel == 2)
-            tavernTierCostText.text = "7";
-        else if (player1.tavernTierLevel == 3)
-            tavernTierCostText.text = "8";
-        else if (player1.tavernTierLevel == 4)
-            tavernTierCostText.text = "9";
-        else if (player1.tavernTierLevel == 5)
-            tavernTierCostText.text = "10";
-        else if (player1.tavernTierLevel == 6)
-            tavernTierCostText.text = "";
-        */
     }
 
     //problem z buffem u player2(ai) -> slots, dodanie niewidzialnych slotsow dla ai???
-    public void EndTurn()               // czy na pewno zalezne od playera? jak dwaj gracze naraz to chyba nie, 
-                                        //chyba, ze jakies czekanko jakby sie z bomby skonczylo ture a komp nie zdazylby, do rozkminy
+    public void EndTurnPlayer(Player player)               // czy na pewno zalezne od playera? jak dwaj gracze naraz to chyba nie, 
+                                                            //chyba, ze jakies czekanko jakby sie z bomby skonczylo ture a komp nie zdazylby, do rozkminy
     {
         //end turn effects
         List<int> temp = new List<int>();
-        for (int i = 0; i < player1.GetPlayerBoard().Count; i++)
+        for (int i = 0; i < player.GetPlayerBoard().Count; i++)
         {
             //MicroMummy
-            if(player1.GetPlayerBoard()[i].GetMinion().Name == "Micro Mummy")
+            if(player.GetPlayerBoard()[i].GetMinion().Name == "Micro Mummy")
             {
-                for(int j = 0; j < player1.GetPlayerBoard().Count; j++)
+                for(int j = 0; j < player.GetPlayerBoard().Count; j++)
                 {
-                    if(player1.GetPlayerBoard()[j].GetPos() != i)
+                    if(player.GetPlayerBoard()[j].GetPos() != i)
                     {
-                        temp.Add(player1.GetPlayerBoard()[j].GetPos());
+                        temp.Add(player.GetPlayerBoard()[j].GetPos());
                     }
                 }
                 int r = Random.Range(0, temp.Count);
                 int random = temp[r];
                 //Debug.Log("r: " + r + ", random: " + random);
 
-                BuffSingleMinionBoard(minionSlots[random], 1, 0, "All", player1);
+                BuffSingleMinionBoard(minionSlots[random], 1, 0, "All", player);
+
+                Debug.Log("Micro mummy end turn effect!");
+                break;
+            }
+        }
+        temp.Clear();
+    }
+
+    public void EndTurnAI(GameObject[] minionSlots)               // czy na pewno zalezne od playera? jak dwaj gracze naraz to chyba nie, 
+                                                           //chyba, ze jakies czekanko jakby sie z bomby skonczylo ture a komp nie zdazylby, do rozkminy
+    {
+        //end turn effects
+        List<int> temp = new List<int>();
+        for (int i = 0; i < player2.GetPlayerBoard().Count; i++)
+        {
+            //MicroMummy
+            if (player2.GetPlayerBoard()[i].GetMinion().Name == "Micro Mummy")
+            {
+                for (int j = 0; j < player2.GetPlayerBoard().Count; j++)
+                {
+                    if (player2.GetPlayerBoard()[j].GetPos() != i)
+                    {
+                        temp.Add(player2.GetPlayerBoard()[j].GetPos());
+                    }
+                }
+                int r = Random.Range(0, temp.Count);
+                int random = temp[r];
+                //Debug.Log("r: " + r + ", random: " + random);
+
+                BuffSingleMinionBoard(minionSlots[random], 1, 0, "All", player2);
 
                 Debug.Log("Micro mummy end turn effect!");
                 break;
@@ -674,34 +677,15 @@ public class GameController : MonoBehaviour
         }
 
         temp.Clear();
-        for (int i = 0; i < player2.GetPlayerBoard().Count; i++)
-        {
-            //MicroMummy
-            if (player1.GetPlayerBoard()[i].GetMinion().Name == "Micro Mummy")
-            {
-                for (int j = 0; j < player2.GetPlayerBoard().Count; j++)
-                {
-                    if (player2.GetPlayerBoard()[j].GetPos() != j)
-                    {
-                        temp.Add(j);
-                    }
-                }
-                int r = Random.Range(0, temp.Count);
-                int random = temp[r];
-
-                //BuffSingleMinionBoard(minionSlots[random], 1, 0, "All", player2);
-                break;
-            }
-        }
 
         fight.ShowFightBefore(0);
         Fight(player1, player2);
         fight.ShowFightBefore(1);
         ShowHideFightPanel(true);
 
-        for(int turn = 1; turn < 99; turn++)
+        for (int turn = 1; turn < 99; turn++)
         {
-            if (player1.turnNumber == turn && player1.turnNumber < 9)
+            if (player1.turnNumber == turn && player2.turnNumber < 9)
             {
                 //player1.SetPlayerGold(turn + 2);
                 //player2.SetPlayerGold(turn + 2);
@@ -716,11 +700,15 @@ public class GameController : MonoBehaviour
 
         player1.turnNumber++;
         player2.turnNumber++;
-        UpdateTavernPrice();
-        UpdateTavernTierCostText();
+
+        UpdateTavernTierCostText(player1, tavernTierCostText);
+        UpdateTavernTierText(player1, tavernTierText);
+
+        UpdateTavernTierCostText(player2, tavernTierCostTextAI);
+        UpdateTavernTierText(player2, tavernTierTextAI);
     }
 
-    public void PlayMinionOnBoard(Player player, GameObject handSlot, GameObject minionSlot)
+    public void PlayMinionOnBoard(Player player, GameObject handSlot, GameObject minionSlot, GameObject[] handSlots, GameObject[] minionSlots)
     {
         //initialize minion on board
         //string minionName = handSlot.GetComponent<Minion>().minionName.text;
@@ -755,9 +743,9 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("BATTLECRY ALLEYCAT");
             if(handSlot.GetComponent<Minion>().golden == true)
-                SummonTokenBoard("Golden Tabbycat", 1, player);
+                SummonTokenBoard("Golden Tabbycat", 1, player, minionSlots);
             else
-                SummonTokenBoard("Tabbycat", 1, player);
+                SummonTokenBoard("Tabbycat", 1, player, minionSlots);
 
             //check for triple
             List<int> tabbyPos = new List<int>();
@@ -777,55 +765,17 @@ public class GameController : MonoBehaviour
                 arrow.transform.SetParent(useless.transform);
                 useless.GetComponent<ShopMinion>().arrow = arrow;
                 useless.GetComponent<ShopMinion>().gc = this.gameObject.GetComponent<GameController>();
-                GoldenMinion(player, newHandPos, temp, temp, useless, "token", "Golden Tabbycat", tabbyPos);
-                /*
-                MinionData[] tempMinions = new MinionData[3];
-                tempMinions[0] = minionSlots[tabbyPos[0]].GetComponent<Minion>().GetMinion();
-                tempMinions[1] = minionSlots[tabbyPos[1]].GetComponent<Minion>().GetMinion();
-
-                bool ds = false;
-                bool poison = false;
-                bool taunt = false;
-                bool golden = true;
-
-                if (tempMinions[0].DivineShield == true || tempMinions[1].DivineShield == true)
-                    ds = true;
-                if (tempMinions[0].Poison == true || tempMinions[1].Poison == true)
-                    poison = true;
-                if (tempMinions[0].Taunt == true || tempMinions[1].Taunt == true)
-                    taunt = true;
-                MinionData newMinion = new MinionData();
-                newMinion.Initialize("Golden Tabbycat", tempMinions[0].Attack + tempMinions[1].Attack, tempMinions[0].Hp + tempMinions[1].Hp,
-                    tempMinions[0].Tribe, tempMinions[0].TavernTier, ds, poison, taunt, tempMinions[0].GoldenSkill, golden);
-
-                //find free hand spot
-                int newHandPos = 99;
-                for(int i = 0; i < handSlots.Length; i++)
-                {
-                    if(handSlots[i].GetComponent<Minion>().blank == true)
-                    {
-                        newHandPos = i;
-                        Player.Board newM = new Player.Board(handSlots[i].GetComponent<Minion>().GetMinion(), i);
-                        player.GetPlayerHand().Add(newM);
-                        break;
-                    }
-                }
-                handSlots[newHandPos].GetComponent<Minion>().InitializeMinion(newMinion, golden);
-                handSlots[newHandPos].GetComponent<HandMinion>().placed = false;
-
-                minionSlots[tabbyPos[0]].GetComponent<Minion>().InitializeBlank();
-                minionSlots[tabbyPos[1]].GetComponent<Minion>().InitializeBlank();
-                minionSlots[tabbyPos[2]].GetComponent<Minion>().InitializeBlank();
-                */
+                GoldenMinion(player, newHandPos, temp, temp, useless, "token", "Golden Tabbycat", tabbyPos, minionSlots, handSlots);
+                
             }
         }
         else if (handSlot.GetComponent<Minion>().minionName.text == "Murloc Tidehunter" && handSlot.GetComponent<Minion>().blank == false)
         {
             Debug.Log("BATTLECRY MURLOC SCOUT");
             if(handSlot.GetComponent<Minion>().golden == false)
-                SummonTokenBoard("Murloc Scout", 1, player);
+                SummonTokenBoard("Murloc Scout", 1, player, minionSlots);
             else
-                SummonTokenBoard("Golden Murloc Scout", 1, player);
+                SummonTokenBoard("Golden Murloc Scout", 1, player, minionSlots);
 
             //check for triple
             List<int> scoutPos = new List<int>();
@@ -845,47 +795,9 @@ public class GameController : MonoBehaviour
                 arrow.transform.SetParent(useless.transform);
                 useless.GetComponent<ShopMinion>().arrow = arrow;
                 useless.GetComponent<ShopMinion>().gc = this.gameObject.GetComponent<GameController>();
-                GoldenMinion(player, newHandPos, temp, temp, useless, "token", "Golden Murloc Scout", scoutPos);
+                GoldenMinion(player, newHandPos, temp, temp, useless, "token", "Golden Murloc Scout", scoutPos, minionSlots, handSlots);
                 //GoldenMinion(player);
-                /*
-                MinionData[] tempMinions = new MinionData[3];
-                tempMinions[0] = minionSlots[scoutPos[0]].GetComponent<Minion>().GetMinion();
-                tempMinions[1] = minionSlots[scoutPos[1]].GetComponent<Minion>().GetMinion();
-
-                bool ds = false;
-                bool poison = false;
-                bool taunt = false;
-                bool golden = true;
-
-                if (tempMinions[0].DivineShield == true || tempMinions[1].DivineShield == true)
-                    ds = true;
-                if (tempMinions[0].Poison == true || tempMinions[1].Poison == true)
-                    poison = true;
-                if (tempMinions[0].Taunt == true || tempMinions[1].Taunt == true)
-                    taunt = true;
-                MinionData newMinion = new MinionData();
-                newMinion.Initialize("Golden Murloc Scout", tempMinions[0].Attack + tempMinions[1].Attack, tempMinions[0].Hp + tempMinions[1].Hp,
-                    tempMinions[0].Tribe, tempMinions[0].TavernTier, ds, poison, taunt, tempMinions[0].GoldenSkill, golden);
-
-                //find free hand spot
-                int newHandPos = 99;
-                for (int i = 0; i < handSlots.Length; i++)
-                {
-                    if (handSlots[i].GetComponent<Minion>().blank == true)
-                    {
-                        newHandPos = i;
-                        Player.Board newM = new Player.Board(handSlots[i].GetComponent<Minion>().GetMinion(), i);
-                        player.GetPlayerHand().Add(newM);
-                        break;
-                    }
-                }
-                handSlots[newHandPos].GetComponent<Minion>().InitializeMinion(newMinion, golden);
-                handSlots[newHandPos].GetComponent<HandMinion>().placed = false;
-
-                minionSlots[scoutPos[0]].GetComponent<Minion>().InitializeBlank();
-                minionSlots[scoutPos[1]].GetComponent<Minion>().InitializeBlank();
-                minionSlots[scoutPos[2]].GetComponent<Minion>().InitializeBlank();
-                */
+                
             }
 
             //murloc tidecaller buff after summoning murloc scout
@@ -969,6 +881,11 @@ public class GameController : MonoBehaviour
     {
         playerGold.text = "Gold: " + player.GetPlayerGold().ToString();
     }
+
+    public void SetPLayerGoldStatusAI(Player player)
+    {
+        playerGoldAI.text = "Gold: " + player.GetPlayerGold().ToString();
+    }
     
     public void SetupHandSlots(Player player)
     {
@@ -977,6 +894,11 @@ public class GameController : MonoBehaviour
             handSlots[i].GetComponent<Minion>().InitializeBlank();
         }
         //freeSpaceInHand = true;
+
+        for (int i = 0; i < handSlotsAI.Length; i++)
+        {
+            handSlotsAI[i].GetComponent<Minion>().InitializeBlank();
+        }
     }
 
     public void SetupBoardSlots(Player player)
@@ -986,6 +908,10 @@ public class GameController : MonoBehaviour
             minionSlots[i].GetComponent<Minion>().InitializeBlank();
         }
         //freeSpaceOnBoard = true;
+        for (int i = 0; i < minionSlotsAI.Length; i++)
+        {
+            minionSlotsAI[i].GetComponent<Minion>().InitializeBlank();
+        }
     }
 
     public void SetupDiscoverSlots()
@@ -1100,61 +1026,6 @@ public class GameController : MonoBehaviour
             {
                 minionB.Hp = 0;
             }
-
-            /*
-            if(minionB.Hp <= 0)
-            {
-                for(int i = 0; i < p2.GetPlayerCopiedBoard().Count; i++)
-                {
-                    if(p2.GetPlayerCopiedBoard()[i].GetMinion().Name == minionB.Name)
-                    {
-                        p2.GetPlayerCopiedBoard().RemoveAt(i);
-
-                        //DEATHRATTLES REALIZATION
-                        if(minionB.Name == "Spawn of NZoth")
-                        {
-                            Debug.Log(minionB.Name + " Deathrattle!");
-                            BuffAllMinions(1, 1, p2);
-                        }
-                        else if(minionB.Name == "Rat Pack")
-                        {
-                            Debug.Log(minionB.Name + " Deathrattle!");
-                            SummonTokenFight("Rat", minionB.Attack, p2);
-                        }
-                        else if(minionB.Name == "Fiendish Servant")
-                        {
-                            Debug.Log(minionB.Name + " Deathrattle!");
-                            if (p2.GetPlayerCopiedBoard().Count > 0)
-                            {
-                                BuffSingleMinionFight(minionB.Attack, 0, p2);
-                            }
-                        }
-                        else if (minionB.Name == "Imprisoner")
-                        {
-                            Debug.Log(minionB.Name + " Deathrattle!");
-                            SummonTokenFight("Imp", 1, p2);
-                        }
-                        //PASSIVES REALIZATION
-                        //scavenging hyena
-                        if (minionB.Tribe == "Beast")
-                        {
-                            Debug.Log("zdechla bestia");
-                            for (int j = 0; j < p2.GetPlayerCopiedBoard().Count; j++)
-                            {
-                                if(p2.GetPlayerCopiedBoard()[j].GetMinion().Name == "Scavenging Hyena")
-                                {
-                                    Debug.Log(minionB.Name + " Passive!");
-                                    BuffSpecifiedMinionFight(2, 1, p2, j);
-                                }
-                            }
-                        }
-
-                        break;
-                    }
-                }
-                
-                Debug.Log(minionB.Name + " is dead!");
-            }*/
         }
         else if(minionA.DivineShield == false && minionB.DivineShield == true)
         {
@@ -1163,61 +1034,7 @@ public class GameController : MonoBehaviour
             {
                 minionA.Hp = 0;
             }
-            /*
-            if (minionA.Hp <= 0)
-            {
-                for (int i = 0; i < p1.GetPlayerCopiedBoard().Count; i++)
-                {
-                    if (p1.GetPlayerCopiedBoard()[i].GetMinion().Name == minionA.Name)
-                    {
-                        p1.GetPlayerCopiedBoard().RemoveAt(i);
-
-                        //DEATHRATTLES REALIZATION
-                        if (minionA.Name == "Spawn of NZoth")
-                        {
-                            Debug.Log(minionA.Name + " Deathrattle!");
-                            BuffAllMinions(1, 1, p1);
-                        }
-                        else if (minionA.Name == "Rat Pack")
-                        {
-                            Debug.Log(minionA.Name + " Deathrattle!");
-                            SummonTokenFight("Rat", minionA.Attack, p1);
-                        }
-                        else if (minionA.Name == "Fiendish Servant")
-                        {
-                            Debug.Log(minionA.Name + " Deathrattle!");
-                            if (p1.GetPlayerCopiedBoard().Count > 0)
-                            {
-                                BuffSingleMinionFight(minionA.Attack, 0, p1);
-                            }
-                        }
-                        else if (minionA.Name == "Imprisoner")
-                        {
-                            Debug.Log(minionA.Name + " Deathrattle!");
-                            SummonTokenFight("Imp", 1, p1);
-                        }
-
-                        //PASSIVES REALIZATION
-                        //scavenging hyena
-                        if (minionA.Tribe == "Beast")
-                        {
-                            Debug.Log("zdechla bestia");
-                            for (int j = 0; j < p1.GetPlayerCopiedBoard().Count; j++)
-                            {
-                                if (p1.GetPlayerCopiedBoard()[j].GetMinion().Name == "Scavenging Hyena")
-                                {
-                                    Debug.Log(minionA.Name + " Passive!");
-                                    BuffSpecifiedMinionFight(2, 1, p1, j);
-                                }
-                            }
-                        }
-
-                        break;
-                    }
-                }
-
-                Debug.Log(minionA.Name + " is dead!");
-            }*/
+            
         }
         else if (minionA.DivineShield == false && minionB.DivineShield == false)
         {
@@ -1241,114 +1058,7 @@ public class GameController : MonoBehaviour
                 minionA.Hp -= minionB.Attack;
                 minionB.Hp -= minionA.Attack;
             }
-            /*
-            if (minionA.Hp <= 0)
-            {
-                for (int i = 0; i < p1.GetPlayerCopiedBoard().Count; i++)
-                {
-                    if (p1.GetPlayerCopiedBoard()[i].GetMinion().Name == minionA.Name)
-                    {
-                        p1.GetPlayerCopiedBoard().RemoveAt(i);
-
-                        //DEATHRATTLES REALIZATION
-                        if (minionA.Name == "Spawn of NZoth")
-                        {
-                            Debug.Log(minionA.Name + " Deathrattle!");
-                            BuffAllMinions(1, 1, p1);
-                        }
-                        else if (minionA.Name == "Rat Pack")
-                        {
-                            Debug.Log(minionA.Name + " Deathrattle!");
-                            SummonTokenFight("Rat", minionA.Attack, p1);
-                        }
-                        else if (minionA.Name == "Fiendish Servant")
-                        {
-                            Debug.Log(minionA.Name + " Deathrattle!");
-                            if (p1.GetPlayerCopiedBoard().Count > 0)
-                            {
-                                BuffSingleMinionFight(minionA.Attack, 0, p1);
-                            }
-                        }
-                        else if (minionA.Name == "Imprisoner")
-                        {
-                            Debug.Log(minionA.Name + " Deathrattle!");
-                            SummonTokenFight("Imp", 1, p1);
-                        }
-
-                        //PASSIVES REALIZATION
-                        //scavenging hyena
-                        if (minionA.Tribe == "Beast")
-                        {
-                            Debug.Log("zdechla bestia");
-                            for (int j = 0; j < p1.GetPlayerCopiedBoard().Count; j++)
-                            {
-                                if (p1.GetPlayerCopiedBoard()[j].GetMinion().Name == "Scavenging Hyena")
-                                {
-                                    Debug.Log(minionA.Name + " Passive!");
-                                    BuffSpecifiedMinionFight(2, 1, p1, j);
-                                }
-                            }
-                        }
-                        break;
-                    }
-                }
-
-                Debug.Log(minionA.Name + " is dead!");
-            }
-
-            if (minionB.Hp <= 0)
-            {
-                for (int i = 0; i < p2.GetPlayerCopiedBoard().Count; i++)
-                {
-                    if (p2.GetPlayerCopiedBoard()[i].GetMinion().Name == minionB.Name)
-                    {
-                        p2.GetPlayerCopiedBoard().RemoveAt(i);
-
-                        //DEATHRATTLES REALIZATION
-                        if (minionB.Name == "Spawn of NZoth")
-                        {
-                            Debug.Log(minionB.Name + " Deathrattle!");
-                            BuffAllMinions(1, 1, p2);
-                        }
-                        else if (minionB.Name == "Rat Pack")
-                        {
-                            Debug.Log(minionB.Name + " Deathrattle!");
-                            SummonTokenFight("Rat", minionB.Attack, p2);
-                        }
-                        else if (minionB.Name == "Fiendish Servant")
-                        {
-                            Debug.Log(minionB.Name + " Deathrattle!");
-                            if (p2.GetPlayerCopiedBoard().Count > 0)
-                            {
-                                BuffSingleMinionFight(minionB.Attack, 0, p2);
-                            }
-                        }
-                        else if (minionB.Name == "Imprisoner")
-                        {
-                            Debug.Log(minionB.Name + " Deathrattle!");
-                            SummonTokenFight("Imp", 1, p2);
-                        }
-
-                        //PASSIVES REALIZATION
-                        //scavenging hyena
-                        if (minionB.Tribe == "Beast")
-                        {
-                            Debug.Log("zdechla bestia");
-                            for (int j = 0; j < p2.GetPlayerCopiedBoard().Count; j++)
-                            {
-                                if (p2.GetPlayerCopiedBoard()[j].GetMinion().Name == "Scavenging Hyena")
-                                {
-                                    Debug.Log(minionB.Name + " Passive!");
-                                    BuffSpecifiedMinionFight(2, 1, p2, j);
-                                }
-                            }
-                        }
-                        break;
-                    }
-                }
-
-                Debug.Log(minionB.Name + " is dead!");
-            }*/
+            
         }
         if (minionA.Hp <= 0)
         {
@@ -1653,7 +1363,8 @@ public class GameController : MonoBehaviour
 
     //option => simple
     //       => token
-    public void GoldenMinion(Player player, int newHandPos, List<int> tempHandPos, List<int> tempBoardPos, GameObject shopMinion, string option, string tokenName, List<int>tokenPos)
+    public void GoldenMinion(Player player, int newHandPos, List<int> tempHandPos, List<int> tempBoardPos, GameObject shopMinion, 
+        string option, string tokenName, List<int>tokenPos, GameObject[] minionSlots, GameObject[] handSlots)
     {
         List<Pool> temp = new List<Pool>();
         XmlNodeList minionsList = minionDataXML.SelectNodes("/minions/minion");
@@ -1726,7 +1437,7 @@ public class GameController : MonoBehaviour
                 taunt = true;
             MinionData newMinion = new MinionData();
             newMinion.Initialize(temporaryMinions[0].Name, temporaryMinions[0].Attack + temporaryMinions[1].Attack, temporaryMinions[0].Hp + temporaryMinions[1].Hp,
-                temporaryMinions[0].Tribe, temporaryMinions[0].TavernTier, ds, poison, taunt, temporaryMinions[0].GoldenSkill, golden);
+                temporaryMinions[0].Tribe, temporaryMinions[0].TavernTier, ds, poison, taunt, temporaryMinions[0].Skill, temporaryMinions[0].GoldenSkill, golden);
             handSlots[newHandPos].GetComponent<Minion>().InitializeMinion(newMinion, golden);
 
             if (tempBoardPos.Count == 2)
@@ -1766,7 +1477,7 @@ public class GameController : MonoBehaviour
                 taunt = true;
             MinionData newMinion = new MinionData();
             newMinion.Initialize(tokenName, temporaryMinions[0].Attack + temporaryMinions[1].Attack, temporaryMinions[0].Hp + temporaryMinions[1].Hp,
-                temporaryMinions[0].Tribe, temporaryMinions[0].TavernTier, ds, poison, taunt, temporaryMinions[0].GoldenSkill, golden);
+                temporaryMinions[0].Tribe, temporaryMinions[0].TavernTier, ds, poison, taunt, temporaryMinions[0].Skill, temporaryMinions[0].GoldenSkill, golden);
 
             //find free hand spot
             int newTempHandPos = 99;
@@ -1793,19 +1504,38 @@ public class GameController : MonoBehaviour
     {
         if(player.GetPlayerGold() >= 3)
         {
-            BuyMinion(player);
+            BuyMinionPlayer(player);
+            //BuyMinion(player, );
             player.AddPlayerGold(3);
         }
         else if (player.GetPlayerGold() < 3)
         {
             player.AddPlayerGold(3);
-            BuyMinion(player);
+            BuyMinionPlayer(player);
         }
+        SetPLayerGoldStatus(player);
+        ShowHideDiscoverPanel(false);
+    }
+
+    public void ChooseDiscoveredMinionAI(Player player, GameObject minion)
+    {
+        if (player.GetPlayerGold() >= 3)
+        {
+            BuyMinionAI(player, minion);
+            //BuyMinion(player, );
+            player.AddPlayerGold(3);
+        }
+        else if (player.GetPlayerGold() < 3)
+        {
+            player.AddPlayerGold(3);
+            BuyMinionAI(player, minion);
+        }
+        SetPLayerGoldStatusAI(player);
         ShowHideDiscoverPanel(false);
     }
 
     //BATTLECRIES:
-    public void SummonTokenBoard(string tokenName, int number, Player player)
+    public void SummonTokenBoard(string tokenName, int number, Player player, GameObject[] minionSlots)
     {
         for (int n = 0; n < number; n++)
         {
@@ -1843,15 +1573,6 @@ public class GameController : MonoBehaviour
     {
         if (selectedMinion.GetComponent<Minion>().tribe.text == tribe || tribe == "All")
         {
-            /*
-            string selectedMinionName = selectedMinion.GetComponent<Minion>().minionName.text;
-            XmlNode minionNode;
-            
-            if (selectedMinion.GetComponent<Minion>().minionName.text == "Tabbycat" || selectedMinion.GetComponent<Minion>().minionName.text == "Murloc Scout")
-                minionNode = minionData.GetMinionByName(selectedMinionName, tokenMinionsDataXML);
-            else
-                minionNode = minionData.GetMinionByName(selectedMinionName, minionDataXML);
-            */
             MinionData minionInstance = selectedMinion.GetComponent<Minion>().GetMinion();
             minionInstance.Attack += attack;
             minionInstance.Hp += health;

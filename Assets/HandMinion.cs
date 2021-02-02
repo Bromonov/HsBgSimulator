@@ -60,7 +60,7 @@ public class HandMinion : MonoBehaviour, IDragHandler, IEndDragHandler
                 Debug.Log("NO HEJ, UDALO CI SIE MORDO!0");
                 placed = true;
                 placedSlot = 0;
-                gc.PlayMinionOnBoard(gc.player1, this.gameObject, minionSlots[0]);
+                gc.PlayMinionOnBoard(gc.player1, this.gameObject, minionSlots[0], gc.handSlots, gc.minionSlots);
             }
             else if (minionSlots[1].GetComponent<Minion>().blank == true && Mathf.Abs(this.transform.position.x - minionSlots[1].transform.position.x) <= 10.0f &&
                 (Mathf.Abs(this.transform.position.y - minionSlots[1].transform.position.y) <= 15.0f))
@@ -69,7 +69,7 @@ public class HandMinion : MonoBehaviour, IDragHandler, IEndDragHandler
                 Debug.Log("NO HEJ, UDALO CI SIE MORDO1!");
                 placed = true;
                 placedSlot = 1;
-                gc.PlayMinionOnBoard(gc.player1, this.gameObject, minionSlots[1]);
+                gc.PlayMinionOnBoard(gc.player1, this.gameObject, minionSlots[1], gc.handSlots, gc.minionSlots);
             }
             else if (minionSlots[2].GetComponent<Minion>().blank == true && Mathf.Abs(this.transform.position.x - minionSlots[2].transform.position.x) <= 10.0f &&
                 (Mathf.Abs(this.transform.position.y - minionSlots[2].transform.position.y) <= 15.0f))
@@ -78,7 +78,7 @@ public class HandMinion : MonoBehaviour, IDragHandler, IEndDragHandler
                 Debug.Log("NO HEJ, UDALO CI SIE MORDO2!");
                 placed = true;
                 placedSlot = 2;
-                gc.PlayMinionOnBoard(gc.player1, this.gameObject, minionSlots[2]);
+                gc.PlayMinionOnBoard(gc.player1, this.gameObject, minionSlots[2], gc.handSlots, gc.minionSlots);
             }
             else if (minionSlots[3].GetComponent<Minion>().blank == true && Mathf.Abs(this.transform.position.x - minionSlots[3].transform.position.x) <= 10.0f &&
                 (Mathf.Abs(this.transform.position.y - minionSlots[3].transform.position.y) <= 15.0f))
@@ -87,7 +87,7 @@ public class HandMinion : MonoBehaviour, IDragHandler, IEndDragHandler
                 Debug.Log("NO HEJ, UDALO CI SIE MORDO3!");
                 placed = true;
                 placedSlot = 3;
-                gc.PlayMinionOnBoard(gc.player1, this.gameObject, minionSlots[3]);
+                gc.PlayMinionOnBoard(gc.player1, this.gameObject, minionSlots[3], gc.handSlots, gc.minionSlots);
             }
             else if (minionSlots[4].GetComponent<Minion>().blank == true && Mathf.Abs(this.transform.position.x - minionSlots[4].transform.position.x) <= 10.0f &&
                 (Mathf.Abs(this.transform.position.y - minionSlots[4].transform.position.y) <= 15.0f))
@@ -96,7 +96,7 @@ public class HandMinion : MonoBehaviour, IDragHandler, IEndDragHandler
                 Debug.Log("NO HEJ, UDALO CI SIE MORDO4!");
                 placed = true;
                 placedSlot = 4;
-                gc.PlayMinionOnBoard(gc.player1, this.gameObject, minionSlots[4]);
+                gc.PlayMinionOnBoard(gc.player1, this.gameObject, minionSlots[4], gc.handSlots, gc.minionSlots);
             }
             else if (minionSlots[5].GetComponent<Minion>().blank == true && Mathf.Abs(this.transform.position.x - minionSlots[5].transform.position.x) <= 10.0f &&
                 (Mathf.Abs(this.transform.position.y - minionSlots[5].transform.position.y) <= 15.0f))
@@ -105,7 +105,7 @@ public class HandMinion : MonoBehaviour, IDragHandler, IEndDragHandler
                 Debug.Log("NO HEJ, UDALO CI SIE MORDO5!");
                 placed = true;
                 placedSlot = 5;
-                gc.PlayMinionOnBoard(gc.player1, this.gameObject, minionSlots[5]);
+                gc.PlayMinionOnBoard(gc.player1, this.gameObject, minionSlots[5], gc.handSlots, gc.minionSlots);
             }
             else if (minionSlots[6].GetComponent<Minion>().blank == true && Mathf.Abs(this.transform.position.x - minionSlots[6].transform.position.x) <= 10.0f &&
                 (Mathf.Abs(this.transform.position.y - minionSlots[6].transform.position.y) <= 15.0f))
@@ -114,7 +114,7 @@ public class HandMinion : MonoBehaviour, IDragHandler, IEndDragHandler
                 Debug.Log("NO HEJ, UDALO CI SIE MORDO6!");
                 placed = true;
                 placedSlot = 6;
-                gc.PlayMinionOnBoard(gc.player1, this.gameObject, minionSlots[6]);
+                gc.PlayMinionOnBoard(gc.player1, this.gameObject, minionSlots[6], gc.handSlots, gc.minionSlots);
             }
             else
             {

@@ -56,7 +56,7 @@ public class MinionData : MonoBehaviour
         else Debug.Log("Taunt boolean parsing problem!");
 
         Skill = curMinionNode["skill"].InnerText;
-        Skill = curMinionNode["goldenSkill"].InnerText;
+        GoldenSkill = curMinionNode["goldenSkill"].InnerText;
 
         Golden = golden;
     }
@@ -78,7 +78,7 @@ public class MinionData : MonoBehaviour
     }
     
     public void Initialize(string newName, int newAttack, int newHP, string newTribe, int newTavernTier, bool newDS, bool newPoison, 
-         bool newTaunt, string skill, bool newGolden)
+         bool newTaunt, string skill, string goldenSkill, bool newGolden)
     {
         Name = newName;
         Attack = newAttack;
@@ -89,6 +89,7 @@ public class MinionData : MonoBehaviour
         Poison = newPoison;
         Taunt = newTaunt;
         Skill = skill;
+        GoldenSkill = goldenSkill;
         Golden = newGolden;
     }
     /*

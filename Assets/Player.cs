@@ -107,7 +107,7 @@ public class Player : MonoBehaviour
             {
                 Debug.Log("no hej graczu 2");
                 MinionData minionData1 = new MinionData();
-                minionData1.Initialize("Fiendish Servant", 2, 1, "Demon", 1, false, false, false, "", false);
+                minionData1.Initialize("Fiendish Servant", 2, 1, "Demon", 1, false, false, false, "", "", false);
                 Player.Board minion1 = new Player.Board(minionData1, 0);
                 board.Add(minion1);
 
@@ -125,6 +125,7 @@ public class Player : MonoBehaviour
     public void AddPlayerGold(int newGold)
     {
         this.gold += newGold;
+        Debug.Log("Adding " + newGold + " gold...");
     }
 
     public void SetPlayerGold(int newGold)

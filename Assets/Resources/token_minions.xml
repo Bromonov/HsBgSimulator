@@ -51,16 +51,6 @@
     <skill></skill>
     <goldenSkill></goldenSkill>
   </minion>
-  <minion name = "Golden Rat" tavernTier = "1">
-    <attack>2</attack>
-    <hp>2</hp>
-    <tribe>Beast</tribe>
-    <ds>false</ds>
-    <poison>false</poison>
-    <taunt>false</taunt>
-    <skill></skill>
-    <goldenSkill></goldenSkill>
-  </minion>
   <minion name = "Imp" tavernTier = "1">
     <attack>1</attack>
     <hp>1</hp>
@@ -71,29 +61,9 @@
     <skill></skill>
     <goldenSkill></goldenSkill>
   </minion>
-  <minion name = "Golden Imp" tavernTier = "1">
-    <attack>2</attack>
-    <hp>2</hp>
-    <tribe>Demon</tribe>
-    <ds>false</ds>
-    <poison>false</poison>
-    <taunt>false</taunt>
-    <skill></skill>
-    <goldenSkill></goldenSkill>
-  </minion>
   <minion name = "Damaged Golem" tavernTier = "1">
     <attack>2</attack>
     <hp>1</hp>
-    <tribe>Mech</tribe>
-    <ds>false</ds>
-    <poison>false</poison>
-    <taunt>false</taunt>
-    <skill></skill>
-    <goldenSkill></goldenSkill>
-  </minion>
-  <minion name = "Golden Damaged Golem" tavernTier = "1">
-    <attack>4</attack>
-    <hp>2</hp>
     <tribe>Mech</tribe>
     <ds>false</ds>
     <poison>false</poison>
