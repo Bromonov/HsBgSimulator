@@ -53,17 +53,58 @@ public class AI : MonoBehaviour
     //pick a minion from a discover list, kinda similar to buying, but free
     //gc.ChooseDiscoveredMinionAI(player, minion);
 
+    public struct Action
+    {
+        string actionName;
+        int minionA;
+        int minionB;
+
+        public Action(string newActionName, int newMinionA, int newMinionB)
+        {
+            actionName = newActionName;
+            minionA = newMinionA;
+            minionB = newMinionB;
+        }
+
+        public string GetActionName()
+        {
+            return actionName;
+        }
+        public void SetActionName(string newActionName)
+        {
+            actionName = newActionName;
+        }
+        public int GetMinionA()
+        {
+            return minionA;
+        }
+        public void SetMinionA(int newMinionA)
+        {
+            minionA = newMinionA;
+        }
+        public int GetMinionB()
+        {
+            return minionB;
+        }
+        public void SetMinionB(int newMinionB)
+        {
+            minionB = newMinionB;
+        }
+    };
+
     private GameController gc;
     private Player player;
+    private List<Action> allActions;
+    private List<Action> possibleActions;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GetComponent<Player>();
         gc = player.gc;
-
-        
-
+        allActions = new List<Action>();
+        possibleActions = new List<Action>();
+        SetupAllActionList();
     }
 
     // Update is called once per frame
@@ -72,7 +113,69 @@ public class AI : MonoBehaviour
         
     }
 
-    public void GetShopSlots()
+    public GameObject[] GetShopSlots()
+    {
+        return gc.shopSlotsAI;
+    }
+
+    public GameObject[] GetBoardSlots()
+    {
+        return gc.minionSlotsAI;
+    }
+
+    public GameObject[] GetHandSlots()
+    {
+        return gc.handSlotsAI;
+    }
+
+    public GameObject[] GetDiscoverSlots()
+    {
+        return gc.discoverSlots;
+    }
+
+    public void SetupAllActionList()
+    {
+        //if minionA || minionB == 99 -> useless
+        //buy minion, minionA -> slot pos from shop to buy, minionB -> w/e
+        for(int i = 0; i < GetShopSlots().Length; i++)
+        {
+            Action buy = new Action("buy", i, 99);
+            allActions.Add(buy);
+        }
+        //sell minion, minionA -> slot pos on board to sell, minionB -> w/e
+        for (int i = 0; i < GetBoardSlots().Length; i++)
+        {
+            Action sell = new Action("sell", i, 99);
+            allActions.Add(sell);
+        }
+        //play minion, minionA -> slot pos from hand, minionB -> slot pos on board
+        for (int i = 0; i < GetHandSlots().Length; i++)
+        {
+            for(int j = 0; j < GetBoardSlots().Length; j++)
+            {
+                Action play = new Action("play", i, j);
+                allActions.Add(play);
+            }
+        }
+        //rolka
+        Action roll = new Action("roll", 99, 99);
+        allActions.Add(roll);
+        //upgrade tavern level
+        Action upgrade = new Action("upgrade", 99, 99);
+        allActions.Add(upgrade);
+        //end turn -> chyba nie powinno byc w akcjach, zeby nie konczyl randomowo, chociaz moze?
+        //Action endTurn = new Action("end", 99, 99);
+        //allActions.Add(endTurn);
+        //pick minion from discover list -> only possible when made golden
+        for(int i = 0; i < GetDiscoverSlots().Length; i++)
+        {
+            Action pick = new Action("pick", i, 99);
+            allActions.Add(pick);
+        }
+        //swapy -> na razie bugged
+    }
+
+    public void GeneratePossibleActionsList()
     {
 
     }
