@@ -28,9 +28,11 @@ using UnityEngine.UI;
 //          - NIE DONE  - poprawic wszystkie prefaby oprocz shopslotsow(chyba), bo nie wyswietla sie tribe i skill
 
 //          BUGI:       - skurwiale dodawanei do player handu/boardu, trzeba refreszowac na pdostawie gameobjectow na scenie -> AI tez trzeba bedzie dac gameobjecty na scene jakos
-//                      - tidecaller buffuje sam siebie, rockpool tak samo moze
+//                      - tidecaller buffuje sam siebie, rockpool tak samo moze -> chyba done(?)
 //                      - swapowanie minionow na boardzie, dziala tylko z prawa do lewa + pewnie korekta w playerboard list, choc to i tak jest skurwiale tera
 //                      - golden sprzedajac daje 3 golda
+//                      - w przypadku gdy sa dwie te same jednostki na boardzie, zostanie zakupiona 3, inicjalizacja golden mechanic 
+//                        -> po zagraniu zlotej jednostki summonuje sie jej kopia -> tylko rockpool
 
 public class GameController : MonoBehaviour
 {
@@ -121,8 +123,8 @@ public class GameController : MonoBehaviour
         SetupBoardSlots(player1);
         player1.Initialize();
         player2.Initialize();
-        ShowMinionsInTavern(player1, shopSlots);
-        ShowMinionsInTavern(player2, shopSlotsAI);
+        ShowMinionsInTavern(player1, shopSlots, 0);
+        ShowMinionsInTavern(player2, shopSlotsAI, 0);
         SetPLayerGoldStatus(player1);
         SetPLayerGoldStatus(player2);
         //freeSpaceInHand = true;
@@ -204,10 +206,10 @@ public class GameController : MonoBehaviour
 
     }
 
-    public void ShowMinionsInTavern(Player player, GameObject[] slots)
+    public void ShowMinionsInTavern(Player player, GameObject[] slots, int numberOfMinionsInTavern)
     {
         int maxTavernTier = player.GetComponent<Player>().GetPlayerTavernTier();
-        int numberOfMinionsInTavern = 0;
+        //int numberOfMinionsInTavern = 0;
         //int minionNumber = 0;
 
         if (maxTavernTier == 1)
@@ -504,7 +506,7 @@ public class GameController : MonoBehaviour
     {
         if (player.GetPlayerGold() >= 1)
         {
-            ShowMinionsInTavern(player, slots);
+            ShowMinionsInTavern(player, slots, 0);
             player.AddPlayerGold(-1);
             SetPLayerGoldStatus(player);
         }
@@ -517,7 +519,7 @@ public class GameController : MonoBehaviour
     {
         if (player.GetPlayerGold() >= 1)
         {
-            ShowMinionsInTavern(player, shopSlots);
+            ShowMinionsInTavern(player, shopSlots, 0);
             player.AddPlayerGold(-1);
             SetPLayerGoldStatus(player);
         }
@@ -530,7 +532,7 @@ public class GameController : MonoBehaviour
     {
         if (player.GetPlayerGold() >= 1)
         {
-            ShowMinionsInTavern(player, shopSlotsAI);
+            ShowMinionsInTavern(player, shopSlotsAI, 0);
             player.AddPlayerGold(-1);
             SetPLayerGoldStatus(player);
         }
@@ -656,7 +658,7 @@ public class GameController : MonoBehaviour
         }
         temp.Clear();
         ChangeCanvasObjects("AI");
-        ShowMinionsInTavern(player2, shopSlotsAI);
+        ShowMinionsInTavern(player2, shopSlotsAI, 0);
     }
 
     public void EndTurnAI(GameObject[] minionSlots)               // czy na pewno zalezne od playera? jak dwaj gracze naraz to chyba nie, 
@@ -720,7 +722,7 @@ public class GameController : MonoBehaviour
         UpdateTavernTierCostText(player2, tavernTierCostTextAI);
         UpdateTavernTierText(player2, tavernTierTextAI);
         ChangeCanvasObjects("Player");
-        ShowMinionsInTavern(player1, shopSlots);
+        ShowMinionsInTavern(player1, shopSlots, 0);
     }
 
     public void PlayMinionOnBoard(Player player, GameObject handSlot, GameObject minionSlot, GameObject[] handSlots, GameObject[] minionSlots)
@@ -838,7 +840,7 @@ public class GameController : MonoBehaviour
             List<int> locationIterator = new List<int>();
             for (int i = 0; i < minionSlots.Length; i++)
             {
-                if(minionSlots[i].GetComponent<Minion>().tribe.text == "Murloc")  //jakos trzeba odciac ostatnio zagrana jednostke, zeby sam sie nei buffowal
+                if(minionSlots[i].GetComponent<Minion>().tribe.text == "Murloc" && handSlot.GetComponent<HandMinion>().placedSlot != i)  //jakos trzeba odciac ostatnio zagrana jednostke, zeby sam sie nei buffowal
                 {
                     murlocCounter++;
                     locationIterator.Add(i);
@@ -877,7 +879,7 @@ public class GameController : MonoBehaviour
         {
             for(int i = 0; i < player.GetPlayerBoard().Count; i++)
             {
-                if(player.GetPlayerBoard()[i].GetMinion().Name == "Murloc Tidecaller")  //jakos trzeba odciac ostatnio zagrana jednostke, zeby sam sie nei buffowal
+                if(player.GetPlayerBoard()[i].GetMinion().Name == "Murloc Tidecaller" && handSlot.GetComponent<HandMinion>().placedSlot != i)  //jakos trzeba odciac ostatnio zagrana jednostke, zeby sam sie nei buffowal
                 {
                     if (player.GetPlayerBoard()[i].GetMinion().Golden == false)
                         BuffSingleMinionBoard(minionSlots[player.GetPlayerBoard()[i].GetPos()], 1, 0, "Murloc", player);
@@ -969,7 +971,7 @@ public class GameController : MonoBehaviour
 
     public void RefreshShopSlots(GameObject[] slots, Player player)
     {
-        ShowMinionsInTavern(player, slots);
+        ShowMinionsInTavern(player, slots, 0);
     }
     /*
     public void RefreshHandSlots(GameObject[] slots, Player player)
