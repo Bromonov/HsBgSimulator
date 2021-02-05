@@ -78,8 +78,8 @@ public class Player : MonoBehaviour
     public void Initialize()
     {
         //gold = 3;
-        //tavernTierLevel = 1;
-        //turnNumber = 1;
+        tavernTierLevel = 1;
+        turnNumber = 1;
         health = 40;
         board = new List<Board>();
         copiedBoard = new List<Board>();
@@ -96,6 +96,8 @@ public class Player : MonoBehaviour
         tavernCost4 = 9;
         tavernCost5 = 10;
         tavernCost6 = 0;
+
+        tavernTierUpgradeGold = tavernCost1;
     }
 
     // Update is called once per frame

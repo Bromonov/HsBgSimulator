@@ -22,6 +22,8 @@ public class Fight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SetupFightSlots();
+        /*
         for (int i = 0; i < 7; i++)
         {
             fightSlotsAIBefore[i].GetComponent<Minion>().InitializeBlank();
@@ -33,6 +35,7 @@ public class Fight : MonoBehaviour
         healthAfterAI.text = AI.GetHealth().ToString();
         healthBeforePlayer.text = human.GetHealth().ToString();
         healthAfterPlayer.text = human.GetHealth().ToString();
+        */
     }
 
     // Update is called once per frame
@@ -87,4 +90,18 @@ public class Fight : MonoBehaviour
 
     }
 
+    public void SetupFightSlots()
+    {
+        for (int i = 0; i < 7; i++)
+        {
+            fightSlotsAIBefore[i].GetComponent<Minion>().InitializeBlank();
+            fightSlotsPlayerBefore[i].GetComponent<Minion>().InitializeBlank();
+            fightSlotsAIAfter[i].GetComponent<Minion>().InitializeBlank();
+            fightSlotsPlayerAfter[i].GetComponent<Minion>().InitializeBlank();
+        }
+        healthBeforeAI.text = AI.GetHealth().ToString();
+        healthAfterAI.text = AI.GetHealth().ToString();
+        healthBeforePlayer.text = human.GetHealth().ToString();
+        healthAfterPlayer.text = human.GetHealth().ToString();
+    }
 }

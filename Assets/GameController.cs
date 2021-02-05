@@ -119,8 +119,9 @@ public class GameController : MonoBehaviour
         pool = new List<Pool>();
         copiedPool = new List<Pool>();
         CreatePool();
-        SetupHandSlots(player1);
-        SetupBoardSlots(player1);
+        SetupHandSlots();
+        SetupBoardSlots();
+        SetupFightSlots();
         player1.Initialize();
         player2.Initialize();
         ShowMinionsInTavern(player1, shopSlots, 0);
@@ -131,12 +132,12 @@ public class GameController : MonoBehaviour
         //freeSpaceOnBoard = true;
         ShowHideFightPanel(false);
 
-        player1.turnNumber = 1;
-        player2.turnNumber = 1;
-        player1.tavernTierLevel = 1;
-        player2.tavernTierLevel = 1;
-        player1.tavernTierUpgradeGold = 5;
-        player2.tavernTierUpgradeGold = 5;
+        //player1.turnNumber = 1;
+        //player2.turnNumber = 1;
+        //player1.tavernTierLevel = 1;
+        //player2.tavernTierLevel = 1;
+        //player1.tavernTierUpgradeGold = 5;
+        //player2.tavernTierUpgradeGold = 5;
         //tavernTierText.text = player1.tavernTierLevel.ToString();
         UpdateTavernTierCostText(player1, tavernTierCostText);
         UpdateTavernTierText(player1, tavernTierText);
@@ -716,6 +717,11 @@ public class GameController : MonoBehaviour
 
         UpdateTavernPrice();
 
+        if(player1.GetHealth() <= 0 || player2.GetHealth() <= 0)
+        {
+            ResetGame();
+        }
+
         UpdateTavernTierCostText(player1, tavernTierCostText);
         UpdateTavernTierText(player1, tavernTierText);
 
@@ -907,7 +913,7 @@ public class GameController : MonoBehaviour
         playerGoldAI.text = "Gold: " + player.GetPlayerGold().ToString();
     }
     */
-    public void SetupHandSlots(Player player)
+    public void SetupHandSlots()
     {
         for (int i = 0; i < handSlots.Length; i++)
         {
@@ -921,7 +927,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void SetupBoardSlots(Player player)
+    public void SetupBoardSlots()
     {
         for (int i = 0; i < minionSlots.Length; i++)
         {
@@ -940,6 +946,26 @@ public class GameController : MonoBehaviour
         {
             discoverSlots[i].GetComponent<Minion>().InitializeBlank();
         }
+    }
+
+    public void SetupShopSlots()
+    {
+        for (int i = 0; i < shopSlots.Length; i++)
+        {
+            shopSlots[i].GetComponent<Minion>().InitializeBlank();
+            shopSlots[i].GetComponent<ShopMinion>().arrow.SetActive(false);
+        }
+
+        for (int i = 0; i < shopSlotsAI.Length; i++)
+        {
+            shopSlotsAI[i].GetComponent<Minion>().InitializeBlank();
+            shopSlotsAI[i].GetComponent<ShopMinion>().arrow.SetActive(false);
+        }
+    }
+
+    public void SetupFightSlots()
+    {
+        fight.SetupFightSlots();
     }
 
     public void RefreshBlanks(GameObject[] slots)
@@ -1583,6 +1609,21 @@ public class GameController : MonoBehaviour
             tavernTierText.transform.parent.gameObject.SetActive(true);
             playerGoldAI.transform.parent.gameObject.SetActive(false);
             playerGold.transform.parent.gameObject.SetActive(true);
+        }
+    }
+
+    public void ResetGame()
+    {
+        if(player1.GetHealth() <= 0 || player2.GetHealth() <= 0)
+        {
+            SetupBoardSlots();
+            SetupHandSlots();
+            SetupShopSlots();
+            SetupDiscoverSlots();
+            SetupFightSlots();
+
+            player1.Initialize();
+            player2.Initialize();
         }
     }
 
