@@ -543,7 +543,7 @@ public class AI : MonoBehaviour
             player.fight = false;
             enemy.fight = false;
         }
-        actualQState.Initialize(lastResult, player.goldenMinionCounter, actualBoardStats, player.GetPlayerGold(), actualHandSlotsCounter, actualBoardCounter);
+        actualQState.Initialize(lastResult, player.goldenMinionCounter, actualBoardStats, player.GetPlayerGold(), actualHandSlotsCounter, actualBoardCounter, player.GetPlayerTavernTier());
 
         return actualQState;
     }
@@ -707,11 +707,11 @@ public class AI : MonoBehaviour
                 {
                     reward = 1;
                 }
-                /*//what about making minion golden(?)
+                //what about making minion golden(?)
                 if (currentState.GetGoldenMinionCounter() > previousState.GetGoldenMinionCounter())
                 {
                     reward = 1;
-                }*/
+                }
                 string previousStateStr = GetActualQStateStr(previousState);
                 string currentStateStr = GetActualQStateStr(currentState);
                 float maxValueAtCurrentState = -99.0f;

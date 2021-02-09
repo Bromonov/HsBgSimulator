@@ -11,8 +11,9 @@ public class QState : MonoBehaviour
     public int gold;                //wanna use all possible gold???
     public int handCounter;
     public int boardCounter;
+    public int tavernTier;
     
-    public void Initialize(int newLastFightResult, int newGoldenMinionCounter, int newBoardStats, int newGold, int newHandCounter, int newBoardCounter)
+    public void Initialize(int newLastFightResult, int newGoldenMinionCounter, int newBoardStats, int newGold, int newHandCounter, int newBoardCounter, int newTT)
     {
         lastFightResult = newLastFightResult;
         goldenMinionCounter = newGoldenMinionCounter;
@@ -20,6 +21,7 @@ public class QState : MonoBehaviour
         gold = newGold;
         handCounter = newHandCounter;
         boardCounter = newBoardCounter;
+        tavernTier = newTT;
     }
 
     public int GetLastFightResult()
@@ -50,6 +52,11 @@ public class QState : MonoBehaviour
     public int GetBoardCounter()
     {
         return boardCounter;
+    }
+
+    public int GetTavernTier()
+    {
+        return tavernTier;
     }
 
 }
