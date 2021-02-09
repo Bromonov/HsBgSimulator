@@ -112,19 +112,107 @@ public class AI : MonoBehaviour
         }
     };
 
+    public struct QValue
+    {
+        public Action action;
+        public float value;
+
+        public QValue(Action newAction, float newValue)
+        {
+            action = newAction;
+            value = newValue;
+        }
+
+        public Action GetAction()
+        {
+            return action;
+        }
+        public void SetAction(Action newAction)
+        {
+            action = newAction;
+        }
+        public float GetValue()
+        {
+            return value;
+        }
+        public void SetValue(float newValue)
+        {
+            value = newValue;
+        }
+    }
+
+    public struct QTable
+    {
+        public QState state;
+        public QValue[] qvalues;
+        public string stateStr;
+
+        public QTable(QState newState, QValue[] newQValues, string s)
+        {
+            state = newState;
+            qvalues = newQValues;
+            stateStr = s;
+        }
+
+        public QState GetState()
+        {
+            return state;
+        }
+
+        public string GetStateStr()
+        {
+            //stateStr = "EH" + GetState().enemyHealth + "OH" + GetState().ownHealth + "BS" + GetState().boardStats + "G" + GetState().gold + "HC" + GetState().handCounter;
+
+            return stateStr;
+        }
+
+        public void SetState(QState newState)
+        {
+            state = newState;
+        }
+
+        public QValue[] GetValues()
+        {
+            return qvalues;
+        }
+    };
+
     private GameController gc;
-    private Player player;
+    public Player player;
+    private Player enemy;
     private List<Action> allActions;
     private List<Action> possibleActions;
+    private GameObject[] minionSlots;
+    private GameObject[] handSlots;
+    private List<QTable> qTable;
+    private Action lastAction;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GetComponent<Player>();
         gc = player.gc;
         allActions = new List<Action>();
         possibleActions = new List<Action>();
         SetupAllActionList();
+        qTable = new List<QTable>();
+        lastAction = new Action();
+
+        if (player.name == "Player1")
+        {
+            minionSlots = gc.minionSlots;
+            handSlots = gc.handSlots;
+            enemy = gc.player2;
+        }
+        else if(player.name == "Player2")
+        {
+            minionSlots = gc.minionSlotsAI;
+            handSlots = gc.handSlotsAI;
+            enemy = gc.player1;
+        }
+        else
+        {
+            Debug.Log("Error with getting minionSlots!");
+        }
     }
 
     // Update is called once per frame
@@ -324,6 +412,7 @@ public class AI : MonoBehaviour
     {
         int random = Random.Range(0, possibleActions.Count);
         Action chosenAction = possibleActions[random];
+        lastAction = chosenAction;
         if(chosenAction.GetActionName() != null)
         {
             if(chosenAction.GetActionName() == "buy")
@@ -352,5 +441,92 @@ public class AI : MonoBehaviour
                 gc.ChooseDiscoveredMinionAI(player, GetDiscoverSlots()[chosenAction.GetPosMinionA()]);
             }
         }
+    }
+
+    public QState GetActualQState()
+    {
+        QState actualQState = new QState();
+        int actualBoardStats = 0;
+        for (int i = 0; i < minionSlots.Length; i++)
+        {
+            if (minionSlots[i].GetComponent<Minion>().blank == false)
+            {
+                int attack = minionSlots[i].GetComponent<Minion>().GetMinion().Attack;
+                int health = minionSlots[i].GetComponent<Minion>().GetMinion().Hp;
+                actualBoardStats = attack + health;
+            }
+        }
+        int actualHandSlotsCounter = 0;
+        for (int i = 0; i < handSlots.Length; i++)
+        {
+            if (handSlots[i].GetComponent<Minion>().blank == false)
+            {
+                actualHandSlotsCounter++;
+            }
+        }
+        actualQState.Initialize(enemy.GetHealth(), player.GetHealth(), actualBoardStats, player.GetPlayerGold(), actualHandSlotsCounter);
+
+        return actualQState;
+    }
+
+    public string GetActualQStateStr(QState state)
+    {
+        string s = "EH" + state.enemyHealth + "OH" + state.ownHealth + "BS" + state.boardStats + "G" + state.gold + "HC" + state.handCounter;
+
+        return s;
+    }
+
+
+    public void Learn()
+    {
+        QState actQState = GetActualQState();
+        string actQStateStr = GetActualQStateStr(actQState);
+
+        //check if is in table
+        bool inTable = false;
+        for(int i = 0; i < qTable.Count; i++)
+        {
+            if(qTable[i].GetStateStr() == actQStateStr)
+            {
+                inTable = true;
+                break;
+            }
+        }
+
+        if(inTable == true)
+        {
+            //greedy
+
+            //random action or best action
+        }
+        else if (inTable == false)
+        {
+            QState state = actQState;
+            string stateStr = actQStateStr;
+            QValue[] qvalues = new QValue[allActions.Count];
+            GeneratePossibleActionsList();
+            UseRandomGameMechanic();
+            for (int i = 0; i < allActions.Count; i++)
+            {
+                if (allActions[i].GetActionName() != lastAction.GetActionName() && allActions[i].GetMinionA() != lastAction.GetMinionA() &&
+                    allActions[i].GetMinionB() != lastAction.GetMinionB() && allActions[i].GetPosMinionA() != lastAction.GetPosMinionA() &&
+                    allActions[i].GetPosMinionB() != lastAction.GetPosMinionB())
+                {
+                    QValue q = new QValue(allActions[i], 0.0f);
+                    qvalues[i] = q;
+                }
+                else
+                {
+                    QValue q = new QValue(lastAction, 0.0f);
+                    qvalues[i] = q;
+                }
+            }
+            
+            QTable qEl = new QTable(state, qvalues, stateStr);
+            qTable.Add(qEl);
+        }
+
+
+   
     }
 }

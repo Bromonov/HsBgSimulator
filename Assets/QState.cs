@@ -5,17 +5,18 @@ using UnityEngine;
 public class QState : MonoBehaviour
 {
     public int enemyHealth;
-    public int ownHealthDifference;
+    public int ownHealth;
     public int boardStats;          //hp+att (co z DSem i poisonem?)
     public int gold;                //wanna use all possible gold???
+    public int handCounter;
     
-    
-    public void Initialize(int newEnemyHealth, int newOwnHealthDifference, int newBoardStats, int newGold)
+    public void Initialize(int newEnemyHealth, int newOwnHealth, int newBoardStats, int newGold, int newHandCounter)
     {
         enemyHealth = newEnemyHealth;
-        ownHealthDifference = newOwnHealthDifference;
+        ownHealth = newOwnHealth;
         boardStats = newBoardStats;
         gold = newGold;
+        handCounter = newHandCounter;
     }
 
     public int GetEnemyHealth()
@@ -23,9 +24,9 @@ public class QState : MonoBehaviour
         return enemyHealth;
     }
 
-    public int GetOwnHealthDifference()
+    public int GetOwnHealth()
     {
-        return ownHealthDifference;
+        return ownHealth;
     }
 
     public int GetBoardStats()
@@ -37,5 +38,10 @@ public class QState : MonoBehaviour
     {
         return gold;
     }
- 
+
+    public int GetHandCounter()
+    {
+        return handCounter;
+    }
+
 }
