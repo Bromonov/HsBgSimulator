@@ -647,12 +647,14 @@ public class GameController : MonoBehaviour
                         temp.Add(player.GetPlayerBoard()[j].GetPos());
                     }
                 }
-                int r = Random.Range(0, temp.Count);
-                int random = temp[r];
-                //Debug.Log("r: " + r + ", random: " + random);
+                if(temp.Count > 0)
+                {
+                    int r = Random.Range(0, temp.Count);
+                    int random = temp[r];
+                    //Debug.Log("r: " + r + ", random: " + random);
 
-                BuffSingleMinionBoard(minionSlots[random], 1, 0, "All", player);
-
+                    BuffSingleMinionBoard(minionSlots[random], 1, 0, "All", player);
+                }
                 Debug.Log("Micro mummy end turn effect!");
                 break;
             }

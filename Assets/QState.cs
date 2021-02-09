@@ -9,14 +9,16 @@ public class QState : MonoBehaviour
     public int boardStats;          //hp+att (co z DSem i poisonem?)
     public int gold;                //wanna use all possible gold???
     public int handCounter;
+    public int boardCounter;
     
-    public void Initialize(int newEnemyHealth, int newOwnHealth, int newBoardStats, int newGold, int newHandCounter)
+    public void Initialize(int newEnemyHealth, int newOwnHealth, int newBoardStats, int newGold, int newHandCounter, int newBoardCounter)
     {
         enemyHealth = newEnemyHealth;
         ownHealth = newOwnHealth;
         boardStats = newBoardStats;
         gold = newGold;
         handCounter = newHandCounter;
+        boardCounter = newBoardCounter;
     }
 
     public int GetEnemyHealth()
@@ -42,6 +44,11 @@ public class QState : MonoBehaviour
     public int GetHandCounter()
     {
         return handCounter;
+    }
+
+    public int GetBoardCounter()
+    {
+        return boardCounter;
     }
 
 }
