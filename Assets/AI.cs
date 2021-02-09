@@ -180,20 +180,20 @@ public class AI : MonoBehaviour
     public struct History
     {
         public Action pickedAction;
-        public string stateStr;
+        public QState state;
 
-        public History(Action action, string s)
+        public History(Action action, QState s)
         {
             pickedAction = action;
-            stateStr = s;
+            state = s;
         }
         public Action GetAction()
         {
             return pickedAction;
         }
-        public string GetStateStr()
+        public QState GetState()
         {
-            return stateStr;
+            return state;
         }
     };
 
@@ -207,6 +207,10 @@ public class AI : MonoBehaviour
     private List<QTable> qTable;
     private Action lastAction;
     private List<History> history;
+    private float timerMax = 0;
+    private float timer = 0;
+    private float learningRate;
+    private float discount;
 
     // Start is called before the first frame update
     void Start()
@@ -218,6 +222,8 @@ public class AI : MonoBehaviour
         qTable = new List<QTable>();
         lastAction = new Action();
         history = new List<History>();
+        learningRate = 0.7f;
+        discount = 0.5f;
 
         if (player.name == "Player1")
         {
@@ -236,16 +242,38 @@ public class AI : MonoBehaviour
             Debug.Log("Error with getting minionSlots!");
         }
     }
+    private bool Waited(float seconds)
+    {
+        timerMax = seconds;
+        timer += Time.deltaTime;
+        if (timer >= timerMax)
+        {
+            return true; //max reached - waited x - seconds
+        }
+
+        return false;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.C))
+        //if(Input.GetKeyDown(KeyCode.C) && player.turn == true)
+        if(player.turn == true && player.GetPlayerGold() > 0)
         {
             //GeneratePossibleActionsList();
             //Debug.Log("Possible actions number = " + possibleActions.Count);
             //UseRandomGameMechanic();
-            Learn();
+            //Learn();
+            if (Waited(1) == true)
+                Learn();
+            else
+                return;
+            timer = 0.0f;
+        }
+        else if (player.turn == true && player.GetPlayerGold() == 0)
+        {
+            gc.EndTurnAI(minionSlots);
+            Debug.Log("No gold left!");
         }
     }
 
@@ -436,10 +464,15 @@ public class AI : MonoBehaviour
 
     public void UseRandomGameMechanic()
     {
-        int random = Random.Range(0, possibleActions.Count);
-        Action chosenAction = possibleActions[random];
-        lastAction = chosenAction;
-        PlaySelectedAction(chosenAction);
+        if(possibleActions.Count > 0)
+        {
+            int random = Random.Range(0, possibleActions.Count);
+            Action chosenAction = possibleActions[random];
+            lastAction = chosenAction;
+            PlaySelectedAction(chosenAction);
+        }
+        else
+            Debug.Log("No possible actions!");
     }
 
     public void PlaySelectedAction(Action chosenAction)
@@ -503,14 +536,21 @@ public class AI : MonoBehaviour
                 actualBoardCounter++;
             }
         }
-        actualQState.Initialize(enemy.GetHealth(), player.GetHealth(), actualBoardStats, player.GetPlayerGold(), actualHandSlotsCounter, actualBoardCounter);
+        int lastResult = 1;
+        if(player.fight == true)
+        {
+            lastResult = player.lastResult;
+            player.fight = false;
+            enemy.fight = false;
+        }
+        actualQState.Initialize(lastResult, player.goldenMinionCounter, actualBoardStats, player.GetPlayerGold(), actualHandSlotsCounter, actualBoardCounter);
 
         return actualQState;
     }
 
     public string GetActualQStateStr(QState state)
     {
-        string s = "EH" + state.enemyHealth + "OH" + state.ownHealth + "BS" + state.boardStats + "G" + state.gold + "HC" + state.handCounter;
+        string s = "LR" + state.lastFightResult + "GC" + state.goldenMinionCounter + "BS" + state.boardStats + "G" + state.gold + "HC" + state.handCounter;
 
         return s;
     }
@@ -518,6 +558,7 @@ public class AI : MonoBehaviour
 
     public void Learn()
     {
+        //StartCoroutine(Wait(1));
         QState actQState = GetActualQState();
         string actQStateStr = GetActualQStateStr(actQState);
 
@@ -604,13 +645,120 @@ public class AI : MonoBehaviour
         }
 
         //save played action for this state
-        History h = new History(lastAction, actQStateStr);
+        History h = new History(lastAction, actQState);
         history.Add(h);
+        Debug.Log(history.Count);
 
         //update table
+        History last = history[history.Count - 1];
+        int reward = 0;
+        for(int i = history.Count - 1; i > 0; i--)
+        {
+            if (player.dead == true) //negative reward and no next state
+            {
+                QState state = last.GetState();
+                string stateStr = GetActualQStateStr(state);
+                Action takenAction = last.GetAction();
+                reward = -1;
+                for(int j = 0; j < qTable.Count; j++)
+                {
+                    if(qTable[j].GetStateStr() == stateStr)
+                    {
+                        for(int x = 0; x < qTable[j].GetValues().Length; x++)
+                        {
+                            if(qTable[j].GetValues()[x].GetAction().GetActionName() == takenAction.GetActionName() && 
+                                qTable[j].GetValues()[x].GetAction().GetMinionA() == takenAction.GetMinionA() &&
+                                    qTable[j].GetValues()[x].GetAction().GetMinionB() == takenAction.GetMinionB() && 
+                                        qTable[j].GetValues()[x].GetAction().GetPosMinionA() == takenAction.GetPosMinionA() &&
+                                            qTable[j].GetValues()[x].GetAction().GetPosMinionB() == takenAction.GetPosMinionB())
+                            {
+                                float newValue = (1 - learningRate) * qTable[j].GetValues()[x].GetValue() + learningRate * reward;
+                                qTable[j].GetValues()[x].SetValue(newValue);
 
+                                break;
+                            }
+                        }
 
+                        break;
+                    }
+                }
 
-   
+                //clear history, because player dead
+                history.Clear();
+                player.dead = false;
+                enemy.dead = false;
+            }
+            else                    //player alive so other states available, rewards for won/lost/drawn fight, making golden minion
+            {
+                QState currentState = last.GetState();
+                QState previousState = history[i - 1].GetState();
+                Action previousAction = history[i - 1].GetAction();
+
+                //rewards for winning/losing fight & making golden
+                if (currentState.lastFightResult == 0)
+                {
+                    reward = -1;
+                }
+                else if (currentState.lastFightResult == 1)
+                {
+                    reward = 0;
+                }
+                else if (currentState.lastFightResult == 2)
+                {
+                    reward = 1;
+                }
+                /*//what about making minion golden(?)
+                if (currentState.GetGoldenMinionCounter() > previousState.GetGoldenMinionCounter())
+                {
+                    reward = 1;
+                }*/
+                string previousStateStr = GetActualQStateStr(previousState);
+                string currentStateStr = GetActualQStateStr(currentState);
+                float maxValueAtCurrentState = -99.0f;
+                List<float> temp = new List<float>();
+                for (int z = 0; z < qTable.Count; z++)
+                {
+                    if (qTable[z].GetStateStr() == currentStateStr)
+                    {
+                        for (int c = 0; c < qTable[z].GetValues().Length; c++)
+                        {
+                            temp.Add(qTable[z].GetValues()[c].GetValue());
+                        }
+                        break;
+                    }
+                }
+                for (int z = 0; z < temp.Count; z++)
+                {
+                    if (temp[z] > maxValueAtCurrentState)
+                    {
+                        maxValueAtCurrentState = temp[z];
+                    }
+                }
+
+                for (int j = 0; j < qTable.Count; j++)
+                {
+                    if (qTable[j].GetStateStr() == previousStateStr)
+                    {
+                        for (int x = 0; x < qTable[j].GetValues().Length; x++)
+                        {
+                            if (qTable[j].GetValues()[x].GetAction().GetActionName() == previousAction.GetActionName() &&
+                                qTable[j].GetValues()[x].GetAction().GetMinionA() == previousAction.GetMinionA() &&
+                                    qTable[j].GetValues()[x].GetAction().GetMinionB() == previousAction.GetMinionB() &&
+                                        qTable[j].GetValues()[x].GetAction().GetPosMinionA() == previousAction.GetPosMinionA() &&
+                                            qTable[j].GetValues()[x].GetAction().GetPosMinionB() == previousAction.GetPosMinionB())
+                            {
+                                float newValue = (1 - learningRate) * qTable[j].GetValues()[x].GetValue() + learningRate * (reward + discount * maxValueAtCurrentState);
+                                qTable[j].GetValues()[x].SetValue(newValue);
+
+                                break;
+                            }
+                        }
+
+                        break;
+                    }
+                }
+            }
+            Debug.Log("Updated Q Table!");
+        }
     }
 }

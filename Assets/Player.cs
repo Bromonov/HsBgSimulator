@@ -27,6 +27,13 @@ public class Player : MonoBehaviour
     public int tavernCost5;
     public int tavernCost6;
 
+    public bool turn;
+    public int lastResult;  //0 -> lost, 1 -> draw, 2 -> won
+    public int lastGoldenMinionCounter;
+    public int goldenMinionCounter;
+    public bool dead;
+    public bool fight;
+
     public struct Board
     {
         MinionData minion;
@@ -77,7 +84,7 @@ public class Player : MonoBehaviour
 
     public void Initialize()
     {
-        //gold = 3;
+        gold = 3;
         tavernTierLevel = 1;
         turnNumber = 1;
         health = 40;
@@ -98,6 +105,11 @@ public class Player : MonoBehaviour
         tavernCost6 = 0;
 
         tavernTierUpgradeGold = tavernCost1;
+        lastResult = -1;
+        goldenMinionCounter = 0;
+        lastGoldenMinionCounter = goldenMinionCounter;
+        dead = false;
+        fight = false;
     }
 
     // Update is called once per frame

@@ -124,6 +124,8 @@ public class GameController : MonoBehaviour
         SetupFightSlots();
         player1.Initialize();
         player2.Initialize();
+        player1.turn = true;
+        player2.turn = false;
         ShowMinionsInTavern(player1, shopSlots, 0);
         ShowMinionsInTavern(player2, shopSlotsAI, 0);
         SetPLayerGoldStatus(player1);
@@ -563,7 +565,7 @@ public class GameController : MonoBehaviour
 
     public void UpgradeTavernLevel(Player player)
     {
-        if(player.GetPlayerTavernTier() < 6)
+        if(player.GetPlayerTavernTier() < 6 && player.GetPlayerGold() >= player.tavernTierUpgradeGold)
         {
             player.tavernTierLevel++;
             player.AddPlayerGold(-player.tavernTierUpgradeGold);
@@ -660,6 +662,8 @@ public class GameController : MonoBehaviour
             }
         }
         temp.Clear();
+        player1.turn = false;
+        player2.turn = true;
         ChangeCanvasObjects("AI");
         ShowMinionsInTavern(player2, shopSlotsAI, 0);
     }
@@ -697,22 +701,26 @@ public class GameController : MonoBehaviour
         fight.ShowFightBefore(0);
         Fight(player1, player2);
         fight.ShowFightBefore(1);
+        player1.fight = true;
+        player2.fight = true;
         ShowHideFightPanel(true);
 
         for (int turn = 1; turn < 99; turn++)
         {
             if (player1.turnNumber == turn && player2.turnNumber < 9)
             {
-                //player1.SetPlayerGold(turn + 2);
-                //player2.SetPlayerGold(turn + 2);
+                player1.SetPlayerGold(turn + 2);
+                player2.SetPlayerGold(turn + 2);
                 if (player1.GetPlayerGold() > 10 || player2.GetPlayerGold() > 10)
                 {
-                    //player1.SetPlayerGold(10);
-                    //player2.SetPlayerGold(10);
+                    player1.SetPlayerGold(10);
+                    player2.SetPlayerGold(10);
                 }
                 break;
             }
         }
+        SetPLayerGoldStatus(player1);
+        SetPLayerGoldStatus(player2);
 
         player1.turnNumber++;
         player2.turnNumber++;
@@ -722,6 +730,10 @@ public class GameController : MonoBehaviour
         if(player1.GetHealth() <= 0 || player2.GetHealth() <= 0)
         {
             ResetGame();
+            if (player1.GetHealth() <= 0)
+                player1.dead = true;
+            else
+                player2.dead = true;
         }
 
         UpdateTavernTierCostText(player1, tavernTierCostText);
@@ -729,6 +741,8 @@ public class GameController : MonoBehaviour
 
         UpdateTavernTierCostText(player2, tavernTierCostTextAI);
         UpdateTavernTierText(player2, tavernTierTextAI);
+        player1.turn = true;
+        player2.turn = false;
         ChangeCanvasObjects("Player");
         ShowMinionsInTavern(player1, shopSlots, 0);
     }
@@ -1308,17 +1322,26 @@ public class GameController : MonoBehaviour
             {
                 Debug.Log("P2 WON!");
                 CalculateDamage(player2, player1);
+                //save last result: //0 -> lost, 1 -> draw, 2 -> won
+                player2.lastResult = 2;
+                player1.lastResult = 0;
                 break;
             }
             else if (player2.GetPlayerCopiedBoard().Count == 0 && player1.GetPlayerCopiedBoard().Count > 0)
             {
                 Debug.Log("P1 WON!");
                 CalculateDamage(player1, player2);
+                //save last result: //0 -> lost, 1 -> draw, 2 -> won
+                player2.lastResult = 0;
+                player1.lastResult = 2;
                 break;
             }
             else if (player1.GetPlayerCopiedBoard().Count == 0 && player2.GetPlayerCopiedBoard().Count == 0)
             {
                 Debug.Log("TIE!");
+                //save last result: //0 -> lost, 1 -> draw, 2 -> won
+                player2.lastResult = 1;
+                player1.lastResult = 1;
                 break;
             }
 
@@ -1546,6 +1569,8 @@ public class GameController : MonoBehaviour
             minionSlots[tokenPos[1]].GetComponent<Minion>().InitializeBlank();
             minionSlots[tokenPos[2]].GetComponent<Minion>().InitializeBlank();
         }
+        player.lastGoldenMinionCounter = player.goldenMinionCounter;
+        player.goldenMinionCounter++;
     }
 
     public void ChooseDiscoveredMinion(Player player)

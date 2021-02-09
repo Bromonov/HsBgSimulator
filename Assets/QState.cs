@@ -4,31 +4,32 @@ using UnityEngine;
 
 public class QState : MonoBehaviour
 {
-    public int enemyHealth;
-    public int ownHealth;
+    public int lastFightResult;
+    public int goldenMinionCounter;
+    //public int ownHealth;
     public int boardStats;          //hp+att (co z DSem i poisonem?)
     public int gold;                //wanna use all possible gold???
     public int handCounter;
     public int boardCounter;
     
-    public void Initialize(int newEnemyHealth, int newOwnHealth, int newBoardStats, int newGold, int newHandCounter, int newBoardCounter)
+    public void Initialize(int newLastFightResult, int newGoldenMinionCounter, int newBoardStats, int newGold, int newHandCounter, int newBoardCounter)
     {
-        enemyHealth = newEnemyHealth;
-        ownHealth = newOwnHealth;
+        lastFightResult = newLastFightResult;
+        goldenMinionCounter = newGoldenMinionCounter;
         boardStats = newBoardStats;
         gold = newGold;
         handCounter = newHandCounter;
         boardCounter = newBoardCounter;
     }
 
-    public int GetEnemyHealth()
+    public int GetLastFightResult()
     {
-        return enemyHealth;
+        return lastFightResult;
     }
 
-    public int GetOwnHealth()
+    public int GetGoldenMinionCounter()
     {
-        return ownHealth;
+        return goldenMinionCounter;
     }
 
     public int GetBoardStats()
