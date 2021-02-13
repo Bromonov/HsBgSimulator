@@ -71,15 +71,25 @@
     <skill>Whenever a friendly Beast dies, gain +2/+1.</skill>
     <goldenSkill>Whenever a friendly Beast dies, gain +4/+2.</goldenSkill>
   </minion>
-  <minion name = "Rat Pack" tavernTier = "3">
-    <attack>2</attack>
-    <hp>2</hp>
-    <tribe>Beast</tribe>
+  <minion name = "Wrath Weaver" tavernTier = "1">
+    <attack>1</attack>
+    <hp>3</hp>
+    <tribe></tribe>
     <ds>false</ds>
     <poison>false</poison>
     <taunt>false</taunt>
-    <skill>Deathrattle: Summon a number of 1/1 Rats equal to this minion's attack.</skill>
-    <goldenSkill>Deathrattle: Summon a number of 2/2 Golden Rats equal to this minion's attack.</goldenSkill>
+    <skill>After you play a Demon, deal 1 damage to your hero and gain +2/+2.</skill>
+    <goldenSkill>After you play a Demon, deal 1 damage to your hero and gain +4/+4.</goldenSkill>
+  </minion>
+  <minion name = "Vulgar Homunculus" tavernTier = "1">
+    <attack>2</attack>
+    <hp>4</hp>
+    <tribe>Demon</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>true</taunt>
+    <skill>Battlecry: Deal 2 damage to your hero.</skill>
+    <goldenSkill>Battlecry: Deal 2 damage to your hero.</goldenSkill>
   </minion>
   <minion name = "Spawn of NZoth" tavernTier = "2">
     <attack>2</attack>
@@ -101,7 +111,7 @@
     <skill>Deathrattle: Summon a 1/1 Imp.</skill>
     <goldenSkill>Deathrattle: Summon a 2/2 Golden Imp.</goldenSkill>
   </minion>
-  <minion name = "Harvest Golem" tavernTier = "2">      <!-- nie dodany deathrattle -->
+  <minion name = "Harvest Golem" tavernTier = "2">
     <attack>2</attack>
     <hp>3</hp>
     <tribe>Mech</tribe>
@@ -110,5 +120,85 @@
     <taunt>false</taunt>
     <skill>Deathrattle: Summon a 2/1 Damaged Golem.</skill>
     <goldenSkill>Deathrattle: Summon a 4/2 Golden Damaged Golem.</goldenSkill>
+  </minion>
+  <minion name = "Kindly Grandmother" tavernTier = "2">
+    <attack>1</attack>
+    <hp>1</hp>
+    <tribe>Beast</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Deathrattle: Summon a 3/2 Big Bad Wolf.</skill>
+    <goldenSkill>Deathrattle: Summon a 6/4 Golden Big Bad Wolf.</goldenSkill>
+  </minion>
+  <minion name = "Metaltooth Leaper" tavernTier = "2">
+    <attack>3</attack>
+    <hp>3</hp>
+    <tribe>Mech</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Battlecry: Give your other minions +2 Attack.</skill>
+    <goldenSkill>Battlecry: Give your other minions +4 Attack.</goldenSkill>
+  </minion>
+  <minion name = "Murloc Warleader" tavernTier = "2"> <!-- do zrobienia sadge -->
+    <attack>3</attack>
+    <hp>3</hp>
+    <tribe>Murloc</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Your other Murlocs have +2 Attack.</skill>
+    <goldenSkill>Your other Murlocs have +4 Attack.</goldenSkill>
+  </minion>
+  <minion name = "Nathrezim Overseer" tavernTier = "2"> 
+    <attack>2</attack>
+    <hp>3</hp>
+    <tribe>Demon</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Battlecry: Give a random friendly minion +2/+2.</skill>
+    <goldenSkill>Battlecry: Give a random friendly minion +4/+4.</goldenSkill>
+  </minion>
+  <minion name = "Old Murk-Eye" tavernTier = "2">   <!-- do zrobienia sadge -->
+    <attack>2</attack>
+    <hp>4</hp>
+    <tribe>Murloc</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Has +1 Attack for each other Murloc on the battlefield.</skill>
+    <goldenSkill>Has +2 Attack for each other Murloc on the battlefield.</goldenSkill>
+  </minion>
+  <minion name = "Pack Leader" tavernTier = "2">
+    <attack>2</attack>
+    <hp>3</hp>
+    <tribe></tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Whenever you summon a Beast, give it +2 Attack.</skill>
+    <goldenSkill>Whenever you summon a Beast, give it +4 Attack.</goldenSkill>
+  </minion>
+  <minion name = "Selfless Hero" tavernTier = "2">
+    <attack>2</attack>
+    <hp>1</hp>
+    <tribe></tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Deathrattle: Give a random friendly minion Divine Shield.</skill>
+    <goldenSkill>Deathrattle: Give two random friendly minions Divine Shield.</goldenSkill>
+  </minion>
+  <minion name = "Rat Pack" tavernTier = "3">
+    <attack>2</attack>
+    <hp>2</hp>
+    <tribe>Beast</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Deathrattle: Summon a number of 1/1 Rats equal to this minion's attack.</skill>
+    <goldenSkill>Deathrattle: Summon a number of 2/2 Golden Rats equal to this minion's attack.</goldenSkill>
   </minion>
 </minions>

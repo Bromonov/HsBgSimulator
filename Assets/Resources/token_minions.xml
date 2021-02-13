@@ -71,4 +71,34 @@
     <skill></skill>
     <goldenSkill></goldenSkill>
   </minion>
+  <minion name = "Golden Damaged Golem" tavernTier = "1">
+    <attack>4</attack>
+    <hp>2</hp>
+    <tribe>Mech</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill></skill>
+    <goldenSkill></goldenSkill>
+  </minion>
+  <minion name = "Big Bad Wolf" tavernTier = "1">
+    <attack>3</attack>
+    <hp>2</hp>
+    <tribe>Beast</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill></skill>
+    <goldenSkill></goldenSkill>
+  </minion>
+  <minion name = "Golden Big Bad Wolf" tavernTier = "1">
+    <attack>6</attack>
+    <hp>4</hp>
+    <tribe>Beast</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill></skill>
+    <goldenSkill></goldenSkill>
+  </minion>
 </minions>

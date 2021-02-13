@@ -893,11 +893,73 @@ public class GameController : MonoBehaviour
             }
             locationIterator.Clear();
         }
+        //Vulgar Homunculus
+        else if (handSlot.GetComponent<Minion>().minionName.text == "Vulgar Homunculus" && handSlot.GetComponent<Minion>().blank == false)
+        {
+            Debug.Log("BATTLECRY ROCKPOOL HUNTER");
+            player.AddHealth(-2);
+        }
+        //Metaltooth Leaper
+        else if(handSlot.GetComponent<Minion>().minionName.text == "Metaltooth Leaper" && handSlot.GetComponent<Minion>().blank == false)
+        {
+            Debug.Log("BATTLECRY METALTOOTH LEAPER");
+
+            for(int i = 0; i < minionSlots.Length; i++)
+            {
+                if(minionSlots[i].GetComponent<Minion>().tribe.text == "Mech" && handSlot.GetComponent<HandMinion>().placedSlot != i)
+                {
+                    if(handSlot.GetComponent<Minion>().golden == false)
+                        BuffSingleMinionBoard(minionSlots[i], 2, 2, "Mech", player);
+                    else
+                        BuffSingleMinionBoard(minionSlots[i], 4, 4, "Mech", player);
+                }
+            }
+        }
+        //nathrezim overseer
+        else if (handSlot.GetComponent<Minion>().minionName.text == "Nathrezim Overseer" && handSlot.GetComponent<Minion>().blank == false)
+        {
+            Debug.Log("BATTLECRY NATHREZIM OVERSEER");
+            int demonCounter = 0;
+            List<int> locationIterator = new List<int>();
+            for (int i = 0; i < minionSlots.Length; i++)
+            {
+                if (minionSlots[i].GetComponent<Minion>().tribe.text == "Demon" && handSlot.GetComponent<HandMinion>().placedSlot != i)  //jakos trzeba odciac ostatnio zagrana jednostke, zeby sam sie nei buffowal
+                {
+                    demonCounter++;
+                    locationIterator.Add(i);
+                }
+            }
+
+            if (locationIterator.Count == 0)
+            {
+                Debug.Log("No minions to buff");
+            }
+            else if (locationIterator.Count == 1)
+            {
+                if (handSlot.GetComponent<Minion>().golden == false)
+                    BuffSingleMinionBoard(minionSlots[locationIterator[0]], 2, 2, "Demon", player);
+                else
+                    BuffSingleMinionBoard(minionSlots[locationIterator[0]], 4, 4, "Demon", player);
+            }
+            else
+            {
+                int n = Random.Range(0, locationIterator.Count);
+                int minionNumber = locationIterator[n];
+                Debug.Log("n: " + n + "minionNumber = " + minionNumber);
+
+                if (handSlot.GetComponent<Minion>().golden == false)
+                    BuffSingleMinionBoard(minionSlots[minionNumber], 2, 2, "Demon", player);
+                else
+                    BuffSingleMinionBoard(minionSlots[minionNumber], 4, 4, "Demon", player);
+            }
+            locationIterator.Clear();
+        }
+
 
         //PASSIVES REALIZATION
 
         //MURLOC TIDECALLER
-        if(handSlot.GetComponent<Minion>().tribe.text == "Murloc" && handSlot.GetComponent<Minion>().minionName.text != "Murloc Tidehunter")
+        if (handSlot.GetComponent<Minion>().tribe.text == "Murloc" && handSlot.GetComponent<Minion>().minionName.text != "Murloc Tidehunter")
         {
             for(int i = 0; i < player.GetPlayerBoard().Count; i++)
             {
@@ -907,6 +969,39 @@ public class GameController : MonoBehaviour
                         BuffSingleMinionBoard(minionSlots[player.GetPlayerBoard()[i].GetPos()], 1, 0, "Murloc", player);
                     else
                         BuffSingleMinionBoard(minionSlots[player.GetPlayerBoard()[i].GetPos()], 2, 0, "Murloc", player);
+                }
+            }
+        }
+        //WRATH WEAVER
+        if (handSlot.GetComponent<Minion>().tribe.text == "Demon")
+        {
+            for (int i = 0; i < player.GetPlayerBoard().Count; i++)
+            {
+                if (player.GetPlayerBoard()[i].GetMinion().Name == "Wrath Weaver")  //jakos trzeba odciac ostatnio zagrana jednostke, zeby sam sie nei buffowal
+                {
+                    if (player.GetPlayerBoard()[i].GetMinion().Golden == false)
+                        BuffSingleMinionBoard(minionSlots[player.GetPlayerBoard()[i].GetPos()], 2, 2, "All", player);
+                    else
+                        BuffSingleMinionBoard(minionSlots[player.GetPlayerBoard()[i].GetPos()], 4, 4, "All", player);
+
+                    player.AddHealth(-1);
+                    //hp on scene? update?
+                }
+            }
+        }
+        //PACK LEADER
+        else if (handSlot.GetComponent<Minion>().tribe.text == "Beast")
+        {
+            for (int i = 0; i < player.GetPlayerBoard().Count; i++)
+            {
+                if (player.GetPlayerBoard()[i].GetMinion().Name == "Pack Leader")  //jakos trzeba odciac ostatnio zagrana jednostke, zeby sam sie nei buffowal
+                {
+                    if (player.GetPlayerBoard()[i].GetMinion().Golden == false)
+                        BuffSingleMinionBoard(minionSlot, 2, 0, "Beast", player);
+                    else
+                        BuffSingleMinionBoard(minionSlot, 4, 0, "Beast", player);
+
+                    
                 }
             }
         }
@@ -1177,6 +1272,31 @@ public class GameController : MonoBehaviour
                         else
                             SummonTokenFight("Golden Damaged Golem", 1, p1);
                     }
+                    else if (minionA.Name == "Kindly Grandmother")
+                    {
+                        Debug.Log(minionA.Name + " Deathrattle!");
+                        if (minionA.Golden == false)
+                        {
+                            SummonTokenFight("Big Bad Wolf", 1, p1);
+                        }
+                        else
+                        {
+                            SummonTokenFight("Golden Big Bad Wolf", 1, p1);
+                        }
+                    }
+                    else if (minionA.Name == "Selfless Hero")
+                    {
+                        Debug.Log(minionA.Name + " Deathrattle!");
+                        if (minionA.Golden == false)
+                        {
+                            ChangeRandomOptionFight("ds", p1);
+                        }
+                        else
+                        {
+                            ChangeRandomOptionFight("ds", p1);
+                            ChangeRandomOptionFight("ds", p1);
+                        }
+                    }
 
                     //PASSIVES REALIZATION
                     //scavenging hyena
@@ -1256,6 +1376,31 @@ public class GameController : MonoBehaviour
                             SummonTokenFight("Damaged Golem", 1, p2);
                         else
                             SummonTokenFight("Golden Damaged Golem", 1, p2);
+                    }
+                    else if (minionB.Name == "Kindly Grandmother")
+                    {
+                        Debug.Log(minionB.Name + " Deathrattle!");
+                        if (minionB.Golden == false)
+                        {
+                            SummonTokenFight("Big Bad Wolf", 1, p2);
+                        }
+                        else
+                        {
+                            SummonTokenFight("Golden Big Bad Wolf", 1, p2);
+                        }
+                    }
+                    else if (minionB.Name == "Selfless Hero")
+                    {
+                        Debug.Log(minionB.Name + " Deathrattle!");
+                        if (minionB.Golden == false)
+                        {
+                            ChangeRandomOptionFight("ds", p2);
+                        }
+                        else
+                        {
+                            ChangeRandomOptionFight("ds", p2);
+                            ChangeRandomOptionFight("ds", p2);
+                        }
                     }
                     //PASSIVES REALIZATION
                     //scavenging hyena
@@ -1762,6 +1907,44 @@ public class GameController : MonoBehaviour
 
             Player.Board board = new Player.Board(minionInstance, n);
             player.GetPlayerCopiedBoard().Add(board);
+        }
+    }
+
+    public void ChangeRandomOptionFight(string option, Player player)
+    {
+        List<int> dsPos = new List<int>();
+        List<int> poisonPos = new List<int>();
+        List<int> tauntPos = new List<int>();
+        for (int i = 0; i < player.GetPlayerCopiedBoard().Count; i++)
+        {
+            if(player.GetPlayerCopiedBoard()[i].GetMinion().DivineShield == false)
+            {
+                dsPos.Add(i);
+            }
+            if (player.GetPlayerCopiedBoard()[i].GetMinion().Poison == false)
+            {
+                poisonPos.Add(i);
+            }
+            if (player.GetPlayerCopiedBoard()[i].GetMinion().Taunt == false)
+            {
+                tauntPos.Add(i);
+            }
+        }
+
+        if(option == "ds")
+        {
+            int r = Random.Range(0, dsPos.Count);
+            player.GetPlayerCopiedBoard()[dsPos[r]].GetMinion().DivineShield = true;
+        }
+        else if (option == "poison")
+        {
+            int r = Random.Range(0, poisonPos.Count);
+            player.GetPlayerCopiedBoard()[poisonPos[r]].GetMinion().Poison = true;
+        }
+        else if (option == "taunt")
+        {
+            int r = Random.Range(0, tauntPos.Count);
+            player.GetPlayerCopiedBoard()[tauntPos[r]].GetMinion().Taunt = true;
         }
     }
 
