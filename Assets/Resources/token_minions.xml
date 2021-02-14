@@ -101,4 +101,84 @@
     <skill></skill>
     <goldenSkill></goldenSkill>
   </minion>
+  <minion name = "Spider" tavernTier = "1">
+    <attack>1</attack>
+    <hp>1</hp>
+    <tribe>Beast</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill></skill>
+    <goldenSkill></goldenSkill>
+  </minion>
+  <minion name = "Golden Spider" tavernTier = "1">
+    <attack>2</attack>
+    <hp>2</hp>
+    <tribe>Beast</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill></skill>
+    <goldenSkill></goldenSkill>
+  </minion>
+  <minion name = "Microbot" tavernTier = "1">
+    <attack>1</attack>
+    <hp>1</hp>
+    <tribe>Mech</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill></skill>
+    <goldenSkill></goldenSkill>
+  </minion>
+  <minion name = "Golden Microbot" tavernTier = "1">
+    <attack>2</attack>
+    <hp>2</hp>
+    <tribe>Mech</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill></skill>
+    <goldenSkill></goldenSkill>
+  </minion>
+  <minion name = "Robosaur" tavernTier = "1">
+    <attack>8</attack>
+    <hp>8</hp>
+    <tribe>Mech</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill></skill>
+    <goldenSkill></goldenSkill>
+  </minion>
+  <minion name = "Golden Robosaur" tavernTier = "1">
+    <attack>16</attack>
+    <hp>16</hp>
+    <tribe>Mech</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill></skill>
+    <goldenSkill></goldenSkill>
+  </minion>
+  <minion name = "Hyena" tavernTier = "1">
+    <attack>2</attack>
+    <hp>2</hp>
+    <tribe>Beast</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill></skill>
+    <goldenSkill></goldenSkill>
+  </minion>
+  <minion name = "Golden Hyena" tavernTier = "1">
+    <attack>4</attack>
+    <hp>4</hp>
+    <tribe>Beast</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill></skill>
+    <goldenSkill></goldenSkill>
+  </minion>
 </minions>

@@ -201,4 +201,134 @@
     <skill>Deathrattle: Summon a number of 1/1 Rats equal to this minion's attack.</skill>
     <goldenSkill>Deathrattle: Summon a number of 2/2 Golden Rats equal to this minion's attack.</goldenSkill>
   </minion>
+  <minion name = "Coldlight Seer" tavernTier = "3">
+    <attack>2</attack>
+    <hp>3</hp>
+    <tribe>Murloc</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Battlecry: Give your other Murlocs +2 Health.</skill>
+    <goldenSkill>Battlecry: Give your other Murlocs +4 Health.</goldenSkill>
+  </minion>
+  <minion name = "Crystalweaver" tavernTier = "3">
+    <attack>5</attack>
+    <hp>4</hp>
+    <tribe></tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Battlecry: Give your Demons +1/+1.</skill>
+    <goldenSkill>Battlecry: Give your Demons +2/+2.</goldenSkill>
+  </minion>
+  <minion name = "Felfin Navigator" tavernTier = "3">
+    <attack>4</attack>
+    <hp>4</hp>
+    <tribe>Murloc</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Battlecry: Give your other Murlocs +1/+1.</skill>
+    <goldenSkill>Battlecry: Give your other Murlocs +2/+2.</goldenSkill>
+  </minion>
+  <minion name = "Houndmaster" tavernTier = "3">
+    <attack>4</attack>
+    <hp>3</hp>
+    <tribe></tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Battlecry: Give a random friendly Beast +2/+2 and Taunt.</skill>
+    <goldenSkill>Battlecry: Give a random friendly Beast +4/+4 and Taunt.</goldenSkill>
+  </minion>
+  <minion name = "Infested Wolf" tavernTier = "3">
+    <attack>3</attack>
+    <hp>3</hp>
+    <tribe>Beast</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Deathrattle: Summon two 1/1 Spiders.</skill>
+    <goldenSkill>Deathrattle: Summon two 2/2 Golden Spiders.</goldenSkill>
+  </minion>
+  <minion name = "Replicating Menace" tavernTier = "3">
+    <attack>3</attack>
+    <hp>1</hp>
+    <tribe>Mech</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Deathrattle: Summon three 1/1 Microbots.</skill>
+    <goldenSkill>Deathrattle: Summon three 2/2 Golden Microbots.</goldenSkill>
+  </minion>
+  <minion name = "Screwjank Clunker" tavernTier = "3">
+    <attack>2</attack>
+    <hp>5</hp>
+    <tribe>Mech</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Battlecry: Give a random friendly minion +2/+2.</skill>
+    <goldenSkill>Battlecry: Give a random friendly minion +4/+4.</goldenSkill>
+  </minion>
+  <minion name = "Cobalt Scalebane" tavernTier = "4">
+    <attack>5</attack>
+    <hp>5</hp>
+    <tribe>Dragon</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>At the end of a turn, give a random friendly minion +3 Attack.</skill>
+    <goldenSkill>At the end of a turn, give a random friendly minion +6 Attack.</goldenSkill>
+  </minion>
+  <minion name = "Mechano-Egg" tavernTier = "4">
+    <attack>0</attack>
+    <hp>5</hp>
+    <tribe>Mech</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Deathrattle: Summon a 8/8 Robosaur.</skill>
+    <goldenSkill>Deathrattle: Summon a 16/16 Golden Robosaur.</goldenSkill>
+  </minion>
+  <minion name = "Savannah Highmane" tavernTier = "4">
+    <attack>6</attack>
+    <hp>5</hp>
+    <tribe>Beast</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Deathrattle: Summon two 2/2 Hyenas.</skill>
+    <goldenSkill>Deathrattle: Summon two 4/4 Golden Hyenas.</goldenSkill>
+  </minion>
+  <minion name = "Siegebreaker" tavernTier = "4">   <!-- niezaimplementowany jeszcze-->
+    <attack>5</attack>
+    <hp>8</hp>
+    <tribe>Demon</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Your other Demons have +1 Attack.</skill>
+    <goldenSkill>Your other Demons have +2 Attack.</goldenSkill>
+  </minion>
+  <minion name = "Toxfin" tavernTier = "4">
+    <attack>1</attack>
+    <hp>2</hp>
+    <tribe>Murloc</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Battlecry: Give a random friendly Murloc Poisonous.</skill>
+    <goldenSkill>Battlecry: Give a random friendly Murloc Poisonous.</goldenSkill>
+  </minion>
+  <minion name = "Virmen Sensei" tavernTier = "4">
+    <attack>4</attack>
+    <hp>5</hp>
+    <tribe></tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Battlecry: Give a random friendly Beast +2/+2.</skill>
+    <goldenSkill>Battlecry: Give a random friendly Beast +4/+4.</goldenSkill>
+  </minion>
 </minions>
