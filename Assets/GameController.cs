@@ -28,11 +28,13 @@ using UnityEngine.UI;
 //          - NIE DONE  - wiecej testow czy skillsy dzialaja -> najistotniejsze tera                    (!)
 //          - NIE DONE  - licznik zwyciestw, najlepiej zapisywany gdzies do pliku, by sledzic uczenie   (!)
 //          - NIE DONE  - mozliwosc wylaczenia uczenia pod klawiszem(?) lub zmiana boola w inspektorze  (!)
+//          - NIE DONE  - pokazanie jakos, ze minion jest golden, rozroznienie z DSem
 
 //          BUGI:       
 //                      - swapowanie minionow na boardzie, dziala tylko z prawa do lewa + pewnie korekta w playerboard list, choc to i tak jest skurwiale tera
 //                      - w przypadku gdy sa dwie te same jednostki na boardzie, zostanie zakupiona 3, inicjalizacja golden mechanic 
-//                        -> po zagraniu zlotej jednostki summonuje sie jej kopia -> tylko rockpool
+//                        -> po zagraniu zlotej jednostki summonuje sie jej kopia -> do naprawy, test kiedy to sie wydarza
+//                      - cobalt scalebane buffuje tez sam siebie, wiecej jednostek jak jedna
 
 public class GameController : MonoBehaviour
 {
@@ -642,6 +644,7 @@ public class GameController : MonoBehaviour
         List<int> mechs = new List<int>();
         List<int> murlocs = new List<int>();
         List<int> demons = new List<int>();
+        List<int> dragons = new List<int>();
         for (int i = 0; i < player.GetPlayerBoard().Count; i++)
         {
             //MicroMummy
@@ -707,6 +710,10 @@ public class GameController : MonoBehaviour
                     {
                         demons.Add(j);
                     }
+                    else if (player.GetPlayerBoard()[j].GetMinion().Tribe == "Dragon")
+                    {
+                        dragons.Add(j);
+                    }
                 }
                 if (beasts.Count > 0)
                 {
@@ -748,6 +755,16 @@ public class GameController : MonoBehaviour
                         BuffSingleMinionBoard(minionSlots[random], 2, 2, "Demon", player);
                     else
                         BuffSingleMinionBoard(minionSlots[random], 4, 4, "Demon", player);
+                }
+                if (dragons.Count > 0)
+                {
+                    int r = Random.Range(0, dragons.Count);
+                    int random = dragons[r];
+                    //Debug.Log("r: " + r + ", random: " + random);
+                    if (player.GetPlayerBoard()[i].GetMinion().Golden == true)
+                        BuffSingleMinionBoard(minionSlots[random], 2, 2, "Dragon", player);
+                    else
+                        BuffSingleMinionBoard(minionSlots[random], 4, 4, "Dragon", player);
                 }
                 Debug.Log("Cobalt scalebane end turn effect!");
                 break;
@@ -2484,17 +2501,31 @@ public class GameController : MonoBehaviour
 
                     int mama = 0;
                     int g_mama = 0;
-                    for(int j = 0; j < player.GetPlayerBoard().Count; j++)
+                    int pack = 0;
+                    int g_pack = 0;
+                    if(minionInstance.Tribe == "Beast")
                     {
-                        if(player.GetPlayerBoard()[j].GetMinion().Name == "Mama Bear" && player.GetPlayerBoard()[j].GetMinion().Golden == false)
+                        for (int j = 0; j < player.GetPlayerBoard().Count; j++)
                         {
-                            mama++;
-                        }
-                        else if(player.GetPlayerBoard()[j].GetMinion().Name == "Mama Bear" && player.GetPlayerBoard()[j].GetMinion().Golden == true)
-                        {
-                            g_mama++;
+                            if (player.GetPlayerBoard()[j].GetMinion().Name == "Mama Bear" && player.GetPlayerBoard()[j].GetMinion().Golden == false)
+                            {
+                                mama++;
+                            }
+                            else if (player.GetPlayerBoard()[j].GetMinion().Name == "Mama Bear" && player.GetPlayerBoard()[j].GetMinion().Golden == true)
+                            {
+                                g_mama++;
+                            }
+                            else if (player.GetPlayerBoard()[j].GetMinion().Name == "Pack Leader" && player.GetPlayerBoard()[j].GetMinion().Golden == false)
+                            {
+                                pack++;
+                            }
+                            else if (player.GetPlayerBoard()[j].GetMinion().Name == "Pack Leader" && player.GetPlayerBoard()[j].GetMinion().Golden == true)
+                            {
+                                g_pack++;
+                            }
                         }
                     }
+                    
                     for(int j = 0; j < mama; j++)
                     {
                         minionInstance.Attack += 4;
@@ -2504,6 +2535,14 @@ public class GameController : MonoBehaviour
                     {
                         minionInstance.Attack += 8;
                         minionInstance.Hp += 8;
+                    }
+                    for (int j = 0; j < pack; j++)
+                    {
+                        minionInstance.Attack += 2;
+                    }
+                    for (int j = 0; j < g_pack; j++)
+                    {
+                        minionInstance.Attack += 4;
                     }
 
                     minionSlots[i].GetComponent<Minion>().InitializeMinion(minionInstance, minionInstance.Golden);
@@ -2594,6 +2633,52 @@ public class GameController : MonoBehaviour
 
             MinionData minionInstance = new MinionData();
             minionInstance.Initialize(minionNode, false);
+
+            int mama = 0;
+            int g_mama = 0;
+            int pack = 0;
+            int g_pack = 0;
+            if (minionInstance.Tribe == "Beast")
+            {
+                for (int j = 0; j < player.GetPlayerCopiedBoard().Count; j++)
+                {
+                    if (player.GetPlayerCopiedBoard()[j].GetMinion().Name == "Mama Bear" && player.GetPlayerCopiedBoard()[j].GetMinion().Golden == false)
+                    {
+                        mama++;
+                    }
+                    else if (player.GetPlayerCopiedBoard()[j].GetMinion().Name == "Mama Bear" && player.GetPlayerCopiedBoard()[j].GetMinion().Golden == true)
+                    {
+                        g_mama++;
+                    }
+                    else if (player.GetPlayerCopiedBoard()[j].GetMinion().Name == "Pack Leader" && player.GetPlayerCopiedBoard()[j].GetMinion().Golden == false)
+                    {
+                        pack++;
+                    }
+                    else if (player.GetPlayerCopiedBoard()[j].GetMinion().Name == "Pack Leader" && player.GetPlayerCopiedBoard()[j].GetMinion().Golden == true)
+                    {
+                        g_pack++;
+                    }
+                }
+            }
+
+            for (int j = 0; j < mama; j++)
+            {
+                minionInstance.Attack += 4;
+                minionInstance.Hp += 4;
+            }
+            for (int j = 0; j < g_mama; j++)
+            {
+                minionInstance.Attack += 8;
+                minionInstance.Hp += 8;
+            }
+            for (int j = 0; j < pack; j++)
+            {
+                minionInstance.Attack += 2;
+            }
+            for (int j = 0; j < g_pack; j++)
+            {
+                minionInstance.Attack += 4;
+            }
 
             Player.Board board = new Player.Board(minionInstance, n);
             player.GetPlayerCopiedBoard().Add(board);

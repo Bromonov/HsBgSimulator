@@ -171,7 +171,6 @@
     <skill>Has +1 Attack for each other Murloc on the battlefield.</skill>
     <goldenSkill>Has +2 Attack for each other Murloc on the battlefield.</goldenSkill>
   </minion>
-  <!-- od tego momentu trzeba posprawdzac jednostki ponizej, czy wszystko bangla pogchamp-->
   <minion name = "Pack Leader" tavernTier = "2">
     <attack>2</attack>
     <hp>3</hp>
@@ -292,6 +291,7 @@
     <skill>Deathrattle: Summon a 8/8 Robosaur.</skill>
     <goldenSkill>Deathrattle: Summon a 16/16 Golden Robosaur.</goldenSkill>
   </minion>
+  <!-- od tego momentu trzeba posprawdzac jednostki ponizej, czy wszystko bangla pogchamp-->
   <minion name = "Savannah Highmane" tavernTier = "4">
     <attack>6</attack>
     <hp>5</hp>
