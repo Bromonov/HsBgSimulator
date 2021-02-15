@@ -15,22 +15,22 @@ using UnityEngine.UI;
 //          - DONE (?)  - poprawic wielkosc sceny, minionow, zeby to wszystko bylo czytelne w koncu
 //          - DONE      - obsluga golden minionow dla tokenow
 //          - DONE      - golden miniony i discover
+//          - DONE      - SPRAWDZIC CZY GRACZ MA W KONCU POPRAWNA HAND LISTE, PRZEPORWADZIC WIECEJ TESTOW, GIGA KURWA WAZNE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//          - DONE      - dodanie reszty battlecryow (DONE)
+//          - DONE      - agonie(TAK), pasywki na koniec tury(TAK), pasywki na boardzie(TAK)
+//          - DONE      - dwuturowosc (?) -> jednoczesne granie AI+gracz/gracz gra tawerne, potem AI, potem walka - powtorz
+//          - DONE      - poprawic wszystkie prefaby oprocz shopslotsow(chyba), bo nie wyswietla sie tribe i skill
 
-//          - NIE DONE  - SPRAWDZIC CZY GRACZ MA W KONCU POPRAWNA HAND LISTE, PRZEPORWADZIC WIECEJ TESTOW, GIGA KURWA WAZNE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //          - NIE DONE  - swapowanie minionow na boardzie               -> dziala tylko zamieniajac miniona po prawej na lewy, niekoniecznie obok siebie
 //          - NIE DONE  - aktualizacja hand listy po swapie powyzej tbh
 //          - NIE DONE  - swapowanie miniona z blankiem na boardzie     -> analogicznie jak powyzej2x, tylko minion po prawej stronie na blanka po lewej
-//          - NIE DONE  - dodanie reszty battlecryow (DONE) + pasywki (TROCHE DONE, TYLKO BUG Z TIDECALLEREM)
-//          - NIE DONE  - agonie(TAK), pasywki na koniec tury(TAK), pasywki na boardzie(NIE -> te w walce done poki co, nie dziala ciagle tidecaller na boardzie)
-//          - NIE DONE  - dwuturowosc (?) -> jednoczesne granie AI+gracz/gracz gra tawerne, potem AI, potem walka - powtorz
 //          - NIE DONE  - AI (?)
-//          - NIE DONE  - wiecej testow czy skillsy dzialaja
-//          - NIE DONE  - poprawic wszystkie prefaby oprocz shopslotsow(chyba), bo nie wyswietla sie tribe i skill
+//          - NIE DONE  - wiecej testow czy skillsy dzialaja -> najistotniejsze tera                    (!)
+//          - NIE DONE  - licznik zwyciestw, najlepiej zapisywany gdzies do pliku, by sledzic uczenie   (!)
+//          - NIE DONE  - mozliwosc wylaczenia uczenia pod klawiszem(?) lub zmiana boola w inspektorze  (!)
 
-//          BUGI:       - skurwiale dodawanei do player handu/boardu, trzeba refreszowac na pdostawie gameobjectow na scenie -> AI tez trzeba bedzie dac gameobjecty na scene jakos
-//                      - tidecaller buffuje sam siebie, rockpool tak samo moze -> chyba done(?)
+//          BUGI:       
 //                      - swapowanie minionow na boardzie, dziala tylko z prawa do lewa + pewnie korekta w playerboard list, choc to i tak jest skurwiale tera
-//                      - golden sprzedajac daje 3 golda
 //                      - w przypadku gdy sa dwie te same jednostki na boardzie, zostanie zakupiona 3, inicjalizacja golden mechanic 
 //                        -> po zagraniu zlotej jednostki summonuje sie jej kopia -> tylko rockpool
 
@@ -45,7 +45,7 @@ public class GameController : MonoBehaviour
     //public Minion.MinionData[] pool;
     private int poolSize = 8307;
     //private int minionNumber = 117;
-    private int minionNumber = 10;
+    private int minionNumber = 44;
     public MinionData minionData;
     public Player player1;          //TODO: 2 PLAYERS PLAYING SIMULTANEOUSLY
     public Player player2;
@@ -636,7 +636,12 @@ public class GameController : MonoBehaviour
                                                             //chyba, ze jakies czekanko jakby sie z bomby skonczylo ture a komp nie zdazylby, do rozkminy
     {
         //end turn effects
-        List<int> temp = new List<int>();
+        List<int> micromummy = new List<int>();
+        List<int> cobalt = new List<int>();
+        List<int> beasts = new List<int>();
+        List<int> mechs = new List<int>();
+        List<int> murlocs = new List<int>();
+        List<int> demons = new List<int>();
         for (int i = 0; i < player.GetPlayerBoard().Count; i++)
         {
             //MicroMummy
@@ -646,13 +651,13 @@ public class GameController : MonoBehaviour
                 {
                     if(player.GetPlayerBoard()[j].GetPos() != i)
                     {
-                        temp.Add(player.GetPlayerBoard()[j].GetPos());
+                        micromummy.Add(player.GetPlayerBoard()[j].GetPos());
                     }
                 }
-                if(temp.Count > 0)
+                if(micromummy.Count > 0)
                 {
-                    int r = Random.Range(0, temp.Count);
-                    int random = temp[r];
+                    int r = Random.Range(0, micromummy.Count);
+                    int random = micromummy[r];
                     //Debug.Log("r: " + r + ", random: " + random);
 
                     BuffSingleMinionBoard(minionSlots[random], 1, 0, "All", player);
@@ -667,13 +672,13 @@ public class GameController : MonoBehaviour
                 {
                     if (player.GetPlayerBoard()[j].GetPos() != i)
                     {
-                        temp.Add(player.GetPlayerBoard()[j].GetPos());
+                        cobalt.Add(player.GetPlayerBoard()[j].GetPos());
                     }
                 }
-                if (temp.Count > 0)
+                if (cobalt.Count > 0)
                 {
-                    int r = Random.Range(0, temp.Count);
-                    int random = temp[r];
+                    int r = Random.Range(0, cobalt.Count);
+                    int random = cobalt[r];
                     //Debug.Log("r: " + r + ", random: " + random);
 
                     BuffSingleMinionBoard(minionSlots[random], 3, 0, "All", player);
@@ -681,8 +686,79 @@ public class GameController : MonoBehaviour
                 Debug.Log("Cobalt scalebane end turn effect!");
                 break;
             }
+            //lightfang enforcer
+            if (player.GetPlayerBoard()[i].GetMinion().Name == "Lightfang Enforcer")
+            {
+                for (int j = 0; j < player.GetPlayerBoard().Count; j++)
+                {
+                    if(player.GetPlayerBoard()[j].GetMinion().Tribe == "Beast")
+                    {
+                        beasts.Add(j);
+                    }
+                    else if (player.GetPlayerBoard()[j].GetMinion().Tribe == "Mech")
+                    {
+                        mechs.Add(j);
+                    }
+                    else if (player.GetPlayerBoard()[j].GetMinion().Tribe == "Murloc")
+                    {
+                        murlocs.Add(j);
+                    }
+                    else if (player.GetPlayerBoard()[j].GetMinion().Tribe == "Demon")
+                    {
+                        demons.Add(j);
+                    }
+                }
+                if (beasts.Count > 0)
+                {
+                    int r = Random.Range(0, beasts.Count);
+                    int random = beasts[r];
+                    //Debug.Log("r: " + r + ", random: " + random);
+
+                    if(player.GetPlayerBoard()[i].GetMinion().Golden == true)
+                        BuffSingleMinionBoard(minionSlots[random], 2, 2, "Beast", player);
+                    else
+                        BuffSingleMinionBoard(minionSlots[random], 4, 4, "Beast", player);
+                }
+                if (mechs.Count > 0)
+                {
+                    int r = Random.Range(0, mechs.Count);
+                    int random = mechs[r];
+                    //Debug.Log("r: " + r + ", random: " + random);
+                    if (player.GetPlayerBoard()[i].GetMinion().Golden == true)
+                        BuffSingleMinionBoard(minionSlots[random], 2, 2, "Mech", player);
+                    else
+                        BuffSingleMinionBoard(minionSlots[random], 4, 4, "Mech", player);
+                }
+                if (murlocs.Count > 0)
+                {
+                    int r = Random.Range(0, murlocs.Count);
+                    int random = murlocs[r];
+                    //Debug.Log("r: " + r + ", random: " + random);
+                    if (player.GetPlayerBoard()[i].GetMinion().Golden == true)
+                        BuffSingleMinionBoard(minionSlots[random], 2, 2, "Murloc", player);
+                    else
+                        BuffSingleMinionBoard(minionSlots[random], 4, 4, "Murloc", player);
+                }
+                if (demons.Count > 0)
+                {
+                    int r = Random.Range(0, demons.Count);
+                    int random = demons[r];
+                    //Debug.Log("r: " + r + ", random: " + random);
+                    if (player.GetPlayerBoard()[i].GetMinion().Golden == true)
+                        BuffSingleMinionBoard(minionSlots[random], 2, 2, "Demon", player);
+                    else
+                        BuffSingleMinionBoard(minionSlots[random], 4, 4, "Demon", player);
+                }
+                Debug.Log("Cobalt scalebane end turn effect!");
+                break;
+            }
         }
-        temp.Clear();
+        micromummy.Clear();
+        cobalt.Clear();
+        beasts.Clear();
+        mechs.Clear();
+        demons.Clear();
+        murlocs.Clear();
         player1.turn = false;
         player2.turn = true;
         ChangeCanvasObjects("AI");
@@ -751,12 +827,12 @@ public class GameController : MonoBehaviour
         {
             if (player1.turnNumber == turn && player2.turnNumber < 9)
             {
-                player1.SetPlayerGold(turn + 2);
-                player2.SetPlayerGold(turn + 2);
+                //player1.SetPlayerGold(turn + 2);
+               // player2.SetPlayerGold(turn + 2);
                 if (player1.GetPlayerGold() > 10 || player2.GetPlayerGold() > 10)
                 {
-                    player1.SetPlayerGold(10);
-                    player2.SetPlayerGold(10);
+                    //player1.SetPlayerGold(10);
+                    //player2.SetPlayerGold(10);
                 }
                 break;
             }
@@ -1071,6 +1147,8 @@ public class GameController : MonoBehaviour
                     BuffSingleMinionBoard(minionSlots[locationIterator[0]], 4, 4, "Beast", player);
 
                 minionSlots[locationIterator[0]].GetComponent<Minion>().GetMinion().Taunt = true;
+                minionSlots[locationIterator[0]].GetComponent<Minion>().InitializeMinion(minionSlots[locationIterator[0]].GetComponent<Minion>().GetMinion(), 
+                    minionSlots[locationIterator[0]].GetComponent<Minion>().GetMinion().Golden);
             }
             else
             {
@@ -1083,7 +1161,9 @@ public class GameController : MonoBehaviour
                 else
                     BuffSingleMinionBoard(minionSlots[minionNumber], 4, 4, "Beast", player);
 
-                minionSlots[locationIterator[0]].GetComponent<Minion>().GetMinion().Taunt = true;
+                minionSlots[locationIterator[minionNumber]].GetComponent<Minion>().GetMinion().Taunt = true;
+                minionSlots[locationIterator[minionNumber]].GetComponent<Minion>().InitializeMinion(minionSlots[locationIterator[minionNumber]].GetComponent<Minion>().GetMinion(),
+                    minionSlots[locationIterator[minionNumber]].GetComponent<Minion>().GetMinion().Golden);
             }
             locationIterator.Clear();
         }
@@ -1198,7 +1278,71 @@ public class GameController : MonoBehaviour
             }
             locationIterator.Clear();
         }
+        //Annihilan Battlemaster
+        else if (handSlot.GetComponent<Minion>().minionName.text == "Annihilan Battlemaster" && handSlot.GetComponent<Minion>().blank == false)
+        {
+            Debug.Log("BATTLECRY ANNIHILAN BATTLEMASTER");
 
+            int h = 40 - player.GetHealth();
+
+            if(handSlot.GetComponent<Minion>().golden == false)
+                minionSlot.GetComponent<Minion>().GetMinion().Hp = h + 1;
+            else
+                minionSlot.GetComponent<Minion>().GetMinion().Hp = 2*h + 1;
+
+        }
+        //King Bagurgle
+        else if (handSlot.GetComponent<Minion>().minionName.text == "King Bagurgle" && handSlot.GetComponent<Minion>().blank == false)
+        {
+            Debug.Log("BATTLECRY KING BAGURGLE");
+
+            if (handSlot.GetComponent<Minion>().golden == false)
+            {
+                for(int i = 0; i < minionSlots.Length; i++)
+                {
+                    if(i != handSlot.GetComponent<HandMinion>().placedSlot)
+                    {
+                        BuffSingleMinionBoard(minionSlots[i], 2, 2, "Murloc", player);
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < minionSlots.Length; i++)
+                {
+                    if (i != handSlot.GetComponent<HandMinion>().placedSlot)
+                    {
+                        BuffSingleMinionBoard(minionSlots[i], 4, 4, "Murloc", player);
+                    }
+                }
+            }
+        }
+        //Strongshell Scavenger
+        else if (handSlot.GetComponent<Minion>().minionName.text == "Strongshell Scavenger" && handSlot.GetComponent<Minion>().blank == false)
+        {
+            Debug.Log("BATTLECRY STRONGSHELL SCAVENGER");
+
+            if (handSlot.GetComponent<Minion>().golden == false)
+            {
+                for (int i = 0; i < minionSlots.Length; i++)
+                {
+                    if (minionSlots[i].GetComponent<Minion>().GetMinion().Taunt == true)
+                    {
+                        BuffSingleMinionBoard(minionSlots[i], 2, 2, "All", player);
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < minionSlots.Length; i++)
+                {
+                    if (minionSlots[i].GetComponent<Minion>().GetMinion().Taunt == true)
+                    {
+                        BuffSingleMinionBoard(minionSlots[i], 4, 4, "All", player);
+                    }
+                }
+            }
+        }
 
         //PASSIVES REALIZATION
         //MURLOC TIDECALLER
@@ -1232,7 +1376,7 @@ public class GameController : MonoBehaviour
                 }
             }
         }
-        //PACK LEADER
+        //PACK LEADER & MAMA BEAR
         else if (handSlot.GetComponent<Minion>().tribe.text == "Beast")
         {
             for (int i = 0; i < player.GetPlayerBoard().Count; i++)
@@ -1243,8 +1387,13 @@ public class GameController : MonoBehaviour
                         BuffSingleMinionBoard(minionSlot, 2, 0, "Beast", player);
                     else
                         BuffSingleMinionBoard(minionSlot, 4, 0, "Beast", player);
-
-                    
+                }
+                else if (player.GetPlayerBoard()[i].GetMinion().Name == "Mama Bear")
+                {
+                    if (player.GetPlayerBoard()[i].GetMinion().Golden == false)
+                        BuffSingleMinionBoard(minionSlot, 4, 4, "Beast", player);
+                    else
+                        BuffSingleMinionBoard(minionSlot, 8, 8, "Beast", player);
                 }
             }
         }
@@ -1588,6 +1737,78 @@ public class GameController : MonoBehaviour
                             SummonTokenFight("Golden Hyena", 2, p1);
                         }
                     }
+                    else if (minionA.Name == "King Bagurgle")
+                    {
+                        Debug.Log(minionA.Name + " Deathrattle!");
+                        if (minionA.Golden == false)
+                        {
+                            for(int j = 0; j < p1.GetPlayerCopiedBoard().Count; j++)
+                            {
+                                if(p1.GetPlayerCopiedBoard()[j].GetMinion().Tribe == "Murloc")
+                                {
+                                    BuffSingleMinionFight(2, 2, p1);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            for (int j = 0; j < p1.GetPlayerCopiedBoard().Count; j++)
+                            {
+                                if (p1.GetPlayerCopiedBoard()[j].GetMinion().Tribe == "Murloc")
+                                {
+                                    BuffSingleMinionFight(4, 4, p1);
+                                }
+                            }
+                        }      
+                    }
+                    else if (minionA.Name == "Voidlord")
+                    {
+                        Debug.Log(minionA.Name + " Deathrattle!");
+                        if (minionA.Golden == false)
+                        {
+                            SummonTokenFight("Voidwalker", 3, p1);
+                        }
+                        else
+                        {
+                            SummonTokenFight("Golden Voidwalker", 3, p1);
+                        }
+                    }
+                    else if (minionA.Name == "Goldrinn, the Great Wolf")
+                    {
+                        Debug.Log(minionA.Name + " Deathrattle!");
+                        if (minionA.Golden == false)
+                        {
+                            for (int j = 0; j < p1.GetPlayerCopiedBoard().Count; j++)
+                            {
+                                if (p1.GetPlayerCopiedBoard()[j].GetMinion().Tribe == "Beast")
+                                {
+                                    BuffSingleMinionFight(5, 5, p1);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            for (int j = 0; j < p1.GetPlayerCopiedBoard().Count; j++)
+                            {
+                                if (p1.GetPlayerCopiedBoard()[j].GetMinion().Tribe == "Beast")
+                                {
+                                    BuffSingleMinionFight(10, 10, p1);
+                                }
+                            }
+                        }
+                    }
+                    else if (minionA.Name == "Ghastcoiler")
+                    {
+                        Debug.Log(minionA.Name + " Deathrattle!");
+                        if (minionA.Golden == false)
+                        {
+                            SummonRandomDHFight(2, p1);
+                        }
+                        else
+                        {
+                            SummonRandomDHFight(4, p1);
+                        }
+                    }
 
                     //PASSIVES REALIZATION
                     //scavenging hyena
@@ -1603,6 +1824,22 @@ public class GameController : MonoBehaviour
                                     BuffSpecifiedMinionFight(2, 1, p1, j);
                                 else
                                     BuffSpecifiedMinionFight(4, 2, p1, j);
+                            }
+                        }
+                    }
+                    //junkbot
+                    else if (minionA.Tribe == "Mech")
+                    {
+                        Debug.Log("zdechl mech");
+                        for (int j = 0; j < p1.GetPlayerCopiedBoard().Count; j++)
+                        {
+                            if (p1.GetPlayerCopiedBoard()[j].GetMinion().Name == "Junkbot")
+                            {
+                                Debug.Log(minionA.Name + " Passive!");
+                                if (p1.GetPlayerCopiedBoard()[j].GetMinion().Golden == false)
+                                    BuffSpecifiedMinionFight(2, 2, p1, j);
+                                else
+                                    BuffSpecifiedMinionFight(4, 4, p1, j);
                             }
                         }
                     }
@@ -1741,6 +1978,78 @@ public class GameController : MonoBehaviour
                             SummonTokenFight("Golden Hyena", 2, p2);
                         }
                     }
+                    else if (minionB.Name == "King Bagurgle")
+                    {
+                        Debug.Log(minionB.Name + " Deathrattle!");
+                        if (minionB.Golden == false)
+                        {
+                            for (int j = 0; j < p2.GetPlayerCopiedBoard().Count; j++)
+                            {
+                                if (p2.GetPlayerCopiedBoard()[j].GetMinion().Tribe == "Murloc")
+                                {
+                                    BuffSingleMinionFight(2, 2, p2);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            for (int j = 0; j < p2.GetPlayerCopiedBoard().Count; j++)
+                            {
+                                if (p2.GetPlayerCopiedBoard()[j].GetMinion().Tribe == "Murloc")
+                                {
+                                    BuffSingleMinionFight(4, 4, p2);
+                                }
+                            }
+                        }
+                    }
+                    else if (minionB.Name == "Voidlord")
+                    {
+                        Debug.Log(minionB.Name + " Deathrattle!");
+                        if (minionB.Golden == false)
+                        {
+                            SummonTokenFight("Voidwalker", 3, p2);
+                        }
+                        else
+                        {
+                            SummonTokenFight("Golden Voidwalker", 3, p2);
+                        }
+                    }
+                    else if (minionB.Name == "Goldrinn, the Great Wolf")
+                    {
+                        Debug.Log(minionB.Name + " Deathrattle!");
+                        if (minionB.Golden == false)
+                        {
+                            for (int j = 0; j < p2.GetPlayerCopiedBoard().Count; j++)
+                            {
+                                if (p2.GetPlayerCopiedBoard()[j].GetMinion().Tribe == "Beast")
+                                {
+                                    BuffSingleMinionFight(5, 5, p2);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            for (int j = 0; j < p2.GetPlayerCopiedBoard().Count; j++)
+                            {
+                                if (p2.GetPlayerCopiedBoard()[j].GetMinion().Tribe == "Beast")
+                                {
+                                    BuffSingleMinionFight(10, 10, p2);
+                                }
+                            }
+                        }
+                    }
+                    else if (minionB.Name == "Ghastcoiler")
+                    {
+                        Debug.Log(minionB.Name + " Deathrattle!");
+                        if (minionB.Golden == false)
+                        {
+                            SummonRandomDHFight(2, p2);
+                        }
+                        else
+                        {
+                            SummonRandomDHFight(4, p2);
+                        }
+                    }
 
                     //PASSIVES REALIZATION
                     //scavenging hyena
@@ -1756,6 +2065,22 @@ public class GameController : MonoBehaviour
                                     BuffSpecifiedMinionFight(2, 1, p2, j);
                                 else
                                     BuffSpecifiedMinionFight(4, 2, p2, j);
+                            }
+                        }
+                    }
+                    //junkbot
+                    else if (minionB.Tribe == "Mech")
+                    {
+                        Debug.Log("zdechl mech");
+                        for (int j = 0; j < p2.GetPlayerCopiedBoard().Count; j++)
+                        {
+                            if (p2.GetPlayerCopiedBoard()[j].GetMinion().Name == "Junkbot")
+                            {
+                                Debug.Log(minionB.Name + " Passive!");
+                                if (p2.GetPlayerCopiedBoard()[j].GetMinion().Golden == false)
+                                    BuffSpecifiedMinionFight(2, 2, p2, j);
+                                else
+                                    BuffSpecifiedMinionFight(4, 4, p2, j);
                             }
                         }
                     }
@@ -2156,6 +2481,31 @@ public class GameController : MonoBehaviour
                     minionSlots[i].GetComponent<Minion>().InitializeMinion(minionNode);
                     if (tokenName == "Golden Tabbycat" || tokenName == "Golden Murloc Scout")
                         minionInstance.Golden = true;
+
+                    int mama = 0;
+                    int g_mama = 0;
+                    for(int j = 0; j < player.GetPlayerBoard().Count; j++)
+                    {
+                        if(player.GetPlayerBoard()[j].GetMinion().Name == "Mama Bear" && player.GetPlayerBoard()[j].GetMinion().Golden == false)
+                        {
+                            mama++;
+                        }
+                        else if(player.GetPlayerBoard()[j].GetMinion().Name == "Mama Bear" && player.GetPlayerBoard()[j].GetMinion().Golden == true)
+                        {
+                            g_mama++;
+                        }
+                    }
+                    for(int j = 0; j < mama; j++)
+                    {
+                        minionInstance.Attack += 4;
+                        minionInstance.Hp += 4;
+                    }
+                    for(int j = 0; j < g_mama; j++)
+                    {
+                        minionInstance.Attack += 8;
+                        minionInstance.Hp += 8;
+                    }
+
                     minionSlots[i].GetComponent<Minion>().InitializeMinion(minionInstance, minionInstance.Golden);
                     //minionSlots[i].GetComponent<Minion>().golden = minionInstance;
 
@@ -2285,6 +2635,49 @@ public class GameController : MonoBehaviour
         {
             int r = Random.Range(0, tauntPos.Count);
             player.GetPlayerCopiedBoard()[tauntPos[r]].GetMinion().Taunt = true;
+        }
+    }
+    public void SummonRandomDHFight(int number, Player player)
+    {
+        //get dh minions
+        List<string> dh_names = new List<string>();
+        List<string> dh = new List<string>();
+        XmlNodeList minionsList = minionDataXML.SelectNodes("/minions/minion");
+        for (int i = 0; i < minionNumber; i++)
+        {
+            if(minionsList[i]["skill"].InnerText.Substring(0, 11) == "Deathrattle")
+            {
+                dh_names.Add(minionsList[i].Attributes["name"].Value);
+            }
+        }
+        //update the list using the existing pool
+        for(int i = 0; i < pool.Count; i++)
+        {
+            for(int j = 0; j < dh_names.Count; j++)
+            {
+                if(pool[i].GetName() == dh_names[j])
+                {
+                    dh.Add(dh_names[j]);
+                }
+            }
+        }
+
+        for (int n = 0; n < number; n++)
+        {
+            if (player.GetPlayerCopiedBoard().Count == 7)
+            {
+                break;
+            }
+
+            int r = Random.Range(0, dh.Count);
+            string random = dh[r];
+            XmlNode minionNode = minionData.GetMinionByName(random, minionDataXML);
+
+            MinionData minionInstance = new MinionData();
+            minionInstance.Initialize(minionNode, false);
+
+            Player.Board board = new Player.Board(minionInstance, n);
+            player.GetPlayerCopiedBoard().Add(board);
         }
     }
 

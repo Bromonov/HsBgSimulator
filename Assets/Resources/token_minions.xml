@@ -181,4 +181,24 @@
     <skill></skill>
     <goldenSkill></goldenSkill>
   </minion>
+  <minion name = "Voidwalker" tavernTier = "1">
+    <attack>1</attack>
+    <hp>3</hp>
+    <tribe>Demon</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>true</taunt>
+    <skill></skill>
+    <goldenSkill></goldenSkill>
+  </minion>
+  <minion name = "Golden Voidwalker" tavernTier = "1">
+    <attack>2</attack>
+    <hp>6</hp>
+    <tribe>Demon</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>true</taunt>
+    <skill></skill>
+    <goldenSkill></goldenSkill>
+  </minion>
 </minions>

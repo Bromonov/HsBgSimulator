@@ -121,6 +121,7 @@
     <skill>Deathrattle: Summon a 2/1 Damaged Golem.</skill>
     <goldenSkill>Deathrattle: Summon a 4/2 Golden Damaged Golem.</goldenSkill>
   </minion>
+  <!-- od tego momentu trzeba posprawdzac jednostki ponizej, czy wszystko bangla pogchamp-->
   <minion name = "Kindly Grandmother" tavernTier = "2">
     <attack>1</attack>
     <hp>1</hp>
@@ -331,4 +332,137 @@
     <skill>Battlecry: Give a random friendly Beast +2/+2.</skill>
     <goldenSkill>Battlecry: Give a random friendly Beast +4/+4.</goldenSkill>
   </minion>
+  <minion name = "Annihilan Battlemaster" tavernTier = "5">
+    <attack>3</attack>
+    <hp>1</hp>
+    <tribe>Demon</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Battlecry: Gain a +1 Health for each damage your hero has taken.</skill>
+    <goldenSkill>Battlecry: Gain a +2 Health for each damage your hero has taken.</goldenSkill>
+  </minion>
+  <!--
+  <minion name = "Baron Rivendare" tavernTier = "5">        niezaimplementowany jeszcze
+    <attack>1</attack>
+    <hp>7</hp>
+    <tribe></tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Your minions trigger their Deathrattle twice.</skill>
+    <goldenSkill>Your minions trigger their Deathrattle three times.</goldenSkill>
+  </minion>
+  <minion name = "Brann Bronzebeard" tavernTier = "5">        niezaimplementowany jeszcze
+    <attack>2</attack>
+    <hp>4</hp>
+    <tribe></tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Your Battlecries trigger twice.</skill>
+    <goldenSkill>Your Battlecries trigger three times.</goldenSkill>
+  </minion>  
+  -->
+  <minion name = "Deadly Spore" tavernTier = "5">
+    <attack>1</attack>
+    <hp>1</hp>
+    <tribe></tribe>
+    <ds>false</ds>
+    <poison>true</poison>
+    <taunt>false</taunt>
+    <skill></skill>
+    <goldenSkill></goldenSkill>
+  </minion> 
+  <minion name = "Junkbot" tavernTier = "5">
+    <attack>1</attack>
+    <hp>5</hp>
+    <tribe>Mech</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Whenever a friendly Mech dies, gain +2/+2.</skill>
+    <goldenSkill>Whenever a friendly Mech dies, gain +4/+4.</goldenSkill>
+  </minion>
+  <minion name = "King Bagurgle" tavernTier = "5">
+    <attack>6</attack>
+    <hp>3</hp>
+    <tribe>Murloc</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Battlecry and Deathrattle: Give your other Murlocs +2/+2.</skill>
+    <goldenSkill>Battlecry and Deathrattle: Give your other Murlocs +4/+4.</goldenSkill>
+  </minion>
+  <minion name = "Lightfang Enforcer" tavernTier = "5">
+    <attack>2</attack>
+    <hp>2</hp>
+    <tribe></tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>At the end of your turn, give a friendly minion of each minion type +2/+2.</skill>
+    <goldenSkill>At the end of your turn, give a friendly minion of each minion type +4/+4.</goldenSkill>
+  </minion>
+  <minion name = "Mama Bear" tavernTier = "5">
+    <attack>4</attack>
+    <hp>4</hp>
+    <tribe>Beast</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Whenever you summon a Beast, give it +4/+4.</skill>
+    <goldenSkill>Whenever you summon a Beast, give it +8/+8.</goldenSkill>
+  </minion>
+  <minion name = "Strongshell Scavenger" tavernTier = "5">
+    <attack>2</attack>
+    <hp>3</hp>
+    <tribe></tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Battlecry: Give your Taunt minions +2/+2.</skill>
+    <goldenSkill>Battlecry: Give your Taunt minions +4/+4.</goldenSkill>
+  </minion>
+  <minion name = "Voidlord" tavernTier = "5">
+    <attack>3</attack>
+    <hp>9</hp>
+    <tribe>Demon</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Deathrattle: Summon three 1/3 Demons with Taunt.</skill>
+    <goldenSkill>Deathrattle: Summon three 2/6 Golden Demons with Taunt.</goldenSkill>
+  </minion>
+  <minion name = "Goldrinn, the Great Wolf" tavernTier = "6">
+    <attack>4</attack>
+    <hp>4</hp>
+    <tribe>Beast</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Deathrattle: Give your Beasts +5/+5.</skill>
+    <goldenSkill>Deathrattle: Give your Beasts +10/+10.</goldenSkill>
+  </minion>
+  <minion name = "Maexxna" tavernTier = "6">
+    <attack>2</attack>
+    <hp>8</hp>
+    <tribe>Beast</tribe>
+    <ds>false</ds>
+    <poison>true</poison>
+    <taunt>false</taunt>
+    <skill></skill>
+    <goldenSkill></goldenSkill>
+  </minion>
+  <minion name = "Ghastcoiler" tavernTier = "6">
+    <attack>7</attack>
+    <hp>7</hp>
+    <tribe>Beast</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill>Deathrattle: Summon 2 random Deathrattle minions.</skill>
+    <goldenSkill>Deathrattle: Summon 4 random Deathrattle minions.</goldenSkill>
+  </minion>
+<!-- kangors apprentice(?) -->
 </minions>
