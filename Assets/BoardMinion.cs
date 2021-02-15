@@ -52,76 +52,79 @@ public class BoardMinion : MonoBehaviour, IDragHandler, IEndDragHandler
             transform.position = new Vector2(initialPosition.x, initialPosition.y);
             Debug.Log("ZAMIANA0");
             //if (minionSlots[0].GetComponent<Minion>().blank == false)
+            /*
             if (minionSlots[0].GetComponent<Minion>().blank == false)
                 gc.SwapNonBlankMinions(this.gameObject, minionSlots[0]);
             else
                 gc.SwapMinionWithBlank(this.gameObject, minionSlots[0]);
+            */
         }
         else if (Mathf.Abs(this.transform.position.x - minionSlots[1].transform.position.x) <= 10.0f &&
             (Mathf.Abs(this.transform.position.y - minionSlots[1].transform.position.y) <= 15.0f))
         {
             transform.position = new Vector2(initialPosition.x, initialPosition.y);
             Debug.Log("ZAMIANA1");
+            /*
             if (minionSlots[1].GetComponent<Minion>().blank == false)
                 gc.SwapNonBlankMinions(this.gameObject, minionSlots[1]);
             else
                 gc.SwapMinionWithBlank(this.gameObject, minionSlots[1]);
-            ;
+            */
         }
         else if (Mathf.Abs(this.transform.position.x - minionSlots[2].transform.position.x) <= 10.0f &&
             (Mathf.Abs(this.transform.position.y - minionSlots[2].transform.position.y) <= 15.0f))
         {
             transform.position = new Vector2(initialPosition.x, initialPosition.y);
-            Debug.Log("ZAMIANA2");
+            Debug.Log("ZAMIANA2");/*
             if (minionSlots[2].GetComponent<Minion>().blank == false)
                 gc.SwapNonBlankMinions(this.gameObject, minionSlots[2]);
             else
                 gc.SwapMinionWithBlank(this.gameObject, minionSlots[2]);
-
+            */
         }
         else if (Mathf.Abs(this.transform.position.x - minionSlots[3].transform.position.x) <= 10.0f &&
             (Mathf.Abs(this.transform.position.y - minionSlots[3].transform.position.y) <= 15.0f))
         {
             transform.position = new Vector2(initialPosition.x, initialPosition.y);
-            Debug.Log("ZAMIANA3");
+            Debug.Log("ZAMIANA3");/*
             if (minionSlots[3].GetComponent<Minion>().blank == false)
                 gc.SwapNonBlankMinions(this.gameObject, minionSlots[3]);
             else
                 gc.SwapMinionWithBlank(this.gameObject, minionSlots[3]);
-
+            */
         }
         else if (Mathf.Abs(this.transform.position.x - minionSlots[4].transform.position.x) <= 10.0f &&
             (Mathf.Abs(this.transform.position.y - minionSlots[4].transform.position.y) <= 15.0f))
         {
             transform.position = new Vector2(initialPosition.x, initialPosition.y);
-            Debug.Log("ZAMIANA4");
+            Debug.Log("ZAMIANA4");/*
             if (minionSlots[4].GetComponent<Minion>().blank == false)
                 gc.SwapNonBlankMinions(this.gameObject, minionSlots[4]);
             else
                 gc.SwapMinionWithBlank(this.gameObject, minionSlots[4]);
-
+            */
         }
         else if (Mathf.Abs(this.transform.position.x - minionSlots[5].transform.position.x) <= 10.0f &&
             (Mathf.Abs(this.transform.position.y - minionSlots[5].transform.position.y) <= 15.0f))
         {
             transform.position = new Vector2(initialPosition.x, initialPosition.y);
-            Debug.Log("ZAMIANA5");
+            Debug.Log("ZAMIANA5");/*
             if (minionSlots[5].GetComponent<Minion>().blank == false)
                 gc.SwapNonBlankMinions(this.gameObject, minionSlots[5]);
             else
                 gc.SwapMinionWithBlank(this.gameObject, minionSlots[5]);
-
+            */
         }
         else if (Mathf.Abs(this.transform.position.x - minionSlots[6].transform.position.x) <= 10.0f &&
             (Mathf.Abs(this.transform.position.y - minionSlots[6].transform.position.y) <= 15.0f))
         {
             transform.position = new Vector2(initialPosition.x, initialPosition.y);
-            Debug.Log("ZAMIANA6");
+            Debug.Log("ZAMIANA6");/*
             if (minionSlots[6].GetComponent<Minion>().blank == false)
                 gc.SwapNonBlankMinions(this.gameObject, minionSlots[6]);
             else
                 gc.SwapMinionWithBlank(this.gameObject, minionSlots[6]);
-
+            */
         }
         else
         {
