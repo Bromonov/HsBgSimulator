@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Xml;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -109,6 +111,10 @@ public class GameController : MonoBehaviour
     public GameObject AllPlayer;
     public GameObject AllAI;
 
+    public int gameNr;
+    public int winP1;
+    public int winP2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -154,6 +160,11 @@ public class GameController : MonoBehaviour
         SetupDiscoverSlots();
         ShowHideDiscoverPanel(false);
         ChangeCanvasObjects("Player");
+
+        gameNr = 1;
+        winP1 = 0;
+        winP2 = 0;
+        SaveHashtagsToFile();
     }
 
     // Update is called once per frame
@@ -178,6 +189,27 @@ public class GameController : MonoBehaviour
             EndTurnAI(minionSlotsAI);
         }
         
+    }
+
+    public void SaveWinNumberToFile()
+    {
+        string path = "Assets/Resources/wins.txt";
+
+        //Write some text to the test.txt file
+        StreamWriter writer = new StreamWriter(path, true);
+        writer.WriteLine("Game nr: " + gameNr);
+        writer.WriteLine("P1 win counter: " + winP1 + ", P2 win counter: " + winP2);
+        writer.Close();
+    }
+
+    public void SaveHashtagsToFile()
+    {
+        string path = "Assets/Resources/wins.txt";
+
+        //Write some text to the test.txt file
+        StreamWriter writer = new StreamWriter(path, true);
+        writer.WriteLine("########################");
+        writer.Close();
     }
 
     public void CreatePool()
@@ -2421,6 +2453,7 @@ public class GameController : MonoBehaviour
                 //save last result: //0 -> lost, 1 -> draw, 2 -> won
                 player2.lastResult = 2;
                 player1.lastResult = 0;
+                winP2++;
                 break;
             }
             else if (player2.GetPlayerCopiedBoard().Count == 0 && player1.GetPlayerCopiedBoard().Count > 0)
@@ -2430,6 +2463,7 @@ public class GameController : MonoBehaviour
                 //save last result: //0 -> lost, 1 -> draw, 2 -> won
                 player2.lastResult = 0;
                 player1.lastResult = 2;
+                winP1++;
                 break;
             }
             else if (player1.GetPlayerCopiedBoard().Count == 0 && player2.GetPlayerCopiedBoard().Count == 0)
@@ -2550,25 +2584,61 @@ public class GameController : MonoBehaviour
             }
         }
 
-        
-        int r1 = Random.Range(0, temp.Count);
-        string m1 = temp[r1].GetName();
-        temp.RemoveAt(r1);
-        int r2 = Random.Range(0, temp.Count);
-        string m2 = temp[r2].GetName();
-        temp.RemoveAt(r2);
-        int r3 = Random.Range(0, temp.Count);
-        string m3 = temp[r3].GetName();
-        temp.RemoveAt(r3);
+        if(temp.Count > 2)
+        {
+            int r1 = Random.Range(0, temp.Count);
+            string m1 = temp[r1].GetName();
+            temp.RemoveAt(r1);
+            int r2 = Random.Range(0, temp.Count);
+            string m2 = temp[r2].GetName();
+            temp.RemoveAt(r2);
+            int r3 = Random.Range(0, temp.Count);
+            string m3 = temp[r3].GetName();
+            temp.RemoveAt(r3);
 
-        XmlNode minionNode1 = minionData.GetMinionByName(m1, minionDataXML);
-        discoverSlots[0].GetComponent<Minion>().InitializeMinion(minionNode1);
-        XmlNode minionNode2 = minionData.GetMinionByName(m2, minionDataXML);
-        discoverSlots[1].GetComponent<Minion>().InitializeMinion(minionNode2);
-        XmlNode minionNode3 = minionData.GetMinionByName(m3, minionDataXML);
-        discoverSlots[2].GetComponent<Minion>().InitializeMinion(minionNode3);
+            XmlNode minionNode1 = minionData.GetMinionByName(m1, minionDataXML);
+            discoverSlots[0].GetComponent<Minion>().InitializeMinion(minionNode1);
+            XmlNode minionNode2 = minionData.GetMinionByName(m2, minionDataXML);
+            discoverSlots[1].GetComponent<Minion>().InitializeMinion(minionNode2);
+            XmlNode minionNode3 = minionData.GetMinionByName(m3, minionDataXML);
+            discoverSlots[2].GetComponent<Minion>().InitializeMinion(minionNode3);
+        }
+        if (temp.Count == 2)
+        {
+            int r1 = Random.Range(0, temp.Count);
+            string m1 = temp[r1].GetName();
+            temp.RemoveAt(r1);
+            int r2 = Random.Range(0, temp.Count);
+            string m2 = temp[r2].GetName();
+            temp.RemoveAt(r2);
+
+            XmlNode minionNode1 = minionData.GetMinionByName(m1, minionDataXML);
+            discoverSlots[0].GetComponent<Minion>().InitializeMinion(minionNode1);
+            XmlNode minionNode2 = minionData.GetMinionByName(m2, minionDataXML);
+            discoverSlots[1].GetComponent<Minion>().InitializeMinion(minionNode2);
+            discoverSlots[2].GetComponent<Minion>().InitializeBlank();
+        }
+        if (temp.Count == 1)
+        {
+            int r1 = Random.Range(0, temp.Count);
+            string m1 = temp[r1].GetName();
+            temp.RemoveAt(r1);
+
+            XmlNode minionNode1 = minionData.GetMinionByName(m1, minionDataXML);
+            discoverSlots[0].GetComponent<Minion>().InitializeMinion(minionNode1);
+            discoverSlots[1].GetComponent<Minion>().InitializeBlank();
+            discoverSlots[2].GetComponent<Minion>().InitializeBlank();
+        }
+        if (temp.Count == 0)
+        {
+            discoverSlots[0].GetComponent<Minion>().InitializeBlank();
+            discoverSlots[1].GetComponent<Minion>().InitializeBlank();
+            discoverSlots[2].GetComponent<Minion>().InitializeBlank();
+        }
 
         ShowHideDiscoverPanel(true);
+        if (temp.Count == 0)
+            ShowHideDiscoverPanel(false);
 
         if (option == "simple")
         {
@@ -2747,6 +2817,13 @@ public class GameController : MonoBehaviour
 
             player1.Initialize();
             player2.Initialize();
+
+            SaveWinNumberToFile();
+
+            winP1 = 0;
+            winP2 = 0;
+            gameNr++;
+
         }
     }
 

@@ -212,6 +212,8 @@ public class AI : MonoBehaviour
     private float learningRate;
     private float discount;
 
+    public bool learning;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -264,8 +266,10 @@ public class AI : MonoBehaviour
             //Debug.Log("Possible actions number = " + possibleActions.Count);
             //UseRandomGameMechanic();
             //Learn();
-            if (Waited(1) == true)
+            if (Waited(1) == true && learning == true)
                 Learn();
+            else if (Waited(1) == true && learning == false)
+                Learned();
             else
                 return;
             timer = 0.0f;
@@ -316,11 +320,27 @@ public class AI : MonoBehaviour
         //play minion, minionA -> slot pos from hand, minionB -> slot pos on board
         for (int i = 0; i < GetHandSlots().Length; i++)
         {
+            //find first free spot
+            int free = 99;
+            for (int j = 0; j < GetBoardSlots().Length; j++)
+            {
+                if(GetBoardSlots()[j].GetComponent<Minion>().blank == true)
+                {
+                    free = j;
+                    break;
+                }
+            }
+            if(free != 99)
+            {
+                Action play = new Action("play", GetHandSlots()[i].GetComponent<Minion>().GetMinion(), i, GetBoardSlots()[free].GetComponent<Minion>().GetMinion(), free);
+                allActions.Add(play);
+            }
+            /*
             for(int j = 0; j < GetBoardSlots().Length; j++)
             {
                 Action play = new Action("play", GetHandSlots()[i].GetComponent<Minion>().GetMinion(), i, GetBoardSlots()[j].GetComponent<Minion>().GetMinion(), j);
                 allActions.Add(play);
-            }
+            }*/
         }
         //rolka
         Action roll = new Action("roll", null, 99, null, 99);
@@ -426,6 +446,23 @@ public class AI : MonoBehaviour
                 {
                     if (GetHandSlots()[i].GetComponent<Minion>().blank == false)
                     {
+                        //find first free spot
+                        int free = 99;
+                        for (int j = 0; j < GetBoardSlots().Length; j++)
+                        {
+                            if (GetBoardSlots()[j].GetComponent<Minion>().blank == true)
+                            {
+                                free = j;
+                                break;
+                            }
+                        }
+                        if (free != 99)
+                        {
+                            Action play = new Action("play", GetHandSlots()[i].GetComponent<Minion>().GetMinion(), i, GetBoardSlots()[free].GetComponent<Minion>().GetMinion(), free);
+                            possibleActions.Add(play);
+                        }
+
+                        /*
                         for (int j = 0; j < GetBoardSlots().Length; j++)
                         {
                             if (GetBoardSlots()[j].GetComponent<Minion>().blank == true)
@@ -434,7 +471,7 @@ public class AI : MonoBehaviour
                                     GetBoardSlots()[j].GetComponent<Minion>().GetMinion(), j);
                                 possibleActions.Add(play);
                             }
-                        }
+                        }*/
                     }
                 }
             }
@@ -759,6 +796,67 @@ public class AI : MonoBehaviour
                 }
             }
             Debug.Log("Updated Q Table!");
+        }
+    }
+
+    public void Learned()
+    {
+        //StartCoroutine(Wait(1));
+        QState actQState = GetActualQState();
+        string actQStateStr = GetActualQStateStr(actQState);
+
+        //check if is in table
+        bool inTable = false;
+        for (int i = 0; i < qTable.Count; i++)
+        {
+            if (qTable[i].GetStateStr() == actQStateStr)
+            {
+                inTable = true;
+                break;
+            }
+        }
+
+
+        if (inTable == true)
+        {
+            //best action
+            List<float> current = new List<float>();
+            int statePos = -1;
+            int iter = -1;
+            float maxValue = -99.0f;
+            for (int i = 0; i < qTable.Count; i++)
+            {
+                if (qTable[i].GetStateStr() == actQStateStr)
+                {
+                    statePos = i;
+                    for (int j = 0; j < qTable[i].GetValues().Length; j++)
+                    {
+                        current.Add(qTable[i].GetValues()[j].GetValue());
+                    }
+                    break;
+                }
+            }
+            for (int i = 0; i < current.Count; i++)
+            {
+                if (current[i] > maxValue)
+                {
+                    maxValue = current[i];
+                    iter = i;
+                }
+            }
+            //action with highest qvalue
+            Action bestAction = qTable[statePos].GetValues()[iter].GetAction();
+            PlaySelectedAction(bestAction);
+
+            
+        }
+        else if (inTable == false)
+        {
+            //QState state = actQState;
+            //string stateStr = actQStateStr;
+            //QValue[] qvalues = new QValue[allActions.Count];
+            GeneratePossibleActionsList();
+            UseRandomGameMechanic();
         }
     }
 }
