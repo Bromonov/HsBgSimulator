@@ -213,6 +213,7 @@ public class AI : MonoBehaviour
     private float discount;
 
     public bool learning;
+    public float waitTime;
 
     // Start is called before the first frame update
     void Start()
@@ -266,9 +267,9 @@ public class AI : MonoBehaviour
             //Debug.Log("Possible actions number = " + possibleActions.Count);
             //UseRandomGameMechanic();
             //Learn();
-            if (Waited(0.5f) == true && learning == true)
+            if (Waited(waitTime) == true && learning == true)
                 Learn();
-            else if (Waited(0.5f) == true && learning == false)
+            else if (Waited(waitTime) == true && learning == false)
                 Learned();
             else
                 return;

@@ -180,7 +180,7 @@
     <taunt>false</taunt>
     <skill>Whenever you summon a Beast, give it +2 Attack.</skill>
     <goldenSkill>Whenever you summon a Beast, give it +4 Attack.</goldenSkill>
-  </minion>
+  </minion> <!--
   <minion name = "Selfless Hero" tavernTier = "2">
     <attack>2</attack>
     <hp>1</hp>
@@ -190,7 +190,7 @@
     <taunt>false</taunt>
     <skill>Deathrattle: Give a random friendly minion Divine Shield.</skill>
     <goldenSkill>Deathrattle: Give two random friendly minions Divine Shield.</goldenSkill>
-  </minion>
+  </minion> -->
   <minion name = "Rat Pack" tavernTier = "3">
     <attack>2</attack>
     <hp>2</hp>

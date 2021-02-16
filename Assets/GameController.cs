@@ -51,7 +51,7 @@ public class GameController : MonoBehaviour
     //public Minion.MinionData[] pool;
     private int poolSize = 8307;
     //private int minionNumber = 117;
-    private int minionNumber = 44;
+    private int minionNumber = 43;
     public MinionData minionData;
     public Player player1;          //TODO: 2 PLAYERS PLAYING SIMULTANEOUSLY
     public Player player2;
@@ -527,6 +527,8 @@ public class GameController : MonoBehaviour
         Debug.Log("gameobject name after blanking" + minion.name + ", blank: " + minion.GetComponent<Minion>().blank);
         //freeSpaceOnBoard = true;
         Debug.Log("Pool Size = " + pool.Count);
+
+        RestoreHandsBoards();
     }
 
     public void SellMinionPlayer(Player player)
@@ -551,6 +553,8 @@ public class GameController : MonoBehaviour
         }
         else
             Debug.Log("Not enough gold for reroll!");
+
+        RestoreHandsBoards();
     }
 
     //function for a scene (player)
@@ -1205,6 +1209,9 @@ public class GameController : MonoBehaviour
         UpdateTavernTierText(player2, tavernTierTextAI);
         player1.turn = true;
         player2.turn = false;
+
+        RestoreHandsBoards();
+
         ChangeCanvasObjects("Player");
         ShowMinionsInTavern(player1, shopSlots, 0);
     }
@@ -1521,9 +1528,9 @@ public class GameController : MonoBehaviour
                 else
                     BuffSingleMinionBoard(minionSlots[minionNumber], 4, 4, "Beast", player);
 
-                minionSlots[locationIterator[minionNumber]].GetComponent<Minion>().GetMinion().Taunt = true;
-                minionSlots[locationIterator[minionNumber]].GetComponent<Minion>().InitializeMinion(minionSlots[locationIterator[minionNumber]].GetComponent<Minion>().GetMinion(),
-                    minionSlots[locationIterator[minionNumber]].GetComponent<Minion>().GetMinion().Golden);
+                minionSlots[minionNumber].GetComponent<Minion>().GetMinion().Taunt = true;
+                minionSlots[minionNumber].GetComponent<Minion>().InitializeMinion(minionSlots[minionNumber].GetComponent<Minion>().GetMinion(),
+                    minionSlots[minionNumber].GetComponent<Minion>().GetMinion().Golden);
             }
             locationIterator.Clear();
         }
@@ -1597,9 +1604,9 @@ public class GameController : MonoBehaviour
                 int minionNumber = locationIterator[n];
                 Debug.Log("n: " + n + "minionNumber = " + minionNumber);
 
-                minionSlots[locationIterator[minionNumber]].GetComponent<Minion>().GetMinion().Poison = true;
-                minionSlots[locationIterator[minionNumber]].GetComponent<Minion>().InitializeMinion(minionSlots[locationIterator[minionNumber]].GetComponent<Minion>().GetMinion(),
-                    minionSlots[locationIterator[minionNumber]].GetComponent<Minion>().GetMinion().Golden);
+                minionSlots[minionNumber].GetComponent<Minion>().GetMinion().Poison = true;
+                minionSlots[minionNumber].GetComponent<Minion>().InitializeMinion(minionSlots[minionNumber].GetComponent<Minion>().GetMinion(),
+                    minionSlots[minionNumber].GetComponent<Minion>().GetMinion().Golden);
             }
             locationIterator.Clear();
         }
@@ -2041,7 +2048,7 @@ public class GameController : MonoBehaviour
                         {
                             SummonTokenFight("Golden Big Bad Wolf", 1, p1);
                         }
-                    }
+                    }/*
                     else if (minionA.Name == "Selfless Hero")
                     {
                         Debug.Log(minionA.Name + " Deathrattle!");
@@ -2054,7 +2061,7 @@ public class GameController : MonoBehaviour
                             ChangeRandomOptionFight("ds", p1);
                             ChangeRandomOptionFight("ds", p1);
                         }
-                    }
+                    }*/
                     else if (minionA.Name == "Infested Wolf")
                     {
                         Debug.Log(minionA.Name + " Deathrattle!");
@@ -2282,7 +2289,7 @@ public class GameController : MonoBehaviour
                         {
                             SummonTokenFight("Golden Big Bad Wolf", 1, p2);
                         }
-                    }
+                    }/*
                     else if (minionB.Name == "Selfless Hero")
                     {
                         Debug.Log(minionB.Name + " Deathrattle!");
@@ -2295,7 +2302,7 @@ public class GameController : MonoBehaviour
                             ChangeRandomOptionFight("ds", p2);
                             ChangeRandomOptionFight("ds", p2);
                         }
-                    }
+                    }*/
                     else if (minionB.Name == "Infested Wolf")
                     {
                         Debug.Log(minionB.Name + " Deathrattle!");
@@ -2875,6 +2882,65 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void RestoreHandsBoards()
+    {
+        //restore player hand
+        //Debug.Log("Refreshing player hand list...");
+        player1.GetPlayerHand().Clear();
+        //Debug.Log("Cleared! Player hand list count = " + player1.GetPlayerHand().Count);
+        for (int i = 0; i < handSlots.Length; i++)
+        {
+            if (handSlots[i].GetComponent<Minion>().blank == false)
+            {
+                Player.Board newMinion = new Player.Board(handSlots[i].GetComponent<Minion>().GetMinion(), i);
+                player1.GetPlayerHand().Add(newMinion);
+            }
+        }
+        //Debug.Log("Refreshed! Player hand list count = " + player1.GetPlayerHand().Count);
+
+        //restore player board
+        //Debug.Log("Refreshing player board list...");
+        player1.GetPlayerBoard().Clear();
+        //Debug.Log("Cleared! Player board list count = " + player.GetPlayerHand().Count);
+        for (int i = 0; i < minionSlots.Length; i++)
+        {
+            if (minionSlots[i].GetComponent<Minion>().blank == false)
+            {
+                Player.Board newMinion = new Player.Board(minionSlots[i].GetComponent<Minion>().GetMinion(), i);
+                player1.GetPlayerBoard().Add(newMinion);
+            }
+        }
+        //Debug.Log("Refreshed! Player board list count = " + player.GetPlayerHand().Count);
+
+        //restore player hand
+        //Debug.Log("Refreshing player hand list...");
+        player2.GetPlayerHand().Clear();
+        //Debug.Log("Cleared! Player hand list count = " + player1.GetPlayerHand().Count);
+        for (int i = 0; i < handSlotsAI.Length; i++)
+        {
+            if (handSlotsAI[i].GetComponent<Minion>().blank == false)
+            {
+                Player.Board newMinion = new Player.Board(handSlotsAI[i].GetComponent<Minion>().GetMinion(), i);
+                player2.GetPlayerHand().Add(newMinion);
+            }
+        }
+        //Debug.Log("Refreshed! Player hand list count = " + player1.GetPlayerHand().Count);
+
+        //restore player board
+        //Debug.Log("Refreshing player board list...");
+        player2.GetPlayerBoard().Clear();
+        //Debug.Log("Cleared! Player board list count = " + player.GetPlayerHand().Count);
+        for (int i = 0; i < minionSlotsAI.Length; i++)
+        {
+            if (minionSlotsAI[i].GetComponent<Minion>().blank == false)
+            {
+                Player.Board newMinion = new Player.Board(minionSlotsAI[i].GetComponent<Minion>().GetMinion(), i);
+                player2.GetPlayerBoard().Add(newMinion);
+            }
+        }
+        //Debug.Log("Refreshed! Player board list count = " + player.GetPlayerHand().Count);
+    }
+
     //BATTLECRIES:
     public void SummonTokenBoard(string tokenName, int number, Player player, GameObject[] minionSlots)
     {
@@ -3102,18 +3168,27 @@ public class GameController : MonoBehaviour
 
         if(option == "ds")
         {
-            int r = Random.Range(0, dsPos.Count);
-            player.GetPlayerCopiedBoard()[dsPos[r]].GetMinion().DivineShield = true;
+            if(dsPos.Count > 0)
+            {
+                int r = Random.Range(0, dsPos.Count);
+                player.GetPlayerCopiedBoard()[dsPos[r]].GetMinion().DivineShield = true;
+            }
         }
         else if (option == "poison")
         {
-            int r = Random.Range(0, poisonPos.Count);
-            player.GetPlayerCopiedBoard()[poisonPos[r]].GetMinion().Poison = true;
+            if(poisonPos.Count > 0)
+            {
+                int r = Random.Range(0, poisonPos.Count);
+                player.GetPlayerCopiedBoard()[poisonPos[r]].GetMinion().Poison = true;
+            }
         }
         else if (option == "taunt")
         {
-            int r = Random.Range(0, tauntPos.Count);
-            player.GetPlayerCopiedBoard()[tauntPos[r]].GetMinion().Taunt = true;
+            if(tauntPos.Count > 0)
+            {
+                int r = Random.Range(0, tauntPos.Count);
+                player.GetPlayerCopiedBoard()[tauntPos[r]].GetMinion().Taunt = true;
+            }
         }
     }
     public void SummonRandomDHFight(int number, Player player)

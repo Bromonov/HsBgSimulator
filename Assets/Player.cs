@@ -120,13 +120,17 @@ public class Player : MonoBehaviour
         {
             if (this.gameObject.name == "Player2")
             {
-                Debug.Log("no hej graczu 2");
-                MinionData minionData1 = new MinionData();
-                minionData1.Initialize("Fiendish Servant", 2, 1, "Demon", 1, false, false, false, "", "", false);
-                Player.Board minion1 = new Player.Board(minionData1, 0);
-                board.Add(minion1);
+                //Debug.Log("no hej graczu 2");
+                //MinionData minionData1 = new MinionData();
+                //minionData1.Initialize("Fiendish Servant", 2, 1, "Demon", 1, false, false, false, "", "", false);
+                //Player.Board minion1 = new Player.Board(minionData1, 0);
+                //oard.Add(minion1);
 
-                Debug.Log(board[0].GetMinion().Name);
+                //Debug.Log(board[0].GetMinion().Name);
+
+
+                gc.BuyMinion(GetComponent<Player>(), gc.shopSlotsAI[0], gc.handSlotsAI, gc.minionSlotsAI);
+                gc.PlayMinionOnBoard(GetComponent<Player>(), gc.handSlotsAI[0], gc.minionSlotsAI[0], gc.handSlotsAI, gc.minionSlotsAI);
             }
         }
         //Debug.Log(this.gameObject.name + copiedBoard.Count);
