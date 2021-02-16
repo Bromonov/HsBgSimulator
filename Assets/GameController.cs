@@ -215,6 +215,9 @@ public class GameController : MonoBehaviour
     public void CreatePool()
     {
         XmlNodeList minionsList = minionDataXML.SelectNodes("/minions/minion");
+        pool.Clear();
+        copiedPool.Clear();
+
         for (int i = 0; i < minionNumber; i++)
         {
             int tavernTemp = int.Parse(minionsList[i].Attributes["tavernTier"].Value);
@@ -234,6 +237,7 @@ public class GameController : MonoBehaviour
             else
                 Debug.Log("TavernTier Error!");
 
+            
             for (int j = 0; j < minionsCounterTemp; j++)
             {
                 Pool singleMinion = new Pool(minionsList[i].Attributes["name"].Value, int.Parse(minionsList[i].Attributes["tavernTier"].Value));
@@ -2468,19 +2472,29 @@ public class GameController : MonoBehaviour
 
     public void Fight(Player player1, Player player2)
     {
-        List<Player.Board> taunts1 = new List<Player.Board>();
-        List<Player.Board> taunts2 = new List<Player.Board>();
+        List<int> taunts1 = new List<int>();
+        List<int> taunts2 = new List<int>();
 
         //update copiedBoard
         player1.GetPlayerCopiedBoard().Clear();
-        for (int i = 0; i < player1.GetPlayerBoard().Count; i++)
+        for (int i = 0; i < minionSlots.Length; i++)
         {
-            player1.GetPlayerCopiedBoard().Add(player1.GetPlayerBoard()[i]);
+            if(minionSlots[i].GetComponent<Minion>().blank == false)
+            {
+                Player.Board b = new Player.Board(minionSlots[i].GetComponent<Minion>().GetMinion(), i);
+                player1.GetPlayerCopiedBoard().Add(b);
+            }
         }
         player2.GetPlayerCopiedBoard().Clear();
-        for (int i = 0; i < player2.GetPlayerBoard().Count; i++)
+        for (int i = 0; i < minionSlotsAI.Length; i++)
         {
-            player2.GetPlayerCopiedBoard().Add(player2.GetPlayerBoard()[i]);
+            //player2.GetPlayerCopiedBoard().Add(player2.GetPlayerBoard()[i]);
+
+            if (minionSlotsAI[i].GetComponent<Minion>().blank == false)
+            {
+                Player.Board b = new Player.Board(minionSlotsAI[i].GetComponent<Minion>().GetMinion(), i);
+                player2.GetPlayerCopiedBoard().Add(b);
+            }
         }
         Debug.Log("P1: " + player1.GetPlayerCopiedBoard().Count);
         Debug.Log("P2: " + player2.GetPlayerCopiedBoard().Count);
@@ -2532,15 +2546,17 @@ public class GameController : MonoBehaviour
 
             if (firstAttack == 1)
             {
-                if (temp1 == player1.GetPlayerCopiedBoard().Count)
+                if (temp1 >= player1.GetPlayerCopiedBoard().Count)
                     temp1 = 0;
+
+                Debug.Log("P1 counter: " + player1.GetPlayerCopiedBoard().Count + "Minion nr " + temp1 + "is attacking!");
                 taunts1.Clear();
                 for(int x = 0; x < player2.GetPlayerCopiedBoard().Count; x++)
                 {
                     if(player2.GetPlayerCopiedBoard()[x].GetMinion().Taunt == true)
                     {
-                        Player.Board taunt = new Player.Board(player2.GetPlayerCopiedBoard()[x].GetMinion(), x);
-                        taunts1.Add(taunt);
+                        //Player.Board taunt = new Player.Board(player2.GetPlayerCopiedBoard()[x].GetMinion(), x);
+                        taunts1.Add(x);
                     }
                 }
                 int n = 0;
@@ -2551,10 +2567,18 @@ public class GameController : MonoBehaviour
                 else if (taunts1.Count > 0)
                 {
                     int r = Random.Range(0, taunts1.Count);
-                    n = taunts1[r].GetPos();
+                    n = taunts1[r];
                 }
                 else
                     Debug.Log("Taunts List Count cannot be negative!");
+
+                //for the rescue!
+                if (n > player2.GetPlayerCopiedBoard().Count)
+                {
+                    n = Random.Range(0, player2.GetPlayerCopiedBoard().Count);
+                }
+
+                Debug.Log("P2 counter: " + player2.GetPlayerCopiedBoard().Count + ", Attacked nr " + n);
 
                 //Debug.Log("temp1: " + temp1 + ", p1.count: " + player1.GetPlayerCopiedBoard().Count + ", n: " + n + ", p2.count: " + player2.GetPlayerCopiedBoard().Count);
                 FightBetweenTwoMinions(player1.GetPlayerCopiedBoard()[temp1].GetMinion(), player2.GetPlayerCopiedBoard()[n].GetMinion(), player1, player2);
@@ -2563,15 +2587,18 @@ public class GameController : MonoBehaviour
             }
             else if (firstAttack == 2)
             {
-                if (temp2 == player2.GetPlayerCopiedBoard().Count)
+                if (temp2 >= player2.GetPlayerCopiedBoard().Count)
                     temp2 = 0;
+
+                Debug.Log("P2 counter: " + player2.GetPlayerCopiedBoard().Count + ", Minion nr " + temp2 + "is attacking!");
+
                 taunts2.Clear();
                 for (int x = 0; x < player1.GetPlayerCopiedBoard().Count; x++)
                 {
                     if (player1.GetPlayerCopiedBoard()[x].GetMinion().Taunt == true)
                     {
-                        Player.Board taunt = new Player.Board(player1.GetPlayerCopiedBoard()[x].GetMinion(), x);
-                        taunts2.Add(taunt);
+                        //Player.Board taunt = new Player.Board(player1.GetPlayerCopiedBoard()[x].GetMinion(), x);
+                        taunts2.Add(x);
                     }
                 }
                 int n = 0;
@@ -2582,10 +2609,18 @@ public class GameController : MonoBehaviour
                 else if (taunts2.Count > 0)
                 {
                     int r = Random.Range(0, taunts2.Count);
-                    n = taunts2[r].GetPos();
+                    n = taunts2[r];
                 }
                 else
                     Debug.Log("Taunts List Count cannot be negative!");
+
+                //for the rescue!
+                if(n > player1.GetPlayerCopiedBoard().Count)
+                {
+                    n = Random.Range(0, player1.GetPlayerCopiedBoard().Count);
+                }
+
+                Debug.Log("P1 counter: " + player1.GetPlayerCopiedBoard().Count + ", Attacked nr " + n);
 
                 //Debug.Log("temp2: " + temp2 + ", p2.count: " + player2.GetPlayerCopiedBoard().Count + ", n: " + n + ", p1.count: " + player1.GetPlayerCopiedBoard().Count);
                 FightBetweenTwoMinions(player2.GetPlayerCopiedBoard()[temp2].GetMinion(), player1.GetPlayerCopiedBoard()[n].GetMinion(), player2, player1);
@@ -2879,6 +2914,7 @@ public class GameController : MonoBehaviour
             winP2 = 0;
             gameNr++;
 
+            CreatePool();
         }
     }
 
@@ -3064,11 +3100,14 @@ public class GameController : MonoBehaviour
 
     public void BuffSingleMinionFight(int attack, int health, Player player)
     {
-        int r = Random.Range(0, player.GetPlayerCopiedBoard().Count);
-        MinionData minionInstance = player.GetPlayerCopiedBoard()[r].GetMinion();
-        minionInstance.Attack += attack;
-        minionInstance.Hp += health;
-        player.GetPlayerCopiedBoard()[r].GetMinion().Initialize(minionInstance);
+        if (player.GetPlayerCopiedBoard().Count > 0)
+        {
+            int r = Random.Range(0, player.GetPlayerCopiedBoard().Count);
+            MinionData minionInstance = player.GetPlayerCopiedBoard()[r].GetMinion();
+            minionInstance.Attack += attack;
+            minionInstance.Hp += health;
+            player.GetPlayerCopiedBoard()[r].GetMinion().Initialize(minionInstance);
+        }
     }
 
     public void BuffSpecifiedMinionFight(int attack, int health, Player player, int minionPos)

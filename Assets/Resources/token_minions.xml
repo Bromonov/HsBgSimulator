@@ -61,6 +61,16 @@
     <skill></skill>
     <goldenSkill></goldenSkill>
   </minion>
+  <minion name = "Golden Imp" tavernTier = "1">
+    <attack>2</attack>
+    <hp>2</hp>
+    <tribe>Demon</tribe>
+    <ds>false</ds>
+    <poison>false</poison>
+    <taunt>false</taunt>
+    <skill></skill>
+    <goldenSkill></goldenSkill>
+  </minion>
   <minion name = "Damaged Golem" tavernTier = "1">
     <attack>2</attack>
     <hp>1</hp>

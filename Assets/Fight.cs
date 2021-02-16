@@ -44,8 +44,59 @@ public class Fight : MonoBehaviour
         
     }
 
-    //choice == 0 -> before; choice == 1 -> after
     public void ShowFightBefore(int choice)
+    {
+        //before
+        if (choice == 0)
+        {
+            //AI
+            for (int i = 0; i < gc.minionSlotsAI.Length; i++)
+            {
+                if(gc.minionSlotsAI[i].GetComponent<Minion>().blank == false)
+                {
+                    MinionData minionData = gc.minionSlotsAI[i].GetComponent<Minion>().GetMinion();
+                    fightSlotsAIBefore[i].GetComponent<Minion>().InitializeMinion(minionData, minionData.Golden);
+                }
+            }
+            //human
+            for (int i = 0; i < gc.minionSlots.Length; i++)
+            {
+                if (gc.minionSlots[i].GetComponent<Minion>().blank == false)
+                {
+                    MinionData minionData = gc.minionSlots[i].GetComponent<Minion>().GetMinion();
+                    fightSlotsPlayerBefore[i].GetComponent<Minion>().InitializeMinion(minionData, minionData.Golden);
+                }
+            }
+            //update health status
+            healthBeforeAI.text = AI.GetHealth().ToString();
+            healthBeforePlayer.text = human.GetHealth().ToString();
+        }
+        //after
+        else if (choice == 1)
+        {
+            //AI
+            for (int i = 0; i < AI.GetPlayerCopiedBoard().Count; i++)
+            {
+                MinionData minionData = AI.GetPlayerCopiedBoard()[i].GetMinion();
+                fightSlotsAIAfter[i].GetComponent<Minion>().InitializeMinion(minionData, minionData.Golden);
+            }
+            //human
+            for (int i = 0; i < human.GetPlayerCopiedBoard().Count; i++)
+            {
+                MinionData minionData = human.GetPlayerCopiedBoard()[i].GetMinion();
+                fightSlotsPlayerAfter[i].GetComponent<Minion>().InitializeMinion(minionData, minionData.Golden);
+            }
+            //update health status
+            healthAfterAI.text = AI.GetHealth().ToString();
+            healthAfterPlayer.text = human.GetHealth().ToString();
+        }
+        else
+            Debug.Log("Wrong choice number!");
+
+    }
+
+    //choice == 0 -> before; choice == 1 -> after
+    public void ShowFightBefore2(int choice)
     {
         //before
         if (choice == 0)
