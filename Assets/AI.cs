@@ -266,9 +266,9 @@ public class AI : MonoBehaviour
             //Debug.Log("Possible actions number = " + possibleActions.Count);
             //UseRandomGameMechanic();
             //Learn();
-            if (Waited(1) == true && learning == true)
+            if (Waited(0.5f) == true && learning == true)
                 Learn();
-            else if (Waited(1) == true && learning == false)
+            else if (Waited(0.5f) == true && learning == false)
                 Learned();
             else
                 return;
@@ -595,6 +595,7 @@ public class AI : MonoBehaviour
 
     public void Learn()
     {
+        Debug.Log("Learning...");
         //StartCoroutine(Wait(1));
         QState actQState = GetActualQState();
         string actQStateStr = GetActualQStateStr(actQState);
@@ -725,7 +726,7 @@ public class AI : MonoBehaviour
                 player.dead = false;
                 enemy.dead = false;
             }
-            else                    //player alive so other states available, rewards for won/lost/drawn fight, making golden minion
+            else if(player.dead == false && player.turnNumber != 1)     //player alive so other states available, rewards for won/lost/drawn fight, making golden minion
             {
                 QState currentState = last.GetState();
                 QState previousState = history[i - 1].GetState();
@@ -801,6 +802,7 @@ public class AI : MonoBehaviour
 
     public void Learned()
     {
+        Debug.Log("Learning finished, making best moves!");
         //StartCoroutine(Wait(1));
         QState actQState = GetActualQState();
         string actQStateStr = GetActualQStateStr(actQState);

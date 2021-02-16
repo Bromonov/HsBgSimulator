@@ -740,21 +740,29 @@ public class GameController : MonoBehaviour
         {
             if(player.GetPlayerBoard()[cobaltPos[i]].GetMinion().Golden == true)
             {
-                int r = Random.Range(0, cobalt.Count);
-                int random = cobalt[r];
-                //Debug.Log("r: " + r + ", random: " + random);
+                if(cobalt.Count > 0)
+                {
+                    int r = Random.Range(0, cobalt.Count);
+                    int random = cobalt[r];
+                    //Debug.Log("r: " + r + ", random: " + random);
 
-                BuffSingleMinionBoard(minionSlots[random], 6, 0, "All", player);
-                Debug.Log("Cobalt Scalebane effect!");
+                    BuffSingleMinionBoard(minionSlots[random], 6, 0, "All", player);
+                    Debug.Log("Cobalt Scalebane effect!");
+                }
+                
             }
             else
             {
-                int r = Random.Range(0, cobalt.Count);
-                int random = cobalt[r];
-                //Debug.Log("r: " + r + ", random: " + random);
+                if(cobalt.Count > 0)
+                {
+                    int r = Random.Range(0, cobalt.Count);
+                    int random = cobalt[r];
+                    //Debug.Log("r: " + r + ", random: " + random);
 
-                BuffSingleMinionBoard(minionSlots[random], 3, 0, "All", player);
-                Debug.Log("Cobalt Scalebane effect!");
+                    BuffSingleMinionBoard(minionSlots[random], 3, 0, "All", player);
+                    Debug.Log("Cobalt Scalebane effect!");
+                }
+                
             }
 
         }
@@ -762,21 +770,29 @@ public class GameController : MonoBehaviour
         {
             if (player.GetPlayerBoard()[microPos[i]].GetMinion().Golden == true)
             {
-                int r = Random.Range(0, micromummy.Count);
-                int random = micromummy[r];
-                //Debug.Log("r: " + r + ", random: " + random);
+                if(micromummy.Count > 0)
+                {
+                    int r = Random.Range(0, micromummy.Count);
+                    int random = micromummy[r];
+                    //Debug.Log("r: " + r + ", random: " + random);
 
-                BuffSingleMinionBoard(minionSlots[random], 2, 0, "All", player);
-                Debug.Log("Micro Mummy effect!");
+                    BuffSingleMinionBoard(minionSlots[random], 2, 0, "All", player);
+                    Debug.Log("Micro Mummy effect!");
+                }
+                
             }
             else
             {
-                int r = Random.Range(0, micromummy.Count);
-                int random = micromummy[r];
-                //Debug.Log("r: " + r + ", random: " + random);
+                if(micromummy.Count > 0)
+                {
+                    int r = Random.Range(0, micromummy.Count);
+                    int random = micromummy[r];
+                    //Debug.Log("r: " + r + ", random: " + random);
 
-                BuffSingleMinionBoard(minionSlots[random], 1, 0, "All", player);
-                Debug.Log("Micro Mummy effect!");
+                    BuffSingleMinionBoard(minionSlots[random], 1, 0, "All", player);
+                    Debug.Log("Micro Mummy effect!");
+                }
+                
             }
         }
         for (int i = 0; i < lightPos.Count; i++)
@@ -973,21 +989,28 @@ public class GameController : MonoBehaviour
         {
             if (player2.GetPlayerBoard()[cobaltPos[i]].GetMinion().Golden == true)
             {
-                int r = Random.Range(0, cobalt.Count);
-                int random = cobalt[r];
-                //Debug.Log("r: " + r + ", random: " + random);
+                if(cobalt.Count > 0)
+                {
+                    int r = Random.Range(0, cobalt.Count);
+                    int random = cobalt[r];
+                    //Debug.Log("r: " + r + ", random: " + random);
 
-                BuffSingleMinionBoard(minionSlots[random], 6, 0, "All", player2);
-                Debug.Log("Cobalt Scalebane effect!");
+                    BuffSingleMinionBoard(minionSlots[random], 6, 0, "All", player2);
+                    Debug.Log("Cobalt Scalebane effect!");
+                }
             }
             else
             {
-                int r = Random.Range(0, cobalt.Count);
-                int random = cobalt[r];
-                //Debug.Log("r: " + r + ", random: " + random);
+                if(cobalt.Count > 0)
+                {
+                    int r = Random.Range(0, cobalt.Count);
+                    int random = cobalt[r];
+                    //Debug.Log("r: " + r + ", random: " + random);
 
-                BuffSingleMinionBoard(minionSlots[random], 3, 0, "All", player2);
-                Debug.Log("Cobalt Scalebane effect!");
+                    BuffSingleMinionBoard(minionSlots[random], 3, 0, "All", player2);
+                    Debug.Log("Cobalt Scalebane effect!");
+                }
+                
             }
 
         }
@@ -995,21 +1018,29 @@ public class GameController : MonoBehaviour
         {
             if (player2.GetPlayerBoard()[microPos[i]].GetMinion().Golden == true)
             {
-                int r = Random.Range(0, micromummy.Count);
-                int random = micromummy[r];
-                //Debug.Log("r: " + r + ", random: " + random);
+                if(micromummy.Count > 0)
+                {
+                    int r = Random.Range(0, micromummy.Count);
+                    int random = micromummy[r];
+                    //Debug.Log("r: " + r + ", random: " + random);
 
-                BuffSingleMinionBoard(minionSlots[random], 2, 0, "All", player2);
-                Debug.Log("Micro Mummy effect!");
+                    BuffSingleMinionBoard(minionSlots[random], 2, 0, "All", player2);
+                    Debug.Log("Micro Mummy effect!");
+                }
+                
             }
             else
             {
-                int r = Random.Range(0, micromummy.Count);
-                int random = micromummy[r];
-                //Debug.Log("r: " + r + ", random: " + random);
+                if(micromummy.Count > 0)
+                {
+                    int r = Random.Range(0, micromummy.Count);
+                    int random = micromummy[r];
+                    //Debug.Log("r: " + r + ", random: " + random);
 
-                BuffSingleMinionBoard(minionSlots[random], 1, 0, "All", player2);
-                Debug.Log("Micro Mummy effect!");
+                    BuffSingleMinionBoard(minionSlots[random], 1, 0, "All", player2);
+                    Debug.Log("Micro Mummy effect!");
+                }
+                
             }
         }
         for (int i = 0; i < lightPos.Count; i++)
@@ -1119,25 +1150,39 @@ public class GameController : MonoBehaviour
         player2.fight = true;
         ShowHideFightPanel(true);
 
-        for (int turn = 1; turn < 99; turn++)
+        
+        /*
+        for (int turn = player1.turnNumber; turn < 99; turn++)
         {
-            if (player1.turnNumber == turn && player2.turnNumber < 9)
+            if (player1.turnNumber == turn)// && player2.turnNumber < 9)
             {
-                //player1.SetPlayerGold(turn + 2);
-               // player2.SetPlayerGold(turn + 2);
+                Debug.Log("Updating gold status");
+                player1.SetPlayerGold(turn + 2);
+                player2.SetPlayerGold(turn + 2);
                 if (player1.GetPlayerGold() > 10 || player2.GetPlayerGold() > 10)
                 {
-                    //player1.SetPlayerGold(10);
-                    //player2.SetPlayerGold(10);
+                    player1.SetPlayerGold(10);
+                    player2.SetPlayerGold(10);
                 }
                 break;
             }
+        }*/
+        
+        player1.turnNumber++;
+        player2.turnNumber++;
+        Debug.Log("Player turn: " + player1.turnNumber);
+
+        //update gold status for both players
+        Debug.Log("Updating gold status");
+        player1.SetPlayerGold(player1.turnNumber + 2);
+        player2.SetPlayerGold(player2.turnNumber + 2);
+        if (player1.GetPlayerGold() > 10 || player2.GetPlayerGold() > 10)
+        {
+            player1.SetPlayerGold(10);
+            player2.SetPlayerGold(10);
         }
         SetPLayerGoldStatus(player1);
         SetPLayerGoldStatus(player2);
-
-        player1.turnNumber++;
-        player2.turnNumber++;
 
         UpdateTavernPrice();
 
@@ -1149,6 +1194,9 @@ public class GameController : MonoBehaviour
             else
                 player2.dead = true;
         }
+
+        SetPLayerGoldStatus(player1);
+        SetPLayerGoldStatus(player2);
 
         UpdateTavernTierCostText(player1, tavernTierCostText);
         UpdateTavernTierText(player1, tavernTierText);

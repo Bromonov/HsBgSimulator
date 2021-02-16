@@ -84,8 +84,8 @@ public class Player : MonoBehaviour
 
     public void Initialize()
     {
-        gold = 99;
-        //gold = 3;
+        //gold = 99;
+        gold = 3;
         tavernTierLevel = 1;
         turnNumber = 1;
         health = 40;
