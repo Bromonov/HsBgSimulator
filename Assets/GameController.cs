@@ -37,8 +37,7 @@ using UnityEngine.UI;
 //                      - w przypadku gdy sa dwie te same jednostki na boardzie, zostanie zakupiona 3, inicjalizacja golden mechanic 
 //                        -> po zagraniu zlotej jednostki summonuje sie jej kopia -> do naprawy, test kiedy to sie wydarza
 //                      - EndTurn wystepuje 2x, przez co buff at end of turn aktywuje sie dwukrotnie
-//                      - miniony w walce moga miec nawet ujemne hp, nie odnawiaja sie statsy z jakiegos losowego powodu sadge !!! -> gdy brak akcji, refresh tylko 
-//                        przy kupowaniu jednostki, cos sie dzieje potem z lista
+//                      - miniony w walce moga miec nawet ujemne hp, nie odnawiaja sie statsy z jakiegos losowego powodu sadge !!! -> walka aktualizuje stan jednostek(?)
 
 public class GameController : MonoBehaviour
 {
@@ -49,7 +48,7 @@ public class GameController : MonoBehaviour
     private XmlDocument tokenMinionsDataXML;
     //pool
     //public Minion.MinionData[] pool;
-    private int poolSize = 8307;
+    //private int poolSize = 8307;
     //private int minionNumber = 117;
     private int minionNumber = 43;
     public MinionData minionData;
@@ -502,7 +501,8 @@ public class GameController : MonoBehaviour
         //remove from the player board
         for(int i = 0; i < player.GetPlayerBoard().Count; i++)
         {
-            if(player.GetPlayerBoard()[i].GetMinion().Name == minionInstance.Name)
+            if(player.GetPlayerBoard()[i].GetMinion().Name == minionInstance.Name && player.GetPlayerBoard()[i].GetMinion().Attack == minionInstance.Attack &&
+                player.GetPlayerBoard()[i].GetMinion().Hp == minionInstance.Hp && player.GetPlayerBoard()[i].GetMinion().Golden == minionInstance.Golden)
             {
                 player.GetPlayerBoard().RemoveAt(i);
                 break;
@@ -1227,7 +1227,7 @@ public class GameController : MonoBehaviour
         //XmlNode minionNode = minionData.GetMinionByName(minionName, minionDataXML);
         //MinionData minionInstance = new MinionData();
         MinionData minionInstance = handSlot.GetComponent<Minion>().GetMinion();
-        minionInstance.Initialize(minionInstance);
+        //minionInstance.Initialize(minionInstance);
         int iter = 99;
         for (int i = 0; i < minionSlots.Length; i++)
         {
@@ -3229,6 +3229,7 @@ public class GameController : MonoBehaviour
                 player.GetPlayerCopiedBoard()[tauntPos[r]].GetMinion().Taunt = true;
             }
         }
+
     }
     public void SummonRandomDHFight(int number, Player player)
     {
