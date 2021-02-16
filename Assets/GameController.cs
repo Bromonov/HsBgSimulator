@@ -34,7 +34,9 @@ using UnityEngine.UI;
 //                      - swapowanie minionow na boardzie, dziala tylko z prawa do lewa + pewnie korekta w playerboard list, choc to i tak jest skurwiale tera
 //                      - w przypadku gdy sa dwie te same jednostki na boardzie, zostanie zakupiona 3, inicjalizacja golden mechanic 
 //                        -> po zagraniu zlotej jednostki summonuje sie jej kopia -> do naprawy, test kiedy to sie wydarza
-//                      - cobalt scalebane buffuje tez sam siebie, wiecej jednostek jak jedna
+//                      - EndTurn wystepuje 2x, przez co buff at end of turn aktywuje sie dwukrotnie
+//                      - miniony w walce moga miec nawet ujemne hp, nie odnawiaja sie statsy z jakiegos losowego powodu sadge !!! -> gdy brak akcji, refresh tylko 
+//                        przy kupowaniu jednostki, cos sie dzieje potem z lista
 
 public class GameController : MonoBehaviour
 {
@@ -354,7 +356,7 @@ public class GameController : MonoBehaviour
             }
             Debug.Log("Refreshed! Player hand list count = " + player.GetPlayerHand().Count);
 
-            //restore player hand
+            //restore player board
             Debug.Log("Refreshing player board list...");
             player.GetPlayerBoard().Clear();
             Debug.Log("Cleared! Player board list count = " + player.GetPlayerHand().Count);
@@ -639,17 +641,21 @@ public class GameController : MonoBehaviour
     {
         //end turn effects
         List<int> micromummy = new List<int>();
+        List<int> microPos = new List<int>();
         List<int> cobalt = new List<int>();
+        List<int> cobaltPos = new List<int>();
         List<int> beasts = new List<int>();
         List<int> mechs = new List<int>();
         List<int> murlocs = new List<int>();
         List<int> demons = new List<int>();
         List<int> dragons = new List<int>();
+        List<int> lightPos = new List<int>();
         for (int i = 0; i < player.GetPlayerBoard().Count; i++)
         {
             //MicroMummy
             if(player.GetPlayerBoard()[i].GetMinion().Name == "Micro Mummy")
             {
+                microPos.Add(i);
                 for(int j = 0; j < player.GetPlayerBoard().Count; j++)
                 {
                     if(player.GetPlayerBoard()[j].GetPos() != i)
@@ -657,20 +663,12 @@ public class GameController : MonoBehaviour
                         micromummy.Add(player.GetPlayerBoard()[j].GetPos());
                     }
                 }
-                if(micromummy.Count > 0)
-                {
-                    int r = Random.Range(0, micromummy.Count);
-                    int random = micromummy[r];
-                    //Debug.Log("r: " + r + ", random: " + random);
-
-                    BuffSingleMinionBoard(minionSlots[random], 1, 0, "All", player);
-                }
-                Debug.Log("Micro mummy end turn effect!");
-                break;
+                //Debug.Log("Micro mummy end turn effect!");
             }
             //Cobalt Scalebane
             if (player.GetPlayerBoard()[i].GetMinion().Name == "Cobalt Scalebane")
             {
+                cobaltPos.Add(i);
                 for (int j = 0; j < player.GetPlayerBoard().Count; j++)
                 {
                     if (player.GetPlayerBoard()[j].GetPos() != i)
@@ -678,98 +676,178 @@ public class GameController : MonoBehaviour
                         cobalt.Add(player.GetPlayerBoard()[j].GetPos());
                     }
                 }
-                if (cobalt.Count > 0)
-                {
-                    int r = Random.Range(0, cobalt.Count);
-                    int random = cobalt[r];
-                    //Debug.Log("r: " + r + ", random: " + random);
-
-                    BuffSingleMinionBoard(minionSlots[random], 3, 0, "All", player);
-                }
-                Debug.Log("Cobalt scalebane end turn effect!");
-                break;
+                //Debug.Log("Cobalt scalebane end turn effect!");
             }
             //lightfang enforcer
             if (player.GetPlayerBoard()[i].GetMinion().Name == "Lightfang Enforcer")
             {
-                for (int j = 0; j < player.GetPlayerBoard().Count; j++)
-                {
-                    if(player.GetPlayerBoard()[j].GetMinion().Tribe == "Beast")
-                    {
-                        beasts.Add(j);
-                    }
-                    else if (player.GetPlayerBoard()[j].GetMinion().Tribe == "Mech")
-                    {
-                        mechs.Add(j);
-                    }
-                    else if (player.GetPlayerBoard()[j].GetMinion().Tribe == "Murloc")
-                    {
-                        murlocs.Add(j);
-                    }
-                    else if (player.GetPlayerBoard()[j].GetMinion().Tribe == "Demon")
-                    {
-                        demons.Add(j);
-                    }
-                    else if (player.GetPlayerBoard()[j].GetMinion().Tribe == "Dragon")
-                    {
-                        dragons.Add(j);
-                    }
-                }
+                lightPos.Add(i);
+            }
+            if (player.GetPlayerBoard()[i].GetMinion().Tribe == "Beast")
+            {
+                beasts.Add(i);
+            }
+            else if (player.GetPlayerBoard()[i].GetMinion().Tribe == "Mech")
+            {
+                mechs.Add(i);
+            }
+            else if (player.GetPlayerBoard()[i].GetMinion().Tribe == "Murloc")
+            {
+                murlocs.Add(i);
+            }
+            else if (player.GetPlayerBoard()[i].GetMinion().Tribe == "Demon")
+            {
+                demons.Add(i);
+            }
+            else if (player.GetPlayerBoard()[i].GetMinion().Tribe == "Dragon")
+            {
+                dragons.Add(i);
+            }
+        }
+        for(int i = 0; i < cobaltPos.Count; i++)
+        {
+            if(player.GetPlayerBoard()[cobaltPos[i]].GetMinion().Golden == true)
+            {
+                int r = Random.Range(0, cobalt.Count);
+                int random = cobalt[r];
+                //Debug.Log("r: " + r + ", random: " + random);
+
+                BuffSingleMinionBoard(minionSlots[random], 6, 0, "All", player);
+                Debug.Log("Cobalt Scalebane effect!");
+            }
+            else
+            {
+                int r = Random.Range(0, cobalt.Count);
+                int random = cobalt[r];
+                //Debug.Log("r: " + r + ", random: " + random);
+
+                BuffSingleMinionBoard(minionSlots[random], 3, 0, "All", player);
+                Debug.Log("Cobalt Scalebane effect!");
+            }
+
+        }
+        for (int i = 0; i < microPos.Count; i++)
+        {
+            if (player.GetPlayerBoard()[microPos[i]].GetMinion().Golden == true)
+            {
+                int r = Random.Range(0, micromummy.Count);
+                int random = micromummy[r];
+                //Debug.Log("r: " + r + ", random: " + random);
+
+                BuffSingleMinionBoard(minionSlots[random], 2, 0, "All", player);
+                Debug.Log("Micro Mummy effect!");
+            }
+            else
+            {
+                int r = Random.Range(0, micromummy.Count);
+                int random = micromummy[r];
+                //Debug.Log("r: " + r + ", random: " + random);
+
+                BuffSingleMinionBoard(minionSlots[random], 1, 0, "All", player);
+                Debug.Log("Micro Mummy effect!");
+            }
+        }
+        for (int i = 0; i < lightPos.Count; i++)
+        {
+            if (player.GetPlayerBoard()[lightPos[i]].GetMinion().Golden == true)
+            {
                 if (beasts.Count > 0)
                 {
                     int r = Random.Range(0, beasts.Count);
                     int random = beasts[r];
                     //Debug.Log("r: " + r + ", random: " + random);
 
-                    if(player.GetPlayerBoard()[i].GetMinion().Golden == true)
-                        BuffSingleMinionBoard(minionSlots[random], 2, 2, "Beast", player);
-                    else
-                        BuffSingleMinionBoard(minionSlots[random], 4, 4, "Beast", player);
+                    BuffSingleMinionBoard(minionSlots[random], 4, 4, "Beast", player);
+                    Debug.Log("Golden Lightfang Effect on Beast!");
                 }
                 if (mechs.Count > 0)
                 {
                     int r = Random.Range(0, mechs.Count);
                     int random = mechs[r];
                     //Debug.Log("r: " + r + ", random: " + random);
-                    if (player.GetPlayerBoard()[i].GetMinion().Golden == true)
-                        BuffSingleMinionBoard(minionSlots[random], 2, 2, "Mech", player);
-                    else
-                        BuffSingleMinionBoard(minionSlots[random], 4, 4, "Mech", player);
+
+                    BuffSingleMinionBoard(minionSlots[random], 4, 4, "Mech", player);
+                    Debug.Log("Golden Lightfang Effect on Mech!");
                 }
                 if (murlocs.Count > 0)
                 {
                     int r = Random.Range(0, murlocs.Count);
                     int random = murlocs[r];
                     //Debug.Log("r: " + r + ", random: " + random);
-                    if (player.GetPlayerBoard()[i].GetMinion().Golden == true)
-                        BuffSingleMinionBoard(minionSlots[random], 2, 2, "Murloc", player);
-                    else
-                        BuffSingleMinionBoard(minionSlots[random], 4, 4, "Murloc", player);
+                    
+                    BuffSingleMinionBoard(minionSlots[random], 4, 4, "Murloc", player);
+                    Debug.Log("Golden Lightfang Effect on Murloc!");
                 }
                 if (demons.Count > 0)
                 {
                     int r = Random.Range(0, demons.Count);
                     int random = demons[r];
                     //Debug.Log("r: " + r + ", random: " + random);
-                    if (player.GetPlayerBoard()[i].GetMinion().Golden == true)
-                        BuffSingleMinionBoard(minionSlots[random], 2, 2, "Demon", player);
-                    else
-                        BuffSingleMinionBoard(minionSlots[random], 4, 4, "Demon", player);
+                    
+                    BuffSingleMinionBoard(minionSlots[random], 4, 4, "Demon", player);
+                    Debug.Log("Golden Lightfang Effect on Demon!");
                 }
                 if (dragons.Count > 0)
                 {
                     int r = Random.Range(0, dragons.Count);
                     int random = dragons[r];
                     //Debug.Log("r: " + r + ", random: " + random);
-                    if (player.GetPlayerBoard()[i].GetMinion().Golden == true)
-                        BuffSingleMinionBoard(minionSlots[random], 2, 2, "Dragon", player);
-                    else
-                        BuffSingleMinionBoard(minionSlots[random], 4, 4, "Dragon", player);
+                    
+                    BuffSingleMinionBoard(minionSlots[random], 4, 4, "Dragon", player);
+                    Debug.Log("Golden Lightfang Effect on Dragon!");
                 }
-                Debug.Log("Cobalt scalebane end turn effect!");
-                break;
+            }
+            else if (player.GetPlayerBoard()[lightPos[i]].GetMinion().Golden == false)
+            {
+                if (beasts.Count > 0)
+                {
+                    int r = Random.Range(0, beasts.Count);
+                    int random = beasts[r];
+                    //Debug.Log("r: " + r + ", random: " + random);
+
+                    BuffSingleMinionBoard(minionSlots[random], 2, 2, "Beast", player);
+                    Debug.Log("Lightfang Effect on Beast!");
+                }
+                if (mechs.Count > 0)
+                {
+                    int r = Random.Range(0, mechs.Count);
+                    int random = mechs[r];
+                    //Debug.Log("r: " + r + ", random: " + random);
+                    
+                    BuffSingleMinionBoard(minionSlots[random], 2, 2, "Mech", player);
+                    Debug.Log("Lightfang Effect on Mech!");
+                }
+                if (murlocs.Count > 0)
+                {
+                    int r = Random.Range(0, murlocs.Count);
+                    int random = murlocs[r];
+                    //Debug.Log("r: " + r + ", random: " + random);
+                    
+                    BuffSingleMinionBoard(minionSlots[random], 2, 2, "Murloc", player);
+                    Debug.Log("Lightfang Effect on Murloc!");
+                }
+                if (demons.Count > 0)
+                {
+                    int r = Random.Range(0, demons.Count);
+                    int random = demons[r];
+                    //Debug.Log("r: " + r + ", random: " + random);
+                    
+                    BuffSingleMinionBoard(minionSlots[random], 2, 2, "Demon", player);
+                    Debug.Log("Lightfang Effect on Demon!");
+                }
+                if (dragons.Count > 0)
+                {
+                    int r = Random.Range(0, dragons.Count);
+                    int random = dragons[r];
+                    //Debug.Log("r: " + r + ", random: " + random);
+                    
+                    BuffSingleMinionBoard(minionSlots[random], 2, 2, "Dragon", player);
+                    Debug.Log("Lightfang Effect on Dragon!");
+                }
             }
         }
+
+
         micromummy.Clear();
         cobalt.Clear();
         beasts.Clear();
@@ -785,53 +863,222 @@ public class GameController : MonoBehaviour
     public void EndTurnAI(GameObject[] minionSlots)               // czy na pewno zalezne od playera? jak dwaj gracze naraz to chyba nie, 
                                                            //chyba, ze jakies czekanko jakby sie z bomby skonczylo ture a komp nie zdazylby, do rozkminy
     {
+        
+
         //end turn effects
-        List<int> temp = new List<int>();
+        List<int> micromummy = new List<int>();
+        List<int> microPos = new List<int>();
+        List<int> cobalt = new List<int>();
+        List<int> cobaltPos = new List<int>();
+        List<int> beasts = new List<int>();
+        List<int> mechs = new List<int>();
+        List<int> murlocs = new List<int>();
+        List<int> demons = new List<int>();
+        List<int> dragons = new List<int>();
+        List<int> lightPos = new List<int>();
         for (int i = 0; i < player2.GetPlayerBoard().Count; i++)
         {
             //MicroMummy
             if (player2.GetPlayerBoard()[i].GetMinion().Name == "Micro Mummy")
             {
+                microPos.Add(i);
                 for (int j = 0; j < player2.GetPlayerBoard().Count; j++)
                 {
                     if (player2.GetPlayerBoard()[j].GetPos() != i)
                     {
-                        temp.Add(player2.GetPlayerBoard()[j].GetPos());
+                        micromummy.Add(player2.GetPlayerBoard()[j].GetPos());
                     }
                 }
-                int r = Random.Range(0, temp.Count);
-                int random = temp[r];
-                //Debug.Log("r: " + r + ", random: " + random);
-
-                BuffSingleMinionBoard(minionSlots[random], 1, 0, "All", player2);
-
-                Debug.Log("Micro mummy end turn effect!");
-                break;
+                //Debug.Log("Micro mummy end turn effect!");
             }
             //Cobalt Scalebane
             if (player2.GetPlayerBoard()[i].GetMinion().Name == "Cobalt Scalebane")
             {
+                cobalt.Add(i);
                 for (int j = 0; j < player2.GetPlayerBoard().Count; j++)
                 {
                     if (player2.GetPlayerBoard()[j].GetPos() != i)
                     {
-                        temp.Add(player2.GetPlayerBoard()[j].GetPos());
+                        cobalt.Add(player2.GetPlayerBoard()[j].GetPos());
                     }
                 }
-                if (temp.Count > 0)
+                //Debug.Log("Cobalt scalebane end turn effect!");
+            }
+            //lightfang enforcer
+            if (player2.GetPlayerBoard()[i].GetMinion().Name == "Lightfang Enforcer")
+            {
+                lightPos.Add(i);
+                for (int j = 0; j < player2.GetPlayerBoard().Count; j++)
                 {
-                    int r = Random.Range(0, temp.Count);
-                    int random = temp[r];
+                    if (player2.GetPlayerBoard()[j].GetMinion().Tribe == "Beast")
+                    {
+                        beasts.Add(j);
+                    }
+                    else if (player2.GetPlayerBoard()[j].GetMinion().Tribe == "Mech")
+                    {
+                        mechs.Add(j);
+                    }
+                    else if (player2.GetPlayerBoard()[j].GetMinion().Tribe == "Murloc")
+                    {
+                        murlocs.Add(j);
+                    }
+                    else if (player2.GetPlayerBoard()[j].GetMinion().Tribe == "Demon")
+                    {
+                        demons.Add(j);
+                    }
+                    else if (player2.GetPlayerBoard()[j].GetMinion().Tribe == "Dragon")
+                    {
+                        dragons.Add(j);
+                    }
+                }
+                //Debug.Log("B:" + beasts.Count + ", Me:" + mechs.Count + ", Mu:" + murlocs.Count + ", De:" + demons.Count + ", Dr:" + dragons.Count);
+
+                Debug.Log("Cobalt scalebane end turn effect!");
+                //break;
+            }
+        }
+        for (int i = 0; i < cobaltPos.Count; i++)
+        {
+            if (player2.GetPlayerBoard()[cobaltPos[i]].GetMinion().Golden == true)
+            {
+                int r = Random.Range(0, cobalt.Count);
+                int random = cobalt[r];
+                //Debug.Log("r: " + r + ", random: " + random);
+
+                BuffSingleMinionBoard(minionSlots[random], 6, 0, "All", player2);
+                Debug.Log("Cobalt Scalebane effect!");
+            }
+            else
+            {
+                int r = Random.Range(0, cobalt.Count);
+                int random = cobalt[r];
+                //Debug.Log("r: " + r + ", random: " + random);
+
+                BuffSingleMinionBoard(minionSlots[random], 3, 0, "All", player2);
+                Debug.Log("Cobalt Scalebane effect!");
+            }
+
+        }
+        for (int i = 0; i < microPos.Count; i++)
+        {
+            if (player2.GetPlayerBoard()[microPos[i]].GetMinion().Golden == true)
+            {
+                int r = Random.Range(0, micromummy.Count);
+                int random = micromummy[r];
+                //Debug.Log("r: " + r + ", random: " + random);
+
+                BuffSingleMinionBoard(minionSlots[random], 2, 0, "All", player2);
+                Debug.Log("Micro Mummy effect!");
+            }
+            else
+            {
+                int r = Random.Range(0, micromummy.Count);
+                int random = micromummy[r];
+                //Debug.Log("r: " + r + ", random: " + random);
+
+                BuffSingleMinionBoard(minionSlots[random], 1, 0, "All", player2);
+                Debug.Log("Micro Mummy effect!");
+            }
+        }
+        for (int i = 0; i < lightPos.Count; i++)
+        {
+            if (player2.GetPlayerBoard()[lightPos[i]].GetMinion().Golden == true)
+            {
+                if (beasts.Count > 0)
+                {
+                    int r = Random.Range(0, beasts.Count);
+                    int random = beasts[r];
                     //Debug.Log("r: " + r + ", random: " + random);
 
-                    BuffSingleMinionBoard(minionSlots[random], 3, 0, "All", player2);
+                    BuffSingleMinionBoard(minionSlots[random], 4, 4, "Beast", player2);
                 }
-                Debug.Log("Cobalt scalebane end turn effect!");
-                break;
+                if (mechs.Count > 0)
+                {
+                    int r = Random.Range(0, mechs.Count);
+                    int random = mechs[r];
+                    //Debug.Log("r: " + r + ", random: " + random);
+
+                    BuffSingleMinionBoard(minionSlots[random], 4, 4, "Mech", player2);
+                }
+                if (murlocs.Count > 0)
+                {
+                    int r = Random.Range(0, murlocs.Count);
+                    int random = murlocs[r];
+                    //Debug.Log("r: " + r + ", random: " + random);
+
+                    BuffSingleMinionBoard(minionSlots[random], 4, 4, "Murloc", player2);
+                }
+                if (demons.Count > 0)
+                {
+                    int r = Random.Range(0, demons.Count);
+                    int random = demons[r];
+                    //Debug.Log("r: " + r + ", random: " + random);
+
+                    BuffSingleMinionBoard(minionSlots[random], 4, 4, "Demon", player2);
+                }
+                if (dragons.Count > 0)
+                {
+                    int r = Random.Range(0, dragons.Count);
+                    int random = dragons[r];
+                    //Debug.Log("r: " + r + ", random: " + random);
+
+                    BuffSingleMinionBoard(minionSlots[random], 4, 4, "Dragon", player2);
+                }
+            }
+            else
+            {
+                if (beasts.Count > 0)
+                {
+                    int r = Random.Range(0, beasts.Count);
+                    int random = beasts[r];
+                    //Debug.Log("r: " + r + ", random: " + random);
+
+                    BuffSingleMinionBoard(minionSlots[random], 2, 2, "Beast", player2);
+                }
+                if (mechs.Count > 0)
+                {
+                    int r = Random.Range(0, mechs.Count);
+                    int random = mechs[r];
+                    //Debug.Log("r: " + r + ", random: " + random);
+
+                    BuffSingleMinionBoard(minionSlots[random], 2, 2, "Mech", player2);
+                }
+                if (murlocs.Count > 0)
+                {
+                    int r = Random.Range(0, murlocs.Count);
+                    int random = murlocs[r];
+                    //Debug.Log("r: " + r + ", random: " + random);
+
+                    BuffSingleMinionBoard(minionSlots[random], 2, 2, "Murloc", player2);
+                }
+                if (demons.Count > 0)
+                {
+                    int r = Random.Range(0, demons.Count);
+                    int random = demons[r];
+                    //Debug.Log("r: " + r + ", random: " + random);
+
+                    BuffSingleMinionBoard(minionSlots[random], 2, 2, "Demon", player2);
+                }
+                if (dragons.Count > 0)
+                {
+                    int r = Random.Range(0, dragons.Count);
+                    int random = dragons[r];
+                    //Debug.Log("r: " + r + ", random: " + random);
+
+                    BuffSingleMinionBoard(minionSlots[random], 2, 2, "Dragon", player2);
+                }
             }
         }
 
-        temp.Clear();
+
+        micromummy.Clear();
+        cobalt.Clear();
+        beasts.Clear();
+        mechs.Clear();
+        demons.Clear();
+        murlocs.Clear();
+
+        
 
         fight.ShowFightBefore(0);
         Fight(player1, player2);
@@ -897,8 +1144,24 @@ public class GameController : MonoBehaviour
                 iter = i;
         }
         Player.Board board = new Player.Board(minionInstance, iter);
+
+        /*
+        //restore player board
+        Debug.Log("Refreshing player board list...");
+        player.GetPlayerBoard().Clear();
+        Debug.Log("Cleared! Player board list count = " + player.GetPlayerHand().Count);
+        for (int i = 0; i < minionSlots.Length; i++)
+        {
+            if (minionSlots[i].GetComponent<Minion>().blank == false)
+            {
+                Player.Board newMinion = new Player.Board(minionSlots[i].GetComponent<Minion>().GetMinion(), i);
+                player.GetPlayerBoard().Add(newMinion);
+            }
+        }
+        Debug.Log("Refreshed! Player board list count = " + player.GetPlayerHand().Count);
+        */
         player.GetPlayerBoard().Add(board);
-        minionSlot.GetComponent<Minion>().InitializeMinion(minionInstance, handSlot.GetComponent<Minion>().GetMinion());
+        minionSlot.GetComponent<Minion>().InitializeMinion(minionInstance, handSlot.GetComponent<Minion>().GetMinion().Golden);
 
         //remove minion from hand -> probably golden parameter
         //player.GetPlayerHand().RemoveAt(handSlot.GetComponent<HandMinion>().placedSlot);
@@ -1245,6 +1508,8 @@ public class GameController : MonoBehaviour
             else if (locationIterator.Count == 1)
             {
                 minionSlots[locationIterator[0]].GetComponent<Minion>().GetMinion().Poison = true;
+                minionSlots[locationIterator[0]].GetComponent<Minion>().InitializeMinion(minionSlots[locationIterator[0]].GetComponent<Minion>().GetMinion(),
+                    minionSlots[locationIterator[0]].GetComponent<Minion>().GetMinion().Golden);
             }
             else
             {
@@ -1252,7 +1517,9 @@ public class GameController : MonoBehaviour
                 int minionNumber = locationIterator[n];
                 Debug.Log("n: " + n + "minionNumber = " + minionNumber);
 
-                minionSlots[locationIterator[0]].GetComponent<Minion>().GetMinion().Poison = true;
+                minionSlots[locationIterator[minionNumber]].GetComponent<Minion>().GetMinion().Poison = true;
+                minionSlots[locationIterator[minionNumber]].GetComponent<Minion>().InitializeMinion(minionSlots[locationIterator[minionNumber]].GetComponent<Minion>().GetMinion(),
+                    minionSlots[locationIterator[minionNumber]].GetComponent<Minion>().GetMinion().Golden);
             }
             locationIterator.Clear();
         }
@@ -1306,6 +1573,8 @@ public class GameController : MonoBehaviour
                 minionSlot.GetComponent<Minion>().GetMinion().Hp = h + 1;
             else
                 minionSlot.GetComponent<Minion>().GetMinion().Hp = 2*h + 1;
+
+            minionSlot.GetComponent<Minion>().InitializeMinion(minionSlot.GetComponent<Minion>().GetMinion(), minionSlot.GetComponent<Minion>().GetMinion().Golden);
 
         }
         //King Bagurgle
@@ -1405,7 +1674,7 @@ public class GameController : MonoBehaviour
                     else
                         BuffSingleMinionBoard(minionSlot, 4, 0, "Beast", player);
                 }
-                else if (player.GetPlayerBoard()[i].GetMinion().Name == "Mama Bear")
+                else if (player.GetPlayerBoard()[i].GetMinion().Name == "Mama Bear" && handSlot.GetComponent<HandMinion>().placedSlot != i)
                 {
                     if (player.GetPlayerBoard()[i].GetMinion().Golden == false)
                         BuffSingleMinionBoard(minionSlot, 4, 4, "Beast", player);
@@ -2730,9 +2999,11 @@ public class GameController : MonoBehaviour
         XmlNodeList minionsList = minionDataXML.SelectNodes("/minions/minion");
         for (int i = 0; i < minionNumber; i++)
         {
-            if(minionsList[i]["skill"].InnerText.Substring(0, 11) == "Deathrattle")
+            //if(minionsList[i]["skill"].InnerText.Substring(0, 11) == "Deathrattle")
+            if (minionsList[i]["skill"].InnerText.Contains("Deathrattle"))
             {
                 dh_names.Add(minionsList[i].Attributes["name"].Value);
+                Debug.Log(minionsList[i].Attributes["name"].Value);
             }
         }
         //update the list using the existing pool

@@ -291,7 +291,6 @@
     <skill>Deathrattle: Summon a 8/8 Robosaur.</skill>
     <goldenSkill>Deathrattle: Summon a 16/16 Golden Robosaur.</goldenSkill>
   </minion>
-  <!-- od tego momentu trzeba posprawdzac jednostki ponizej, czy wszystko bangla pogchamp-->
   <minion name = "Savannah Highmane" tavernTier = "4">
     <attack>6</attack>
     <hp>5</hp>
@@ -430,11 +429,11 @@
     <tribe>Demon</tribe>
     <ds>false</ds>
     <poison>false</poison>
-    <taunt>false</taunt>
+    <taunt>true</taunt>
     <skill>Deathrattle: Summon three 1/3 Demons with Taunt.</skill>
     <goldenSkill>Deathrattle: Summon three 2/6 Golden Demons with Taunt.</goldenSkill>
   </minion>
-  <minion name = "Goldrinn, the Great Wolf" tavernTier = "6">
+  <minion name = "Goldrinn, the Great Wolf" tavernTier = "6"> <!--NIE DIZALA-->
     <attack>4</attack>
     <hp>4</hp>
     <tribe>Beast</tribe>
