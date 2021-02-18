@@ -114,6 +114,9 @@ public class GameController : MonoBehaviour
     public int winP1;
     public int winP2;
 
+    public Text hpAI;
+    public Text hpPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -164,6 +167,9 @@ public class GameController : MonoBehaviour
         winP1 = 0;
         winP2 = 0;
         SaveHashtagsToFile();
+
+        UpdateHPOnScene();
+
     }
 
     // Update is called once per frame
@@ -1216,6 +1222,8 @@ public class GameController : MonoBehaviour
 
         RestoreHandsBoards();
 
+        UpdateHPOnScene();
+
         ChangeCanvasObjects("Player");
         ShowMinionsInTavern(player1, shopSlots, 0);
     }
@@ -1387,6 +1395,7 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("BATTLECRY ROCKPOOL HUNTER");
             player.AddHealth(-2);
+            UpdateHPOnScene();
         }
         //Metaltooth Leaper
         else if(handSlot.GetComponent<Minion>().minionName.text == "Metaltooth Leaper" && handSlot.GetComponent<Minion>().blank == false)
@@ -1750,6 +1759,7 @@ public class GameController : MonoBehaviour
 
                     player.AddHealth(-1);
                     //hp on scene? update?
+                    UpdateHPOnScene();
                 }
             }
         }
@@ -2975,6 +2985,12 @@ public class GameController : MonoBehaviour
             }
         }
         //Debug.Log("Refreshed! Player board list count = " + player.GetPlayerHand().Count);
+    }
+
+    public void UpdateHPOnScene()
+    {
+        hpAI.text = player2.GetHealth().ToString();
+        hpPlayer.text = player1.GetHealth().ToString();
     }
 
     //BATTLECRIES:

@@ -14,8 +14,9 @@ public class Minion : MonoBehaviour
     public Text minionName;
     public Text tavernTier;
     public GameObject poison;
-    public Color ds;
+    public Color goldenColor;
     public GameObject taunt;
+    public GameObject ds;
     public Text skill;
     public Text goldenSkill;
 
@@ -64,8 +65,8 @@ public class Minion : MonoBehaviour
         goldenSkill.text = minion.GoldenSkill;
 
         if (minion.DivineShield == true)
-            this.gameObject.GetComponent<Image>().color = ds;
-        else this.gameObject.GetComponent<Image>().color = Color.white;
+            ds.SetActive(true);
+        else ds.SetActive(false);
 
         if (minion.Poison == true)
             poison.SetActive(true);
@@ -77,6 +78,7 @@ public class Minion : MonoBehaviour
 
         blank = false;
         golden = false;
+        this.gameObject.GetComponent<Image>().color = Color.white;
         skill.gameObject.SetActive(true);
         goldenSkill.gameObject.SetActive(false);
     }
@@ -108,8 +110,9 @@ public class Minion : MonoBehaviour
         goldenSkill.text = minion.GoldenSkill;
 
         if (minion.DivineShield == true)
-            this.gameObject.GetComponent<Image>().color = ds;
-        else this.gameObject.GetComponent<Image>().color = Color.white;
+            ds.SetActive(true);
+        else 
+            ds.SetActive(false);
 
         if (minion.Poison == true)
             poison.SetActive(true);
@@ -121,7 +124,12 @@ public class Minion : MonoBehaviour
 
         blank = false;
         golden = newGolden;
-        
+
+        if(newGolden == true)
+            this.gameObject.GetComponent<Image>().color = goldenColor;
+        else
+            this.gameObject.GetComponent<Image>().color = Color.white;
+
     }
 
     public void InitializeBlank()
