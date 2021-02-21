@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class AI : MonoBehaviour
@@ -280,6 +281,20 @@ public class AI : MonoBehaviour
             gc.EndTurnAI(minionSlots);
             Debug.Log("No gold left!");
         }
+        /*
+        if(Input.GetKey(KeyCode.P))
+        {
+            QState q = new QState();
+            q = GetActualQState();
+            string s = GetActualQStateStr(q);
+            Debug.Log("QSTATE ACT lastR: " + q.lastFightResult + ", CONVERTED lastR: " + GetQStateFromStr(s).lastFightResult +
+                "QSTATE ACT gmC: " + q.goldenMinionCounter + ", CONVERTED gmC: " + GetQStateFromStr(s).goldenMinionCounter +
+                    "QSTATE ACT BS: " + q.boardCounter + ", CONVERTED bs: " + GetQStateFromStr(s).boardStats +
+                        "QSTATE ACT gold: " + q.gold + ", CONVERTED gold: " + GetQStateFromStr(s).gold +
+                            "QSTATE ACT HC: " + q.handCounter + ", CONVERTED HC: " + GetQStateFromStr(s).handCounter +
+                                "QSTATE ACT BC: " + q.boardCounter + ", CONVERTED bc: " + GetQStateFromStr(s).boardCounter +
+                                    "QSTATE ACT TT: " + q.tavernTier + ", CONVERTED TT: " + GetQStateFromStr(s).tavernTier);
+        }*/
     }
 
     public GameObject[] GetShopSlots()
@@ -394,6 +409,7 @@ public class AI : MonoBehaviour
         else
             Debug.Log("MaxTavernTier error!");
 
+        //cos jest pojebanego tutaj chyba
         if(gc.discoverPanel.activeSelf == false)
         {
             //buy
@@ -594,7 +610,7 @@ public class AI : MonoBehaviour
         return s;
     }
 
-    //do sprawdzenia
+
     public QState GetQStateFromStr(string str)
     {
         QState q = new QState();
@@ -604,32 +620,32 @@ public class AI : MonoBehaviour
         string lr = str.Substring(lr0, lr1 - lr0);
         int lr_i = int.Parse(lr);
 
-        int gc0 = lr1;
+        int gc0 = lr1 + 2;
         int gc1 = str.IndexOf("BS");
         string gc = str.Substring(gc0, gc1 - gc0);
         int gc_i = int.Parse(gc);
 
-        int bs0 = gc1;
+        int bs0 = gc1 + 2;
         int bs1 = str.IndexOf("GO");
         string bs = str.Substring(bs0, bs1 - bs0);
         int bs_i = int.Parse(bs);
 
-        int go0 = bs1;
+        int go0 = bs1 + 2;
         int go1 = str.IndexOf("HC");
         string go = str.Substring(go0, go1 - go0);
         int go_i = int.Parse(go);
 
-        int hc0 = go1;
+        int hc0 = go1 + 2;
         int hc1 = str.IndexOf("BC");
         string hc = str.Substring(hc0, hc1 - hc0);
         int hc_i = int.Parse(hc);
 
-        int bc0 = hc1;
+        int bc0 = hc1 + 2;
         int bc1 = str.IndexOf("TT");
         string bc = str.Substring(bc0, bc1 - bc0);
         int bc_i = int.Parse(bc);
 
-        int tt0 = bc1;
+        int tt0 = bc1 + 2;
         int tt1 = str.Length;
         string tt = str.Substring(tt0, tt1 - tt0);
         int tt_i = int.Parse(tt);
@@ -907,5 +923,34 @@ public class AI : MonoBehaviour
             GeneratePossibleActionsList();
             UseRandomGameMechanic();
         }
+    }
+
+    public void SaveQTable()
+    {
+        //1 element: QState stan (lastFightResult, goldenMinionCounter, boardStats, gold, handCounter, boardCounter, tavernTier),
+        //           lista QValues[] -> QValue to: Action action i float Value,
+        //           string QStateStr.
+
+        string path = "Assets/Resources/q.txt";
+
+        //Write some text to the test.txt file
+        StreamWriter writer = new StreamWriter(path, false);
+
+        for(int i = 0; i < qTable.Count; i++)
+        {
+            writer.WriteLine(qTable[i].GetStateStr());
+            for(int j = 0; j < qTable[i].GetValues().Length; j++)
+            {
+                writer.WriteLine(qTable[i].GetValues()[j].GetAction().GetActionName() + "," + qTable[i].GetValues()[j].GetAction().GetPosMinionA() + "," + 
+                    qTable[i].GetValues()[j].GetAction().GetPosMinionB() + "," + qTable[i].GetValues()[j].GetValue());
+            }
+        }
+
+        writer.Close();
+    }
+
+    public void LoadQTable()
+    {
+
     }
 }

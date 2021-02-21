@@ -2919,6 +2919,7 @@ public class GameController : MonoBehaviour
             player2.Initialize();
 
             SaveWinNumberToFile();
+            player2.GetComponent<AI>().SaveQTable();
 
             winP1 = 0;
             winP2 = 0;
