@@ -38,6 +38,7 @@ using UnityEngine.UI;
 //                        -> po zagraniu zlotej jednostki summonuje sie jej kopia -> do naprawy, test kiedy to sie wydarza
 //                      - EndTurn wystepuje 2x, przez co buff at end of turn aktywuje sie dwukrotnie
 //                      - miniony w walce moga miec nawet ujemne hp, nie odnawiaja sie statsy z jakiegos losowego powodu sadge !!! -> walka aktualizuje stan jednostek(?)
+//                      - zakomentowane golden miniony, bo sie cyrki dzieja -> ta mechanika prawdopodobnie powoduje klopoty z mieszaniem list i ujemnymi statsami
 
 public class GameController : MonoBehaviour
 {
@@ -117,6 +118,9 @@ public class GameController : MonoBehaviour
     public Text hpAI;
     public Text hpPlayer;
 
+    public List<MinionData> minionsP1;
+    public List<MinionData> minionsP2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -170,6 +174,8 @@ public class GameController : MonoBehaviour
 
         UpdateHPOnScene();
 
+        minionsP1 = new List<MinionData>();
+        minionsP2 = new List<MinionData>();
     }
 
     // Update is called once per frame
@@ -193,7 +199,8 @@ public class GameController : MonoBehaviour
             */
             EndTurnAI(minionSlotsAI);
         }
-        
+        Debug.Log("P1 board counter: " + player1.GetPlayerBoard().Count);
+        Debug.Log("P2 board counter: " + player2.GetPlayerBoard().Count);
     }
 
     public void SaveWinNumberToFile()
@@ -214,6 +221,49 @@ public class GameController : MonoBehaviour
         //Write some text to the test.txt file
         StreamWriter writer = new StreamWriter(path, true);
         writer.WriteLine("########################");
+        writer.Close();
+    }
+
+    public void SavePlayerMinionsToFile()
+    {
+        string path = "Assets/Resources/m.txt";
+
+        //Write some text to the test.txt file
+        StreamWriter writer = new StreamWriter(path, true);
+        writer.WriteLine("-----------------------");
+        writer.WriteLine("P1: ");
+        for(int i = 0; i < player1.GetPlayerBoard().Count; i++)
+        {
+            writer.WriteLine(player1.GetPlayerBoard()[i].GetMinion().Name + player1.GetPlayerBoard()[i].GetMinion().Attack + 
+                player1.GetPlayerBoard()[i].GetMinion().Hp);
+        }
+        writer.WriteLine("P2: ");
+        for (int i = 0; i < player2.GetPlayerBoard().Count; i++)
+        {
+            writer.WriteLine(player2.GetPlayerBoard()[i].GetMinion().Name + player2.GetPlayerBoard()[i].GetMinion().Attack +
+                player2.GetPlayerBoard()[i].GetMinion().Hp);
+        }
+        writer.Close();
+    }
+    public void SavePlayerCopiedMinionsToFile()
+    {
+        string path = "Assets/Resources/mc.txt";
+
+        //Write some text to the test.txt file
+        StreamWriter writer = new StreamWriter(path, true);
+        writer.WriteLine("-----------------------");
+        writer.WriteLine("P1: ");
+        for (int i = 0; i < player1.GetPlayerCopiedBoard().Count; i++)
+        {
+            writer.WriteLine(player1.GetPlayerCopiedBoard()[i].GetMinion().Name + player1.GetPlayerCopiedBoard()[i].GetMinion().Attack +
+                player1.GetPlayerCopiedBoard()[i].GetMinion().Hp);
+        }
+        writer.WriteLine("P2: ");
+        for (int i = 0; i < player2.GetPlayerCopiedBoard().Count; i++)
+        {
+            writer.WriteLine(player2.GetPlayerCopiedBoard()[i].GetMinion().Name + player2.GetPlayerCopiedBoard()[i].GetMinion().Attack +
+                player2.GetPlayerCopiedBoard()[i].GetMinion().Hp);
+        }
         writer.Close();
     }
 
@@ -293,7 +343,8 @@ public class GameController : MonoBehaviour
         {
             if (copiedPool[i].GetTavernTier() <= player.GetPlayerTavernTier())
             {
-                newCopied.Add(copiedPool[i]);
+                Pool p = new Pool(copiedPool[i].GetName(), copiedPool[i].GetTavernTier());
+                newCopied.Add(p);
             }
         }
 
@@ -307,7 +358,7 @@ public class GameController : MonoBehaviour
             //slots[i].GetComponent<Minion>().SetActiveAllChildren(slots[i].transform, true);
             slots[i].GetComponent<Minion>().InitializeMinion(randomMinionNode);
             newCopied.RemoveAt(n);
-
+            /*
             //checking for possible triple to make golden minion
             int temp = 0;
 
@@ -333,9 +384,9 @@ public class GameController : MonoBehaviour
             else
             {
                 slots[i].GetComponent<ShopMinion>().triple = false;
-            }
+            }*/
         }
-
+            
         //blanks
         if(numberOfMinionsInTavern < slots.Length)
         {
@@ -349,13 +400,14 @@ public class GameController : MonoBehaviour
         copiedPool.Clear();
         for(int i = 0; i < pool.Count; i++)
         {
-            copiedPool.Add(pool[i]);
+            Pool p = new Pool(pool[i].GetName(), pool[i].GetTavernTier());
+            copiedPool.Add(p);
         }
     }
 
     public void BuyMinion(Player player, GameObject minion, GameObject[] handSlots, GameObject[] minionSlots)
     {
-        if (player.GetPlayerGold() >= 3) //&& freeSpaceInHand == true)
+        if (player.GetPlayerGold() >= 3 && minion.GetComponent<Minion>().blank == false) //&& freeSpaceInHand == true)
         {
             MinionData minionInstance = minion.GetComponent<Minion>().GetMinion();
             minionInstance.Initialize(minionInstance);
@@ -383,6 +435,7 @@ public class GameController : MonoBehaviour
                     continue;
                 }
             }
+            /*
             //restore player hand
             Debug.Log("Refreshing player hand list...");
             player.GetPlayerHand().Clear();
@@ -410,7 +463,7 @@ public class GameController : MonoBehaviour
                 }
             }
             Debug.Log("Refreshed! Player board list count = " + player.GetPlayerHand().Count);
-
+            
             Debug.Log("PRZED CHECKIEM TRIPLA");
             //check if triple
             List<int> tempHandPos = new List<int>();
@@ -432,7 +485,7 @@ public class GameController : MonoBehaviour
             {
                 Debug.Log("hand " + i + " name: " + player.GetPlayerHand()[i].Name);
             }
-            */
+            
             for (int i = 0; i < player.GetPlayerBoard().Count; i++)
             {
                 if (player.GetPlayerBoard()[i].GetMinion().Name == minionInstance.Name && player.GetPlayerBoard()[i].GetMinion().Golden == false)
@@ -455,7 +508,7 @@ public class GameController : MonoBehaviour
                 List<int> tokenPos = new List<int>();
                 GoldenMinion(player, newHandPos, tempHandPos, tempBoardPos, minion, "simple", "", tokenPos, minionSlots, handSlots);
                 
-            }
+            }*/
 
             minion.GetComponent<Minion>().InitializeBlank();
             player.AddPlayerGold(-3);
@@ -474,10 +527,12 @@ public class GameController : MonoBehaviour
 
             
         }
-        else if (player.GetPlayerGold() >= 3) //&& freeSpaceInHand == false)
-            Debug.Log("No space in hand!");
-        else 
+        else if (player.GetPlayerGold() >= 3 && minion.GetComponent<Minion>().blank == true) //&& freeSpaceInHand == false)
+            Debug.Log("Cannot buy blank!");
+        else if (player.GetPlayerGold() < 3 && minion.GetComponent<Minion>().blank == true)
             Debug.Log("Not enough gold!");
+        else if (player.GetPlayerGold() < 3 && minion.GetComponent<Minion>().blank == false)
+            Debug.Log("Not enough gold and cannot buy blank!");
     }
 
     //function for buy button on a scene(for a player)
@@ -504,7 +559,27 @@ public class GameController : MonoBehaviour
         MinionData minionInstance = minion.GetComponent<Minion>().GetMinion();
         //minionInstance.Initialize(minionNode, false);
         Debug.Log("przed sellnieciem count = " + player.GetPlayerBoard().Count);
+        //Debug.Log(minionInstance.Name + minionInstance.Attack + minionInstance.Hp + minionInstance.Golden);
+
+        int temp = 99;
+        for(int i = 0; i < player.GetPlayerBoard().Count; i++)
+        {
+            //Debug.Log(player.GetPlayerBoard()[i].GetMinion().Name + player.GetPlayerBoard()[i].GetMinion().Attack +
+                //player.GetPlayerBoard()[i].GetMinion().Hp + player.GetPlayerBoard()[i].GetMinion().Golden);
+
+            if (player.GetPlayerBoard()[i].GetMinion().Name == minionInstance.Name && player.GetPlayerBoard()[i].GetMinion().Attack == minionInstance.Attack &&
+                player.GetPlayerBoard()[i].GetMinion().Hp == minionInstance.Hp && player.GetPlayerBoard()[i].GetMinion().Golden == minionInstance.Golden)
+            {
+                temp = i;
+                break;
+            }   
+        }
         //remove from the player board
+        if (temp != 99)
+            player.RemoveMinionFromBoard(temp);
+        else
+            Debug.Log("Cannot find this unit!");
+        /*
         for(int i = 0; i < player.GetPlayerBoard().Count; i++)
         {
             if(player.GetPlayerBoard()[i].GetMinion().Name == minionInstance.Name && player.GetPlayerBoard()[i].GetMinion().Attack == minionInstance.Attack &&
@@ -513,7 +588,7 @@ public class GameController : MonoBehaviour
                 player.GetPlayerBoard().RemoveAt(i);
                 break;
             }
-        }
+        }*/
         Debug.Log("po sellnieciem count = " + player.GetPlayerBoard().Count);
         //add gold, but check if player has no more than 10 gold
         if (player.GetPlayerGold() < 10)
@@ -538,7 +613,7 @@ public class GameController : MonoBehaviour
         //freeSpaceOnBoard = true;
         Debug.Log("Pool Size = " + pool.Count);
 
-        RestoreHandsBoards();
+        //RestoreHandsBoards();
     }
 
     public void SellMinionPlayer(Player player)
@@ -564,7 +639,7 @@ public class GameController : MonoBehaviour
         else
             Debug.Log("Not enough gold for reroll!");
 
-        RestoreHandsBoards();
+        //RestoreHandsBoards();
     }
 
     //function for a scene (player)
@@ -1155,7 +1230,9 @@ public class GameController : MonoBehaviour
         demons.Clear();
         murlocs.Clear();
 
-        
+        //restore hands and boards???
+        Debug.Log("Restoring hands and boards of both players...");
+        RestoreHandsBoards();
 
         fight.ShowFightBefore(0);
         Fight(player1, player2);
@@ -1220,7 +1297,7 @@ public class GameController : MonoBehaviour
         player1.turn = true;
         player2.turn = false;
 
-        RestoreHandsBoards();
+        //RestoreHandsBoards();
 
         UpdateHPOnScene();
 
@@ -1230,6 +1307,9 @@ public class GameController : MonoBehaviour
 
     public void PlayMinionOnBoard(Player player, GameObject handSlot, GameObject minionSlot, GameObject[] handSlots, GameObject[] minionSlots)
     {
+        if (player.GetPlayerBoard().Count >= 7)
+            return;
+
         //initialize minion on board
         //string minionName = handSlot.GetComponent<Minion>().minionName.text;
         //XmlNode minionNode = minionData.GetMinionByName(minionName, minionDataXML);
@@ -1242,7 +1322,7 @@ public class GameController : MonoBehaviour
             if (minionSlots[i] == minionSlot)
                 iter = i;
         }
-        Player.Board board = new Player.Board(minionInstance, iter);
+        //Player.Board board = new Player.Board(minionInstance, iter);
 
         /*
         //restore player board
@@ -1259,7 +1339,8 @@ public class GameController : MonoBehaviour
         }
         Debug.Log("Refreshed! Player board list count = " + player.GetPlayerHand().Count);
         */
-        player.GetPlayerBoard().Add(board);
+        player.AddMinionToBoard(minionInstance, iter);
+        //player.GetPlayerBoard().Add(board);
         minionSlot.GetComponent<Minion>().InitializeMinion(minionInstance, handSlot.GetComponent<Minion>().GetMinion().Golden);
 
         //remove minion from hand -> probably golden parameter
@@ -1282,7 +1363,7 @@ public class GameController : MonoBehaviour
                 SummonTokenBoard("Golden Tabbycat", 1, player, minionSlots);
             else
                 SummonTokenBoard("Tabbycat", 1, player, minionSlots);
-
+            /*
             //check for triple
             List<int> tabbyPos = new List<int>();
             //int tabbyCounter = 0;
@@ -1303,7 +1384,7 @@ public class GameController : MonoBehaviour
                 useless.GetComponent<ShopMinion>().gc = this.gameObject.GetComponent<GameController>();
                 GoldenMinion(player, newHandPos, temp, temp, useless, "token", "Golden Tabbycat", tabbyPos, minionSlots, handSlots);
                 
-            }
+            }*/
         }
         else if (handSlot.GetComponent<Minion>().minionName.text == "Murloc Tidehunter" && handSlot.GetComponent<Minion>().blank == false)
         {
@@ -1312,7 +1393,7 @@ public class GameController : MonoBehaviour
                 SummonTokenBoard("Murloc Scout", 1, player, minionSlots);
             else
                 SummonTokenBoard("Golden Murloc Scout", 1, player, minionSlots);
-
+            /*
             //check for triple
             List<int> scoutPos = new List<int>();
             //int tabbyCounter = 0;
@@ -1334,7 +1415,7 @@ public class GameController : MonoBehaviour
                 GoldenMinion(player, newHandPos, temp, temp, useless, "token", "Golden Murloc Scout", scoutPos, minionSlots, handSlots);
                 //GoldenMinion(player);
                 
-            }
+            }*/
 
             //murloc tidecaller buff after summoning murloc scout
             for (int i = 0; i < player.GetPlayerBoard().Count; i++)
@@ -1738,10 +1819,11 @@ public class GameController : MonoBehaviour
             {
                 if(player.GetPlayerBoard()[i].GetMinion().Name == "Murloc Tidecaller" && handSlot.GetComponent<HandMinion>().placedSlot != i)  //jakos trzeba odciac ostatnio zagrana jednostke, zeby sam sie nei buffowal
                 {
+                    int t = player.GetPlayerBoard()[i].GetPos();
                     if (player.GetPlayerBoard()[i].GetMinion().Golden == false)
-                        BuffSingleMinionBoard(minionSlots[player.GetPlayerBoard()[i].GetPos()], 1, 0, "Murloc", player);
+                        BuffSingleMinionBoard(minionSlots[t], 1, 0, "Murloc", player);
                     else
-                        BuffSingleMinionBoard(minionSlots[player.GetPlayerBoard()[i].GetPos()], 2, 0, "Murloc", player);
+                        BuffSingleMinionBoard(minionSlots[t], 2, 0, "Murloc", player);
                 }
             }
         }
@@ -1752,10 +1834,11 @@ public class GameController : MonoBehaviour
             {
                 if (player.GetPlayerBoard()[i].GetMinion().Name == "Wrath Weaver")  //jakos trzeba odciac ostatnio zagrana jednostke, zeby sam sie nei buffowal
                 {
+                    int t = player.GetPlayerBoard()[i].GetPos();
                     if (player.GetPlayerBoard()[i].GetMinion().Golden == false)
-                        BuffSingleMinionBoard(minionSlots[player.GetPlayerBoard()[i].GetPos()], 2, 2, "All", player);
+                        BuffSingleMinionBoard(minionSlots[t], 2, 2, "All", player);
                     else
-                        BuffSingleMinionBoard(minionSlots[player.GetPlayerBoard()[i].GetPos()], 4, 4, "All", player);
+                        BuffSingleMinionBoard(minionSlots[t], 4, 4, "All", player);
 
                     player.AddHealth(-1);
                     //hp on scene? update?
@@ -1869,7 +1952,7 @@ public class GameController : MonoBehaviour
             }
         }
     }
-
+    /*
     public void RefreshMinionSlots(GameObject[] slots, Player player)
     {
         int temp = 0;
@@ -1884,7 +1967,7 @@ public class GameController : MonoBehaviour
             slots[i].GetComponent<Minion>().InitializeBlank();
         }
     }
-
+    */
     public void RefreshShopSlots(GameObject[] slots, Player player)
     {
         ShowMinionsInTavern(player, slots, 0);
@@ -2482,10 +2565,30 @@ public class GameController : MonoBehaviour
 
     public void Fight(Player player1, Player player2)
     {
+        //save minions
+        //minionsP1.Clear();
+        //minionsP2.Clear();
+        /*
+        for (int i = 0; i < minionSlots.Length; i++)
+        {
+            if (minionSlots[i].GetComponent<Minion>().blank == false)
+            {
+                minionsP1.Add(minionSlots[i].GetComponent<Minion>().GetMinion());
+                Debug.Log(minionSlots[i].GetComponent<Minion>().GetMinion().Name + minionSlots[i].GetComponent<Minion>().GetMinion().Attack 
+                    + minionSlots[i].GetComponent<Minion>().GetMinion().Hp);
+            }
+        }
+        for (int i = 0; i < minionSlotsAI.Length; i++)
+        {
+            if (minionSlotsAI[i].GetComponent<Minion>().blank == false)
+                minionsP2.Add(minionSlotsAI[i].GetComponent<Minion>().GetMinion());
+        }
+        */
+        SavePlayerMinionsToFile();
         List<int> taunts1 = new List<int>();
         List<int> taunts2 = new List<int>();
 
-        //update copiedBoard
+        /*//update copiedBoard
         player1.GetPlayerCopiedBoard().Clear();
         for (int i = 0; i < minionSlots.Length; i++)
         {
@@ -2505,10 +2608,34 @@ public class GameController : MonoBehaviour
                 Player.Board b = new Player.Board(minionSlotsAI[i].GetComponent<Minion>().GetMinion(), i);
                 player2.GetPlayerCopiedBoard().Add(b);
             }
+        }*/
+        //update copiedBoard
+        player1.GetPlayerCopiedBoard().Clear();
+        for (int i = 0; i < player1.GetPlayerBoard().Count; i++)
+        {
+            MinionData m = new MinionData();
+            m.Initialize(player1.GetPlayerBoard()[i].GetMinion());
+            //Player.Board b = new Player.Board(player1.GetPlayerBoard()[i].GetMinion(), i);
+            Player.Board b = new Player.Board(m, i);
+            player1.GetPlayerCopiedBoard().Add(b);
+            //player1.GetPlayerCopiedBoard().Add(player1.GetPlayerBoard()[i]);
+
+        }
+        player2.GetPlayerCopiedBoard().Clear();
+        for (int i = 0; i < player2.GetPlayerBoard().Count; i++)
+        {
+            //player2.GetPlayerCopiedBoard().Add(player2.GetPlayerBoard()[i]);
+            //Player.Board b = new Player.Board(player2.GetPlayerBoard()[i].GetMinion(), i);
+            //player2.GetPlayerCopiedBoard().Add(b);
+
+            MinionData m = new MinionData();
+            m.Initialize(player2.GetPlayerBoard()[i].GetMinion());
+            Player.Board b = new Player.Board(m, i);
+            player2.GetPlayerCopiedBoard().Add(b);
         }
         Debug.Log("P1: " + player1.GetPlayerCopiedBoard().Count);
         Debug.Log("P2: " + player2.GetPlayerCopiedBoard().Count);
-
+        SavePlayerCopiedMinionsToFile();
         //List<Player.Board> player1Board = player1.GetPlayerBoard();
         //List<Player.Board> player2Board = player2.GetPlayerBoard();
         int firstAttack = 0;    // 1->player1 starts, 2->player2 starts
@@ -2638,6 +2765,27 @@ public class GameController : MonoBehaviour
                 firstAttack = 1; 
             }
         }
+        /*
+        //restore minions
+        int t = 0;
+        for(int i = 0; i < minionsP1.Count; i++)
+        {
+            minionSlots[i].GetComponent<Minion>().InitializeMinion(minionsP1[i], minionsP1[i].Golden);
+            t = i;
+        }
+        for(int i = t; i < minionSlots.Length; i++)
+        {
+            minionSlots[i].GetComponent<Minion>().InitializeBlank();
+        }
+        for (int i = 0; i < minionsP2.Count; i++)
+        {
+            minionSlotsAI[i].GetComponent<Minion>().InitializeMinion(minionsP2[i], minionsP2[i].Golden);
+            t = i;
+        }
+        for (int i = t; i < minionSlotsAI.Length; i++)
+        {
+            minionSlotsAI[i].GetComponent<Minion>().InitializeBlank();
+        }*/
     }
 
     public void CalculateDamage(Player playerWon, Player playerLost)
@@ -2664,6 +2812,7 @@ public class GameController : MonoBehaviour
 
     //option => simple
     //       => token
+    /*
     public void GoldenMinion(Player player, int newHandPos, List<int> tempHandPos, List<int> tempBoardPos, GameObject shopMinion, 
         string option, string tokenName, List<int>tokenPos, GameObject[] minionSlots, GameObject[] handSlots)
     {
@@ -2837,7 +2986,7 @@ public class GameController : MonoBehaviour
         }
         player.lastGoldenMinionCounter = player.goldenMinionCounter;
         player.goldenMinionCounter++;
-    }
+    }*/
 
     public void ChooseDiscoveredMinion(Player player)
     {
@@ -2987,7 +3136,7 @@ public class GameController : MonoBehaviour
         }
         //Debug.Log("Refreshed! Player board list count = " + player.GetPlayerHand().Count);
     }
-
+    
     public void UpdateHPOnScene()
     {
         hpAI.text = player2.GetHealth().ToString();
@@ -3066,8 +3215,9 @@ public class GameController : MonoBehaviour
                     //    freeSpaceInHand = false;
                     //}
 
-                    Player.Board board = new Player.Board(minionInstance, i);
-                    player.GetPlayerBoard().Add(board);
+                    //Player.Board board = new Player.Board(minionInstance, i);
+                    player.AddMinionToBoard(minionInstance, i);
+                    //player.GetPlayerBoard().Add(board);
 
                     break;
                 }
@@ -3081,9 +3231,30 @@ public class GameController : MonoBehaviour
         if (selectedMinion.GetComponent<Minion>().tribe.text == tribe || tribe == "All")
         {
             MinionData minionInstance = selectedMinion.GetComponent<Minion>().GetMinion();
+            int pos = 99;
+            int temp = 99;
+            for (int i = 0; i < player.GetPlayerBoard().Count; i++)
+            {
+                if (player.GetPlayerBoard()[i].GetMinion().Name == minionInstance.Name &&
+                    player.GetPlayerBoard()[i].GetMinion().Attack == minionInstance.Attack &&
+                     player.GetPlayerBoard()[i].GetMinion().Hp == minionInstance.Hp &&
+                      player.GetPlayerBoard()[i].GetMinion().Golden == minionInstance.Golden)
+                {
+                    pos = player.GetPlayerBoard()[i].GetPos();
+                    temp = i;
+                }
+            }
+
+            if(temp != 99)
+                player.RemoveMinionFromBoard(temp);
+            else 
+                Debug.Log("Cannot find this unit!");
+
             minionInstance.Attack += attack;
             minionInstance.Hp += health;
             selectedMinion.GetComponent<Minion>().InitializeMinion(minionInstance, minionInstance.Golden);
+            player.AddMinionToBoard(minionInstance, pos);
+            /*
             for (int i = 0; i < player.GetPlayerBoard().Count; i++)
             {
                 if(player.GetPlayerBoard()[i].GetMinion().Name == minionInstance.Name && 
@@ -3093,12 +3264,14 @@ public class GameController : MonoBehaviour
                     int pos = player.GetPlayerBoard()[i].GetPos();
                     player.GetPlayerBoard().RemoveAt(i);
                     Player.Board newBoard = new Player.Board(minionInstance, pos);
-                    player.GetPlayerBoard().Add(newBoard);
+                    //player.GetPlayerBoard().Add(newBoard);
+                    //player.GetPlayerBoard()[i] = newBoard;
+                    player.AddMinionToBoard(minionInstance, pos);
 
-                    Debug.Log("Player board database has been updated!");
+                    Debug.Log("Buffed " + minionInstance.Name + " on board!");
                     break;
                 }
-            }
+            }*/
         }
         else
             Debug.Log("Choose correct minion!");

@@ -184,4 +184,45 @@ public class Player : MonoBehaviour
     {
         health += newHealth;
     }
+
+    //funkcja dodajaca do listy, trzeba uzywac tylko tej funkcji!!!
+    public void AddMinionToBoard(MinionData minion, int pos)
+    {
+        if (board.Count < 7)
+        {
+            Board b = new Board(minion, pos);
+            board.Add(b);
+            Debug.Log(minion.Name + " has been added to player board list.");
+
+        }
+        else
+            Debug.Log("Not enough space on board!");
+    }
+
+    public void RemoveMinionFromBoard(int pos)
+    {
+        bool sold = false;
+        /*
+        for (int i = 0; i < board.Count; i++)
+        {
+            if(board[i].GetMinion().Name == minion.Name && board[i].GetMinion().Attack == minion.Attack &&
+                board[i].GetMinion().Hp == minion.Hp && board[i].GetMinion().Poison == minion.Poison &&
+                    board[i].GetMinion().DivineShield == minion.DivineShield && board[i].GetMinion().Taunt == minion.Taunt &&
+                        board[i].GetMinion().Golden == minion.Golden)
+            {
+                board.RemoveAt(i);
+                sold = true;
+                break;
+            }
+        }*/
+        int boardC1 = board.Count;
+        //Board b = new Board(minion, pos);
+        board.RemoveAt(pos);
+        int boardC2 = board.Count;
+        if (boardC2 < boardC1)
+            sold = true;
+
+        if (sold == false)
+            Debug.Log("Cannot find proper minion to sell!");
+    }
 }

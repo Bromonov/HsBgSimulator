@@ -145,9 +145,21 @@ public class Minion : MonoBehaviour
         this.gameObject.GetComponent<Image>().color = Color.white;
         */
         //minionName.text = "BLANK";
+        att.text = "";
+        hp.text = "";
+        tribe.text = "";
+        minionName.text = "";
+        tavernTier.text = "";
+        poison.SetActive(false);
+        taunt.SetActive(false);
+        ds.SetActive(false);
+        skill.text = "";
+        goldenSkill.text = "";
+
         SetActiveAllChildren(this.gameObject.transform, false);
         blank = true;
         golden = false;
+        this.gameObject.GetComponent<Image>().color = Color.white;
         /*
         if(this.gameObject.GetComponent<BoardMinion>() != null)
         {
@@ -156,6 +168,7 @@ public class Minion : MonoBehaviour
         else
             Debug.Log("Blanking " + this.gameObject.name);
         */
+
     }
 
     public void SetActiveAllChildren(Transform transform, bool value)

@@ -105,7 +105,7 @@ MonoBehaviour:
   minionName: {fileID: 736369536530291270}
   tavernTier: {fileID: 736369537816864315}
   poison: {fileID: 736369536231712289}
-  goldenColor: {r: 1, g: 0.981875, b: 0, a: 0}
+  goldenColor: {r: 1, g: 0.981875, b: 0, a: 1}
   taunt: {fileID: 736369536988168594}
   ds: {fileID: 1517720612769121126}
   skill: {fileID: 2862472025406949586}

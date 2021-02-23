@@ -262,7 +262,7 @@ public class AI : MonoBehaviour
     void Update()
     {
         //if(Input.GetKeyDown(KeyCode.C) && player.turn == true)
-        if(player.turn == true && player.GetPlayerGold() > 0)
+        if(player.turn == true)// && player.GetPlayerGold() > 0)
         {
             //GeneratePossibleActionsList();
             //Debug.Log("Possible actions number = " + possibleActions.Count);
@@ -275,13 +275,13 @@ public class AI : MonoBehaviour
             else
                 return;
             timer = 0.0f;
-        }
+        }/*
         else if (player.turn == true && player.GetPlayerGold() == 0)
         {
             gc.EndTurnAI(minionSlots);
             Debug.Log("No gold left!");
         }
-        /*
+        }
         if(Input.GetKey(KeyCode.P))
         {
             QState q = new QState();
@@ -365,8 +365,8 @@ public class AI : MonoBehaviour
         Action upgrade = new Action("upgrade", null, 99, null, 99);
         allActions.Add(upgrade);
         //end turn -> chyba nie powinno byc w akcjach, zeby nie konczyl randomowo, chociaz moze?
-        //Action endTurn = new Action("end", 99, 99);
-        //allActions.Add(endTurn);
+        Action endTurn = new Action("end", null, 99, null, 99);
+        allActions.Add(endTurn);
         //pick minion from discover list -> only possible when made golden
         for(int i = 0; i < GetDiscoverSlots().Length; i++)
         {
@@ -457,8 +457,8 @@ public class AI : MonoBehaviour
             }
             //play
             //check for a space on board
-            if (minionBoardCounter < GetBoardSlots().Length)
-            {
+            //if (minionBoardCounter < GetBoardSlots().Length)
+            //{
                 for (int i = 0; i < GetHandSlots().Length; i++)
                 {
                     if (GetHandSlots()[i].GetComponent<Minion>().blank == false)
@@ -491,7 +491,7 @@ public class AI : MonoBehaviour
                         }*/
                     }
                 }
-            }
+            //}
             //roll
             if (goldState >= 1)
             {
@@ -499,10 +499,16 @@ public class AI : MonoBehaviour
                 possibleActions.Add(roll);
             }
             //upgrade
-            if (player.GetPlayerTavernTier() < 6 && goldState <= player.tavernTierUpgradeGold)
+            if (player.GetPlayerTavernTier() < 6 && goldState >= player.tavernTierUpgradeGold)
             {
                 Action upgrade = new Action("upgrade", null, 99, null, 99);
                 possibleActions.Add(upgrade);
+            }
+            //end turn
+            if(player.GetPlayerGold() <= 0)
+            {
+                Action end = new Action("end", null, 99, null, 99);
+                possibleActions.Add(end);
             }
         }
         //pick
@@ -514,6 +520,9 @@ public class AI : MonoBehaviour
                 possibleActions.Add(pick);
             }
         }
+
+        if(possibleActions.Count > 0)
+            SavePossibleActions();
     }
 
     public void UseRandomGameMechanic()
@@ -557,6 +566,10 @@ public class AI : MonoBehaviour
             else if (chosenAction.GetActionName() == "pick")
             {
                 gc.ChooseDiscoveredMinionAI(player, GetDiscoverSlots()[chosenAction.GetPosMinionA()]);
+            }
+            else if (chosenAction.GetActionName() == "end")
+            {
+                gc.EndTurnAI(GetBoardSlots());
             }
         }
     }
@@ -859,7 +872,7 @@ public class AI : MonoBehaviour
                     }
                 }
             }
-            Debug.Log("Updated Q Table!");
+            //Debug.Log("Updated Q Table!");
         }
     }
 
@@ -952,5 +965,21 @@ public class AI : MonoBehaviour
     public void LoadQTable()
     {
 
+    }
+
+    public void SavePossibleActions()
+    {
+        string path = "Assets/Resources/a.txt";
+
+        //Write some text to the test.txt file
+        StreamWriter writer = new StreamWriter(path, true);
+        writer.WriteLine("##################");
+
+        for (int i = 0; i < possibleActions.Count; i++)
+        {
+            writer.WriteLine(possibleActions[i].GetActionName());
+        }
+
+        writer.Close();
     }
 }
