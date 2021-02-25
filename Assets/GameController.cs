@@ -199,8 +199,8 @@ public class GameController : MonoBehaviour
             */
             EndTurnAI(minionSlotsAI);
         }
-        Debug.Log("P1 board counter: " + player1.GetPlayerBoard().Count);
-        Debug.Log("P2 board counter: " + player2.GetPlayerBoard().Count);
+        //Debug.Log("P1 board counter: " + player1.GetPlayerBoard().Count);
+        //Debug.Log("P2 board counter: " + player2.GetPlayerBoard().Count);
     }
 
     public void SaveWinNumberToFile()
@@ -235,13 +235,13 @@ public class GameController : MonoBehaviour
         for(int i = 0; i < player1.GetPlayerBoard().Count; i++)
         {
             writer.WriteLine(player1.GetPlayerBoard()[i].GetMinion().Name + player1.GetPlayerBoard()[i].GetMinion().Attack + 
-                player1.GetPlayerBoard()[i].GetMinion().Hp);
+                player1.GetPlayerBoard()[i].GetMinion().Hp + ": " + player1.GetPlayerBoard()[i].GetPos());
         }
         writer.WriteLine("P2: ");
         for (int i = 0; i < player2.GetPlayerBoard().Count; i++)
         {
             writer.WriteLine(player2.GetPlayerBoard()[i].GetMinion().Name + player2.GetPlayerBoard()[i].GetMinion().Attack +
-                player2.GetPlayerBoard()[i].GetMinion().Hp);
+                player2.GetPlayerBoard()[i].GetMinion().Hp + ": " + player2.GetPlayerBoard()[i].GetPos());
         }
         writer.Close();
     }
@@ -1126,7 +1126,7 @@ public class GameController : MonoBehaviour
                     int random = micromummy[r];
                     //Debug.Log("r: " + r + ", random: " + random);
 
-                    BuffSingleMinionBoard(minionSlots[random], 1, 0, "All", player2);
+                    //BuffSingleMinionBoard(minionSlots[random], 1, 0, "All", player2);
                     Debug.Log("Micro Mummy effect!");
                 }
                 
@@ -1835,6 +1835,7 @@ public class GameController : MonoBehaviour
                 if (player.GetPlayerBoard()[i].GetMinion().Name == "Wrath Weaver")  //jakos trzeba odciac ostatnio zagrana jednostke, zeby sam sie nei buffowal
                 {
                     int t = player.GetPlayerBoard()[i].GetPos();
+                    Debug.Log("Wrath weaver pos: " + t);
                     if (player.GetPlayerBoard()[i].GetMinion().Golden == false)
                         BuffSingleMinionBoard(minionSlots[t], 2, 2, "All", player);
                     else
@@ -2635,7 +2636,7 @@ public class GameController : MonoBehaviour
         }
         Debug.Log("P1: " + player1.GetPlayerCopiedBoard().Count);
         Debug.Log("P2: " + player2.GetPlayerCopiedBoard().Count);
-        SavePlayerCopiedMinionsToFile();
+        //SavePlayerCopiedMinionsToFile();
         //List<Player.Board> player1Board = player1.GetPlayerBoard();
         //List<Player.Board> player2Board = player2.GetPlayerBoard();
         int firstAttack = 0;    // 1->player1 starts, 2->player2 starts
@@ -3068,7 +3069,7 @@ public class GameController : MonoBehaviour
             player2.Initialize();
 
             SaveWinNumberToFile();
-            player2.GetComponent<AI>().SaveQTable();
+            //player2.GetComponent<AI>().SaveQTable();
 
             winP1 = 0;
             winP2 = 0;
@@ -3247,8 +3248,12 @@ public class GameController : MonoBehaviour
 
             if(temp != 99)
                 player.RemoveMinionFromBoard(temp);
-            else 
+            else
+            {
                 Debug.Log("Cannot find this unit!");
+                return;
+            }
+                
 
             minionInstance.Attack += attack;
             minionInstance.Hp += health;

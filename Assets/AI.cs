@@ -521,8 +521,8 @@ public class AI : MonoBehaviour
             }
         }
 
-        if(possibleActions.Count > 0)
-            SavePossibleActions();
+        //if(possibleActions.Count > 0)
+            //SavePossibleActions();
     }
 
     public void UseRandomGameMechanic()
@@ -954,8 +954,16 @@ public class AI : MonoBehaviour
             writer.WriteLine(qTable[i].GetStateStr());
             for(int j = 0; j < qTable[i].GetValues().Length; j++)
             {
-                writer.WriteLine(qTable[i].GetValues()[j].GetAction().GetActionName() + "," + qTable[i].GetValues()[j].GetAction().GetPosMinionA() + "," + 
-                    qTable[i].GetValues()[j].GetAction().GetPosMinionB() + "," + qTable[i].GetValues()[j].GetValue());
+                if (qTable[i].GetValues()[j].GetAction().GetMinionA() != null)
+                {
+                    writer.WriteLine(qTable[i].GetValues()[j].GetAction().GetActionName() + "," + qTable[i].GetValues()[j].GetAction().GetMinionA().Name + "," +
+                    qTable[i].GetValues()[j].GetAction().GetPosMinionA() + "," + qTable[i].GetValues()[j].GetValue());
+                }
+                else
+                {
+                    writer.WriteLine(qTable[i].GetValues()[j].GetAction().GetActionName() + "," + 
+                    qTable[i].GetValues()[j].GetAction().GetPosMinionA() + "," + qTable[i].GetValues()[j].GetValue());
+                }
             }
         }
 

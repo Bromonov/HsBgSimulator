@@ -12593,7 +12593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa27d271e1b1604f9287c92ea9098ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 2.28
+  waitTime: -3.3
 --- !u!1 &1307921490
 GameObject:
   m_ObjectHideFlags: 0
@@ -17790,7 +17790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1869376294}
   learning: 1
-  waitTime: 3.68
+  waitTime: -2.63
 --- !u!1001 &1869989468
 PrefabInstance:
   m_ObjectHideFlags: 0
