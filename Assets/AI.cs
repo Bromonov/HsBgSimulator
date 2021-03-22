@@ -57,18 +57,18 @@ public class AI : MonoBehaviour
     public struct Action
     {
         string actionName;
-        MinionData minionA;
-        int posMinionA;
-        MinionData minionB;
-        int posMinionB;
+        //MinionData minionA;
+        //int posMinionA;
+        //MinionData minionB;
+        //int posMinionB;
 
-        public Action(string newActionName, MinionData newMinionA, int a, MinionData newMinionB, int b)
+        public Action(string newActionName)//, MinionData newMinionA, int a, MinionData newMinionB, int b)
         {
             actionName = newActionName;
-            minionA = newMinionA;
-            posMinionA = a;
-            minionB = newMinionB;
-            posMinionB = b;
+            //minionA = newMinionA;
+            //posMinionA = a;
+            //minionB = newMinionB;
+            //posMinionB = b;
         }
 
         public string GetActionName()
@@ -79,6 +79,7 @@ public class AI : MonoBehaviour
         {
             actionName = newActionName;
         }
+        /*
         public MinionData GetMinionA()
         {
             return minionA;
@@ -111,6 +112,7 @@ public class AI : MonoBehaviour
         {
             posMinionB = b;
         }
+        */
     };
 
     public struct QValue
@@ -319,22 +321,35 @@ public class AI : MonoBehaviour
 
     public void SetupAllActionList()
     {
+        allActions.Clear();
         //if minionA || minionB == null -> useless
         //if posMinionA || posMinionB == 99 -> useless
+
+        //buy
+        Action buy = new Action("buy");
+        allActions.Add(buy);
+        /*
         //buy minion, minionA -> slot pos from shop to buy, minionB -> w/e
         for(int i = 0; i < GetShopSlots().Length; i++)
         {
             Action buy = new Action("buy", GetShopSlots()[i].GetComponent<Minion>().GetMinion(), i, null, 99);
             allActions.Add(buy);
         }
+        */
+        //sell
+        Action sell = new Action("sell");
+        allActions.Add(sell);
+        /*
         //sell minion, minionA -> slot pos on board to sell, minionB -> w/e
         for (int i = 0; i < GetBoardSlots().Length; i++)
         {
             Action sell = new Action("sell", GetBoardSlots()[i].GetComponent<Minion>().GetMinion(), i, null, 99);
             allActions.Add(sell);
         }
+        */
         //play minion, minionA -> slot pos from hand, minionB -> slot pos on board
-        for (int i = 0; i < GetHandSlots().Length; i++)
+        //for (int i = 0; i < GetHandSlots().Length; i++)
+        if(GetHandSlots().Length > 0)
         {
             //find first free spot
             int free = 99;
@@ -348,7 +363,8 @@ public class AI : MonoBehaviour
             }
             if(free != 99)
             {
-                Action play = new Action("play", GetHandSlots()[i].GetComponent<Minion>().GetMinion(), i, GetBoardSlots()[free].GetComponent<Minion>().GetMinion(), free);
+                Action play = new Action("play");
+                //Action play = new Action("play", GetHandSlots()[i].GetComponent<Minion>().GetMinion(), i, GetBoardSlots()[free].GetComponent<Minion>().GetMinion(), free);
                 allActions.Add(play);
             }
             /*
@@ -359,18 +375,23 @@ public class AI : MonoBehaviour
             }*/
         }
         //rolka
-        Action roll = new Action("roll", null, 99, null, 99);
+        //Action roll = new Action("roll", null, 99, null, 99);
+        Action roll = new Action("roll");
         allActions.Add(roll);
         //upgrade tavern level
-        Action upgrade = new Action("upgrade", null, 99, null, 99);
+        //Action upgrade = new Action("upgrade", null, 99, null, 99);
+        Action upgrade = new Action("upgrade");
         allActions.Add(upgrade);
         //end turn -> chyba nie powinno byc w akcjach, zeby nie konczyl randomowo, chociaz moze?
-        Action endTurn = new Action("end", null, 99, null, 99);
+        //Action endTurn = new Action("end", null, 99, null, 99);
+        Action endTurn = new Action("end");
         allActions.Add(endTurn);
         //pick minion from discover list -> only possible when made golden
-        for(int i = 0; i < GetDiscoverSlots().Length; i++)
+        //for(int i = 0; i < GetDiscoverSlots().Length; i++)
+        if(GetDiscoverSlots().Length > 0)
         {
-            Action pick = new Action("pick", GetDiscoverSlots()[i].GetComponent<Minion>().GetMinion(), i, null, 99);
+            //Action pick = new Action("pick", GetDiscoverSlots()[i].GetComponent<Minion>().GetMinion(), i, null, 99);
+            Action pick = new Action("pick");
             allActions.Add(pick);
         }
         //swapy -> na razie bugged
@@ -426,11 +447,15 @@ public class AI : MonoBehaviour
                 }
                 if (blankCounter > 0)
                 {
+                    /*
                     for (int i = 0; i < numberOfMinionsInTavern; i++)
                     {
                         Action buy = new Action("buy", GetShopSlots()[i].GetComponent<Minion>().GetMinion(), i, null, 99);
                         possibleActions.Add(buy);
                     }
+                    */
+                    Action buy = new Action("buy");
+                    possibleActions.Add(buy);
                 }
             }
             //sell
@@ -445,80 +470,86 @@ public class AI : MonoBehaviour
             }
             if (minionBoardCounter > 0)
             {
-                for (int i = 0; i < GetBoardSlots().Length; i++)
-                {
-                    if (GetBoardSlots()[i].GetComponent<Minion>().blank == false)
-                    {
-                        Action sell = new Action("sell", GetBoardSlots()[i].GetComponent<Minion>().GetMinion(), i, null, 99);
-                        possibleActions.Add(sell);
-                    }
+                //for (int i = 0; i < GetBoardSlots().Length; i++)
+                //{
+                //if (GetBoardSlots()[i].GetComponent<Minion>().blank == false)
+                //{
+                //Action sell = new Action("sell", GetBoardSlots()[i].GetComponent<Minion>().GetMinion(), i, null, 99);
+                //}
+                //}
 
-                }
+                Action sell = new Action("sell");
+                possibleActions.Add(sell);
             }
             //play
             //check for a space on board
             //if (minionBoardCounter < GetBoardSlots().Length)
             //{
-                for (int i = 0; i < GetHandSlots().Length; i++)
+            //for (int i = 0; i < GetHandSlots().Length; i++)
+            int handCounter = 99;
+            for (int i = 0; i < GetHandSlots().Length; i++)
+            {
+                if (GetHandSlots()[i].GetComponent<Minion>().blank == false)
                 {
-                    if (GetHandSlots()[i].GetComponent<Minion>().blank == false)
+                    handCounter = i;
+                    break;
+                }
+            }
+            if (handCounter != 99)
+            {
+                //find first free spot
+                int free = 99;
+                for (int j = 0; j < GetBoardSlots().Length; j++)
+                {
+                    if (GetBoardSlots()[j].GetComponent<Minion>().blank == true)
                     {
-                        //find first free spot
-                        int free = 99;
-                        for (int j = 0; j < GetBoardSlots().Length; j++)
-                        {
-                            if (GetBoardSlots()[j].GetComponent<Minion>().blank == true)
-                            {
-                                free = j;
-                                break;
-                            }
-                        }
-                        if (free != 99)
-                        {
-                            Action play = new Action("play", GetHandSlots()[i].GetComponent<Minion>().GetMinion(), i, GetBoardSlots()[free].GetComponent<Minion>().GetMinion(), free);
-                            possibleActions.Add(play);
-                        }
-
-                        /*
-                        for (int j = 0; j < GetBoardSlots().Length; j++)
-                        {
-                            if (GetBoardSlots()[j].GetComponent<Minion>().blank == true)
-                            {
-                                Action play = new Action("play", GetHandSlots()[i].GetComponent<Minion>().GetMinion(), i,
-                                    GetBoardSlots()[j].GetComponent<Minion>().GetMinion(), j);
-                                possibleActions.Add(play);
-                            }
-                        }*/
+                        free = j;
+                        break;
                     }
+                }
+                
+                if (free != 99)
+                {
+                    //Action play = new Action("play", GetHandSlots()[i].GetComponent<Minion>().GetMinion(), i, GetBoardSlots()[free].GetComponent<Minion>().GetMinion(), free);
+                    Action play = new Action("play");
+                    possibleActions.Add(play);
+                }
+                    
                 }
             //}
             //roll
             if (goldState >= 1)
             {
-                Action roll = new Action("roll", null, 99, null, 99);
+                //Action roll = new Action("roll", null, 99, null, 99);
+                Action roll = new Action("roll");
                 possibleActions.Add(roll);
             }
             //upgrade
             if (player.GetPlayerTavernTier() < 6 && goldState >= player.tavernTierUpgradeGold)
             {
-                Action upgrade = new Action("upgrade", null, 99, null, 99);
+                //Action upgrade = new Action("upgrade", null, 99, null, 99);
+                Action upgrade = new Action("upgrade");
                 possibleActions.Add(upgrade);
             }
             //end turn
             if(player.GetPlayerGold() <= 0)
             {
-                Action end = new Action("end", null, 99, null, 99);
+                //Action end = new Action("end", null, 99, null, 99);
+                Action end = new Action("end");
                 possibleActions.Add(end);
             }
         }
         //pick
         else if(gc.discoverPanel.activeSelf == true)
         {
-            for(int i = 0; i < gc.discoverSlots.Length; i++)
-            {
-                Action pick = new Action("pick", GetDiscoverSlots()[i].GetComponent<Minion>().GetMinion(), i, null, 99);
-                possibleActions.Add(pick);
-            }
+            //for(int i = 0; i < gc.discoverSlots.Length; i++)
+            //{
+            //Action pick = new Action("pick", GetDiscoverSlots()[i].GetComponent<Minion>().GetMinion(), i, null, 99);
+            //Action pick = new Action("pick");
+            //possibleActions.Add(pick);
+            //}
+            Action pick = new Action("pick");
+            possibleActions.Add(pick);
         }
 
         //if(possibleActions.Count > 0)
@@ -544,16 +575,70 @@ public class AI : MonoBehaviour
         {
             if (chosenAction.GetActionName() == "buy")
             {
-                gc.BuyMinionAI(player, GetShopSlots()[chosenAction.GetPosMinionA()]);
+                int shop = 0;
+                for(int i = 0; i < GetShopSlots().Length; i++)
+                {
+                    if(GetShopSlots()[i].GetComponent<Minion>().blank == false)
+                    {
+                        shop++;
+                    }
+                }
+
+                int random = 99;
+                if (shop > 0)
+                    random = Random.Range(0, shop);
+                if(random != 99)
+                    gc.BuyMinionAI(player, GetShopSlots()[random]);
             }
             else if (chosenAction.GetActionName() == "sell")
             {
-                gc.SellMinionAI(player, GetBoardSlots()[chosenAction.GetPosMinionA()]);
+                List<int> board = new List<int>();
+                for (int i = 0; i < GetBoardSlots().Length; i++)
+                {
+                    if (GetBoardSlots()[i].GetComponent<Minion>().blank == false)
+                    {
+                        board.Add(i);
+                    }
+                }
+
+                int random = 99;
+                if (board.Count > 0)
+                    random = Random.Range(0, board.Count);
+                if (random != 99)
+                    gc.SellMinionAI(player, GetBoardSlots()[board[random]]);
             }
             else if (chosenAction.GetActionName() == "play")
             {
-                gc.PlayMinionOnBoard(player, GetHandSlots()[chosenAction.GetPosMinionA()], GetBoardSlots()[chosenAction.GetPosMinionB()],
-                    GetHandSlots(), GetBoardSlots());
+                //look for a minion on hand
+                List<int> hand = new List<int>();
+                for(int i = 0; i < GetHandSlots().Length; i++)
+                {
+                    if(GetHandSlots()[i].GetComponent<Minion>().blank == false)
+                    {
+                        hand.Add(i);
+                    }
+                }
+                if(hand.Count > 0)
+                {
+                    int free = 99;
+                    for(int i = 0; i < GetBoardSlots().Length; i++)
+                    {
+                        if(GetBoardSlots()[i].GetComponent<Minion>().blank == true)
+                        {
+                            free = i;
+                            break;
+                        }
+                    }
+                    if(free != 99)
+                    {
+                        int random = 99;
+                        random = Random.Range(0, hand.Count);
+                        gc.PlayMinionOnBoard(player, GetHandSlots()[hand[random]], GetBoardSlots()[free], GetHandSlots(), GetBoardSlots());
+                    }
+                }
+
+                //gc.PlayMinionOnBoard(player, GetHandSlots()[chosenAction.GetPosMinionA()], GetBoardSlots()[chosenAction.GetPosMinionB()],
+                    //GetHandSlots(), GetBoardSlots());
             }
             else if (chosenAction.GetActionName() == "roll")
             {
@@ -565,7 +650,9 @@ public class AI : MonoBehaviour
             }
             else if (chosenAction.GetActionName() == "pick")
             {
-                gc.ChooseDiscoveredMinionAI(player, GetDiscoverSlots()[chosenAction.GetPosMinionA()]);
+                int random = Random.Range(0, 3);
+
+                gc.ChooseDiscoveredMinionAI(player, GetDiscoverSlots()[random]);
             }
             else if (chosenAction.GetActionName() == "end")
             {
@@ -740,9 +827,9 @@ public class AI : MonoBehaviour
             UseRandomGameMechanic();
             for (int i = 0; i < allActions.Count; i++)
             {
-                if (allActions[i].GetActionName() != lastAction.GetActionName() && allActions[i].GetMinionA() != lastAction.GetMinionA() &&
-                    allActions[i].GetMinionB() != lastAction.GetMinionB() && allActions[i].GetPosMinionA() != lastAction.GetPosMinionA() &&
-                    allActions[i].GetPosMinionB() != lastAction.GetPosMinionB())
+                if (allActions[i].GetActionName() != lastAction.GetActionName())// && allActions[i].GetMinionA() != lastAction.GetMinionA() &&
+                    //allActions[i].GetMinionB() != lastAction.GetMinionB() && allActions[i].GetPosMinionA() != lastAction.GetPosMinionA() &&
+                    //allActions[i].GetPosMinionB() != lastAction.GetPosMinionB())
                 {
                     QValue q = new QValue(allActions[i], 0.0f);
                     qvalues[i] = q;
@@ -780,11 +867,11 @@ public class AI : MonoBehaviour
                     {
                         for(int x = 0; x < qTable[j].GetValues().Length; x++)
                         {
-                            if(qTable[j].GetValues()[x].GetAction().GetActionName() == takenAction.GetActionName() && 
-                                qTable[j].GetValues()[x].GetAction().GetMinionA() == takenAction.GetMinionA() &&
-                                    qTable[j].GetValues()[x].GetAction().GetMinionB() == takenAction.GetMinionB() && 
-                                        qTable[j].GetValues()[x].GetAction().GetPosMinionA() == takenAction.GetPosMinionA() &&
-                                            qTable[j].GetValues()[x].GetAction().GetPosMinionB() == takenAction.GetPosMinionB())
+                            if(qTable[j].GetValues()[x].GetAction().GetActionName() == takenAction.GetActionName())// && 
+                                //qTable[j].GetValues()[x].GetAction().GetMinionA() == takenAction.GetMinionA() &&
+                                    //qTable[j].GetValues()[x].GetAction().GetMinionB() == takenAction.GetMinionB() && 
+                                        //qTable[j].GetValues()[x].GetAction().GetPosMinionA() == takenAction.GetPosMinionA() &&
+                                            //qTable[j].GetValues()[x].GetAction().GetPosMinionB() == takenAction.GetPosMinionB())
                             {
                                 float newValue = (1 - learningRate) * qTable[j].GetValues()[x].GetValue() + learningRate * reward;
                                 qTable[j].GetValues()[x].SetValue(newValue);
@@ -855,11 +942,11 @@ public class AI : MonoBehaviour
                     {
                         for (int x = 0; x < qTable[j].GetValues().Length; x++)
                         {
-                            if (qTable[j].GetValues()[x].GetAction().GetActionName() == previousAction.GetActionName() &&
-                                qTable[j].GetValues()[x].GetAction().GetMinionA() == previousAction.GetMinionA() &&
-                                    qTable[j].GetValues()[x].GetAction().GetMinionB() == previousAction.GetMinionB() &&
-                                        qTable[j].GetValues()[x].GetAction().GetPosMinionA() == previousAction.GetPosMinionA() &&
-                                            qTable[j].GetValues()[x].GetAction().GetPosMinionB() == previousAction.GetPosMinionB())
+                            if (qTable[j].GetValues()[x].GetAction().GetActionName() == previousAction.GetActionName())// &&
+                                //qTable[j].GetValues()[x].GetAction().GetMinionA() == previousAction.GetMinionA() &&
+                                    //qTable[j].GetValues()[x].GetAction().GetMinionB() == previousAction.GetMinionB() &&
+                                        //qTable[j].GetValues()[x].GetAction().GetPosMinionA() == previousAction.GetPosMinionA() &&
+                                            //qTable[j].GetValues()[x].GetAction().GetPosMinionB() == previousAction.GetPosMinionB())
                             {
                                 float newValue = (1 - learningRate) * qTable[j].GetValues()[x].GetValue() + learningRate * (reward + discount * maxValueAtCurrentState);
                                 qTable[j].GetValues()[x].SetValue(newValue);
@@ -954,6 +1041,7 @@ public class AI : MonoBehaviour
             writer.WriteLine(qTable[i].GetStateStr());
             for(int j = 0; j < qTable[i].GetValues().Length; j++)
             {
+                /*
                 if (qTable[i].GetValues()[j].GetAction().GetMinionA() != null)
                 {
                     writer.WriteLine(qTable[i].GetValues()[j].GetAction().GetActionName() + "," + qTable[i].GetValues()[j].GetAction().GetMinionA().Name + "," +
@@ -964,6 +1052,8 @@ public class AI : MonoBehaviour
                     writer.WriteLine(qTable[i].GetValues()[j].GetAction().GetActionName() + "," + 
                     qTable[i].GetValues()[j].GetAction().GetPosMinionA() + "," + qTable[i].GetValues()[j].GetValue());
                 }
+                */
+                writer.WriteLine(qTable[i].GetValues()[j].GetAction().GetActionName() + ": " + qTable[i].GetValues()[j].GetValue());
             }
         }
 

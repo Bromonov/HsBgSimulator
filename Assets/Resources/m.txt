@@ -11351,3 +11351,6171 @@ Imprisoner33: 1
 P2: 
 Scavenging Hyena22: 0
 Vulgar Homunculus24: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Nathrezim Overseer45: 1
+Harvest Golem23: 2
+P2: 
+Rockpool Hunter34: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Nathrezim Overseer45: 1
+Harvest Golem23: 2
+Vulgar Homunculus24: 3
+Murloc Warleader33: 4
+P2: 
+Rockpool Hunter34: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Nathrezim Overseer45: 1
+Harvest Golem23: 2
+Vulgar Homunculus24: 3
+Murloc Warleader33: 4
+Pack Leader23: 5
+P2: 
+Nathrezim Overseer23: 0
+Nathrezim Overseer67: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Nathrezim Overseer45: 1
+Harvest Golem23: 2
+Vulgar Homunculus24: 3
+Murloc Warleader33: 4
+Pack Leader23: 5
+Infested Wolf53: 6
+P2: 
+Nathrezim Overseer23: 0
+Nathrezim Overseer67: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Nathrezim Overseer45: 1
+Harvest Golem23: 2
+Vulgar Homunculus24: 3
+Murloc Warleader33: 4
+Pack Leader23: 5
+Infested Wolf53: 6
+P2: 
+Nathrezim Overseer23: 0
+Nathrezim Overseer67: 1
+-----------------------
+P1: 
+Wrath Weaver13: 0
+P2: 
+-----------------------
+P1: 
+Wrath Weaver13: 0
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Micro Mummy22: 1
+P2: 
+Micro Mummy12: 0
+Kindly Grandmother11: 1
+-----------------------
+P1: 
+Old Murk-Eye34: 0
+Micro Mummy22: 1
+Vulgar Homunculus24: 2
+Pack Leader23: 3
+P2: 
+Micro Mummy12: 0
+Kindly Grandmother11: 1
+-----------------------
+P1: 
+Old Murk-Eye34: 0
+Micro Mummy22: 1
+Vulgar Homunculus24: 2
+Pack Leader23: 3
+Old Murk-Eye34: 4
+P2: 
+Micro Mummy12: 0
+Kindly Grandmother11: 1
+-----------------------
+P1: 
+Old Murk-Eye34: 0
+Micro Mummy22: 1
+Vulgar Homunculus35: 2
+Pack Leader23: 3
+Old Murk-Eye44: 4
+Crystalweaver54: 5
+Wrath Weaver13: 6
+P2: 
+Micro Mummy12: 0
+Kindly Grandmother11: 1
+Harvest Golem23: 2
+Replicating Menace31: 3
+-----------------------
+P1: 
+Old Murk-Eye34: 0
+Micro Mummy22: 1
+Vulgar Homunculus35: 2
+Pack Leader23: 3
+Old Murk-Eye44: 4
+Crystalweaver64: 5
+Wrath Weaver13: 6
+P2: 
+Micro Mummy12: 0
+Spawn of NZoth22: 1
+Harvest Golem23: 2
+Replicating Menace31: 3
+Siegebreaker58: 4
+-----------------------
+P1: 
+Old Murk-Eye34: 0
+Micro Mummy22: 1
+Vulgar Homunculus35: 2
+Pack Leader23: 3
+Old Murk-Eye44: 4
+Crystalweaver74: 5
+Wrath Weaver13: 6
+P2: 
+Micro Mummy12: 0
+Spawn of NZoth22: 1
+Harvest Golem23: 2
+Replicating Menace31: 3
+Siegebreaker58: 4
+Imprisoner33: 5
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+Scavenging Hyena22: 0
+-----------------------
+P1: 
+Metaltooth Leaper53: 0
+Rockpool Hunter34: 1
+P2: 
+Murloc Tidecaller22: 0
+-----------------------
+P1: 
+Metaltooth Leaper53: 0
+Rockpool Hunter34: 1
+Imprisoner33: 2
+Old Murk-Eye24: 3
+P2: 
+Murloc Tidecaller22: 0
+Scavenging Hyena22: 1
+-----------------------
+P1: 
+Metaltooth Leaper53: 0
+Rockpool Hunter34: 1
+Imprisoner33: 2
+Old Murk-Eye24: 3
+Pack Leader23: 4
+P2: 
+Murloc Tidecaller22: 0
+Scavenging Hyena22: 1
+Imprisoner33: 2
+-----------------------
+P1: 
+Metaltooth Leaper53: 0
+Rockpool Hunter45: 1
+Imprisoner44: 2
+Old Murk-Eye35: 3
+Pack Leader23: 4
+Crystalweaver54: 5
+Felfin Navigator55: 6
+P2: 
+Murloc Tidecaller22: 0
+Scavenging Hyena22: 1
+Imprisoner33: 2
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Imprisoner33: 1
+Vulgar Homunculus24: 2
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Imprisoner33: 1
+Vulgar Homunculus24: 2
+Nathrezim Overseer45: 3
+Wrath Weaver13: 4
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+Murloc Tidecaller22: 2
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Imprisoner33: 1
+Vulgar Homunculus24: 2
+Nathrezim Overseer45: 3
+Wrath Weaver57: 4
+Imprisoner33: 5
+P2: 
+Kindly Grandmother11: 0
+Old Murk-Eye24: 1
+Murloc Tidecaller42: 2
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Imprisoner33: 1
+Vulgar Homunculus24: 2
+Nathrezim Overseer45: 3
+Wrath Weaver57: 4
+Imprisoner33: 5
+Houndmaster43: 6
+P2: 
+Kindly Grandmother11: 0
+Old Murk-Eye24: 1
+Murloc Tidecaller42: 2
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+Fiendish Servant21: 2
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+Scavenging Hyena22: 1
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+Fiendish Servant21: 2
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+Scavenging Hyena22: 1
+Imprisoner33: 2
+Scavenging Hyena22: 3
+P2: 
+Wrath Weaver13: 0
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+Scavenging Hyena22: 1
+Imprisoner33: 2
+Scavenging Hyena22: 3
+Metaltooth Leaper53: 4
+P2: 
+Wrath Weaver13: 0
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+Scavenging Hyena22: 1
+Imprisoner33: 2
+Scavenging Hyena44: 3
+Metaltooth Leaper53: 4
+Houndmaster43: 5
+Harvest Golem23: 6
+P2: 
+Wrath Weaver13: 0
+Old Murk-Eye24: 1
+Harvest Golem23: 2
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+Scavenging Hyena22: 1
+Imprisoner33: 2
+Scavenging Hyena44: 3
+Metaltooth Leaper53: 4
+Houndmaster43: 5
+Harvest Golem23: 6
+P2: 
+Wrath Weaver13: 0
+Old Murk-Eye24: 1
+Harvest Golem23: 2
+Spawn of NZoth22: 3
+Tabbycat11: 4
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+Fiendish Servant21: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Pack Leader23: 1
+Pack Leader23: 2
+P2: 
+Fiendish Servant21: 0
+Nathrezim Overseer45: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Pack Leader23: 1
+Pack Leader23: 2
+Imprisoner33: 3
+Nathrezim Overseer23: 4
+P2: 
+Fiendish Servant21: 0
+Nathrezim Overseer45: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Pack Leader23: 1
+Pack Leader23: 2
+Imprisoner33: 3
+Nathrezim Overseer23: 4
+Murloc Warleader33: 5
+P2: 
+Fiendish Servant21: 0
+Nathrezim Overseer45: 1
+-----------------------
+P1: 
+Murloc Tidehunter32: 0
+Pack Leader23: 1
+Pack Leader23: 2
+Imprisoner33: 3
+Nathrezim Overseer23: 4
+Murloc Warleader44: 5
+Felfin Navigator55: 6
+P2: 
+Virmen Sensei45: 0
+Nathrezim Overseer45: 1
+-----------------------
+P1: 
+Murloc Tidehunter32: 0
+Pack Leader23: 1
+Pack Leader23: 2
+Imprisoner33: 3
+Nathrezim Overseer23: 4
+Murloc Warleader44: 5
+Felfin Navigator55: 6
+P2: 
+Virmen Sensei45: 0
+Nathrezim Overseer45: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Imprisoner33: 1
+Harvest Golem23: 2
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Imprisoner33: 1
+Harvest Golem43: 2
+Metaltooth Leaper53: 3
+Old Murk-Eye24: 4
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+Nathrezim Overseer45: 2
+-----------------------
+P1: 
+Alleycat11: 0
+Imprisoner33: 1
+Harvest Golem43: 2
+Metaltooth Leaper53: 3
+Old Murk-Eye24: 4
+Imprisoner33: 5
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+Nathrezim Overseer45: 2
+Wrath Weaver13: 3
+Kindly Grandmother11: 4
+-----------------------
+P1: 
+Alleycat11: 0
+Imprisoner33: 1
+Harvest Golem43: 2
+Metaltooth Leaper53: 3
+Old Murk-Eye24: 4
+Imprisoner33: 5
+Murloc Warleader33: 6
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+Nathrezim Overseer45: 2
+Wrath Weaver13: 3
+Kindly Grandmother11: 4
+-----------------------
+P1: 
+Alleycat11: 0
+Imprisoner33: 1
+Harvest Golem43: 2
+Metaltooth Leaper53: 3
+Old Murk-Eye24: 4
+Imprisoner33: 5
+Murloc Warleader33: 6
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+Nathrezim Overseer45: 2
+Wrath Weaver13: 3
+Kindly Grandmother11: 4
+Pack Leader23: 5
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+Scavenging Hyena22: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Vulgar Homunculus24: 1
+Fiendish Servant21: 2
+P2: 
+Murloc Tidecaller22: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Vulgar Homunculus24: 1
+Fiendish Servant21: 2
+Vulgar Homunculus24: 3
+Spawn of NZoth22: 4
+P2: 
+Murloc Tidecaller22: 0
+Kindly Grandmother11: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Vulgar Homunculus24: 1
+Fiendish Servant21: 2
+Vulgar Homunculus24: 3
+Spawn of NZoth22: 4
+Metaltooth Leaper53: 5
+P2: 
+Murloc Tidecaller22: 0
+Kindly Grandmother11: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Vulgar Homunculus24: 1
+Fiendish Servant21: 2
+Vulgar Homunculus24: 3
+Spawn of NZoth22: 4
+Metaltooth Leaper73: 5
+Metaltooth Leaper53: 6
+P2: 
+Murloc Tidecaller22: 0
+Kindly Grandmother11: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Vulgar Homunculus24: 1
+Fiendish Servant21: 2
+Vulgar Homunculus24: 3
+Spawn of NZoth22: 4
+Metaltooth Leaper73: 5
+Metaltooth Leaper53: 6
+P2: 
+Murloc Tidecaller22: 0
+Kindly Grandmother11: 1
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+-----------------------
+P1: 
+Metaltooth Leaper53: 0
+Spawn of NZoth22: 1
+P2: 
+Vulgar Homunculus24: 0
+-----------------------
+P1: 
+Metaltooth Leaper53: 0
+Spawn of NZoth22: 1
+Pack Leader23: 2
+Nathrezim Overseer45: 3
+P2: 
+Vulgar Homunculus24: 0
+-----------------------
+P1: 
+Metaltooth Leaper53: 0
+Spawn of NZoth22: 1
+Pack Leader23: 2
+Nathrezim Overseer45: 3
+Murloc Warleader33: 4
+P2: 
+Spawn of NZoth22: 0
+-----------------------
+P1: 
+Metaltooth Leaper53: 0
+Spawn of NZoth22: 1
+Pack Leader23: 2
+Nathrezim Overseer45: 3
+Murloc Warleader44: 4
+Felfin Navigator55: 5
+Infested Wolf53: 6
+P2: 
+Metaltooth Leaper53: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Old Murk-Eye24: 1
+Metaltooth Leaper53: 2
+P2: 
+Rockpool Hunter34: 0
+Wrath Weaver13: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Old Murk-Eye24: 1
+Metaltooth Leaper53: 2
+Old Murk-Eye24: 3
+Murloc Warleader33: 4
+P2: 
+Rockpool Hunter34: 0
+Wrath Weaver13: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Old Murk-Eye24: 1
+Metaltooth Leaper53: 2
+Old Murk-Eye24: 3
+Murloc Warleader33: 4
+Imprisoner33: 5
+P2: 
+Murloc Tidecaller22: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Old Murk-Eye24: 1
+Metaltooth Leaper75: 2
+Old Murk-Eye24: 3
+Murloc Warleader33: 4
+Imprisoner33: 5
+Screwjank Clunker25: 6
+P2: 
+Murloc Tidecaller22: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Nathrezim Overseer45: 1
+Nathrezim Overseer45: 2
+P2: 
+Metaltooth Leaper53: 0
+Tabbycat11: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Nathrezim Overseer45: 1
+Nathrezim Overseer45: 2
+Old Murk-Eye24: 3
+Rockpool Hunter23: 4
+P2: 
+Metaltooth Leaper53: 0
+Tabbycat11: 1
+Murloc Tidehunter21: 2
+Murloc Scout11: 3
+-----------------------
+P1: 
+Alleycat11: 0
+Nathrezim Overseer45: 1
+Nathrezim Overseer45: 2
+Old Murk-Eye24: 3
+Rockpool Hunter23: 4
+Old Murk-Eye24: 5
+P2: 
+Metaltooth Leaper53: 0
+Tabbycat11: 1
+Murloc Tidehunter21: 2
+Murloc Scout11: 3
+-----------------------
+P1: 
+Alleycat33: 0
+Nathrezim Overseer45: 1
+Nathrezim Overseer45: 2
+Old Murk-Eye24: 3
+Rockpool Hunter23: 4
+Old Murk-Eye24: 5
+Houndmaster43: 6
+P2: 
+Tabbycat11: 1
+Murloc Scout11: 3
+-----------------------
+P1: 
+Alleycat33: 0
+Nathrezim Overseer45: 1
+Nathrezim Overseer45: 2
+Old Murk-Eye24: 3
+Rockpool Hunter23: 4
+Old Murk-Eye24: 5
+Houndmaster43: 6
+P2: 
+Vulgar Homunculus24: 2
+Murloc Scout11: 3
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+Harvest Golem23: 1
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+Alleycat11: 2
+Tabbycat11: 3
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+Harvest Golem23: 1
+Murloc Warleader33: 2
+Pack Leader23: 3
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+Alleycat11: 2
+Tabbycat11: 3
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+Harvest Golem23: 1
+Murloc Warleader33: 2
+Pack Leader23: 3
+Imprisoner33: 4
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+Alleycat11: 2
+Tabbycat11: 3
+Fiendish Servant21: 4
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+Harvest Golem23: 1
+Murloc Warleader33: 2
+Pack Leader23: 3
+Imprisoner33: 4
+Vulgar Homunculus24: 5
+Harvest Golem23: 6
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+Alleycat11: 2
+Tabbycat11: 3
+Fiendish Servant21: 4
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+Vulgar Homunculus24: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Warleader33: 1
+Rockpool Hunter34: 2
+P2: 
+Vulgar Homunculus24: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Warleader33: 1
+Rockpool Hunter34: 2
+Old Murk-Eye24: 3
+Imprisoner33: 4
+P2: 
+Murloc Tidecaller22: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Warleader33: 1
+Rockpool Hunter34: 2
+Old Murk-Eye24: 3
+Imprisoner33: 4
+Vulgar Homunculus24: 5
+P2: 
+Rockpool Hunter34: 0
+Murloc Tidecaller82: 1
+Murloc Tidehunter21: 2
+Murloc Scout11: 3
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Warleader33: 1
+Rockpool Hunter34: 2
+Old Murk-Eye24: 3
+Imprisoner33: 4
+Vulgar Homunculus24: 5
+Screwjank Clunker47: 6
+P2: 
+Rockpool Hunter34: 0
+Murloc Tidecaller82: 1
+Murloc Tidehunter21: 2
+Murloc Scout11: 3
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Warleader33: 1
+Rockpool Hunter34: 2
+Old Murk-Eye24: 3
+Imprisoner33: 4
+Vulgar Homunculus24: 5
+Screwjank Clunker47: 6
+P2: 
+Rockpool Hunter34: 0
+Murloc Tidecaller82: 1
+Murloc Tidehunter21: 2
+Murloc Scout11: 3
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Rockpool Hunter34: 1
+P2: 
+Vulgar Homunculus24: 0
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Rockpool Hunter34: 1
+Metaltooth Leaper53: 2
+Nathrezim Overseer45: 3
+P2: 
+Murloc Tidecaller22: 0
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Rockpool Hunter34: 1
+Metaltooth Leaper53: 2
+Nathrezim Overseer45: 3
+Harvest Golem23: 4
+P2: 
+Metaltooth Leaper53: 0
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Rockpool Hunter34: 1
+Metaltooth Leaper53: 2
+Nathrezim Overseer45: 3
+Harvest Golem23: 4
+Vulgar Homunculus24: 5
+Nathrezim Overseer23: 6
+P2: 
+Metaltooth Leaper53: 0
+Murloc Tidecaller22: 1
+-----------------------
+P1: 
+Wrath Weaver13: 0
+P2: 
+-----------------------
+P1: 
+Wrath Weaver13: 0
+P2: 
+Rockpool Hunter34: 0
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Harvest Golem23: 1
+P2: 
+Rockpool Hunter34: 0
+-----------------------
+P1: 
+Murloc Warleader44: 0
+Harvest Golem23: 1
+Pack Leader23: 2
+Rockpool Hunter23: 3
+P2: 
+-----------------------
+P1: 
+Murloc Warleader44: 0
+Harvest Golem23: 1
+Pack Leader23: 2
+Rockpool Hunter23: 3
+Nathrezim Overseer45: 4
+P2: 
+-----------------------
+P1: 
+Murloc Warleader44: 0
+Harvest Golem23: 1
+Pack Leader23: 2
+Rockpool Hunter23: 3
+Nathrezim Overseer45: 4
+Harvest Golem23: 5
+Rockpool Hunter34: 6
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Imprisoner33: 1
+Harvest Golem23: 2
+P2: 
+Scavenging Hyena22: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Imprisoner33: 1
+Harvest Golem23: 2
+Old Murk-Eye24: 3
+Imprisoner33: 4
+P2: 
+Scavenging Hyena22: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Imprisoner33: 1
+Harvest Golem23: 2
+Old Murk-Eye24: 3
+Imprisoner33: 4
+Vulgar Homunculus24: 5
+P2: 
+Scavenging Hyena22: 0
+Micro Mummy12: 1
+Old Murk-Eye24: 2
+-----------------------
+P1: 
+Murloc Tidehunter32: 0
+Imprisoner33: 1
+Harvest Golem23: 2
+Old Murk-Eye35: 3
+Imprisoner33: 4
+Vulgar Homunculus24: 5
+Felfin Navigator55: 6
+P2: 
+Scavenging Hyena22: 0
+Micro Mummy32: 1
+Old Murk-Eye24: 2
+Wrath Weaver13: 3
+Murloc Tidehunter21: 4
+Murloc Scout11: 5
+Metaltooth Leaper53: 6
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+Wrath Weaver13: 0
+Murloc Tidecaller22: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Warleader33: 1
+Murloc Warleader33: 2
+P2: 
+Wrath Weaver13: 0
+Murloc Tidecaller22: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Warleader33: 1
+Murloc Warleader33: 2
+Vulgar Homunculus24: 3
+Old Murk-Eye24: 4
+P2: 
+Wrath Weaver13: 0
+Murloc Tidecaller22: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Warleader33: 1
+Murloc Warleader33: 2
+Vulgar Homunculus24: 3
+Old Murk-Eye24: 4
+Old Murk-Eye24: 5
+P2: 
+Wrath Weaver13: 0
+Murloc Tidecaller44: 1
+Coldlight Seer25: 2
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Warleader33: 1
+Murloc Warleader33: 2
+Vulgar Homunculus35: 3
+Old Murk-Eye24: 4
+Old Murk-Eye24: 5
+Crystalweaver54: 6
+P2: 
+Murloc Tidehunter21: 0
+Murloc Tidecaller22: 1
+Murloc Scout11: 2
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Imprisoner33: 1
+Nathrezim Overseer45: 2
+P2: 
+Alleycat11: 0
+Murloc Tidehunter21: 1
+Murloc Scout11: 2
+-----------------------
+P1: 
+Murloc Tidehunter32: 0
+Imprisoner33: 1
+Nathrezim Overseer45: 2
+Vulgar Homunculus24: 3
+Rockpool Hunter23: 4
+P2: 
+Alleycat11: 0
+Murloc Tidehunter21: 1
+Murloc Scout11: 2
+-----------------------
+P1: 
+Murloc Tidehunter32: 0
+Imprisoner33: 1
+Nathrezim Overseer45: 2
+Vulgar Homunculus24: 3
+Rockpool Hunter23: 4
+Old Murk-Eye24: 5
+P2: 
+Alleycat11: 0
+Murloc Tidehunter21: 1
+Murloc Scout11: 2
+Wrath Weaver13: 3
+-----------------------
+P1: 
+Murloc Tidehunter32: 0
+Imprisoner33: 1
+Nathrezim Overseer45: 2
+Vulgar Homunculus24: 3
+Rockpool Hunter23: 4
+Old Murk-Eye24: 5
+Murloc Warleader33: 6
+P2: 
+Vulgar Homunculus24: 0
+Murloc Scout11: 2
+Wrath Weaver57: 3
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Spawn of NZoth22: 1
+P2: 
+Wrath Weaver13: 0
+Alleycat11: 1
+Tabbycat11: 2
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Spawn of NZoth22: 1
+Harvest Golem23: 2
+Murloc Tidecaller22: 3
+P2: 
+Wrath Weaver13: 0
+Alleycat11: 1
+Tabbycat11: 2
+Rockpool Hunter34: 3
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Spawn of NZoth22: 1
+Harvest Golem23: 2
+Murloc Tidecaller42: 3
+Old Murk-Eye24: 4
+P2: 
+Wrath Weaver13: 0
+Alleycat11: 1
+Tabbycat11: 2
+Rockpool Hunter34: 3
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Spawn of NZoth22: 1
+Harvest Golem23: 2
+Murloc Tidecaller42: 3
+Old Murk-Eye24: 4
+Houndmaster43: 5
+Scavenging Hyena22: 6
+P2: 
+Wrath Weaver13: 0
+Alleycat11: 1
+Tabbycat11: 2
+Rockpool Hunter34: 3
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Spawn of NZoth22: 1
+Harvest Golem23: 2
+Murloc Tidecaller42: 3
+Old Murk-Eye24: 4
+Houndmaster43: 5
+Scavenging Hyena22: 6
+P2: 
+Wrath Weaver13: 0
+Alleycat11: 1
+Tabbycat11: 2
+Rockpool Hunter34: 3
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Imprisoner33: 1
+Nathrezim Overseer45: 2
+P2: 
+Imprisoner33: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Imprisoner33: 1
+Nathrezim Overseer45: 2
+Nathrezim Overseer45: 3
+Murloc Tidehunter21: 4
+Murloc Scout11: 5
+P2: 
+Imprisoner33: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Imprisoner33: 1
+Nathrezim Overseer45: 2
+Nathrezim Overseer45: 3
+Murloc Tidehunter21: 4
+Murloc Scout11: 5
+Old Murk-Eye24: 6
+P2: 
+Imprisoner33: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Imprisoner33: 1
+Nathrezim Overseer45: 2
+Nathrezim Overseer45: 3
+Murloc Tidehunter21: 4
+Murloc Scout11: 5
+Old Murk-Eye24: 6
+P2: 
+Rat Pack22: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+Murloc Tidecaller22: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+Scavenging Hyena22: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Murloc Tidecaller42: 1
+Murloc Tidecaller12: 2
+P2: 
+Scavenging Hyena22: 0
+Alleycat11: 1
+Tabbycat11: 2
+-----------------------
+P1: 
+Alleycat11: 0
+Murloc Tidecaller42: 1
+Murloc Tidecaller12: 2
+Imprisoner33: 3
+Metaltooth Leaper53: 4
+P2: 
+Scavenging Hyena22: 0
+Alleycat11: 1
+Tabbycat11: 2
+Murloc Tidecaller22: 3
+-----------------------
+P1: 
+Alleycat11: 0
+Murloc Tidecaller42: 1
+Murloc Tidecaller12: 2
+Imprisoner33: 3
+Metaltooth Leaper53: 4
+Wrath Weaver13: 5
+P2: 
+Scavenging Hyena22: 0
+Alleycat11: 1
+Tabbycat11: 2
+Murloc Tidecaller22: 3
+Wrath Weaver13: 4
+-----------------------
+P1: 
+Alleycat11: 0
+Murloc Tidecaller73: 1
+Murloc Tidecaller23: 2
+Imprisoner33: 3
+Metaltooth Leaper53: 4
+Wrath Weaver13: 5
+Felfin Navigator55: 6
+P2: 
+Scavenging Hyena22: 0
+Alleycat11: 1
+Tabbycat11: 2
+Murloc Tidecaller22: 3
+Wrath Weaver13: 4
+-----------------------
+P1: 
+Alleycat11: 0
+Murloc Tidecaller73: 1
+Murloc Tidecaller23: 2
+Imprisoner33: 3
+Metaltooth Leaper53: 4
+Wrath Weaver13: 5
+Felfin Navigator55: 6
+P2: 
+Scavenging Hyena22: 0
+Alleycat11: 1
+Tabbycat11: 2
+Murloc Tidecaller22: 3
+Wrath Weaver911: 4
+Imprisoner33: 5
+Imprisoner33: 6
+-----------------------
+P1: 
+Alleycat11: 0
+Murloc Tidecaller73: 1
+Murloc Tidecaller23: 2
+Imprisoner33: 3
+Metaltooth Leaper53: 4
+Wrath Weaver13: 5
+Felfin Navigator55: 6
+P2: 
+Scavenging Hyena22: 0
+Alleycat11: 1
+Tabbycat11: 2
+Murloc Tidecaller22: 3
+Wrath Weaver911: 4
+Imprisoner33: 5
+Imprisoner33: 6
+-----------------------
+P1: 
+Alleycat11: 0
+Murloc Tidecaller73: 1
+Murloc Tidecaller23: 2
+Imprisoner33: 3
+Metaltooth Leaper53: 4
+Wrath Weaver13: 5
+Felfin Navigator55: 6
+P2: 
+Toxfin12: 0
+Alleycat11: 1
+Deadly Spore11: 2
+Murloc Tidecaller42: 3
+Wrath Weaver911: 4
+Imprisoner33: 5
+Imprisoner33: 6
+-----------------------
+P1: 
+Alleycat11: 0
+Murloc Tidecaller73: 1
+Murloc Tidecaller23: 2
+Imprisoner33: 3
+Metaltooth Leaper53: 4
+Wrath Weaver13: 5
+Felfin Navigator55: 6
+P2: 
+Toxfin12: 0
+Alleycat11: 1
+Deadly Spore11: 2
+Murloc Tidecaller42: 3
+Wrath Weaver911: 4
+Imprisoner33: 5
+Imprisoner33: 6
+-----------------------
+P1: 
+Alleycat11: 0
+Murloc Tidecaller73: 1
+Murloc Tidecaller23: 2
+Imprisoner33: 3
+Metaltooth Leaper53: 4
+Wrath Weaver13: 5
+Felfin Navigator55: 6
+P2: 
+Cobalt Scalebane55: 0
+Alleycat11: 1
+Deadly Spore11: 2
+Murloc Tidecaller42: 3
+Wrath Weaver911: 4
+Imprisoner33: 5
+Imprisoner33: 6
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+Fiendish Servant21: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Murloc Warleader33: 1
+Old Murk-Eye24: 2
+P2: 
+Fiendish Servant21: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Murloc Warleader33: 1
+Old Murk-Eye35: 2
+Rockpool Hunter23: 3
+Harvest Golem23: 4
+P2: 
+Fiendish Servant21: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Murloc Warleader33: 1
+Old Murk-Eye35: 2
+Rockpool Hunter23: 3
+Harvest Golem23: 4
+Harvest Golem23: 5
+P2: 
+Fiendish Servant21: 0
+-----------------------
+P1: 
+Alleycat33: 0
+Murloc Warleader33: 1
+Old Murk-Eye35: 2
+Rockpool Hunter23: 3
+Harvest Golem23: 4
+Harvest Golem23: 5
+Houndmaster43: 6
+P2: 
+Spawn of NZoth22: 0
+Kindly Grandmother11: 1
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+Rockpool Hunter34: 0
+-----------------------
+P1: 
+Metaltooth Leaper53: 0
+Vulgar Homunculus24: 1
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Metaltooth Leaper53: 0
+Vulgar Homunculus24: 1
+Scavenging Hyena22: 2
+Murloc Tidehunter21: 3
+Murloc Scout11: 4
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Metaltooth Leaper53: 0
+Vulgar Homunculus24: 1
+Scavenging Hyena22: 2
+Murloc Tidehunter21: 3
+Murloc Scout11: 4
+Murloc Warleader33: 5
+P2: 
+Houndmaster43: 0
+Crystalweaver54: 1
+-----------------------
+P1: 
+Metaltooth Leaper53: 0
+Vulgar Homunculus35: 1
+Scavenging Hyena22: 2
+Murloc Tidehunter21: 3
+Murloc Scout11: 4
+Murloc Warleader33: 5
+Crystalweaver54: 6
+P2: 
+Houndmaster43: 0
+Crystalweaver54: 1
+-----------------------
+P1: 
+Metaltooth Leaper53: 0
+Vulgar Homunculus35: 1
+Scavenging Hyena22: 2
+Murloc Tidehunter21: 3
+Murloc Scout11: 4
+Murloc Warleader33: 5
+Crystalweaver54: 6
+P2: 
+Houndmaster43: 0
+Crystalweaver54: 1
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+-----------------------
+P1: 
+Metaltooth Leaper53: 0
+Pack Leader23: 1
+P2: 
+-----------------------
+P1: 
+Metaltooth Leaper53: 0
+Pack Leader23: 1
+Murloc Warleader33: 2
+Imprisoner33: 3
+P2: 
+Harvest Golem23: 0
+-----------------------
+P1: 
+Metaltooth Leaper53: 0
+Pack Leader23: 1
+Murloc Warleader33: 2
+Imprisoner33: 3
+Rockpool Hunter34: 4
+P2: 
+Harvest Golem23: 0
+-----------------------
+P1: 
+Metaltooth Leaper53: 0
+Pack Leader23: 1
+Murloc Warleader33: 2
+Imprisoner33: 3
+Rockpool Hunter34: 4
+Houndmaster43: 5
+Pack Leader23: 6
+P2: 
+Harvest Golem23: 0
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Imprisoner33: 0
+Old Murk-Eye24: 1
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Imprisoner33: 0
+Old Murk-Eye24: 1
+Metaltooth Leaper53: 2
+Spawn of NZoth22: 3
+P2: 
+Scavenging Hyena22: 0
+-----------------------
+P1: 
+Imprisoner33: 0
+Old Murk-Eye24: 1
+Metaltooth Leaper53: 2
+Spawn of NZoth22: 3
+Old Murk-Eye24: 4
+P2: 
+Scavenging Hyena22: 0
+Murloc Warleader33: 1
+-----------------------
+P1: 
+Imprisoner33: 0
+Old Murk-Eye24: 1
+Metaltooth Leaper75: 2
+Spawn of NZoth22: 3
+Old Murk-Eye24: 4
+Screwjank Clunker25: 5
+Vulgar Homunculus24: 6
+P2: 
+Scavenging Hyena22: 0
+Murloc Warleader33: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Murloc Warleader33: 1
+Wrath Weaver13: 2
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Murloc Warleader33: 1
+Wrath Weaver13: 2
+Metaltooth Leaper53: 3
+Murloc Warleader33: 4
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Murloc Warleader33: 1
+Wrath Weaver13: 2
+Metaltooth Leaper53: 3
+Murloc Warleader33: 4
+Harvest Golem23: 5
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Murloc Warleader33: 1
+Wrath Weaver57: 2
+Metaltooth Leaper53: 3
+Murloc Warleader33: 4
+Harvest Golem23: 5
+Imprisoner33: 6
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+Nathrezim Overseer45: 2
+Scavenging Hyena22: 3
+Metaltooth Leaper53: 4
+Rockpool Hunter34: 5
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+Vulgar Homunculus24: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+Vulgar Homunculus24: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Old Murk-Eye24: 1
+Metaltooth Leaper53: 2
+P2: 
+Vulgar Homunculus24: 0
+Alleycat11: 1
+Tabbycat11: 2
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Old Murk-Eye24: 1
+Metaltooth Leaper53: 2
+Imprisoner33: 3
+Murloc Warleader33: 4
+P2: 
+Fiendish Servant21: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Old Murk-Eye24: 1
+Metaltooth Leaper53: 2
+Imprisoner33: 3
+Murloc Warleader33: 4
+Vulgar Homunculus24: 5
+P2: 
+Fiendish Servant21: 0
+Kindly Grandmother11: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Old Murk-Eye24: 1
+Metaltooth Leaper53: 2
+Imprisoner33: 3
+Murloc Warleader33: 4
+Vulgar Homunculus24: 5
+Old Murk-Eye24: 6
+P2: 
+Spawn of NZoth22: 0
+Fiendish Servant21: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Vulgar Homunculus24: 1
+Murloc Warleader33: 2
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Vulgar Homunculus24: 1
+Murloc Warleader33: 2
+Murloc Warleader33: 3
+Rockpool Hunter34: 4
+P2: 
+Old Murk-Eye24: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Vulgar Homunculus24: 1
+Murloc Warleader33: 2
+Murloc Warleader33: 3
+Rockpool Hunter34: 4
+Metaltooth Leaper53: 5
+P2: 
+Old Murk-Eye24: 0
+Houndmaster43: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Vulgar Homunculus24: 1
+Murloc Warleader33: 2
+Murloc Warleader33: 3
+Rockpool Hunter34: 4
+Metaltooth Leaper53: 5
+Screwjank Clunker47: 6
+P2: 
+Old Murk-Eye24: 0
+Houndmaster43: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+Murloc Tidecaller22: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+Murloc Tidecaller22: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Harvest Golem23: 1
+Murloc Tidecaller22: 2
+P2: 
+Murloc Tidecaller42: 0
+Murloc Tidecaller12: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Harvest Golem23: 1
+Murloc Tidecaller42: 2
+Murloc Warleader33: 3
+Scavenging Hyena22: 4
+P2: 
+Murloc Tidecaller42: 0
+Murloc Tidecaller12: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Harvest Golem23: 1
+Murloc Tidecaller62: 2
+Murloc Warleader33: 3
+Scavenging Hyena22: 4
+Old Murk-Eye24: 5
+P2: 
+Spawn of NZoth22: 0
+Murloc Tidecaller12: 1
+Micro Mummy12: 2
+-----------------------
+P1: 
+Alleycat11: 0
+Harvest Golem23: 1
+Murloc Tidecaller93: 2
+Murloc Warleader44: 3
+Scavenging Hyena22: 4
+Old Murk-Eye35: 5
+Felfin Navigator55: 6
+P2: 
+Spawn of NZoth22: 0
+Murloc Tidecaller12: 1
+Micro Mummy12: 2
+-----------------------
+P1: 
+Alleycat11: 0
+Harvest Golem23: 1
+Murloc Tidecaller93: 2
+Murloc Warleader44: 3
+Scavenging Hyena22: 4
+Old Murk-Eye35: 5
+Felfin Navigator55: 6
+P2: 
+Spawn of NZoth22: 0
+Murloc Tidecaller12: 1
+Micro Mummy12: 2
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+Vulgar Homunculus24: 0
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+Wrath Weaver13: 0
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+Wrath Weaver13: 0
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Harvest Golem23: 1
+P2: 
+Wrath Weaver911: 0
+Fiendish Servant21: 1
+Fiendish Servant21: 2
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Harvest Golem43: 1
+Metaltooth Leaper53: 2
+Rockpool Hunter34: 3
+P2: 
+Wrath Weaver911: 0
+Fiendish Servant21: 1
+Fiendish Servant21: 2
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Harvest Golem43: 1
+Metaltooth Leaper53: 2
+Rockpool Hunter34: 3
+Harvest Golem23: 4
+P2: 
+Wrath Weaver911: 0
+Fiendish Servant21: 1
+Fiendish Servant21: 2
+Rockpool Hunter34: 3
+Murloc Tidecaller22: 4
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Harvest Golem43: 1
+Metaltooth Leaper53: 2
+Rockpool Hunter34: 3
+Harvest Golem23: 4
+Old Murk-Eye24: 5
+Murloc Warleader33: 6
+P2: 
+Wrath Weaver1315: 0
+Fiendish Servant21: 1
+Fiendish Servant21: 2
+Rockpool Hunter34: 3
+Murloc Tidecaller22: 4
+Vulgar Homunculus24: 5
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Harvest Golem43: 1
+Metaltooth Leaper53: 2
+Rockpool Hunter34: 3
+Harvest Golem23: 4
+Old Murk-Eye24: 5
+Murloc Warleader33: 6
+P2: 
+Wrath Weaver1315: 0
+Fiendish Servant21: 1
+Fiendish Servant21: 2
+Rockpool Hunter34: 3
+Murloc Tidecaller62: 4
+Vulgar Homunculus24: 5
+Murloc Tidehunter21: 6
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Harvest Golem43: 1
+Metaltooth Leaper53: 2
+Rockpool Hunter34: 3
+Harvest Golem23: 4
+Old Murk-Eye24: 5
+Murloc Warleader33: 6
+P2: 
+Wrath Weaver1315: 0
+Pack Leader23: 1
+Fiendish Servant21: 2
+Rockpool Hunter34: 3
+Vulgar Homunculus24: 5
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Harvest Golem43: 1
+Metaltooth Leaper53: 2
+Rockpool Hunter34: 3
+Harvest Golem23: 4
+Old Murk-Eye24: 5
+Murloc Warleader33: 6
+P2: 
+Wrath Weaver1315: 0
+Pack Leader23: 1
+Fiendish Servant21: 2
+Wrath Weaver13: 3
+Pack Leader23: 4
+Vulgar Homunculus24: 5
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Harvest Golem43: 1
+Metaltooth Leaper53: 2
+Rockpool Hunter34: 3
+Harvest Golem23: 4
+Old Murk-Eye24: 5
+Murloc Warleader33: 6
+P2: 
+Wrath Weaver13: 0
+Pack Leader23: 1
+Fiendish Servant21: 2
+Wrath Weaver13: 3
+Pack Leader23: 4
+Vulgar Homunculus24: 5
+Murloc Tidecaller22: 6
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Harvest Golem43: 1
+Metaltooth Leaper53: 2
+Rockpool Hunter34: 3
+Harvest Golem23: 4
+Old Murk-Eye24: 5
+Murloc Warleader33: 6
+P2: 
+Wrath Weaver13: 0
+Pack Leader23: 1
+Screwjank Clunker47: 2
+Wrath Weaver13: 3
+Pack Leader23: 4
+Vulgar Homunculus24: 5
+Murloc Tidecaller22: 6
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Vulgar Homunculus24: 1
+Vulgar Homunculus24: 2
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Vulgar Homunculus24: 1
+Vulgar Homunculus24: 2
+Nathrezim Overseer45: 3
+Wrath Weaver13: 4
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Vulgar Homunculus24: 1
+Vulgar Homunculus24: 2
+Nathrezim Overseer45: 3
+Wrath Weaver13: 4
+Metaltooth Leaper53: 5
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Vulgar Homunculus35: 1
+Vulgar Homunculus24: 2
+Nathrezim Overseer56: 3
+Wrath Weaver13: 4
+Metaltooth Leaper53: 5
+Crystalweaver54: 6
+P2: 
+Imprisoner33: 0
+Murloc Scout11: 1
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+Fiendish Servant21: 0
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+Fiendish Servant21: 0
+-----------------------
+P1: 
+Pack Leader23: 0
+Wrath Weaver13: 1
+P2: 
+Fiendish Servant21: 0
+-----------------------
+P1: 
+Pack Leader23: 0
+Wrath Weaver57: 1
+Vulgar Homunculus24: 2
+Harvest Golem23: 3
+P2: 
+Wrath Weaver13: 0
+-----------------------
+P1: 
+Pack Leader23: 0
+Wrath Weaver911: 1
+Vulgar Homunculus24: 2
+Harvest Golem23: 3
+Vulgar Homunculus24: 4
+P2: 
+Wrath Weaver13: 0
+-----------------------
+P1: 
+Pack Leader23: 0
+Wrath Weaver1719: 1
+Vulgar Homunculus24: 2
+Harvest Golem23: 3
+Vulgar Homunculus24: 4
+Vulgar Homunculus24: 5
+Nathrezim Overseer45: 6
+P2: 
+Wrath Weaver13: 0
+Murloc Tidehunter21: 1
+Murloc Scout11: 2
+-----------------------
+P1: 
+Wrath Weaver13: 0
+P2: 
+-----------------------
+P1: 
+Wrath Weaver13: 0
+P2: 
+Vulgar Homunculus24: 0
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Pack Leader23: 1
+P2: 
+Vulgar Homunculus24: 0
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Pack Leader23: 1
+Murloc Warleader33: 2
+Metaltooth Leaper53: 3
+P2: 
+Vulgar Homunculus24: 0
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Pack Leader23: 1
+Murloc Warleader33: 2
+Metaltooth Leaper53: 3
+Harvest Golem23: 4
+P2: 
+Vulgar Homunculus24: 0
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Pack Leader23: 1
+Murloc Warleader33: 2
+Metaltooth Leaper53: 3
+Harvest Golem23: 4
+Infested Wolf53: 5
+Old Murk-Eye24: 6
+P2: 
+Rat Pack22: 0
+Replicating Menace31: 1
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Imprisoner33: 1
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Imprisoner33: 1
+Old Murk-Eye24: 2
+Murloc Warleader33: 3
+P2: 
+Micro Mummy12: 0
+Tabbycat11: 1
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Imprisoner55: 1
+Old Murk-Eye24: 2
+Murloc Warleader33: 3
+Nathrezim Overseer23: 4
+P2: 
+Micro Mummy12: 0
+Tabbycat11: 1
+Old Murk-Eye24: 2
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Imprisoner55: 1
+Old Murk-Eye24: 2
+Murloc Warleader33: 3
+Nathrezim Overseer23: 4
+Screwjank Clunker67: 5
+Metaltooth Leaper53: 6
+P2: 
+Micro Mummy32: 0
+Murloc Warleader33: 1
+Kindly Grandmother11: 2
+-----------------------
+P1: 
+Scavenging Hyena22: 0
+P2: 
+-----------------------
+P1: 
+Scavenging Hyena22: 0
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Imprisoner33: 1
+P2: 
+Micro Mummy12: 0
+Wrath Weaver13: 1
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Imprisoner33: 1
+Imprisoner33: 2
+Imprisoner33: 3
+P2: 
+Micro Mummy12: 0
+Wrath Weaver13: 1
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Imprisoner33: 1
+Imprisoner33: 2
+Imprisoner33: 3
+Vulgar Homunculus24: 4
+P2: 
+Micro Mummy12: 0
+Wrath Weaver13: 1
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Imprisoner33: 1
+Imprisoner33: 2
+Imprisoner33: 3
+Vulgar Homunculus24: 4
+Infested Wolf33: 5
+Old Murk-Eye24: 6
+P2: 
+Micro Mummy12: 0
+Wrath Weaver13: 1
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+Fiendish Servant21: 0
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+Fiendish Servant21: 0
+Scavenging Hyena22: 1
+-----------------------
+P1: 
+Harvest Golem23: 0
+Nathrezim Overseer45: 1
+P2: 
+Fiendish Servant21: 0
+Scavenging Hyena22: 1
+-----------------------
+P1: 
+Harvest Golem43: 0
+Nathrezim Overseer45: 1
+Metaltooth Leaper53: 2
+Fiendish Servant21: 3
+P2: 
+Fiendish Servant21: 0
+Scavenging Hyena22: 1
+Murloc Tidehunter21: 2
+Murloc Scout11: 3
+-----------------------
+P1: 
+Harvest Golem43: 0
+Nathrezim Overseer45: 1
+Metaltooth Leaper53: 2
+Fiendish Servant21: 3
+Old Murk-Eye24: 4
+P2: 
+Fiendish Servant21: 0
+Scavenging Hyena22: 1
+Murloc Tidehunter21: 2
+Murloc Scout11: 3
+-----------------------
+P1: 
+Harvest Golem43: 0
+Nathrezim Overseer45: 1
+Metaltooth Leaper53: 2
+Fiendish Servant21: 3
+Old Murk-Eye24: 4
+Pack Leader23: 5
+Harvest Golem23: 6
+P2: 
+Fiendish Servant21: 0
+Scavenging Hyena22: 1
+Murloc Tidehunter21: 2
+Murloc Scout11: 3
+Metaltooth Leaper53: 4
+-----------------------
+P1: 
+Harvest Golem43: 0
+Nathrezim Overseer45: 1
+Metaltooth Leaper53: 2
+Fiendish Servant21: 3
+Old Murk-Eye24: 4
+Pack Leader23: 5
+Harvest Golem23: 6
+P2: 
+Fiendish Servant21: 0
+Scavenging Hyena22: 1
+Murloc Tidehunter21: 2
+Murloc Scout11: 3
+Metaltooth Leaper53: 4
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Harvest Golem23: 1
+Wrath Weaver13: 2
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+-----------------------
+P1: 
+Murloc Tidehunter32: 0
+Harvest Golem23: 1
+Wrath Weaver57: 2
+Rockpool Hunter23: 3
+Nathrezim Overseer45: 4
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+Scavenging Hyena22: 2
+Murloc Tidehunter21: 3
+Murloc Scout11: 4
+-----------------------
+P1: 
+Murloc Tidehunter32: 0
+Harvest Golem23: 1
+Wrath Weaver911: 2
+Rockpool Hunter23: 3
+Nathrezim Overseer45: 4
+Vulgar Homunculus24: 5
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+Scavenging Hyena22: 2
+Murloc Tidehunter21: 3
+Murloc Scout11: 4
+-----------------------
+P1: 
+Murloc Tidehunter32: 0
+Harvest Golem23: 1
+Wrath Weaver911: 2
+Rockpool Hunter23: 3
+Nathrezim Overseer45: 4
+Vulgar Homunculus24: 5
+Murloc Warleader33: 6
+P2: 
+Murloc Tidehunter21: 0
+Scavenging Hyena22: 2
+Murloc Tidehunter21: 3
+Murloc Scout11: 4
+Murloc Tidehunter21: 5
+Murloc Scout11: 6
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+Vulgar Homunculus24: 0
+-----------------------
+P1: 
+Scavenging Hyena22: 0
+Spawn of NZoth22: 1
+P2: 
+Vulgar Homunculus24: 0
+-----------------------
+P1: 
+Scavenging Hyena22: 0
+Spawn of NZoth22: 1
+Murloc Warleader33: 2
+Vulgar Homunculus24: 3
+P2: 
+Vulgar Homunculus24: 0
+Kindly Grandmother11: 1
+-----------------------
+P1: 
+Scavenging Hyena22: 0
+Spawn of NZoth22: 1
+Murloc Warleader33: 2
+Vulgar Homunculus24: 3
+Murloc Warleader33: 4
+P2: 
+Vulgar Homunculus24: 0
+Kindly Grandmother11: 1
+-----------------------
+P1: 
+Scavenging Hyena22: 0
+Spawn of NZoth22: 1
+Murloc Warleader33: 2
+Vulgar Homunculus35: 3
+Murloc Warleader33: 4
+Crystalweaver54: 5
+Infested Wolf33: 6
+P2: 
+Vulgar Homunculus24: 0
+Kindly Grandmother11: 1
+-----------------------
+P1: 
+Scavenging Hyena22: 0
+Spawn of NZoth22: 1
+Murloc Warleader33: 2
+Vulgar Homunculus35: 3
+Murloc Warleader33: 4
+Crystalweaver54: 5
+Infested Wolf33: 6
+P2: 
+Vulgar Homunculus24: 0
+Kindly Grandmother11: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+Vulgar Homunculus24: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+Vulgar Homunculus24: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Warleader33: 1
+Imprisoner33: 2
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Warleader33: 1
+Imprisoner55: 2
+Metaltooth Leaper53: 3
+Nathrezim Overseer23: 4
+P2: 
+Fiendish Servant21: 0
+Fiendish Servant21: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Warleader33: 1
+Imprisoner55: 2
+Metaltooth Leaper73: 3
+Nathrezim Overseer23: 4
+Metaltooth Leaper53: 5
+P2: 
+Crystalweaver54: 0
+Fiendish Servant32: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Warleader33: 1
+Imprisoner66: 2
+Metaltooth Leaper73: 3
+Nathrezim Overseer34: 4
+Metaltooth Leaper53: 5
+Crystalweaver54: 6
+P2: 
+Crystalweaver54: 0
+Fiendish Servant32: 1
+Scavenging Hyena22: 2
+Murloc Warleader33: 3
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Nathrezim Overseer45: 1
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Nathrezim Overseer45: 1
+Vulgar Homunculus24: 2
+Micro Mummy22: 3
+P2: 
+Pack Leader23: 0
+Murloc Scout11: 1
+Metaltooth Leaper53: 2
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Nathrezim Overseer45: 1
+Vulgar Homunculus34: 2
+Micro Mummy42: 3
+Metaltooth Leaper53: 4
+P2: 
+Pack Leader23: 0
+Murloc Scout11: 1
+Metaltooth Leaper53: 2
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Nathrezim Overseer45: 1
+Vulgar Homunculus34: 2
+Micro Mummy62: 3
+Metaltooth Leaper73: 4
+Infested Wolf33: 5
+Metaltooth Leaper63: 6
+P2: 
+Pack Leader23: 0
+Murloc Scout11: 1
+Metaltooth Leaper53: 2
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+Murloc Tidecaller22: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Vulgar Homunculus24: 1
+Metaltooth Leaper53: 2
+P2: 
+Murloc Tidecaller22: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Vulgar Homunculus24: 1
+Metaltooth Leaper53: 2
+Murloc Warleader33: 3
+Old Murk-Eye24: 4
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Vulgar Homunculus24: 1
+Metaltooth Leaper53: 2
+Murloc Warleader33: 3
+Old Murk-Eye24: 4
+Vulgar Homunculus24: 5
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Vulgar Homunculus24: 1
+Metaltooth Leaper53: 2
+Murloc Warleader33: 3
+Old Murk-Eye24: 4
+Vulgar Homunculus24: 5
+Screwjank Clunker47: 6
+P2: 
+Kindly Grandmother11: 0
+Pack Leader23: 1
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+Rockpool Hunter34: 0
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+Rockpool Hunter34: 0
+-----------------------
+P1: 
+Imprisoner33: 0
+Spawn of NZoth22: 1
+P2: 
+-----------------------
+P1: 
+Imprisoner33: 0
+Spawn of NZoth22: 1
+Imprisoner33: 2
+Old Murk-Eye24: 3
+P2: 
+Old Murk-Eye24: 0
+Murloc Tidehunter21: 1
+Murloc Scout11: 2
+-----------------------
+P1: 
+Imprisoner33: 0
+Spawn of NZoth22: 1
+Imprisoner33: 2
+Old Murk-Eye24: 3
+Vulgar Homunculus24: 4
+P2: 
+Old Murk-Eye24: 0
+Murloc Tidehunter21: 1
+Murloc Scout11: 2
+-----------------------
+P1: 
+Imprisoner33: 0
+Spawn of NZoth22: 1
+Imprisoner33: 2
+Old Murk-Eye24: 3
+Vulgar Homunculus24: 4
+Murloc Warleader33: 5
+Murloc Warleader33: 6
+P2: 
+Replicating Menace31: 0
+Murloc Tidehunter21: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter32: 0
+Rockpool Hunter23: 1
+Nathrezim Overseer45: 2
+P2: 
+Fiendish Servant21: 0
+-----------------------
+P1: 
+Murloc Tidehunter32: 0
+Rockpool Hunter23: 1
+Nathrezim Overseer67: 2
+Metaltooth Leaper53: 3
+Nathrezim Overseer23: 4
+P2: 
+Fiendish Servant21: 0
+Alleycat11: 1
+Tabbycat11: 2
+-----------------------
+P1: 
+Murloc Tidehunter32: 0
+Rockpool Hunter23: 1
+Nathrezim Overseer67: 2
+Metaltooth Leaper53: 3
+Nathrezim Overseer23: 4
+Old Murk-Eye24: 5
+P2: 
+Fiendish Servant21: 0
+Alleycat11: 1
+Tabbycat11: 2
+Alleycat11: 3
+Tabbycat11: 4
+-----------------------
+P1: 
+Murloc Tidehunter32: 0
+Rockpool Hunter23: 1
+Nathrezim Overseer67: 2
+Metaltooth Leaper53: 3
+Nathrezim Overseer23: 4
+Old Murk-Eye24: 5
+Houndmaster43: 6
+P2: 
+Fiendish Servant32: 0
+Alleycat11: 1
+Tabbycat11: 2
+Alleycat11: 3
+Tabbycat11: 4
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+-----------------------
+P1: 
+Metaltooth Leaper53: 0
+Murloc Warleader33: 1
+P2: 
+Alleycat11: 0
+Fiendish Servant21: 1
+-----------------------
+P1: 
+Metaltooth Leaper53: 0
+Murloc Warleader33: 1
+Murloc Warleader33: 2
+Harvest Golem23: 3
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+-----------------------
+P1: 
+Metaltooth Leaper53: 0
+Murloc Warleader33: 1
+Murloc Warleader33: 2
+Harvest Golem23: 3
+Vulgar Homunculus24: 4
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+-----------------------
+P1: 
+Metaltooth Leaper53: 0
+Murloc Warleader33: 1
+Murloc Warleader33: 2
+Harvest Golem23: 3
+Vulgar Homunculus24: 4
+Imprisoner33: 5
+Infested Wolf33: 6
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+-----------------------
+P1: 
+Scavenging Hyena22: 0
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Scavenging Hyena22: 0
+P2: 
+Micro Mummy12: 0
+Micro Mummy12: 1
+-----------------------
+P1: 
+Imprisoner33: 0
+Imprisoner33: 1
+P2: 
+Micro Mummy12: 0
+Micro Mummy12: 1
+-----------------------
+P1: 
+Imprisoner33: 0
+Imprisoner33: 1
+Pack Leader23: 2
+Pack Leader23: 3
+P2: 
+Micro Mummy12: 0
+Micro Mummy12: 1
+-----------------------
+P1: 
+Imprisoner33: 0
+Imprisoner33: 1
+Pack Leader23: 2
+Pack Leader23: 3
+Murloc Warleader33: 4
+P2: 
+-----------------------
+P1: 
+Imprisoner33: 0
+Imprisoner33: 1
+Pack Leader23: 2
+Pack Leader23: 3
+Murloc Warleader33: 4
+Houndmaster43: 5
+Houndmaster43: 6
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+-----------------------
+P1: 
+Micro Mummy12: 0
+P2: 
+-----------------------
+P1: 
+Micro Mummy12: 0
+P2: 
+-----------------------
+P1: 
+Spawn of NZoth22: 0
+Fiendish Servant21: 1
+P2: 
+-----------------------
+P1: 
+Spawn of NZoth22: 0
+Fiendish Servant21: 1
+Imprisoner33: 2
+Pack Leader23: 3
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Spawn of NZoth22: 0
+Fiendish Servant21: 1
+Imprisoner33: 2
+Pack Leader23: 3
+Pack Leader23: 4
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Spawn of NZoth22: 0
+Fiendish Servant21: 1
+Imprisoner33: 2
+Pack Leader23: 3
+Pack Leader23: 4
+Infested Wolf73: 5
+Nathrezim Overseer45: 6
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Wrath Weaver13: 0
+P2: 
+Scavenging Hyena22: 0
+-----------------------
+P1: 
+Wrath Weaver13: 0
+P2: 
+Scavenging Hyena22: 0
+-----------------------
+P1: 
+Nathrezim Overseer45: 0
+Harvest Golem23: 1
+P2: 
+Metaltooth Leaper53: 0
+-----------------------
+P1: 
+Nathrezim Overseer45: 0
+Harvest Golem63: 1
+Metaltooth Leaper73: 2
+Metaltooth Leaper53: 3
+P2: 
+Metaltooth Leaper53: 0
+Old Murk-Eye24: 1
+-----------------------
+P1: 
+Nathrezim Overseer45: 0
+Harvest Golem63: 1
+Metaltooth Leaper73: 2
+Metaltooth Leaper53: 3
+Rockpool Hunter34: 4
+P2: 
+Metaltooth Leaper53: 0
+Alleycat11: 1
+Tabbycat11: 2
+-----------------------
+P1: 
+Nathrezim Overseer45: 0
+Harvest Golem63: 1
+Metaltooth Leaper73: 2
+Metaltooth Leaper53: 3
+Rockpool Hunter34: 4
+Houndmaster43: 5
+Imprisoner33: 6
+P2: 
+Metaltooth Leaper53: 0
+Alleycat11: 1
+Tabbycat11: 2
+-----------------------
+P1: 
+Nathrezim Overseer45: 0
+Harvest Golem63: 1
+Metaltooth Leaper73: 2
+Metaltooth Leaper53: 3
+Rockpool Hunter34: 4
+Houndmaster43: 5
+Imprisoner33: 6
+P2: 
+Metaltooth Leaper53: 0
+Alleycat11: 1
+Tabbycat11: 2
+Old Murk-Eye24: 3
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Warleader33: 1
+Nathrezim Overseer45: 2
+P2: 
+Scavenging Hyena22: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Warleader33: 1
+Nathrezim Overseer45: 2
+Murloc Tidecaller22: 3
+Fiendish Servant21: 4
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Warleader33: 1
+Nathrezim Overseer45: 2
+Murloc Tidecaller22: 3
+Fiendish Servant21: 4
+Metaltooth Leaper53: 5
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Warleader33: 1
+Nathrezim Overseer45: 2
+Murloc Tidecaller22: 3
+Fiendish Servant21: 4
+Metaltooth Leaper53: 5
+Screwjank Clunker47: 6
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Rockpool Hunter34: 1
+Wrath Weaver13: 2
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Rockpool Hunter34: 1
+Wrath Weaver13: 2
+Pack Leader23: 3
+Harvest Golem23: 4
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Rockpool Hunter34: 1
+Wrath Weaver13: 2
+Pack Leader23: 3
+Harvest Golem23: 4
+Murloc Warleader33: 5
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Rockpool Hunter34: 1
+Wrath Weaver13: 2
+Pack Leader23: 3
+Harvest Golem23: 4
+Murloc Warleader33: 5
+Infested Wolf53: 6
+P2: 
+Micro Mummy34: 0
+Rat Pack22: 1
+Screwjank Clunker25: 2
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Rockpool Hunter34: 1
+Wrath Weaver13: 2
+Pack Leader23: 3
+Harvest Golem23: 4
+Murloc Warleader33: 5
+Infested Wolf53: 6
+P2: 
+Micro Mummy34: 0
+Rat Pack22: 1
+Screwjank Clunker25: 2
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+Pack Leader23: 1
+P2: 
+Rockpool Hunter34: 0
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+Pack Leader23: 1
+Old Murk-Eye24: 2
+Murloc Warleader33: 3
+P2: 
+Rockpool Hunter34: 0
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+Pack Leader23: 1
+Old Murk-Eye24: 2
+Murloc Warleader33: 3
+Imprisoner33: 4
+P2: 
+Harvest Golem23: 0
+-----------------------
+P1: 
+Vulgar Homunculus46: 0
+Pack Leader23: 1
+Old Murk-Eye24: 2
+Murloc Warleader33: 3
+Imprisoner33: 4
+Screwjank Clunker47: 5
+Nathrezim Overseer23: 6
+P2: 
+Harvest Golem23: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Imprisoner33: 1
+Pack Leader23: 2
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Imprisoner33: 1
+Pack Leader23: 2
+Nathrezim Overseer45: 3
+Wrath Weaver13: 4
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Imprisoner33: 1
+Pack Leader23: 2
+Nathrezim Overseer45: 3
+Wrath Weaver13: 4
+Metaltooth Leaper53: 5
+P2: 
+Micro Mummy12: 0
+Old Murk-Eye24: 1
+-----------------------
+P1: 
+Murloc Tidehunter32: 0
+Imprisoner33: 1
+Pack Leader23: 2
+Nathrezim Overseer45: 3
+Wrath Weaver13: 4
+Metaltooth Leaper53: 5
+Felfin Navigator55: 6
+P2: 
+Wrath Weaver13: 0
+Murloc Scout11: 3
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+Wrath Weaver13: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Imprisoner33: 1
+Vulgar Homunculus24: 2
+P2: 
+Wrath Weaver13: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Imprisoner43: 1
+Vulgar Homunculus24: 2
+Imprisoner33: 3
+Micro Mummy22: 4
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Imprisoner43: 1
+Vulgar Homunculus46: 2
+Imprisoner33: 3
+Micro Mummy32: 4
+Nathrezim Overseer23: 5
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Imprisoner43: 1
+Vulgar Homunculus46: 2
+Imprisoner33: 3
+Micro Mummy32: 4
+Nathrezim Overseer23: 5
+Imprisoner43: 6
+P2: 
+Metaltooth Leaper53: 0
+Tabbycat11: 1
+-----------------------
+P1: 
+Wrath Weaver13: 0
+P2: 
+-----------------------
+P1: 
+Wrath Weaver13: 0
+P2: 
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Harvest Golem23: 1
+P2: 
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Harvest Golem43: 1
+Old Murk-Eye24: 2
+Metaltooth Leaper53: 3
+P2: 
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Harvest Golem63: 1
+Old Murk-Eye24: 2
+Metaltooth Leaper73: 3
+Metaltooth Leaper53: 4
+P2: 
+-----------------------
+P1: 
+Old Murk-Eye35: 0
+Harvest Golem63: 1
+Old Murk-Eye24: 2
+Metaltooth Leaper73: 3
+Metaltooth Leaper53: 4
+Felfin Navigator55: 5
+Houndmaster43: 6
+P2: 
+Rat Pack22: 0
+Spawn of NZoth22: 1
+-----------------------
+P1: 
+Murloc Tidecaller22: 0
+P2: 
+-----------------------
+P1: 
+Murloc Tidecaller22: 0
+P2: 
+Scavenging Hyena22: 0
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+Nathrezim Overseer45: 1
+P2: 
+Harvest Golem23: 0
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+Nathrezim Overseer67: 1
+Murloc Warleader33: 2
+Nathrezim Overseer23: 3
+P2: 
+Rockpool Hunter34: 0
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+Nathrezim Overseer67: 1
+Murloc Warleader33: 2
+Nathrezim Overseer23: 3
+Old Murk-Eye24: 4
+P2: 
+Rat Pack22: 0
+-----------------------
+P1: 
+Vulgar Homunculus35: 0
+Nathrezim Overseer78: 1
+Murloc Warleader33: 2
+Nathrezim Overseer34: 3
+Old Murk-Eye24: 4
+Crystalweaver54: 5
+Infested Wolf33: 6
+P2: 
+Rat Pack22: 0
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Pack Leader23: 1
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Pack Leader23: 1
+Rockpool Hunter34: 2
+Fiendish Servant21: 3
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+Scavenging Hyena22: 2
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Pack Leader23: 1
+Rockpool Hunter34: 2
+Fiendish Servant21: 3
+Harvest Golem23: 4
+P2: 
+Scavenging Hyena22: 0
+Scavenging Hyena22: 2
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Pack Leader23: 1
+Rockpool Hunter34: 2
+Fiendish Servant21: 3
+Harvest Golem23: 4
+Houndmaster43: 5
+Murloc Warleader33: 6
+P2: 
+Scavenging Hyena22: 0
+Vulgar Homunculus24: 1
+Fiendish Servant21: 2
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Rockpool Hunter23: 1
+P2: 
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Rockpool Hunter23: 1
+Spawn of NZoth22: 2
+Murloc Tidecaller22: 3
+P2: 
+Spawn of NZoth22: 0
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Rockpool Hunter23: 1
+Spawn of NZoth22: 2
+Murloc Tidecaller22: 3
+Imprisoner33: 4
+P2: 
+Scavenging Hyena22: 0
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Rockpool Hunter23: 1
+Spawn of NZoth22: 2
+Murloc Tidecaller22: 3
+Imprisoner33: 4
+Screwjank Clunker47: 5
+Infested Wolf33: 6
+P2: 
+Kindly Grandmother11: 0
+Murloc Tidecaller22: 1
+-----------------------
+P1: 
+Wrath Weaver13: 0
+P2: 
+-----------------------
+P1: 
+Wrath Weaver13: 0
+P2: 
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Harvest Golem23: 1
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Harvest Golem43: 1
+Metaltooth Leaper53: 2
+Spawn of NZoth22: 3
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+Pack Leader23: 2
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Harvest Golem43: 1
+Metaltooth Leaper53: 2
+Spawn of NZoth22: 3
+Harvest Golem23: 4
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+Pack Leader23: 2
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Harvest Golem43: 1
+Metaltooth Leaper53: 2
+Spawn of NZoth22: 3
+Harvest Golem45: 4
+Screwjank Clunker25: 5
+Murloc Warleader33: 6
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+Pack Leader23: 2
+Fiendish Servant21: 3
+Murloc Tidecaller22: 4
+Houndmaster43: 5
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+Fiendish Servant21: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Warleader33: 1
+Metaltooth Leaper53: 2
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Warleader33: 1
+Metaltooth Leaper53: 2
+Vulgar Homunculus24: 3
+Spawn of NZoth22: 4
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+Scavenging Hyena22: 2
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Warleader33: 1
+Metaltooth Leaper73: 2
+Vulgar Homunculus24: 3
+Spawn of NZoth22: 4
+Metaltooth Leaper53: 5
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+Scavenging Hyena22: 2
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Warleader33: 1
+Metaltooth Leaper73: 2
+Vulgar Homunculus24: 3
+Spawn of NZoth22: 4
+Metaltooth Leaper53: 5
+Old Murk-Eye24: 6
+P2: 
+Spawn of NZoth22: 0
+Nathrezim Overseer45: 1
+-----------------------
+P1: 
+Wrath Weaver13: 0
+P2: 
+Murloc Tidecaller22: 0
+-----------------------
+P1: 
+Wrath Weaver13: 0
+P2: 
+Murloc Tidecaller22: 0
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+Rockpool Hunter34: 1
+P2: 
+Murloc Tidecaller22: 0
+Alleycat11: 1
+Tabbycat11: 2
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+Rockpool Hunter34: 1
+Metaltooth Leaper53: 2
+Imprisoner33: 3
+P2: 
+Murloc Tidecaller22: 0
+Alleycat11: 1
+Tabbycat11: 2
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+Rockpool Hunter34: 1
+Metaltooth Leaper53: 2
+Imprisoner33: 3
+Old Murk-Eye24: 4
+P2: 
+Murloc Tidecaller22: 0
+Alleycat11: 1
+Tabbycat11: 2
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+Rockpool Hunter34: 1
+Metaltooth Leaper73: 2
+Imprisoner33: 3
+Old Murk-Eye24: 4
+Imprisoner33: 5
+Metaltooth Leaper53: 6
+P2: 
+Murloc Tidecaller42: 0
+Scavenging Hyena22: 1
+Tabbycat11: 2
+Toxfin12: 3
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+Rockpool Hunter34: 1
+Metaltooth Leaper73: 2
+Imprisoner33: 3
+Old Murk-Eye24: 4
+Imprisoner33: 5
+Metaltooth Leaper53: 6
+P2: 
+Vulgar Homunculus24: 0
+Vulgar Homunculus24: 1
+Infested Wolf33: 4
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Old Murk-Eye24: 1
+Wrath Weaver13: 2
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+Fiendish Servant21: 2
+Murloc Tidehunter21: 3
+Murloc Scout11: 4
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Old Murk-Eye24: 1
+Wrath Weaver57: 2
+Nathrezim Overseer45: 3
+Spawn of NZoth22: 4
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+Fiendish Servant21: 2
+Murloc Tidehunter21: 3
+Murloc Scout11: 4
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Old Murk-Eye24: 1
+Wrath Weaver57: 2
+Nathrezim Overseer45: 3
+Spawn of NZoth22: 4
+Murloc Warleader33: 5
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+Fiendish Servant21: 2
+Murloc Tidehunter21: 3
+Murloc Scout11: 4
+Scavenging Hyena22: 5
+-----------------------
+P1: 
+Murloc Tidehunter23: 0
+Old Murk-Eye26: 1
+Wrath Weaver57: 2
+Nathrezim Overseer45: 3
+Spawn of NZoth22: 4
+Murloc Warleader35: 5
+Coldlight Seer25: 6
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+Fiendish Servant21: 2
+Murloc Tidehunter21: 3
+Murloc Scout11: 4
+Scavenging Hyena22: 5
+-----------------------
+P1: 
+Murloc Tidehunter23: 0
+Old Murk-Eye26: 1
+Wrath Weaver57: 2
+Nathrezim Overseer45: 3
+Spawn of NZoth22: 4
+Murloc Warleader35: 5
+Coldlight Seer25: 6
+P2: 
+Rat Pack22: 0
+Tabbycat11: 1
+Fiendish Servant21: 2
+Murloc Tidehunter21: 3
+Murloc Scout11: 4
+Mechano-Egg05: 5
+Imprisoner33: 6
+-----------------------
+P1: 
+Murloc Tidehunter23: 0
+Old Murk-Eye26: 1
+Wrath Weaver57: 2
+Nathrezim Overseer45: 3
+Spawn of NZoth22: 4
+Murloc Warleader35: 5
+Coldlight Seer25: 6
+P2: 
+Rat Pack22: 0
+Tabbycat11: 1
+Fiendish Servant21: 2
+Murloc Tidecaller22: 3
+Murloc Scout11: 4
+Mechano-Egg05: 5
+Imprisoner33: 6
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Imprisoner33: 1
+Nathrezim Overseer45: 2
+P2: 
+Nathrezim Overseer45: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Imprisoner33: 1
+Nathrezim Overseer45: 2
+Old Murk-Eye24: 3
+Imprisoner33: 4
+P2: 
+Metaltooth Leaper53: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Imprisoner33: 1
+Nathrezim Overseer45: 2
+Old Murk-Eye24: 3
+Imprisoner33: 4
+Imprisoner33: 5
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Imprisoner44: 1
+Nathrezim Overseer56: 2
+Old Murk-Eye24: 3
+Imprisoner44: 4
+Imprisoner33: 5
+Crystalweaver54: 6
+P2: 
+Kindly Grandmother11: 0
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+Rockpool Hunter34: 0
+-----------------------
+P1: 
+Nathrezim Overseer45: 0
+Harvest Golem23: 1
+P2: 
+Rockpool Hunter34: 0
+-----------------------
+P1: 
+Nathrezim Overseer45: 0
+Harvest Golem23: 1
+Murloc Warleader33: 2
+Old Murk-Eye24: 3
+P2: 
+Rockpool Hunter34: 0
+-----------------------
+P1: 
+Nathrezim Overseer45: 0
+Harvest Golem23: 1
+Murloc Warleader33: 2
+Old Murk-Eye24: 3
+Vulgar Homunculus24: 4
+P2: 
+Rockpool Hunter34: 0
+-----------------------
+P1: 
+Nathrezim Overseer45: 0
+Harvest Golem23: 1
+Murloc Warleader46: 2
+Old Murk-Eye37: 3
+Vulgar Homunculus24: 4
+Felfin Navigator57: 5
+Coldlight Seer25: 6
+P2: 
+Metaltooth Leaper53: 0
+Infested Wolf33: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Pack Leader23: 1
+Harvest Golem23: 2
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Pack Leader23: 1
+Harvest Golem43: 2
+Old Murk-Eye24: 3
+Metaltooth Leaper53: 4
+P2: 
+Spawn of NZoth22: 0
+Spawn of NZoth22: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Pack Leader23: 1
+Harvest Golem43: 2
+Old Murk-Eye24: 3
+Metaltooth Leaper53: 4
+Rockpool Hunter34: 5
+P2: 
+Spawn of NZoth22: 0
+Spawn of NZoth22: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Pack Leader23: 1
+Harvest Golem43: 2
+Old Murk-Eye24: 3
+Metaltooth Leaper53: 4
+Rockpool Hunter34: 5
+Screwjank Clunker47: 6
+P2: 
+Spawn of NZoth22: 0
+Houndmaster43: 1
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+Fiendish Servant21: 0
+-----------------------
+P1: 
+Imprisoner33: 0
+Nathrezim Overseer23: 1
+P2: 
+Murloc Warleader33: 0
+-----------------------
+P1: 
+Imprisoner33: 0
+Nathrezim Overseer23: 1
+Murloc Warleader33: 2
+Vulgar Homunculus24: 3
+P2: 
+Imprisoner33: 0
+-----------------------
+P1: 
+Imprisoner33: 0
+Nathrezim Overseer23: 1
+Murloc Warleader33: 2
+Vulgar Homunculus24: 3
+Old Murk-Eye24: 4
+P2: 
+Murloc Tidecaller22: 0
+-----------------------
+P1: 
+Imprisoner33: 0
+Nathrezim Overseer23: 1
+Murloc Warleader33: 2
+Vulgar Homunculus24: 3
+Old Murk-Eye24: 4
+Infested Wolf33: 5
+Imprisoner33: 6
+P2: 
+Murloc Tidecaller22: 0
+Spawn of NZoth22: 1
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+-----------------------
+P1: 
+Metaltooth Leaper53: 0
+Imprisoner33: 1
+P2: 
+Scavenging Hyena22: 0
+-----------------------
+P1: 
+Metaltooth Leaper73: 0
+Imprisoner33: 1
+Imprisoner33: 2
+Metaltooth Leaper53: 3
+P2: 
+Scavenging Hyena22: 0
+Harvest Golem23: 1
+-----------------------
+P1: 
+Metaltooth Leaper73: 0
+Imprisoner33: 1
+Imprisoner33: 2
+Metaltooth Leaper53: 3
+Rockpool Hunter34: 4
+P2: 
+Scavenging Hyena22: 0
+Scavenging Hyena22: 1
+Kindly Grandmother11: 2
+-----------------------
+P1: 
+Metaltooth Leaper73: 0
+Imprisoner44: 1
+Imprisoner33: 2
+Metaltooth Leaper53: 3
+Rockpool Hunter34: 4
+Crystalweaver54: 5
+Scavenging Hyena22: 6
+P2: 
+Scavenging Hyena22: 0
+Scavenging Hyena22: 1
+Kindly Grandmother11: 2
+-----------------------
+P1: 
+Wrath Weaver13: 0
+P2: 
+-----------------------
+P1: 
+Wrath Weaver13: 0
+P2: 
+Wrath Weaver13: 0
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Pack Leader23: 1
+P2: 
+Wrath Weaver13: 0
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Pack Leader23: 1
+Vulgar Homunculus24: 2
+Spawn of NZoth22: 3
+P2: 
+Murloc Tidecaller22: 0
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Pack Leader23: 1
+Vulgar Homunculus24: 2
+Spawn of NZoth22: 3
+Murloc Warleader33: 4
+P2: 
+Murloc Tidecaller22: 0
+Imprisoner33: 1
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Pack Leader23: 1
+Vulgar Homunculus24: 2
+Spawn of NZoth22: 3
+Murloc Warleader33: 4
+Murloc Warleader33: 5
+Pack Leader23: 6
+P2: 
+Imprisoner33: 1
+-----------------------
+P1: 
+Fiendish Servant21: 0
+P2: 
+-----------------------
+P1: 
+Fiendish Servant21: 0
+P2: 
+Rockpool Hunter34: 0
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+Spawn of NZoth22: 1
+P2: 
+Rockpool Hunter34: 0
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+Spawn of NZoth22: 1
+Murloc Warleader33: 2
+Pack Leader23: 3
+P2: 
+Rockpool Hunter34: 0
+Murloc Warleader33: 1
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+Spawn of NZoth22: 1
+Murloc Warleader33: 2
+Pack Leader23: 3
+Murloc Warleader33: 4
+P2: 
+Old Murk-Eye24: 0
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+Spawn of NZoth22: 1
+Murloc Warleader33: 2
+Pack Leader23: 3
+Murloc Warleader33: 4
+Vulgar Homunculus24: 5
+Pack Leader23: 6
+P2: 
+Scavenging Hyena22: 0
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+Spawn of NZoth22: 1
+Murloc Warleader33: 2
+Pack Leader23: 3
+Murloc Warleader33: 4
+Vulgar Homunculus24: 5
+Pack Leader23: 6
+P2: 
+Scavenging Hyena22: 0
+-----------------------
+P1: 
+Murloc Tidecaller22: 0
+P2: 
+-----------------------
+P1: 
+Murloc Tidecaller22: 0
+P2: 
+Rockpool Hunter34: 0
+-----------------------
+P1: 
+Harvest Golem23: 0
+Spawn of NZoth22: 1
+P2: 
+Rockpool Hunter34: 0
+-----------------------
+P1: 
+Harvest Golem43: 0
+Spawn of NZoth22: 1
+Metaltooth Leaper53: 2
+Pack Leader23: 3
+P2: 
+-----------------------
+P1: 
+Harvest Golem43: 0
+Spawn of NZoth22: 1
+Metaltooth Leaper53: 2
+Pack Leader23: 3
+Murloc Warleader33: 4
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+Kindly Grandmother11: 2
+-----------------------
+P1: 
+Harvest Golem43: 0
+Spawn of NZoth22: 1
+Metaltooth Leaper53: 2
+Pack Leader23: 3
+Murloc Warleader33: 4
+Crystalweaver54: 5
+Infested Wolf53: 6
+P2: 
+Tabbycat11: 1
+Kindly Grandmother11: 2
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+Fiendish Servant21: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Metaltooth Leaper73: 1
+Metaltooth Leaper53: 2
+P2: 
+Fiendish Servant21: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Metaltooth Leaper73: 1
+Metaltooth Leaper53: 2
+Imprisoner33: 3
+Murloc Warleader33: 4
+P2: 
+Fiendish Servant21: 0
+Harvest Golem23: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Metaltooth Leaper73: 1
+Metaltooth Leaper53: 2
+Imprisoner55: 3
+Murloc Warleader33: 4
+Nathrezim Overseer23: 5
+P2: 
+Fiendish Servant21: 0
+Harvest Golem23: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Metaltooth Leaper73: 1
+Metaltooth Leaper53: 2
+Imprisoner55: 3
+Murloc Warleader33: 4
+Nathrezim Overseer23: 5
+Screwjank Clunker47: 6
+P2: 
+Fiendish Servant21: 0
+Harvest Golem23: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Vulgar Homunculus24: 1
+Murloc Warleader33: 2
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Vulgar Homunculus24: 1
+Murloc Warleader33: 2
+Scavenging Hyena22: 3
+Murloc Tidecaller22: 4
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Vulgar Homunculus24: 1
+Murloc Warleader33: 2
+Scavenging Hyena22: 3
+Murloc Tidecaller22: 4
+Imprisoner33: 5
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Vulgar Homunculus24: 1
+Murloc Warleader33: 2
+Scavenging Hyena22: 3
+Murloc Tidecaller22: 4
+Imprisoner33: 5
+Vulgar Homunculus24: 6
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+Wrath Weaver13: 2
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+Rockpool Hunter34: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Vulgar Homunculus24: 1
+Metaltooth Leaper53: 2
+P2: 
+Rockpool Hunter34: 0
+-----------------------
+P1: 
+Murloc Tidehunter32: 0
+Vulgar Homunculus24: 1
+Metaltooth Leaper53: 2
+Pack Leader23: 3
+Rockpool Hunter23: 4
+P2: 
+Scavenging Hyena22: 0
+-----------------------
+P1: 
+Murloc Tidehunter32: 0
+Vulgar Homunculus24: 1
+Metaltooth Leaper53: 2
+Pack Leader23: 3
+Rockpool Hunter23: 4
+Imprisoner33: 5
+P2: 
+Scavenging Hyena22: 0
+Wrath Weaver13: 1
+-----------------------
+P1: 
+Murloc Tidehunter32: 0
+Vulgar Homunculus24: 1
+Metaltooth Leaper53: 2
+Pack Leader23: 3
+Rockpool Hunter23: 4
+Imprisoner33: 5
+Infested Wolf53: 6
+P2: 
+Wrath Weaver13: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+Rockpool Hunter34: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+Rockpool Hunter45: 0
+Rockpool Hunter23: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Old Murk-Eye24: 1
+Old Murk-Eye24: 2
+P2: 
+Rockpool Hunter45: 0
+Rockpool Hunter23: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Old Murk-Eye24: 1
+Old Murk-Eye24: 2
+Imprisoner33: 3
+Fiendish Servant21: 4
+P2: 
+Rockpool Hunter45: 0
+Rockpool Hunter23: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Old Murk-Eye24: 1
+Old Murk-Eye24: 2
+Imprisoner33: 3
+Fiendish Servant21: 4
+Imprisoner33: 5
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Old Murk-Eye24: 1
+Old Murk-Eye24: 2
+Imprisoner44: 3
+Fiendish Servant32: 4
+Imprisoner33: 5
+Crystalweaver54: 6
+P2: 
+Metaltooth Leaper53: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Old Murk-Eye24: 1
+Old Murk-Eye24: 2
+Imprisoner44: 3
+Fiendish Servant32: 4
+Imprisoner33: 5
+Crystalweaver54: 6
+P2: 
+Infested Wolf33: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Vulgar Homunculus24: 1
+Fiendish Servant21: 2
+P2: 
+Alleycat11: 0
+Scavenging Hyena22: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Vulgar Homunculus24: 1
+Fiendish Servant21: 2
+Metaltooth Leaper53: 3
+Harvest Golem23: 4
+P2: 
+Alleycat11: 0
+Scavenging Hyena22: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Vulgar Homunculus24: 1
+Fiendish Servant21: 2
+Metaltooth Leaper53: 3
+Harvest Golem23: 4
+Old Murk-Eye24: 5
+P2: 
+Alleycat11: 0
+Scavenging Hyena22: 1
+Murloc Tidehunter21: 2
+Murloc Scout11: 3
+-----------------------
+P1: 
+Alleycat11: 0
+Vulgar Homunculus24: 1
+Fiendish Servant21: 2
+Metaltooth Leaper53: 3
+Harvest Golem23: 4
+Old Murk-Eye35: 5
+Rockpool Hunter23: 6
+P2: 
+Alleycat11: 0
+Wrath Weaver13: 1
+Murloc Tidehunter21: 2
+Murloc Warleader33: 3
+-----------------------
+P1: 
+Alleycat11: 0
+Vulgar Homunculus24: 1
+Fiendish Servant21: 2
+Metaltooth Leaper53: 3
+Harvest Golem23: 4
+Old Murk-Eye35: 5
+Rockpool Hunter23: 6
+P2: 
+Alleycat11: 0
+Wrath Weaver57: 1
+Murloc Tidehunter21: 2
+Murloc Warleader33: 3
+Vulgar Homunculus24: 4
+-----------------------
+P1: 
+Alleycat11: 0
+Vulgar Homunculus24: 1
+Fiendish Servant21: 2
+Metaltooth Leaper53: 3
+Harvest Golem23: 4
+Old Murk-Eye35: 5
+Rockpool Hunter23: 6
+P2: 
+Alleycat11: 0
+Wrath Weaver911: 1
+Murloc Tidehunter21: 2
+Murloc Warleader33: 3
+Vulgar Homunculus24: 4
+Spawn of NZoth22: 5
+Fiendish Servant21: 6
+-----------------------
+P1: 
+Alleycat11: 0
+Vulgar Homunculus24: 1
+Fiendish Servant21: 2
+Metaltooth Leaper53: 3
+Harvest Golem23: 4
+Old Murk-Eye35: 5
+Rockpool Hunter23: 6
+P2: 
+Alleycat11: 0
+Wrath Weaver911: 1
+Murloc Tidehunter21: 2
+Micro Mummy12: 3
+Vulgar Homunculus24: 4
+Fiendish Servant21: 6
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+Scavenging Hyena22: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+Scavenging Hyena22: 0
+Wrath Weaver13: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Vulgar Homunculus24: 1
+Scavenging Hyena22: 2
+P2: 
+Scavenging Hyena22: 0
+Wrath Weaver13: 1
+Scavenging Hyena22: 2
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Vulgar Homunculus24: 1
+Scavenging Hyena22: 2
+Vulgar Homunculus24: 3
+Metaltooth Leaper53: 4
+P2: 
+Scavenging Hyena22: 0
+Wrath Weaver13: 1
+Scavenging Hyena22: 2
+Murloc Tidehunter21: 3
+Murloc Scout11: 4
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Vulgar Homunculus24: 1
+Scavenging Hyena22: 2
+Vulgar Homunculus24: 3
+Metaltooth Leaper73: 4
+Metaltooth Leaper53: 5
+P2: 
+Scavenging Hyena22: 0
+Wrath Weaver13: 1
+Scavenging Hyena22: 2
+Murloc Tidehunter21: 3
+Murloc Scout11: 4
+Old Murk-Eye24: 5
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Vulgar Homunculus35: 1
+Scavenging Hyena22: 2
+Vulgar Homunculus24: 3
+Metaltooth Leaper73: 4
+Metaltooth Leaper53: 5
+Crystalweaver54: 6
+P2: 
+Scavenging Hyena22: 0
+Wrath Weaver13: 1
+Scavenging Hyena22: 2
+Murloc Tidehunter21: 3
+Murloc Scout11: 4
+Pack Leader23: 5
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Vulgar Homunculus35: 1
+Scavenging Hyena22: 2
+Vulgar Homunculus24: 3
+Metaltooth Leaper73: 4
+Metaltooth Leaper53: 5
+Crystalweaver54: 6
+P2: 
+Scavenging Hyena22: 0
+Wrath Weaver13: 1
+Scavenging Hyena22: 2
+Murloc Tidehunter21: 3
+Murloc Scout11: 4
+Pack Leader23: 5
+Crystalweaver54: 6
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Vulgar Homunculus35: 1
+Scavenging Hyena22: 2
+Vulgar Homunculus24: 3
+Metaltooth Leaper73: 4
+Metaltooth Leaper53: 5
+Crystalweaver54: 6
+P2: 
+Scavenging Hyena22: 0
+Wrath Weaver13: 1
+Scavenging Hyena22: 2
+Murloc Tidehunter21: 3
+Murloc Scout11: 4
+Pack Leader23: 5
+Crystalweaver54: 6
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Rockpool Hunter34: 1
+Fiendish Servant21: 2
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Rockpool Hunter34: 1
+Fiendish Servant21: 2
+Old Murk-Eye24: 3
+Old Murk-Eye24: 4
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+Nathrezim Overseer45: 2
+-----------------------
+P1: 
+Alleycat11: 0
+Rockpool Hunter34: 1
+Fiendish Servant21: 2
+Old Murk-Eye24: 3
+Old Murk-Eye24: 4
+Vulgar Homunculus24: 5
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+Nathrezim Overseer45: 2
+-----------------------
+P1: 
+Alleycat11: 0
+Rockpool Hunter45: 1
+Fiendish Servant21: 2
+Old Murk-Eye35: 3
+Old Murk-Eye24: 4
+Vulgar Homunculus24: 5
+Felfin Navigator55: 6
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+Nathrezim Overseer45: 2
+-----------------------
+P1: 
+Alleycat11: 0
+Rockpool Hunter45: 1
+Fiendish Servant21: 2
+Old Murk-Eye35: 3
+Old Murk-Eye24: 4
+Vulgar Homunculus24: 5
+Felfin Navigator55: 6
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+Nathrezim Overseer45: 2
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+Fiendish Servant21: 0
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Murloc Warleader33: 1
+P2: 
+Fiendish Servant21: 0
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Murloc Warleader33: 1
+Vulgar Homunculus24: 2
+Scavenging Hyena22: 3
+P2: 
+Fiendish Servant21: 0
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Murloc Warleader33: 1
+Vulgar Homunculus24: 2
+Scavenging Hyena22: 3
+Murloc Warleader33: 4
+P2: 
+Fiendish Servant21: 0
+-----------------------
+P1: 
+Murloc Warleader44: 0
+Murloc Warleader44: 1
+Vulgar Homunculus24: 2
+Scavenging Hyena22: 3
+Murloc Warleader33: 4
+Felfin Navigator55: 5
+Screwjank Clunker47: 6
+P2: 
+Fiendish Servant21: 0
+Kindly Grandmother11: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+Wrath Weaver13: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter32: 0
+Rockpool Hunter23: 1
+Spawn of NZoth22: 2
+P2: 
+Fiendish Servant21: 0
+-----------------------
+P1: 
+Murloc Tidehunter32: 0
+Rockpool Hunter23: 1
+Spawn of NZoth22: 2
+Imprisoner33: 3
+Murloc Warleader33: 4
+P2: 
+Fiendish Servant21: 0
+-----------------------
+P1: 
+Murloc Tidehunter32: 0
+Rockpool Hunter23: 1
+Spawn of NZoth22: 2
+Imprisoner55: 3
+Murloc Warleader33: 4
+Nathrezim Overseer23: 5
+P2: 
+Fiendish Servant21: 0
+-----------------------
+P1: 
+Murloc Tidehunter32: 0
+Rockpool Hunter23: 1
+Spawn of NZoth22: 2
+Imprisoner55: 3
+Murloc Warleader33: 4
+Nathrezim Overseer23: 5
+Houndmaster43: 6
+P2: 
+Fiendish Servant21: 0
+Siegebreaker58: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+Vulgar Homunculus24: 2
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Spawn of NZoth22: 1
+Murloc Tidehunter21: 2
+Murloc Scout11: 3
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+Vulgar Homunculus24: 2
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Spawn of NZoth22: 1
+Murloc Tidehunter21: 2
+Murloc Scout11: 3
+Metaltooth Leaper53: 4
+Murloc Warleader33: 5
+P2: 
+Alleycat11: 0
+Scavenging Hyena22: 1
+Vulgar Homunculus24: 2
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Spawn of NZoth22: 1
+Murloc Tidehunter21: 2
+Murloc Scout11: 3
+Metaltooth Leaper53: 4
+Murloc Warleader33: 5
+Harvest Golem23: 6
+P2: 
+Alleycat11: 0
+Scavenging Hyena22: 1
+Vulgar Homunculus24: 2
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Spawn of NZoth22: 1
+Murloc Tidehunter21: 2
+Murloc Scout11: 3
+Metaltooth Leaper53: 4
+Murloc Warleader33: 5
+Harvest Golem23: 6
+P2: 
+Alleycat11: 0
+Scavenging Hyena22: 1
+Vulgar Homunculus24: 2
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Spawn of NZoth22: 1
+Murloc Tidehunter21: 2
+Murloc Scout11: 3
+Metaltooth Leaper53: 4
+Murloc Warleader33: 5
+Harvest Golem23: 6
+P2: 
+Infested Wolf33: 0
+Rockpool Hunter34: 1
+Vulgar Homunculus24: 2
+Rat Pack22: 3
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Spawn of NZoth22: 1
+Murloc Tidehunter21: 2
+Murloc Scout11: 3
+Metaltooth Leaper53: 4
+Murloc Warleader33: 5
+Harvest Golem23: 6
+P2: 
+Infested Wolf33: 0
+Rockpool Hunter34: 1
+Vulgar Homunculus24: 2
+Rat Pack22: 3
+Cobalt Scalebane55: 4
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Spawn of NZoth22: 1
+Murloc Tidehunter21: 2
+Murloc Scout11: 3
+Metaltooth Leaper53: 4
+Murloc Warleader33: 5
+Harvest Golem23: 6
+P2: 
+Infested Wolf33: 0
+Rockpool Hunter34: 1
+Vulgar Homunculus24: 2
+Rat Pack22: 3
+Cobalt Scalebane55: 4
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Spawn of NZoth22: 1
+Murloc Tidehunter21: 2
+Murloc Scout11: 3
+Metaltooth Leaper53: 4
+Murloc Warleader33: 5
+Harvest Golem23: 6
+P2: 
+Infested Wolf33: 0
+Rockpool Hunter34: 1
+Vulgar Homunculus24: 2
+Rat Pack22: 3
+Cobalt Scalebane55: 4
+Murloc Tidehunter21: 5
+Murloc Scout11: 6
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Spawn of NZoth22: 1
+Murloc Tidehunter21: 2
+Murloc Scout11: 3
+Metaltooth Leaper53: 4
+Murloc Warleader33: 5
+Harvest Golem23: 6
+P2: 
+Ghastcoiler117: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Spawn of NZoth22: 1
+Murloc Tidehunter21: 2
+Murloc Scout11: 3
+Metaltooth Leaper53: 4
+Murloc Warleader33: 5
+Harvest Golem23: 6
+P2: 
+Coldlight Seer25: 0
+-----------------------
+P1: 
+Micro Mummy12: 0
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+-----------------------
+P1: 
+Micro Mummy12: 0
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Rockpool Hunter23: 1
+P2: 
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Rockpool Hunter23: 1
+Pack Leader23: 2
+Nathrezim Overseer45: 3
+P2: 
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Rockpool Hunter23: 1
+Pack Leader23: 2
+Nathrezim Overseer45: 3
+Pack Leader23: 4
+P2: 
+Fiendish Servant21: 0
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Rockpool Hunter23: 1
+Pack Leader23: 2
+Nathrezim Overseer67: 3
+Pack Leader23: 4
+Infested Wolf73: 5
+Nathrezim Overseer23: 6
+P2: 
+Fiendish Servant21: 0
+-----------------------
+P1: 
+Murloc Tidecaller22: 0
+P2: 
+-----------------------
+P1: 
+Murloc Tidecaller22: 0
+P2: 
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Spawn of NZoth22: 1
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Spawn of NZoth22: 1
+Nathrezim Overseer45: 2
+Pack Leader23: 3
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Spawn of NZoth22: 1
+Nathrezim Overseer45: 2
+Pack Leader23: 3
+Pack Leader23: 4
+P2: 
+Replicating Menace31: 0
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Spawn of NZoth22: 1
+Nathrezim Overseer45: 2
+Pack Leader23: 3
+Pack Leader23: 4
+Imprisoner33: 5
+Wrath Weaver13: 6
+P2: 
+Replicating Menace31: 0
+-----------------------
+P1: 
+Scavenging Hyena22: 0
+P2: 
+-----------------------
+P1: 
+Scavenging Hyena22: 0
+P2: 
+Scavenging Hyena22: 0
+Alleycat11: 1
+Tabbycat11: 2
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+Wrath Weaver13: 1
+P2: 
+Scavenging Hyena22: 0
+Alleycat11: 1
+Tabbycat11: 2
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+Wrath Weaver57: 1
+Murloc Warleader33: 2
+Imprisoner33: 3
+P2: 
+Kindly Grandmother11: 0
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+Wrath Weaver57: 1
+Murloc Warleader33: 2
+Imprisoner33: 3
+Old Murk-Eye24: 4
+P2: 
+Kindly Grandmother11: 0
+Murloc Tidehunter21: 1
+Murloc Scout11: 2
+Kindly Grandmother11: 3
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+Wrath Weaver911: 1
+Murloc Warleader33: 2
+Imprisoner33: 3
+Old Murk-Eye24: 4
+Imprisoner33: 5
+Murloc Warleader33: 6
+P2: 
+Kindly Grandmother11: 0
+Murloc Tidehunter21: 1
+Murloc Scout11: 2
+Old Murk-Eye24: 3
+Old Murk-Eye24: 4
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+Wrath Weaver911: 1
+Murloc Warleader33: 2
+Imprisoner33: 3
+Old Murk-Eye24: 4
+Imprisoner33: 5
+Murloc Warleader33: 6
+P2: 
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Metaltooth Leaper53: 1
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Metaltooth Leaper73: 1
+Vulgar Homunculus24: 2
+Metaltooth Leaper53: 3
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Metaltooth Leaper73: 1
+Vulgar Homunculus46: 2
+Metaltooth Leaper53: 3
+Nathrezim Overseer23: 4
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Metaltooth Leaper93: 1
+Vulgar Homunculus46: 2
+Metaltooth Leaper73: 3
+Nathrezim Overseer23: 4
+Metaltooth Leaper53: 5
+Scavenging Hyena22: 6
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+Rockpool Hunter34: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Imprisoner33: 1
+Nathrezim Overseer23: 2
+P2: 
+Rockpool Hunter34: 0
+Micro Mummy12: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Imprisoner33: 1
+Nathrezim Overseer23: 2
+Old Murk-Eye24: 3
+Metaltooth Leaper53: 4
+P2: 
+Rockpool Hunter34: 0
+Scavenging Hyena22: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Imprisoner33: 1
+Nathrezim Overseer23: 2
+Old Murk-Eye24: 3
+Metaltooth Leaper73: 4
+Metaltooth Leaper53: 5
+P2: 
+Rockpool Hunter34: 0
+Scavenging Hyena22: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Imprisoner33: 1
+Nathrezim Overseer23: 2
+Old Murk-Eye24: 3
+Metaltooth Leaper73: 4
+Metaltooth Leaper53: 5
+Screwjank Clunker47: 6
+P2: 
+Murloc Warleader33: 0
+Scavenging Hyena22: 1
+Nathrezim Overseer45: 2
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+-----------------------
+P1: 
+Metaltooth Leaper53: 0
+Wrath Weaver13: 1
+P2: 
+-----------------------
+P1: 
+Metaltooth Leaper53: 0
+Wrath Weaver57: 1
+Vulgar Homunculus24: 2
+Pack Leader23: 3
+P2: 
+Scavenging Hyena22: 0
+Nathrezim Overseer45: 1
+-----------------------
+P1: 
+Metaltooth Leaper53: 0
+Wrath Weaver57: 1
+Vulgar Homunculus24: 2
+Pack Leader23: 3
+Old Murk-Eye24: 4
+P2: 
+Scavenging Hyena22: 0
+Nathrezim Overseer45: 1
+Metaltooth Leaper53: 2
+-----------------------
+P1: 
+Metaltooth Leaper53: 0
+Wrath Weaver911: 1
+Vulgar Homunculus46: 2
+Pack Leader23: 3
+Old Murk-Eye24: 4
+Old Murk-Eye24: 5
+Nathrezim Overseer23: 6
+P2: 
+Scavenging Hyena22: 0
+Nathrezim Overseer45: 1
+Wrath Weaver13: 2
+-----------------------
+P1: 
+Metaltooth Leaper53: 0
+Wrath Weaver911: 1
+Vulgar Homunculus46: 2
+Pack Leader23: 3
+Old Murk-Eye24: 4
+Old Murk-Eye24: 5
+Nathrezim Overseer23: 6
+P2: 
+Scavenging Hyena22: 0
+Nathrezim Overseer45: 1
+Murloc Warleader33: 2
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+-----------------------
+P1: 
+Metaltooth Leaper73: 0
+Metaltooth Leaper53: 1
+P2: 
+Pack Leader23: 0
+-----------------------
+P1: 
+Metaltooth Leaper73: 0
+Metaltooth Leaper53: 1
+Murloc Warleader33: 2
+Vulgar Homunculus24: 3
+P2: 
+Pack Leader23: 0
+Metaltooth Leaper53: 1
+-----------------------
+P1: 
+Metaltooth Leaper93: 0
+Metaltooth Leaper73: 1
+Murloc Warleader33: 2
+Vulgar Homunculus24: 3
+Metaltooth Leaper53: 4
+P2: 
+Pack Leader23: 0
+Metaltooth Leaper53: 1
+Rockpool Hunter34: 2
+-----------------------
+P1: 
+Metaltooth Leaper93: 0
+Metaltooth Leaper73: 1
+Murloc Warleader33: 2
+Vulgar Homunculus24: 3
+Metaltooth Leaper75: 4
+Screwjank Clunker25: 5
+Infested Wolf33: 6
+P2: 
+Pack Leader23: 0
+Metaltooth Leaper53: 1
+Rockpool Hunter34: 2
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Old Murk-Eye24: 1
+Metaltooth Leaper53: 2
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Old Murk-Eye24: 1
+Metaltooth Leaper53: 2
+Vulgar Homunculus24: 3
+Wrath Weaver13: 4
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+Old Murk-Eye24: 2
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Old Murk-Eye24: 1
+Metaltooth Leaper53: 2
+Vulgar Homunculus24: 3
+Wrath Weaver57: 4
+Vulgar Homunculus24: 5
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+Old Murk-Eye24: 2
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Old Murk-Eye24: 1
+Metaltooth Leaper53: 2
+Vulgar Homunculus24: 3
+Wrath Weaver57: 4
+Vulgar Homunculus24: 5
+Houndmaster43: 6
+P2: 
+Tabbycat11: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Murloc Warleader33: 1
+Rockpool Hunter23: 2
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Murloc Warleader33: 1
+Rockpool Hunter23: 2
+Murloc Warleader33: 3
+Murloc Warleader33: 4
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Murloc Warleader33: 1
+Rockpool Hunter23: 2
+Murloc Warleader33: 3
+Murloc Warleader33: 4
+Pack Leader23: 5
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Murloc Warleader33: 1
+Rockpool Hunter23: 2
+Murloc Warleader33: 3
+Murloc Warleader33: 4
+Pack Leader23: 5
+Screwjank Clunker47: 6
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+-----------------------
+P1: 
+Nathrezim Overseer45: 0
+Murloc Tidehunter21: 1
+Murloc Scout11: 2
+P2: 
+Murloc Tidecaller22: 0
+-----------------------
+P1: 
+Nathrezim Overseer45: 0
+Murloc Tidehunter21: 1
+Murloc Scout11: 2
+Old Murk-Eye24: 3
+Alleycat11: 4
+Tabbycat11: 5
+P2: 
+Murloc Tidecaller62: 0
+Murloc Tidehunter21: 1
+Murloc Scout11: 2
+-----------------------
+P1: 
+Nathrezim Overseer45: 0
+Murloc Tidehunter21: 1
+Murloc Scout11: 2
+Old Murk-Eye24: 3
+Alleycat11: 4
+Tabbycat11: 5
+Pack Leader23: 6
+P2: 
+Murloc Tidecaller82: 0
+Old Murk-Eye24: 1
+Metaltooth Leaper53: 2
+-----------------------
+P1: 
+Nathrezim Overseer45: 0
+Murloc Tidehunter21: 1
+Murloc Scout11: 2
+Old Murk-Eye24: 3
+Alleycat11: 4
+Tabbycat11: 5
+Pack Leader23: 6
+P2: 
+Murloc Tidecaller82: 0
+Old Murk-Eye24: 1
+Metaltooth Leaper53: 2
+-----------------------
+P1: 
+Nathrezim Overseer45: 0
+Murloc Tidehunter21: 1
+Murloc Scout11: 2
+Old Murk-Eye24: 3
+Alleycat11: 4
+Tabbycat11: 5
+Pack Leader23: 6
+P2: 
+Murloc Tidecaller82: 0
+Old Murk-Eye24: 1
+Metaltooth Leaper53: 2
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Imprisoner33: 1
+Nathrezim Overseer45: 2
+P2: 
+Vulgar Homunculus24: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Imprisoner33: 1
+Nathrezim Overseer45: 2
+Imprisoner33: 3
+Vulgar Homunculus24: 4
+P2: 
+Vulgar Homunculus24: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Imprisoner33: 1
+Nathrezim Overseer45: 2
+Imprisoner33: 3
+Vulgar Homunculus24: 4
+Imprisoner33: 5
+P2: 
+Vulgar Homunculus24: 0
+Alleycat11: 1
+Tabbycat11: 2
+-----------------------
+P1: 
+Alleycat11: 0
+Imprisoner33: 1
+Nathrezim Overseer45: 2
+Imprisoner33: 3
+Vulgar Homunculus24: 4
+Imprisoner33: 5
+Felfin Navigator55: 6
+P2: 
+Vulgar Homunculus24: 0
+Alleycat11: 1
+Tabbycat11: 2
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+Vulgar Homunculus24: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Murloc Warleader33: 1
+Old Murk-Eye24: 2
+P2: 
+Vulgar Homunculus24: 0
+Scavenging Hyena22: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Murloc Warleader33: 1
+Old Murk-Eye24: 2
+Murloc Warleader33: 3
+Old Murk-Eye24: 4
+P2: 
+Vulgar Homunculus24: 0
+Scavenging Hyena22: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Murloc Warleader33: 1
+Old Murk-Eye24: 2
+Murloc Warleader33: 3
+Old Murk-Eye24: 4
+Imprisoner33: 5
+P2: 
+Vulgar Homunculus24: 0
+Old Murk-Eye24: 1
+Imprisoner33: 2
+-----------------------
+P1: 
+Alleycat11: 0
+Murloc Warleader44: 1
+Old Murk-Eye35: 2
+Murloc Warleader33: 3
+Old Murk-Eye24: 4
+Imprisoner33: 5
+Felfin Navigator55: 6
+P2: 
+Vulgar Homunculus24: 0
+Old Murk-Eye24: 1
+Micro Mummy12: 2
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Old Murk-Eye24: 1
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Old Murk-Eye24: 1
+Murloc Warleader33: 2
+Pack Leader23: 3
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+Wrath Weaver13: 2
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Old Murk-Eye24: 1
+Murloc Warleader33: 2
+Pack Leader23: 3
+Wrath Weaver13: 4
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+Wrath Weaver13: 2
+-----------------------
+P1: 
+Murloc Warleader44: 0
+Old Murk-Eye35: 1
+Murloc Warleader33: 2
+Pack Leader23: 3
+Wrath Weaver13: 4
+Felfin Navigator55: 5
+Pack Leader23: 6
+P2: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+Wrath Weaver13: 2
+Crystalweaver54: 3
+Metaltooth Leaper53: 4
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Vulgar Homunculus24: 1
+Murloc Warleader33: 2
+P2: 
+Vulgar Homunculus24: 0
+Wrath Weaver13: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Vulgar Homunculus24: 1
+Murloc Warleader33: 2
+Metaltooth Leaper53: 3
+Imprisoner33: 4
+P2: 
+Vulgar Homunculus24: 0
+Wrath Weaver13: 1
+Harvest Golem23: 2
+-----------------------
+P1: 
+Alleycat11: 0
+Vulgar Homunculus24: 1
+Murloc Warleader33: 2
+Metaltooth Leaper53: 3
+Imprisoner33: 4
+Nathrezim Overseer45: 5
+P2: 
+Vulgar Homunculus24: 0
+Wrath Weaver13: 1
+Harvest Golem23: 2
+-----------------------
+P1: 
+Alleycat11: 0
+Vulgar Homunculus24: 1
+Murloc Warleader33: 2
+Metaltooth Leaper53: 3
+Imprisoner33: 4
+Nathrezim Overseer45: 5
+Infested Wolf33: 6
+P2: 
+Vulgar Homunculus24: 0
+Wrath Weaver57: 1
+Harvest Golem23: 2
+Vulgar Homunculus24: 3
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Metaltooth Leaper53: 1
+Old Murk-Eye24: 2
+P2: 
+Vulgar Homunculus24: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Metaltooth Leaper53: 1
+Old Murk-Eye24: 2
+Murloc Warleader33: 3
+Spawn of NZoth22: 4
+P2: 
+Vulgar Homunculus24: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Metaltooth Leaper53: 1
+Old Murk-Eye24: 2
+Murloc Warleader33: 3
+Spawn of NZoth22: 4
+Murloc Warleader33: 5
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Metaltooth Leaper53: 1
+Old Murk-Eye24: 2
+Murloc Warleader33: 3
+Spawn of NZoth22: 4
+Murloc Warleader33: 5
+Imprisoner33: 6
+P2: 
+Micro Mummy12: 0
+Pack Leader23: 1
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Scavenging Hyena22: 1
+P2: 
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Scavenging Hyena22: 1
+Scavenging Hyena22: 2
+Murloc Tidecaller22: 3
+P2: 
+Metaltooth Leaper53: 0
+Scavenging Hyena22: 1
+Old Murk-Eye24: 2
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Scavenging Hyena22: 1
+Scavenging Hyena22: 2
+Murloc Tidecaller22: 3
+Nathrezim Overseer45: 4
+P2: 
+Metaltooth Leaper53: 0
+Scavenging Hyena22: 1
+Old Murk-Eye24: 2
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Scavenging Hyena22: 1
+Scavenging Hyena22: 2
+Murloc Tidecaller22: 3
+Nathrezim Overseer45: 4
+Screwjank Clunker47: 5
+Infested Wolf33: 6
+P2: 
+Metaltooth Leaper53: 0
+Scavenging Hyena22: 1
+Old Murk-Eye24: 2
+Screwjank Clunker47: 3
+Crystalweaver54: 4
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Scavenging Hyena22: 1
+Scavenging Hyena22: 2
+Murloc Tidecaller22: 3
+Nathrezim Overseer45: 4
+Screwjank Clunker47: 5
+Infested Wolf33: 6
+P2: 
+Metaltooth Leaper53: 0
+Scavenging Hyena22: 1
+Old Murk-Eye24: 2
+Screwjank Clunker47: 3
+Crystalweaver54: 4
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Scavenging Hyena22: 1
+Scavenging Hyena22: 2
+Murloc Tidecaller22: 3
+Nathrezim Overseer45: 4
+Screwjank Clunker47: 5
+Infested Wolf33: 6
+P2: 
+Metaltooth Leaper53: 0
+Scavenging Hyena22: 1
+Old Murk-Eye24: 2
+Screwjank Clunker47: 3
+Crystalweaver54: 4
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+Scavenging Hyena22: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+Scavenging Hyena22: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Rockpool Hunter34: 1
+Pack Leader23: 2
+P2: 
+Old Murk-Eye24: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Rockpool Hunter34: 1
+Pack Leader23: 2
+Harvest Golem23: 3
+Pack Leader23: 4
+P2: 
+Wrath Weaver13: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Rockpool Hunter34: 1
+Pack Leader23: 2
+Harvest Golem23: 3
+Pack Leader23: 4
+Murloc Warleader33: 5
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter32: 0
+Rockpool Hunter45: 1
+Pack Leader23: 2
+Harvest Golem23: 3
+Pack Leader23: 4
+Murloc Warleader44: 5
+Felfin Navigator55: 6
+P2: 
+Spawn of NZoth22: 0
+Vulgar Homunculus24: 1
+Murloc Tidehunter21: 2
+Murloc Scout11: 3
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+-----------------------
+P1: 
+Rockpool Hunter45: 0
+Rockpool Hunter23: 1
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Rockpool Hunter45: 0
+Rockpool Hunter23: 1
+Old Murk-Eye24: 2
+Spawn of NZoth22: 3
+P2: 
+Micro Mummy12: 0
+-----------------------
+P1: 
+Rockpool Hunter45: 0
+Rockpool Hunter23: 1
+Old Murk-Eye24: 2
+Spawn of NZoth22: 3
+Old Murk-Eye24: 4
+P2: 
+-----------------------
+P1: 
+Rockpool Hunter56: 0
+Rockpool Hunter34: 1
+Old Murk-Eye35: 2
+Spawn of NZoth22: 3
+Old Murk-Eye24: 4
+Felfin Navigator55: 5
+Murloc Warleader33: 6
+P2: 
+Rockpool Hunter34: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+Murloc Tidecaller22: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Old Murk-Eye24: 1
+Murloc Tidecaller22: 2
+P2: 
+Murloc Tidecaller62: 0
+Murloc Tidehunter21: 1
+Murloc Scout11: 2
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Old Murk-Eye24: 1
+Murloc Tidecaller22: 2
+Pack Leader23: 3
+Spawn of NZoth22: 4
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Old Murk-Eye24: 1
+Murloc Tidecaller22: 2
+Pack Leader23: 3
+Spawn of NZoth22: 4
+Metaltooth Leaper53: 5
+P2: 
+Alleycat11: 0
+Tabbycat11: 1
+Nathrezim Overseer45: 2
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Old Murk-Eye24: 1
+Murloc Tidecaller22: 2
+Pack Leader23: 3
+Spawn of NZoth22: 4
+Metaltooth Leaper53: 5
+Crystalweaver54: 6
+P2: 
+Alleycat11: 0
+Kindly Grandmother11: 1
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+Wrath Weaver13: 0
+-----------------------
+P1: 
+Imprisoner33: 0
+Imprisoner33: 1
+P2: 
+Wrath Weaver13: 0
+-----------------------
+P1: 
+Imprisoner33: 0
+Imprisoner33: 1
+Imprisoner33: 2
+Spawn of NZoth22: 3
+P2: 
+Wrath Weaver13: 0
+Alleycat11: 1
+Tabbycat11: 2
+-----------------------
+P1: 
+Imprisoner33: 0
+Imprisoner33: 1
+Imprisoner33: 2
+Spawn of NZoth22: 3
+Metaltooth Leaper53: 4
+P2: 
+Wrath Weaver13: 0
+Alleycat11: 1
+Tabbycat11: 2
+-----------------------
+P1: 
+Imprisoner33: 0
+Imprisoner33: 1
+Imprisoner55: 2
+Spawn of NZoth22: 3
+Metaltooth Leaper53: 4
+Murloc Warleader33: 5
+Nathrezim Overseer23: 6
+P2: 
+Wrath Weaver13: 0
+Murloc Warleader33: 1
+Tabbycat11: 2
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Old Murk-Eye24: 1
+Murloc Warleader33: 2
+P2: 
+Vulgar Homunculus24: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Old Murk-Eye24: 1
+Murloc Warleader33: 2
+Murloc Warleader33: 3
+Scavenging Hyena22: 4
+P2: 
+Vulgar Homunculus24: 0
+Fiendish Servant21: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Old Murk-Eye24: 1
+Murloc Warleader33: 2
+Murloc Warleader33: 3
+Scavenging Hyena22: 4
+Harvest Golem23: 5
+P2: 
+Vulgar Homunculus24: 0
+Fiendish Servant21: 1
+Rat Pack22: 2
+Wrath Weaver13: 3
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Old Murk-Eye24: 1
+Murloc Warleader33: 2
+Murloc Warleader33: 3
+Scavenging Hyena22: 4
+Harvest Golem23: 5
+Vulgar Homunculus24: 6
+P2: 
+Vulgar Homunculus24: 0
+Fiendish Servant21: 1
+Rat Pack22: 2
+Wrath Weaver13: 3
+-----------------------
+P1: 
+Scavenging Hyena22: 0
+P2: 
+-----------------------
+P1: 
+Scavenging Hyena22: 0
+P2: 
+-----------------------
+P1: 
+Imprisoner33: 0
+Murloc Tidehunter21: 1
+Murloc Scout11: 2
+P2: 
+Scavenging Hyena22: 0
+-----------------------
+P1: 
+Imprisoner33: 0
+Murloc Tidehunter21: 1
+Murloc Scout11: 2
+Murloc Warleader33: 3
+Metaltooth Leaper53: 4
+P2: 
+Scavenging Hyena22: 0
+-----------------------
+P1: 
+Imprisoner33: 0
+Murloc Tidehunter21: 1
+Murloc Scout11: 2
+Murloc Warleader33: 3
+Metaltooth Leaper53: 4
+Scavenging Hyena22: 5
+P2: 
+Scavenging Hyena22: 0
+Murloc Tidecaller22: 1
+-----------------------
+P1: 
+Imprisoner33: 0
+Murloc Tidehunter21: 1
+Murloc Scout11: 2
+Murloc Warleader33: 3
+Metaltooth Leaper53: 4
+Scavenging Hyena44: 5
+Houndmaster43: 6
+P2: 
+Rockpool Hunter34: 0
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+Scavenging Hyena22: 0
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+Scavenging Hyena22: 0
+Murloc Tidecaller22: 1
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Nathrezim Overseer45: 1
+P2: 
+Scavenging Hyena22: 0
+Murloc Tidecaller22: 1
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Nathrezim Overseer45: 1
+Murloc Warleader33: 2
+Harvest Golem23: 3
+P2: 
+Scavenging Hyena22: 0
+Murloc Tidecaller22: 1
+Alleycat11: 2
+Alleycat11: 3
+Tabbycat11: 4
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Nathrezim Overseer45: 1
+Murloc Warleader33: 2
+Harvest Golem23: 3
+Vulgar Homunculus24: 4
+P2: 
+Scavenging Hyena22: 0
+Murloc Tidecaller22: 1
+Alleycat11: 2
+Wrath Weaver13: 3
+Tabbycat11: 4
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Nathrezim Overseer45: 1
+Murloc Warleader33: 2
+Harvest Golem23: 3
+Vulgar Homunculus24: 4
+Harvest Golem23: 5
+Spawn of NZoth22: 6
+P2: 
+Scavenging Hyena22: 0
+Murloc Tidecaller42: 1
+Alleycat11: 2
+Wrath Weaver13: 3
+Tabbycat11: 4
+Rockpool Hunter34: 5
+Alleycat11: 6
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Nathrezim Overseer45: 1
+Murloc Warleader33: 2
+Harvest Golem23: 3
+Vulgar Homunculus24: 4
+Harvest Golem23: 5
+Spawn of NZoth22: 6
+P2: 
+Scavenging Hyena22: 0
+Murloc Tidecaller42: 1
+Fiendish Servant21: 2
+Kindly Grandmother11: 3
+Tabbycat11: 4
+Rockpool Hunter34: 5
+Alleycat11: 6
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Imprisoner33: 1
+Spawn of NZoth22: 2
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Imprisoner33: 1
+Spawn of NZoth22: 2
+Imprisoner55: 3
+Nathrezim Overseer23: 4
+P2: 
+Pack Leader23: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Imprisoner33: 1
+Spawn of NZoth22: 2
+Imprisoner55: 3
+Nathrezim Overseer23: 4
+Rockpool Hunter34: 5
+P2: 
+Pack Leader23: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Imprisoner33: 1
+Spawn of NZoth22: 2
+Imprisoner55: 3
+Nathrezim Overseer23: 4
+Rockpool Hunter34: 5
+Infested Wolf33: 6
+P2: 
+Pack Leader23: 0
+-----------------------
+P1: 
+Micro Mummy12: 0
+P2: 
+-----------------------
+P1: 
+Micro Mummy12: 0
+P2: 
+-----------------------
+P1: 
+Pack Leader23: 0
+Pack Leader23: 1
+P2: 
+-----------------------
+P1: 
+Pack Leader23: 0
+Pack Leader23: 1
+Metaltooth Leaper53: 2
+Rockpool Hunter34: 3
+P2: 
+Metaltooth Leaper53: 0
+-----------------------
+P1: 
+Pack Leader23: 0
+Pack Leader23: 1
+Metaltooth Leaper53: 2
+Rockpool Hunter34: 3
+Old Murk-Eye24: 4
+P2: 
+Harvest Golem23: 0
+Old Murk-Eye24: 1
+-----------------------
+P1: 
+Pack Leader23: 0
+Pack Leader23: 1
+Metaltooth Leaper53: 2
+Rockpool Hunter34: 3
+Old Murk-Eye24: 4
+Screwjank Clunker47: 5
+Scavenging Hyena62: 6
+P2: 
+Wrath Weaver13: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+-----------------------
+P1: 
+Alleycat11: 0
+Pack Leader23: 1
+Scavenging Hyena22: 2
+P2: 
+Murloc Tidecaller22: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Pack Leader23: 1
+Scavenging Hyena22: 2
+Metaltooth Leaper53: 3
+Harvest Golem23: 4
+P2: 
+Murloc Tidecaller22: 0
+Micro Mummy12: 1
+-----------------------
+P1: 
+Alleycat11: 0
+Pack Leader23: 1
+Scavenging Hyena22: 2
+Metaltooth Leaper73: 3
+Harvest Golem43: 4
+Metaltooth Leaper53: 5
+P2: 
+Murloc Tidecaller22: 0
+Micro Mummy12: 1
+Kindly Grandmother11: 2
+-----------------------
+P1: 
+Alleycat11: 0
+Pack Leader23: 1
+Scavenging Hyena22: 2
+Metaltooth Leaper73: 3
+Harvest Golem43: 4
+Metaltooth Leaper53: 5
+Coldlight Seer25: 6
+P2: 
+Murloc Tidecaller22: 0
+Micro Mummy12: 1
+Kindly Grandmother11: 2
+Wrath Weaver13: 3
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+Scavenging Hyena22: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Tabbycat11: 1
+P2: 
+Wrath Weaver13: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Vulgar Homunculus24: 1
+Harvest Golem23: 2
+P2: 
+Wrath Weaver13: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Vulgar Homunculus24: 1
+Harvest Golem23: 2
+Pack Leader23: 3
+Spawn of NZoth22: 4
+P2: 
+Imprisoner33: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Vulgar Homunculus24: 1
+Harvest Golem23: 2
+Pack Leader23: 3
+Spawn of NZoth22: 4
+Old Murk-Eye24: 5
+P2: 
+Imprisoner33: 0
+-----------------------
+P1: 
+Alleycat11: 0
+Vulgar Homunculus35: 1
+Harvest Golem23: 2
+Pack Leader23: 3
+Spawn of NZoth22: 4
+Old Murk-Eye24: 5
+Crystalweaver54: 6
+P2: 
+Imprisoner33: 0
+Coldlight Seer25: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Imprisoner33: 1
+Nathrezim Overseer45: 2
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Imprisoner33: 1
+Nathrezim Overseer45: 2
+Old Murk-Eye24: 3
+Pack Leader23: 4
+P2: 
+Fiendish Servant21: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Imprisoner33: 1
+Nathrezim Overseer45: 2
+Old Murk-Eye24: 3
+Pack Leader23: 4
+Imprisoner33: 5
+P2: 
+Metaltooth Leaper53: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Imprisoner44: 1
+Nathrezim Overseer56: 2
+Old Murk-Eye24: 3
+Pack Leader23: 4
+Imprisoner33: 5
+Crystalweaver54: 6
+P2: 
+Metaltooth Leaper53: 0
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+-----------------------
+P1: 
+Rockpool Hunter34: 0
+P2: 
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Scavenging Hyena22: 1
+P2: 
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Scavenging Hyena22: 1
+Murloc Warleader33: 2
+Scavenging Hyena22: 3
+P2: 
+Vulgar Homunculus24: 0
+-----------------------
+P1: 
+Old Murk-Eye24: 0
+Scavenging Hyena22: 1
+Murloc Warleader33: 2
+Scavenging Hyena22: 3
+Nathrezim Overseer45: 4
+P2: 
+Vulgar Homunculus24: 0
+Vulgar Homunculus24: 1
+-----------------------
+P1: 
+Old Murk-Eye26: 0
+Scavenging Hyena22: 1
+Murloc Warleader35: 2
+Scavenging Hyena22: 3
+Nathrezim Overseer45: 4
+Murloc Warleader33: 5
+Coldlight Seer25: 6
+P2: 
+Vulgar Homunculus24: 0
+Vulgar Homunculus24: 1
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+-----------------------
+P1: 
+Vulgar Homunculus24: 0
+P2: 
+Scavenging Hyena22: 0
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Imprisoner33: 1
+P2: 
+Rockpool Hunter34: 0
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Imprisoner33: 1
+Murloc Warleader33: 2
+Imprisoner33: 3
+P2: 
+Fiendish Servant21: 0
+-----------------------
+P1: 
+Murloc Warleader33: 0
+Imprisoner33: 1
+Murloc Warleader33: 2
+Imprisoner33: 3
+Vulgar Homunculus24: 4
+P2: 
+Fiendish Servant21: 0
+-----------------------
+P1: 
+Murloc Warleader55: 0
+Imprisoner33: 1
+Murloc Warleader33: 2
+Imprisoner33: 3
+Vulgar Homunculus24: 4
+Felfin Navigator55: 5
+Rockpool Hunter23: 6
+P2: 
+Murloc Warleader33: 0
+Nathrezim Overseer45: 1
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+Fiendish Servant21: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Old Murk-Eye24: 1
+Vulgar Homunculus24: 2
+P2: 
+Fiendish Servant21: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Old Murk-Eye24: 1
+Vulgar Homunculus24: 2
+Vulgar Homunculus24: 3
+Imprisoner33: 4
+P2: 
+Rockpool Hunter34: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Old Murk-Eye24: 1
+Vulgar Homunculus24: 2
+Vulgar Homunculus24: 3
+Imprisoner33: 4
+Vulgar Homunculus24: 5
+P2: 
+Rockpool Hunter34: 0
+-----------------------
+P1: 
+Murloc Tidehunter32: 0
+Old Murk-Eye35: 1
+Vulgar Homunculus24: 2
+Vulgar Homunculus24: 3
+Imprisoner33: 4
+Vulgar Homunculus24: 5
+Felfin Navigator55: 6
+P2: 
+Rockpool Hunter34: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+Scavenging Hyena22: 0
+-----------------------
+P1: 
+Murloc Tidehunter21: 0
+Murloc Scout11: 1
+P2: 
+Scavenging Hyena22: 0
