@@ -91,16 +91,18 @@ public class AIBot : MonoBehaviour
                             break;
                         }
                     }
-
+                    /*
                     if (minionsInTavern[i].GetMinion().Name == "Alleycat" && p.GetPlayerGold() == 3)
                         gc.BuyMinion(p, gc.shopSlots[minionsInTavern[i].GetPos()], gc.handSlots, gc.minionSlots);
                     else if (minionsInTavern[i].GetMinion().Name == "Murloc Tidehunter" && p.GetPlayerGold() == 3)
                         gc.BuyMinion(p, gc.shopSlots[minionsInTavern[i].GetPos()], gc.handSlots, gc.minionSlots);
+                    */
                     UpdateMinionsShopList();
                 }
                 if (p.GetPlayerGold() == 3)
                 {
-                    int o = FindBestUnit();
+                    //int o = FindBestUnit();
+                    int o = FindRandomUnit();
                     if (o != 99)
                         gc.BuyMinion(p, gc.shopSlots[minionsInTavern[o].GetPos()], gc.handSlots, gc.minionSlots);
                     UpdateMinionsShopList();
@@ -122,6 +124,7 @@ public class AIBot : MonoBehaviour
             else if (turnNr == 3)
             {
                 UpdateMinionsShopList();
+                /*
                 //if token bought
                 if ((gc.minionSlots[0].GetComponent<Minion>().GetMinion().Name == "Alleycat" &&
                     gc.minionSlots[1].GetComponent<Minion>().GetMinion().Name == "Tabbycat") ||
@@ -130,11 +133,13 @@ public class AIBot : MonoBehaviour
                 {
                     gc.SellMinion(p, gc.minionSlots[1]);
                 }
-                else
-                    gc.SellMinion(p, gc.minionSlots[0]);
+                else*/
+                
+                gc.SellMinion(p, gc.minionSlots[0]);
 
                 //find best unit
-                int o1 = FindBestUnit();
+                //int o1 = FindBestUnit();
+                int o1 = FindRandomUnit();
                 if (o1 != 99)
                     gc.BuyMinion(p, gc.shopSlots[minionsInTavern[o1].GetPos()], gc.handSlots, gc.minionSlots);
 
@@ -147,7 +152,8 @@ public class AIBot : MonoBehaviour
 
                 UpdateMinionsShopList();
                 //find second best unit
-                o1 = FindBestUnit();
+                //o1 = FindBestUnit();
+                o1 = FindRandomUnit();
                 if (o1 != 99)
                     gc.BuyMinion(p, gc.shopSlots[minionsInTavern[o1].GetPos()], gc.handSlots, gc.minionSlots);
 
@@ -165,7 +171,8 @@ public class AIBot : MonoBehaviour
             {
                 UpdateMinionsShopList();
                 //find best unit
-                int o1 = FindBestUnit();
+                //int o1 = FindBestUnit();
+                int o1 = FindRandomUnit();
                 if (o1 != 99)
                     gc.BuyMinion(p, gc.shopSlots[minionsInTavern[o1].GetPos()], gc.handSlots, gc.minionSlots);
 
@@ -178,7 +185,8 @@ public class AIBot : MonoBehaviour
 
                 UpdateMinionsShopList();
                 //find second best unit
-                o1 = FindBestUnit();
+                //o1 = FindBestUnit();
+                o1 = FindRandomUnit();
                 if (o1 != 99)
                     gc.BuyMinion(p, gc.shopSlots[minionsInTavern[o1].GetPos()], gc.handSlots, gc.minionSlots);
 
@@ -198,7 +206,8 @@ public class AIBot : MonoBehaviour
                 free = FindFreeSpotOnBoard();
 
                 UpdateMinionsShopList();
-                int o = FindBestUnit();
+                //int o = FindBestUnit();
+                int o = FindRandomUnit();
                 if (o != 99)
                     gc.BuyMinion(p, gc.shopSlots[minionsInTavern[o].GetPos()], gc.handSlots, gc.minionSlots);
 
@@ -216,14 +225,16 @@ public class AIBot : MonoBehaviour
                 if (gc.minionSlots[5].GetComponent<Minion>().blank == true)
                 {
                     UpdateMinionsShopList();
-                    int o = FindBestUnit();
+                    //int o = FindBestUnit();
+                    int o = FindRandomUnit();
                     if (o != 99)
                     {
                         gc.BuyMinion(p, gc.shopSlots[minionsInTavern[o].GetPos()], gc.handSlots, gc.minionSlots);
                         gc.PlayMinionOnBoard(p, gc.handSlots[0], gc.minionSlots[5], gc.handSlots, gc.minionSlots);
                     }
                     UpdateMinionsShopList();
-                    o = FindBestUnit();
+                    //o = FindBestUnit();
+                    o = FindRandomUnit();
                     if (o != 99)
                     {
                         gc.BuyMinion(p, gc.shopSlots[minionsInTavern[o].GetPos()], gc.handSlots, gc.minionSlots);
@@ -234,7 +245,8 @@ public class AIBot : MonoBehaviour
                 else if (gc.minionSlots[6].GetComponent<Minion>().blank == true)
                 {
                     UpdateMinionsShopList();
-                    int o = FindBestUnit();
+                    //int o = FindBestUnit();
+                    int o = FindRandomUnit();
                     if (o != 99)
                     {
                         gc.BuyMinion(p, gc.shopSlots[minionsInTavern[o].GetPos()], gc.handSlots, gc.minionSlots);
@@ -299,6 +311,14 @@ public class AIBot : MonoBehaviour
         }
 
         return pos;
+    }
+
+    public int FindRandomUnit()
+    {
+        UpdateMinionsShopList();
+        int r = 99;
+        r = Random.Range(0, minionsInTavern.Count);
+        return r;
     }
 
     public int FindFreeSpotOnBoard()

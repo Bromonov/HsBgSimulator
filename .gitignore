@@ -16,6 +16,7 @@
 !/[Aa]ssets/**/*.meta
 
 /Assets/Resources/wins.txt.meta
+/Assets/Resources/winsX.txt.meta
 /Assets/Resources/q.txt.meta
 /Assets/Resources/a.txt.meta
 /Assets/Resources/m.txt.meta

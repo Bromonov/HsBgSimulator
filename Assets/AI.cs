@@ -664,6 +664,7 @@ public class AI : MonoBehaviour
     public QState GetActualQState()
     {
         QState actualQState = new QState();
+        /*
         int actualBoardStats = 0;
         for (int i = 0; i < minionSlots.Length; i++)
         {
@@ -673,7 +674,7 @@ public class AI : MonoBehaviour
                 int health = minionSlots[i].GetComponent<Minion>().GetMinion().Hp;
                 actualBoardStats = attack + health;
             }
-        }
+        }*/
         int actualHandSlotsCounter = 0;
         for (int i = 0; i < handSlots.Length; i++)
         {
@@ -693,19 +694,20 @@ public class AI : MonoBehaviour
         int lastResult = 1;
         if(player.fight == true)
         {
-            lastResult = player.lastResult;
-            player.fight = false;
-            enemy.fight = false;
+            //lastResult = player.lastResult;
+            //player.fight = false;
+            //enemy.fight = false;
         }
-        actualQState.Initialize(lastResult, player.goldenMinionCounter, actualBoardStats, player.GetPlayerGold(), actualHandSlotsCounter, actualBoardCounter, player.GetPlayerTavernTier());
+        actualQState.Initialize(lastResult, //player.goldenMinionCounter, actualBoardStats, 
+            player.GetPlayerGold(), actualHandSlotsCounter, actualBoardCounter, player.GetPlayerTavernTier());
 
         return actualQState;
     }
 
     public string GetActualQStateStr(QState state)
     {
-        string s = "LR" + state.lastFightResult + "GC" + state.goldenMinionCounter + "BS" + state.boardStats + "GO" + state.gold 
-            + "HC" + state.handCounter + "BC" + state.boardCounter + "TT" + state.tavernTier;
+        string s = "LR" + state.lastFightResult + //"GC" + state.goldenMinionCounter + "BS" + state.boardStats + 
+            "GO" + state.gold  + "HC" + state.handCounter + "BC" + state.boardCounter + "TT" + state.tavernTier;
 
         return s;
     }
@@ -715,11 +717,12 @@ public class AI : MonoBehaviour
     {
         QState q = new QState();
 
+        
         int lr0 = 2;
         int lr1 = str.IndexOf("GC");
         string lr = str.Substring(lr0, lr1 - lr0);
         int lr_i = int.Parse(lr);
-
+        /*
         int gc0 = lr1 + 2;
         int gc1 = str.IndexOf("BS");
         string gc = str.Substring(gc0, gc1 - gc0);
@@ -729,8 +732,10 @@ public class AI : MonoBehaviour
         int bs1 = str.IndexOf("GO");
         string bs = str.Substring(bs0, bs1 - bs0);
         int bs_i = int.Parse(bs);
-
-        int go0 = bs1 + 2;
+        */
+        //int go0 = bs1 + 2;
+        //int go0 = 2;
+        int go0 = lr1 + 2;
         int go1 = str.IndexOf("HC");
         string go = str.Substring(go0, go1 - go0);
         int go_i = int.Parse(go);
@@ -750,7 +755,8 @@ public class AI : MonoBehaviour
         string tt = str.Substring(tt0, tt1 - tt0);
         int tt_i = int.Parse(tt);
 
-        q.Initialize(lr_i, gc_i, bs_i, go_i, hc_i, bc_i, tt_i);
+        q.Initialize(lr_i, //gc_i, bs_i, 
+            go_i, hc_i, bc_i, tt_i);
 
         return q;
     }
@@ -908,11 +914,13 @@ public class AI : MonoBehaviour
                 {
                     reward = 1;
                 }
+                /*
                 //what about making minion golden(?)
                 if (currentState.GetGoldenMinionCounter() > previousState.GetGoldenMinionCounter())
                 {
                     reward = 1;
                 }
+                */
                 string previousStateStr = GetActualQStateStr(previousState);
                 string currentStateStr = GetActualQStateStr(currentState);
                 float maxValueAtCurrentState = -99.0f;

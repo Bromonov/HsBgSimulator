@@ -212,6 +212,12 @@ public class GameController : MonoBehaviour
         writer.WriteLine("Game nr: " + gameNr);
         writer.WriteLine("P1 win counter: " + winP1 + ", P2 win counter: " + winP2);
         writer.Close();
+
+        //excel thing
+        string path2 = "Assets/Resources/winsX.txt";
+        StreamWriter writer2 = new StreamWriter(path2, true);
+        writer2.WriteLine(gameNr + " " + winP1 + " " + winP2);
+        writer2.Close();
     }
 
     public void SaveHashtagsToFile()
@@ -2585,7 +2591,7 @@ public class GameController : MonoBehaviour
                 minionsP2.Add(minionSlotsAI[i].GetComponent<Minion>().GetMinion());
         }
         */
-        SavePlayerMinionsToFile();
+        //SavePlayerMinionsToFile();
         List<int> taunts1 = new List<int>();
         List<int> taunts2 = new List<int>();
 
