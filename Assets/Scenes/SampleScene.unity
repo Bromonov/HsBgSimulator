@@ -3369,6 +3369,7 @@ MonoBehaviour:
   gameNr: 0
   winP1: 0
   winP2: 0
+  won: 0
   hpAI: {fileID: 1938549319}
   hpPlayer: {fileID: 969991836}
   minionsP1: []
@@ -17790,7 +17791,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1869376294}
   learning: 1
-  waitTime: -2.63
+  waitTime: -72.52
+  readQTable: 0
 --- !u!1001 &1869989468
 PrefabInstance:
   m_ObjectHideFlags: 0

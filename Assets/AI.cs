@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 public class AI : MonoBehaviour
@@ -217,6 +218,7 @@ public class AI : MonoBehaviour
 
     public bool learning;
     public float waitTime;
+    public bool readQTable;
 
     // Start is called before the first frame update
     void Start()
@@ -226,6 +228,10 @@ public class AI : MonoBehaviour
         possibleActions = new List<Action>();
         SetupAllActionList();
         qTable = new List<QTable>();
+
+        if (readQTable == true)
+            LoadQTable();
+
         lastAction = new Action();
         history = new List<History>();
         learningRate = 0.7f;
@@ -694,9 +700,9 @@ public class AI : MonoBehaviour
         int lastResult = 1;
         if(player.fight == true)
         {
-            //lastResult = player.lastResult;
-            //player.fight = false;
-            //enemy.fight = false;
+            lastResult = player.lastResult;
+            player.fight = false;
+            enemy.fight = false;
         }
         actualQState.Initialize(lastResult, //player.goldenMinionCounter, actualBoardStats, 
             player.GetPlayerGold(), actualHandSlotsCounter, actualBoardCounter, player.GetPlayerTavernTier());
@@ -719,7 +725,7 @@ public class AI : MonoBehaviour
 
         
         int lr0 = 2;
-        int lr1 = str.IndexOf("GC");
+        int lr1 = str.IndexOf("GO");
         string lr = str.Substring(lr0, lr1 - lr0);
         int lr_i = int.Parse(lr);
         /*
@@ -1070,7 +1076,83 @@ public class AI : MonoBehaviour
 
     public void LoadQTable()
     {
+        if(readQTable == true)
+        {
+            string path = "Assets/Resources/q.txt";
+            List<string> qlines = File.ReadAllLines(path).ToList();
+            //Debug.Log(qlines.Count);
+            QState q = new QState();
+            string s = "";
+            QValue buy = new QValue();
+            QValue sell = new QValue();
+            QValue play = new QValue();
+            QValue roll = new QValue();
+            QValue upgrade = new QValue();
+            QValue end = new QValue();
+            QValue pick = new QValue();
 
+            for (int i = 0; i < qlines.Count; i++)
+            {
+                if (i%8 == 0)
+                {
+                    s = qlines[i];
+                    q.Initialize(GetQStateFromStr(s).lastFightResult, GetQStateFromStr(s).gold, GetQStateFromStr(s).handCounter, GetQStateFromStr(s).boardCounter, 
+                        GetQStateFromStr(s).tavernTier);
+                    
+                }
+                else if(i%8 == 1)
+                {
+                    Action abuy = new Action("buy");
+                    buy = new QValue(abuy, float.Parse(qlines[i].Substring(5)));
+                }
+                else if (i % 8 == 2)
+                {
+                    Action asell = new Action("sell");
+                    sell = new QValue(asell, float.Parse(qlines[i].Substring(6)));
+                }
+                else if (i % 8 == 3)
+                {
+                    Action aplay = new Action("play");
+                    play = new QValue(aplay, float.Parse(qlines[i].Substring(6)));
+                }
+                else if (i % 8 == 4)
+                {
+                    Action aroll = new Action("roll");
+                    roll = new QValue(aroll, float.Parse(qlines[i].Substring(6)));
+                }
+                else if (i % 8 == 5)
+                {
+                    Action aupgrade = new Action("upgrade");
+                    upgrade = new QValue(aupgrade, float.Parse(qlines[i].Substring(9)));
+                }
+                else if (i % 8 == 6)
+                {
+                    Action aend = new Action("end");
+                    end = new QValue(aend, float.Parse(qlines[i].Substring(5)));
+                }
+                else if (i % 8 == 7)
+                {
+                    Action apick = new Action("pick");
+                    pick = new QValue(apick, float.Parse(qlines[i].Substring(6)));
+
+                    QValue[] newQValues = new QValue[]{ buy, sell, play, roll, upgrade, end, pick };
+                    QTable newQTable = new QTable(q, newQValues, s);
+
+                    qTable.Add(newQTable);
+                }
+            }
+            Debug.Log(qTable.Count);
+
+            //edit winsNR for stats
+            string pathW = "Assets/Resources/winsX.txt";
+            List<string> wins = File.ReadAllLines(pathW).ToList();
+            string str = wins[wins.Count - 1];
+            int str1 = 0;
+            int str2 = str.IndexOf(" ");
+            string gameNR = str.Substring(str1, str2 - str1);
+            int gameNR_i = int.Parse(gameNR);
+            gc.gameNr = gameNR_i + 1;
+        }
     }
 
     public void SavePossibleActions()
@@ -1087,5 +1169,10 @@ public class AI : MonoBehaviour
         }
 
         writer.Close();
+    }
+
+    public void ResetHistory()
+    {
+        history.Clear();
     }
 }

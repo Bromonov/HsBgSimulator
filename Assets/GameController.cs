@@ -114,6 +114,7 @@ public class GameController : MonoBehaviour
     public int gameNr;
     public int winP1;
     public int winP2;
+    public int won;
 
     public Text hpAI;
     public Text hpPlayer;
@@ -170,7 +171,9 @@ public class GameController : MonoBehaviour
         gameNr = 1;
         winP1 = 0;
         winP2 = 0;
-        SaveHashtagsToFile();
+        won = 0;
+        if(player2.GetComponent<AI>().readQTable == false)
+            SaveHashtagsToFile();
 
         UpdateHPOnScene();
 
@@ -210,13 +213,13 @@ public class GameController : MonoBehaviour
         //Write some text to the test.txt file
         StreamWriter writer = new StreamWriter(path, true);
         writer.WriteLine("Game nr: " + gameNr);
-        writer.WriteLine("P1 win counter: " + winP1 + ", P2 win counter: " + winP2);
+        writer.WriteLine("P1 win counter: " + winP1 + ", P2 win counter: " + winP2 + ", final winner: P" + won);
         writer.Close();
 
         //excel thing
         string path2 = "Assets/Resources/winsX.txt";
         StreamWriter writer2 = new StreamWriter(path2, true);
-        writer2.WriteLine(gameNr + " " + winP1 + " " + winP2);
+        writer2.WriteLine(gameNr + " " + winP1 + " " + winP2 + " " + won);
         writer2.Close();
     }
 
@@ -1285,11 +1288,17 @@ public class GameController : MonoBehaviour
 
         if(player1.GetHealth() <= 0 || player2.GetHealth() <= 0)
         {
-            ResetGame();
             if (player1.GetHealth() <= 0)
+            {
                 player1.dead = true;
+                won = 2;
+            }
             else
+            {
                 player2.dead = true;
+                won = 1;
+            }
+            ResetGame();
         }
 
         SetPLayerGoldStatus(player1);
@@ -3079,6 +3088,13 @@ public class GameController : MonoBehaviour
 
             winP1 = 0;
             winP2 = 0;
+
+            if (gameNr % 10 == 0)
+            {
+                Debug.Log("Clearing history...");
+                player2.GetComponent<AI>().ResetHistory();
+            }
+
             gameNr++;
 
             CreatePool();
