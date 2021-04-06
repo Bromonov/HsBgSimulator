@@ -122,6 +122,8 @@ public class GameController : MonoBehaviour
     public List<MinionData> minionsP1;
     public List<MinionData> minionsP2;
 
+    public Text gameNR;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -414,7 +416,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void BuyMinion(Player player, GameObject minion, GameObject[] handSlots, GameObject[] minionSlots)
+    public int BuyMinion(Player player, GameObject minion, GameObject[] handSlots, GameObject[] minionSlots)
     {
         if (player.GetPlayerGold() >= 3 && minion.GetComponent<Minion>().blank == false) //&& freeSpaceInHand == true)
         {
@@ -526,7 +528,7 @@ public class GameController : MonoBehaviour
             //remove from the pool
             for (int i = 0; i < pool.Count; i++)
             {
-                if(pool[i].GetName() == minionInstance.Name)
+                if (pool[i].GetName() == minionInstance.Name)
                 {
                     pool.RemoveAt(i);
                     copiedPool.RemoveAt(i);
@@ -534,33 +536,43 @@ public class GameController : MonoBehaviour
                 }
             }
 
-            
+            return 0;
         }
-        else if (player.GetPlayerGold() >= 3 && minion.GetComponent<Minion>().blank == true) //&& freeSpaceInHand == false)
+        else if (player.GetPlayerGold() >= 3 && minion.GetComponent<Minion>().blank == true)
+        { //&& freeSpaceInHand == false)
             Debug.Log("Cannot buy blank!");
+            return -1;
+        }
         else if (player.GetPlayerGold() < 3 && minion.GetComponent<Minion>().blank == true)
+        {
             Debug.Log("Not enough gold!");
+            return -1;
+        }
         else if (player.GetPlayerGold() < 3 && minion.GetComponent<Minion>().blank == false)
+        {
             Debug.Log("Not enough gold and cannot buy blank!");
+            return -1;
+        }
+        else return -99;
     }
 
     //function for buy button on a scene(for a player)
-    public void BuyMinionPlayer(Player player)
+    public int BuyMinionPlayer(Player player)
     {
         GameObject minionButton = EventSystem.current.currentSelectedGameObject;
         GameObject minion = minionButton.transform.parent.gameObject;
-        BuyMinion(player, minion, handSlots, minionSlots);
+        return BuyMinion(player, minion, handSlots, minionSlots);
     }
 
     //function for buy button on a scene(for a AI)
-    public void BuyMinionAI(Player player, GameObject minion)
+    public int BuyMinionAI(Player player, GameObject minion)
     {
         //GameObject minionButton = EventSystem.current.currentSelectedGameObject;
         //GameObject minion = minionButton.transform.parent.gameObject;
-        BuyMinion(player, minion, handSlotsAI, minionSlotsAI);
+        return BuyMinion(player, minion, handSlotsAI, minionSlotsAI);
     }
 
-    public void SellMinion(Player player, GameObject minion)
+    public int SellMinion(Player player, GameObject minion)
     {
         Debug.Log("Pool Size = " + pool.Count);
         
@@ -623,58 +635,73 @@ public class GameController : MonoBehaviour
         Debug.Log("Pool Size = " + pool.Count);
 
         //RestoreHandsBoards();
+        return 0;
     }
 
-    public void SellMinionPlayer(Player player)
+    public int SellMinionPlayer(Player player)
     {
         GameObject minionButton = EventSystem.current.currentSelectedGameObject;
         GameObject minion = minionButton.transform.parent.gameObject;
-        SellMinion(player, minion);
+        return SellMinion(player, minion);
     }
 
-    public void SellMinionAI(Player player, GameObject minion)
+    public int SellMinionAI(Player player, GameObject minion)
     {
-        SellMinion(player, minion);
+        return SellMinion(player, minion);
     }
 
-    public void RefreshMinionsInTavern(Player player, GameObject[] slots)
+    public int RefreshMinionsInTavern(Player player, GameObject[] slots)
     {
         if (player.GetPlayerGold() >= 1)
         {
             ShowMinionsInTavern(player, slots, 0);
             player.AddPlayerGold(-1);
             SetPLayerGoldStatus(player);
+            return 0;
         }
         else
+        {
             Debug.Log("Not enough gold for reroll!");
+            return -1;
+        }
 
         //RestoreHandsBoards();
     }
 
     //function for a scene (player)
-    public void RefreshMinionsInTavernPlayer(Player player)
+    public int RefreshMinionsInTavernPlayer(Player player)
     {
         if (player.GetPlayerGold() >= 1)
         {
             ShowMinionsInTavern(player, shopSlots, 0);
             player.AddPlayerGold(-1);
             SetPLayerGoldStatus(player);
+            return 0;
         }
         else
+        {
             Debug.Log("Not enough gold for reroll!");
+            return -1;
+        }
+            
     }
 
     //function for a scene(AI)
-    public void RefreshMinionsInTavernAI(Player player)
+    public int RefreshMinionsInTavernAI(Player player)
     {
         if (player.GetPlayerGold() >= 1)
         {
             ShowMinionsInTavern(player, shopSlotsAI, 0);
             player.AddPlayerGold(-1);
             SetPLayerGoldStatus(player);
+            return 0;
         }
         else
+        {
             Debug.Log("Not enough gold for reroll!");
+            return - 1;
+        }
+            
     }
 
     public void FreezeMinionsInTavern(Player player)
@@ -697,9 +724,9 @@ public class GameController : MonoBehaviour
         UpdateTavernTierText(player2, tavernTierTextAI);
     }
 
-    public void UpgradeTavernLevel(Player player)
+    public int UpgradeTavernLevel(Player player)
     {
-        if(player.GetPlayerTavernTier() < 6 && player.GetPlayerGold() >= player.tavernTierUpgradeGold)
+        if (player.GetPlayerTavernTier() < 6 && player.GetPlayerGold() >= player.tavernTierUpgradeGold)
         {
             player.tavernTierLevel++;
             player.AddPlayerGold(-player.tavernTierUpgradeGold);
@@ -736,19 +763,40 @@ public class GameController : MonoBehaviour
 
             //UpdateTavernTierText();
             //UpdateTavernTierCostText();
+
+            UpdateTavernTierCostText(player1, tavernTierCostText);
+            UpdateTavernTierText(player1, tavernTierText);
+
+            UpdateTavernTierCostText(player2, tavernTierCostTextAI);
+            UpdateTavernTierText(player2, tavernTierTextAI);
+
+            return 0;
         }
-        if (player.tavernTierLevel == 6)
+        else if (player.tavernTierLevel == 6 && player.GetPlayerGold() >= player.tavernTierUpgradeGold)
         {
             player.tavernTierUpgradeGold = player.tavernCost6;
             //tavernTierText.text = "Level: 5";
             tavernTierCostText.text = "0";
+
+            UpdateTavernTierCostText(player1, tavernTierCostText);
+            UpdateTavernTierText(player1, tavernTierText);
+
+            UpdateTavernTierCostText(player2, tavernTierCostTextAI);
+            UpdateTavernTierText(player2, tavernTierTextAI);
+
+            return 0;
         }
+        else if (player.GetPlayerGold() < player.tavernTierUpgradeGold)
+        {
+            UpdateTavernTierCostText(player1, tavernTierCostText);
+            UpdateTavernTierText(player1, tavernTierText);
 
-        UpdateTavernTierCostText(player1, tavernTierCostText);
-        UpdateTavernTierText(player1, tavernTierText);
+            UpdateTavernTierCostText(player2, tavernTierCostTextAI);
+            UpdateTavernTierText(player2, tavernTierTextAI);
 
-        UpdateTavernTierCostText(player2, tavernTierCostTextAI);
-        UpdateTavernTierText(player2, tavernTierTextAI);
+            return -1;
+        }
+        else return -99;
     }
 
     public void UpdateTavernTierText(Player player, Text tavernTierText)
@@ -1006,11 +1054,9 @@ public class GameController : MonoBehaviour
         ShowMinionsInTavern(player2, shopSlotsAI, 0);
     }
 
-    public void EndTurnAI(GameObject[] minionSlots)               // czy na pewno zalezne od playera? jak dwaj gracze naraz to chyba nie, 
+    public int EndTurnAI(GameObject[] minionSlots)               // czy na pewno zalezne od playera? jak dwaj gracze naraz to chyba nie, 
                                                            //chyba, ze jakies czekanko jakby sie z bomby skonczylo ture a komp nie zdazylby, do rozkminy
     {
-        
-
         //end turn effects
         List<int> micromummy = new List<int>();
         List<int> microPos = new List<int>();
@@ -1318,12 +1364,14 @@ public class GameController : MonoBehaviour
 
         ChangeCanvasObjects("Player");
         ShowMinionsInTavern(player1, shopSlots, 0);
+
+        return 0;
     }
 
-    public void PlayMinionOnBoard(Player player, GameObject handSlot, GameObject minionSlot, GameObject[] handSlots, GameObject[] minionSlots)
+    public int PlayMinionOnBoard(Player player, GameObject handSlot, GameObject minionSlot, GameObject[] handSlots, GameObject[] minionSlots)
     {
         if (player.GetPlayerBoard().Count >= 7)
-            return;
+            return -1;
 
         //initialize minion on board
         //string minionName = handSlot.GetComponent<Minion>().minionName.text;
@@ -1886,7 +1934,7 @@ public class GameController : MonoBehaviour
 
         //initialize blank on hand
         handSlot.GetComponent<Minion>().InitializeBlank();
-
+        return 0;
     }
 
     public void SetPLayerGoldStatus(Player player)
@@ -3004,7 +3052,7 @@ public class GameController : MonoBehaviour
         player.goldenMinionCounter++;
     }*/
 
-    public void ChooseDiscoveredMinion(Player player)
+    public int ChooseDiscoveredMinion(Player player)
     {
         if(player.GetPlayerGold() >= 3)
         {
@@ -3016,13 +3064,15 @@ public class GameController : MonoBehaviour
         {
             player.AddPlayerGold(3);
             BuyMinionPlayer(player);
+            
         }
         SetPLayerGoldStatus(player);
         ShowHideDiscoverPanel(false);
+        return 0;
     }
 
     
-    public void ChooseDiscoveredMinionAI(Player player, GameObject minion)
+    public int ChooseDiscoveredMinionAI(Player player, GameObject minion)
     {
         if (player.GetPlayerGold() >= 3)
         {
@@ -3037,6 +3087,7 @@ public class GameController : MonoBehaviour
         }
         SetPLayerGoldStatus(player);
         ShowHideDiscoverPanel(false);
+        return 0;
     }
     
 
@@ -3096,6 +3147,7 @@ public class GameController : MonoBehaviour
             }
 
             gameNr++;
+            UpdateGameNrDisplay();
 
             CreatePool();
         }
@@ -3164,6 +3216,10 @@ public class GameController : MonoBehaviour
     {
         hpAI.text = player2.GetHealth().ToString();
         hpPlayer.text = player1.GetHealth().ToString();
+    }
+    public void UpdateGameNrDisplay()
+    {
+        gameNR.text = gameNr.ToString();
     }
 
     //BATTLECRIES:

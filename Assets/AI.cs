@@ -575,16 +575,16 @@ public class AI : MonoBehaviour
             Debug.Log("No possible actions!");
     }
 
-    public void PlaySelectedAction(Action chosenAction)
+    public int PlaySelectedAction(Action chosenAction)
     {
         if (chosenAction.GetActionName() != null)
         {
             if (chosenAction.GetActionName() == "buy")
             {
                 int shop = 0;
-                for(int i = 0; i < GetShopSlots().Length; i++)
+                for (int i = 0; i < GetShopSlots().Length; i++)
                 {
-                    if(GetShopSlots()[i].GetComponent<Minion>().blank == false)
+                    if (GetShopSlots()[i].GetComponent<Minion>().blank == false)
                     {
                         shop++;
                     }
@@ -592,9 +592,14 @@ public class AI : MonoBehaviour
 
                 int random = 99;
                 if (shop > 0)
+                {
                     random = Random.Range(0, shop);
-                if(random != 99)
-                    gc.BuyMinionAI(player, GetShopSlots()[random]);
+                    if (random != 99)
+                        return gc.BuyMinionAI(player, GetShopSlots()[random]);
+                    else return -1;
+                }
+                else
+                    return -1;
             }
             else if (chosenAction.GetActionName() == "sell")
             {
@@ -609,62 +614,73 @@ public class AI : MonoBehaviour
 
                 int random = 99;
                 if (board.Count > 0)
+                {
                     random = Random.Range(0, board.Count);
-                if (random != 99)
-                    gc.SellMinionAI(player, GetBoardSlots()[board[random]]);
+                    if (random != 99)
+                        return gc.SellMinionAI(player, GetBoardSlots()[board[random]]);
+                    else return -1;
+                }
+                else return -1;
             }
             else if (chosenAction.GetActionName() == "play")
             {
                 //look for a minion on hand
                 List<int> hand = new List<int>();
-                for(int i = 0; i < GetHandSlots().Length; i++)
+                for (int i = 0; i < GetHandSlots().Length; i++)
                 {
-                    if(GetHandSlots()[i].GetComponent<Minion>().blank == false)
+                    if (GetHandSlots()[i].GetComponent<Minion>().blank == false)
                     {
                         hand.Add(i);
                     }
                 }
-                if(hand.Count > 0)
+                if (hand.Count > 0)
                 {
                     int free = 99;
-                    for(int i = 0; i < GetBoardSlots().Length; i++)
+                    for (int i = 0; i < GetBoardSlots().Length; i++)
                     {
-                        if(GetBoardSlots()[i].GetComponent<Minion>().blank == true)
+                        if (GetBoardSlots()[i].GetComponent<Minion>().blank == true)
                         {
                             free = i;
                             break;
                         }
                     }
-                    if(free != 99)
+                    if (free != 99)
                     {
                         int random = 99;
                         random = Random.Range(0, hand.Count);
-                        gc.PlayMinionOnBoard(player, GetHandSlots()[hand[random]], GetBoardSlots()[free], GetHandSlots(), GetBoardSlots());
+                        return gc.PlayMinionOnBoard(player, GetHandSlots()[hand[random]], GetBoardSlots()[free], GetHandSlots(), GetBoardSlots());
                     }
+                    else
+                        return -1;
                 }
+                else
+                    return -1;
 
                 //gc.PlayMinionOnBoard(player, GetHandSlots()[chosenAction.GetPosMinionA()], GetBoardSlots()[chosenAction.GetPosMinionB()],
-                    //GetHandSlots(), GetBoardSlots());
+                //GetHandSlots(), GetBoardSlots());
             }
             else if (chosenAction.GetActionName() == "roll")
             {
-                gc.RefreshMinionsInTavernAI(player);
+                return gc.RefreshMinionsInTavernAI(player);
             }
             else if (chosenAction.GetActionName() == "upgrade")
             {
-                gc.UpgradeTavernLevel(player);
+                return gc.UpgradeTavernLevel(player);
             }
             else if (chosenAction.GetActionName() == "pick")
             {
                 int random = Random.Range(0, 3);
 
-                gc.ChooseDiscoveredMinionAI(player, GetDiscoverSlots()[random]);
+                return gc.ChooseDiscoveredMinionAI(player, GetDiscoverSlots()[random]);
             }
             else if (chosenAction.GetActionName() == "end")
             {
-                gc.EndTurnAI(GetBoardSlots());
+                return gc.EndTurnAI(GetBoardSlots());
             }
+            else return -1;
+            
         }
+        else return -1;
     }
 
     public QState GetActualQState()
@@ -977,6 +993,8 @@ public class AI : MonoBehaviour
         }
     }
 
+    //TODO:
+    //- losowanie jest zjebane, nie moze byc, moze sortowanie akcji i wybor pierwszej mozliwej(?)
     public void Learned()
     {
         Debug.Log("Learning finished, making best moves!");
@@ -1024,9 +1042,16 @@ public class AI : MonoBehaviour
                 }
             }
             //action with highest qvalue
+            int test = 99;
             Action bestAction = qTable[statePos].GetValues()[iter].GetAction();
-            PlaySelectedAction(bestAction);
-
+            test = PlaySelectedAction(bestAction);
+            if (test == 0)
+                return;
+            else if (test == -1)
+            {
+                GeneratePossibleActionsList();
+                UseRandomGameMechanic();
+            }
             
         }
         else if (inTable == false)
