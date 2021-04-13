@@ -278,8 +278,10 @@ public class AI : MonoBehaviour
             //Learn();
             if (Waited(waitTime) == true && learning == true)
                 Learn();
-            else if (Waited(waitTime) == true && learning == false)
+            else if (Waited(waitTime) == true && learning == false && readQTable == true)
                 Learned();
+            else if (Waited(waitTime) == true && learning == false && readQTable == false)
+                RandomActions();
             else
                 return;
             timer = 0.0f;
@@ -993,8 +995,39 @@ public class AI : MonoBehaviour
         }
     }
 
-    //TODO:
-    //- losowanie jest zjebane, nie moze byc, moze sortowanie akcji i wybor pierwszej mozliwej(?)
+    struct ActionPick {
+        string actionName;
+        float value;
+
+        public ActionPick(string newActionName, float newValue)
+        {
+            actionName = newActionName;
+            value = newValue;
+        }
+
+        public string GetActionName()
+        {
+            return actionName;
+        }
+        public void SetActionName(string a)
+        {
+            actionName = a;
+        }
+        public float GetValue()
+        {
+            return value;
+        }
+        public void SetValue(float a)
+        {
+            value = a;
+        }
+    };
+
+    int SortByValue(ActionPick a1, ActionPick a2)
+    {
+        return a2.GetValue().CompareTo(a1.GetValue());
+    }
+
     public void Learned()
     {
         Debug.Log("Learning finished, making best moves!");
@@ -1016,11 +1049,10 @@ public class AI : MonoBehaviour
 
         if (inTable == true)
         {
-            //best action
-            List<float> current = new List<float>();
+            List<ActionPick> actionPicks = new List<ActionPick>();
+            actionPicks.Clear();
             int statePos = -1;
-            int iter = -1;
-            float maxValue = -99.0f;
+            //best action
             for (int i = 0; i < qTable.Count; i++)
             {
                 if (qTable[i].GetStateStr() == actQStateStr)
@@ -1028,29 +1060,34 @@ public class AI : MonoBehaviour
                     statePos = i;
                     for (int j = 0; j < qTable[i].GetValues().Length; j++)
                     {
-                        current.Add(qTable[i].GetValues()[j].GetValue());
+                        if(qTable[i].GetValues()[j].GetValue() != 0)
+                        {
+                            ActionPick a = new ActionPick(qTable[i].GetValues()[j].GetAction().GetActionName(), qTable[i].GetValues()[j].GetValue());
+                            actionPicks.Add(a);
+                        }
                     }
-                    break;
                 }
             }
-            for (int i = 0; i < current.Count; i++)
+            actionPicks.Sort(SortByValue);
+            for(int i = 0; i < actionPicks.Count; i++)
             {
-                if (current[i] > maxValue)
-                {
-                    maxValue = current[i];
-                    iter = i;
-                }
+                Debug.Log("actionPicks[" + actionPicks[i].GetActionName() + "]: " + actionPicks[i].GetValue());
             }
+
             //action with highest qvalue
             int test = 99;
-            Action bestAction = qTable[statePos].GetValues()[iter].GetAction();
-            test = PlaySelectedAction(bestAction);
-            if (test == 0)
-                return;
-            else if (test == -1)
+            for(int i = 0; i < actionPicks.Count; i++)
             {
-                GeneratePossibleActionsList();
-                UseRandomGameMechanic();
+                Action bestAction = new Action(actionPicks[i].GetActionName());
+                test = PlaySelectedAction(bestAction);
+
+                if (test == 0)
+                {
+                    gc.actionsEachTurn += bestAction.GetActionName() + ", ";
+                    break;
+                }
+                else
+                    continue;
             }
             
         }
@@ -1059,6 +1096,15 @@ public class AI : MonoBehaviour
             //QState state = actQState;
             //string stateStr = actQStateStr;
             //QValue[] qvalues = new QValue[allActions.Count];
+            GeneratePossibleActionsList();
+            UseRandomGameMechanic();
+        }
+    }
+
+    public void RandomActions()
+    {
+        if(readQTable == false && learning == false)
+        {
             GeneratePossibleActionsList();
             UseRandomGameMechanic();
         }

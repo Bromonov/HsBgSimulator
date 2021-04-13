@@ -3376,6 +3376,7 @@ MonoBehaviour:
   minionsP1: []
   minionsP2: []
   gameNR: {fileID: 1900670288}
+  actionsEachTurn: 
 --- !u!4 &409594225
 Transform:
   m_ObjectHideFlags: 0
@@ -17794,7 +17795,7 @@ MonoBehaviour:
   player: {fileID: 1869376294}
   learning: 0
   waitTime: -72.52
-  readQTable: 0
+  readQTable: 1
 --- !u!1001 &1869989468
 PrefabInstance:
   m_ObjectHideFlags: 0

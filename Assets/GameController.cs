@@ -124,6 +124,8 @@ public class GameController : MonoBehaviour
 
     public Text gameNR;
 
+    public string actionsEachTurn;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -181,6 +183,8 @@ public class GameController : MonoBehaviour
 
         minionsP1 = new List<MinionData>();
         minionsP2 = new List<MinionData>();
+
+        actionsEachTurn = "";
     }
 
     // Update is called once per frame
@@ -223,6 +227,16 @@ public class GameController : MonoBehaviour
         StreamWriter writer2 = new StreamWriter(path2, true);
         writer2.WriteLine(gameNr + " " + winP1 + " " + winP2 + " " + won);
         writer2.Close();
+    }
+
+    public void SaveActionsToFile()
+    {
+        string path = "Assets/Resources/actions.txt";
+
+        //Write some text to the test.txt file
+        StreamWriter writer = new StreamWriter(path, true);
+        writer.WriteLine(player1.turnNumber + ". " + actionsEachTurn);
+        writer.Close();
     }
 
     public void SaveHashtagsToFile()
@@ -1296,7 +1310,7 @@ public class GameController : MonoBehaviour
         player2.fight = true;
         ShowHideFightPanel(true);
 
-        
+
         /*
         for (int turn = player1.turnNumber; turn < 99; turn++)
         {
@@ -1313,7 +1327,10 @@ public class GameController : MonoBehaviour
                 break;
             }
         }*/
-        
+
+        SaveActionsToFile();
+        actionsEachTurn = "";
+
         player1.turnNumber++;
         player2.turnNumber++;
         Debug.Log("Player turn: " + player1.turnNumber);
@@ -3135,21 +3152,25 @@ public class GameController : MonoBehaviour
             player2.Initialize();
 
             SaveWinNumberToFile();
-            player2.GetComponent<AI>().SaveQTable();
+            if(player2.GetComponent<AI>().learning == true)
+                player2.GetComponent<AI>().SaveQTable();
 
             winP1 = 0;
             winP2 = 0;
 
-            if (gameNr % 10 == 0)
-            {
-                Debug.Log("Clearing history...");
+            ///if (gameNr % 10 == 0)
+            //{
+                //Debug.Log("Clearing history...");
                 player2.GetComponent<AI>().ResetHistory();
-            }
+            //}
 
             gameNr++;
             UpdateGameNrDisplay();
 
             CreatePool();
+
+            if (gameNr == 501)
+                Debug.Break();
         }
     }
 
