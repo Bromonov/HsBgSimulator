@@ -56,6 +56,28 @@ public class GameController : MonoBehaviour
     public Player player1;          //TODO: 2 PLAYERS PLAYING SIMULTANEOUSLY
     public Player player2;
 
+    public struct ShopPos
+    {
+        public MinionData minion;
+        public int pos;
+
+        public ShopPos(MinionData newM, int newP)
+        {
+            minion = newM;
+            pos = newP;
+        }
+
+        public MinionData GetMinion()
+        {
+            return minion;
+        }
+
+        public int GetPos()
+        {
+            return pos;
+        }
+    }
+
     public struct Pool
     {
         string name;
@@ -125,13 +147,39 @@ public class GameController : MonoBehaviour
     public Text gameNR;
 
     public string actionsEachTurn;
-    List<ShopPos> minionsInTavern;
-    List<ShopPos> minionsInHand;
-    List<ShopPos> minionsInBoard;
+    public List<ShopPos> minionsInTavern;
+    public List<ShopPos> minionsInHand;
+    public List<ShopPos> minionsInBoard;
+
+    public Slider waitTimeAI;
+    public Slider waitTimeBot;
+    public Text waitTimeAIText;
+    public Text waitTimeBotText;
+
+    //SETUPS
+    public int settingSetup;
+    public bool clearHistory;
+    public float initValueQTable;
+    public bool botTurnedOn;
+    public Slider settings;
+    public Toggle bot;
+    public GameObject settingsPanel;
+    public bool loadQTable;
+    public Toggle loadQTableToggle;
+    public bool learning;
+    public Toggle learningToggle;
 
     // Start is called before the first frame update
     void Start()
     {
+        //SETUP
+        settingSetup = 1;
+        clearHistory = false;
+        initValueQTable = 0.0f;
+        botTurnedOn = false;
+        loadQTable = false;
+        learning = true;
+
         TextAsset textAsset = Resources.Load<TextAsset>("test_minion");
         minionDataXML = new XmlDocument();
         minionDataXML.LoadXml(textAsset.text);
@@ -179,8 +227,8 @@ public class GameController : MonoBehaviour
         winP1 = 0;
         winP2 = 0;
         won = 0;
-        if(player2.GetComponent<AI>().readQTable == false)
-            SaveHashtagsToFile();
+        //if(loadQTable == false)
+            //SaveHashtagsToFile();
 
         UpdateHPOnScene();
 
@@ -207,20 +255,80 @@ public class GameController : MonoBehaviour
         //}
 
         
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
+        //if(Input.GetKeyDown(KeyCode.Space))
+        //{
             /*
             fight.ShowFightBefore(0);
             Fight(player1, player2);
             fight.ShowFightBefore(1);
             ShowHideFightPanel(true);
             */
-            EndTurnAI(minionSlotsAI);
-        }
+            //EndTurnAI(minionSlotsAI);
+        //}
         //Debug.Log("P1 board counter: " + player1.GetPlayerBoard().Count);
         //Debug.Log("P2 board counter: " + player2.GetPlayerBoard().Count);
     }
 
+    public void SetupBot()
+    {
+        if (bot.isOn == true)
+            botTurnedOn = true;
+        else botTurnedOn = false;
+
+        EndTurnPlayer(player1);
+        EndTurnPlayer(player2);
+        fightPanel.SetActive(false);
+    }
+
+    public void SetupSettings()
+    {
+        settingSetup = (int)settings.value;
+
+        if(settingSetup == 1)
+        {
+            clearHistory = false;
+            initValueQTable = 0.0f;
+        }
+        else if (settingSetup == 2)
+        {
+            clearHistory = true;
+            initValueQTable = -10.0f;
+        }
+        else if (settingSetup == 3)
+        {
+            clearHistory = true;
+            initValueQTable = 10.0f;
+        }
+        else if (settingSetup == 4)
+        {
+            clearHistory = true;
+            initValueQTable = 0.0f;
+        }
+    }
+
+    public void SetupLoadingQTable()
+    {
+        if (loadQTableToggle.isOn == true)
+            loadQTable = true;
+        else loadQTable = false;
+    }
+
+    public void SetupLearning()
+    {
+        if (learningToggle.isOn == true)
+            learning = true;
+        else learning = false;
+    }
+
+    public void ConfirmSettings()
+    {
+        SetupBot();
+        SetupSettings();
+        SetupLoadingQTable();
+        SetupLearning();
+        settingsPanel.SetActive(false);
+    }
+    /*
     public void SaveWinNumberToFile()
     {
         string path = "Assets/Resources/wins.txt";
@@ -237,7 +345,7 @@ public class GameController : MonoBehaviour
         writer2.WriteLine(gameNr + " " + winP1 + " " + winP2 + " " + won);
         writer2.Close();
     }
-
+    /*
     public void SaveActionsToFile()
     {
         string path = "Assets/Resources/actions.txt";
@@ -247,7 +355,7 @@ public class GameController : MonoBehaviour
         writer.WriteLine(player1.turnNumber + ". " + actionsEachTurn);
         writer.Close();
     }
-
+    
     public void SaveHashtagsToFile()
     {
         string path = "Assets/Resources/wins.txt";
@@ -300,7 +408,7 @@ public class GameController : MonoBehaviour
         }
         writer.Close();
     }
-
+    */
     public void CreatePool()
     {
         XmlNodeList minionsList = minionDataXML.SelectNodes("/minions/minion");
@@ -579,31 +687,13 @@ public class GameController : MonoBehaviour
         else return -99;
     }
 
-    public struct ShopPos
-    {
-        public MinionData minion;
-        public int pos;
-
-        public ShopPos(MinionData newM, int newP)
-        {
-            minion = newM;
-            pos = newP;
-        }
-
-        public MinionData GetMinion()
-        {
-            return minion;
-        }
-
-        public int GetPos()
-        {
-            return pos;
-        }
-    }
+    
 
     public void UpdateMinionsShopList()
     {
-        minionsInTavern.Clear();
+        Debug.Log("przed klirkiem");
+        minionsInTavern = new List<ShopPos>();
+        Debug.Log("po klirkiem");
         for (int i = 0; i < shopSlots.Length; i++)
         {
             if (shopSlots[i].GetComponent<Minion>().blank == false)
@@ -616,7 +706,7 @@ public class GameController : MonoBehaviour
 
     public void UpdateMinionsHandList()
     {
-        minionsInHand.Clear();
+        minionsInHand = new List<ShopPos>();
         for (int i = 0; i < handSlots.Length; i++)
         {
             if (handSlots[i].GetComponent<Minion>().blank == false)
@@ -629,7 +719,7 @@ public class GameController : MonoBehaviour
 
     public void UpdateMinionsBoardList()
     {
-        minionsInBoard.Clear();
+        minionsInBoard = new List<ShopPos>();
         for (int i = 0; i < minionSlots.Length; i++)
         {
             if (minionSlots[i].GetComponent<Minion>().blank == false)
@@ -651,9 +741,14 @@ public class GameController : MonoBehaviour
     public void BuyRandomMinion()
     {
         UpdateMinionsShopList();
-        int o = FindRandomUnit();
 
-        BuyMinion(player1, shopSlots[minionsInTavern[o].GetPos()], handSlots, minionSlots);
+        if(minionsInTavern.Count > 0)
+        {
+            int o = FindRandomUnit();
+
+            BuyMinion(player1, shopSlots[minionsInTavern[o].GetPos()], handSlots, minionSlots);
+        }
+        
     }
 
     public void PlayRandomMinion()
@@ -661,32 +756,44 @@ public class GameController : MonoBehaviour
         //find minion on hand
         UpdateMinionsHandList();
 
-        int o = 99;
-        o = Random.Range(0, minionsInHand.Count);
-
-        //find free spot
-        int r = 99;
-        for(int i = 0; i < 10; i++)
+        if(minionsInHand.Count > 0)
         {
-            if (handSlots[i].GetComponent<Minion>().blank == true)
+            int o = 99;
+            o = Random.Range(0, minionsInHand.Count);
+
+            //find free spot
+            int r = 99;
+            for (int i = 0; i < 10; i++)
             {
-                r = i;
-                break;
+                if (handSlots[i].GetComponent<Minion>().blank == true)
+                {
+                    r = i;
+                    break;
+                }
+                else continue;
             }
-            else continue;
+
+            //play it
+            PlayMinionOnBoard(player1, handSlots[minionsInHand[o].GetPos()], minionSlots[r], handSlots, minionSlots);
         }
 
-        //play it
-        PlayMinionOnBoard(player1, handSlots[o], minionSlots[r], handSlots, minionSlots);
+        
+
     }
 
     public void SellRandomMinion()
     {
         UpdateMinionsBoardList();
-        int o = 99;
-        o = Random.Range(0, minionsInBoard.Count);
 
-        SellMinion(player1, minionSlots[o]);
+        if(minionsInBoard.Count > 0)
+        {
+            int o = 99;
+            o = Random.Range(0, minionsInBoard.Count);
+            Debug.Log("pos na boardzie" + minionsInBoard[o].GetPos());
+            Debug.Log(o);
+
+            SellMinion(player1, minionSlots[minionsInBoard[o].GetPos()]);
+        }
     }
 
     //function for buy button on a scene(for a player)
@@ -1511,7 +1618,7 @@ public class GameController : MonoBehaviour
             }
         }*/
 
-        SaveActionsToFile();
+        //SaveActionsToFile();
         actionsEachTurn = "";
 
         player1.turnNumber++;
@@ -3334,18 +3441,18 @@ public class GameController : MonoBehaviour
             player1.Initialize();
             player2.Initialize();
 
-            SaveWinNumberToFile();
-            if(player2.GetComponent<AI>().learning == true)
-                player2.GetComponent<AI>().SaveQTable();
+            //SaveWinNumberToFile();
+            //if(learning == true)
+                //player2.GetComponent<AI>().SaveQTable();
 
             winP1 = 0;
             winP2 = 0;
 
-            ///if (gameNr % 10 == 0)
-            //{
+            if (clearHistory == true)
+            {
                 //Debug.Log("Clearing history...");
                 player2.GetComponent<AI>().ResetHistory();
-            //}
+            }
 
             gameNr++;
             UpdateGameNrDisplay();

@@ -1,0 +1,544 @@
+LR1GO3HC0BC0TT1
+buy: -0,007371
+sell: 0
+play: 0
+roll: -0,06300001
+upgrade: 0
+end: 0
+pick: 0
+LR1GO2HC0BC0TT1
+buy: 0
+sell: 0
+play: 0
+roll: -0,06300001
+upgrade: 0
+end: 0
+pick: 0
+LR1GO1HC0BC0TT1
+buy: 0
+sell: 0
+play: 0
+roll: -0,06300001
+upgrade: 0
+end: 0
+pick: 0
+LR1GO0HC0BC0TT1
+buy: 0
+sell: 0
+play: 0
+roll: 0
+upgrade: 0
+end: -0,06300001
+pick: 0
+LR0GO4HC0BC0TT1
+buy: 0
+sell: 0
+play: 0
+roll: -0,06300001
+upgrade: 0
+end: 0
+pick: 0
+LR1GO0HC1BC0TT1
+buy: 0
+sell: 0
+play: -0,007371
+roll: 0
+upgrade: 0
+end: 0
+pick: 0
+LR1GO0HC0BC2TT1
+buy: 0
+sell: 0
+play: 0
+roll: 0
+upgrade: 0
+end: -0,06300001
+pick: 0
+LR0GO5HC0BC2TT1
+buy: 0
+sell: 0
+play: 0
+roll: 0
+upgrade: -0,06300001
+end: 0
+pick: 0
+LR1GO2HC0BC2TT2
+buy: 0
+sell: 0
+play: 0
+roll: -0,06300001
+upgrade: 0
+end: 0
+pick: 0
+LR1GO1HC0BC2TT2
+buy: 0
+sell: 0
+play: 0
+roll: -0,007371
+upgrade: 0
+end: 0
+pick: 0
+LR1GO0HC0BC2TT2
+buy: 0
+sell: 0
+play: 0
+roll: 0
+upgrade: 0
+end: -0,007371
+pick: 0
+LR0GO6HC0BC2TT2
+buy: 0
+sell: 0
+play: 0
+roll: -0,06300001
+upgrade: 0
+end: 0
+pick: 0
+LR1GO5HC0BC2TT2
+buy: 0
+sell: 0
+play: 0
+roll: -0,06300001
+upgrade: 0
+end: 0
+pick: 0
+LR1GO4HC0BC2TT2
+buy: 0
+sell: 0
+play: 0
+roll: -0,06300001
+upgrade: 0
+end: 0
+pick: 0
+LR1GO3HC0BC2TT2
+buy: -0,06300001
+sell: 0
+play: 0
+roll: 0
+upgrade: 0
+end: 0
+pick: 0
+LR1GO0HC1BC2TT2
+buy: 0
+sell: -0,06300001
+play: 0
+roll: 0
+upgrade: 0
+end: 0
+pick: 0
+LR1GO1HC1BC1TT2
+buy: 0
+sell: 0
+play: -0,06300001
+roll: -0,06300001
+upgrade: 0
+end: 0
+pick: 0
+LR0GO7HC0BC2TT2
+buy: -0,06300001
+sell: 0
+play: 0
+roll: 0
+upgrade: 0
+end: 0
+pick: 0
+LR1GO4HC1BC2TT2
+buy: 0
+sell: 0
+play: 0
+roll: -0,06300001
+upgrade: 0
+end: 0
+pick: 0
+LR1GO3HC1BC2TT2
+buy: 0
+sell: 0
+play: 0
+roll: -0,06300001
+upgrade: 0
+end: 0
+pick: 0
+LR1GO2HC1BC2TT2
+buy: 0
+sell: -0,06300001
+play: 0
+roll: 0
+upgrade: 0
+end: 0
+pick: 0
+LR1GO3HC1BC1TT2
+buy: -0,06300001
+sell: 0
+play: 0
+roll: 0
+upgrade: 0
+end: 0
+pick: 0
+LR1GO0HC2BC1TT2
+buy: 0
+sell: 0
+play: 0
+roll: 0
+upgrade: 0
+end: -0,06300001
+pick: 0
+LR0GO8HC2BC1TT2
+buy: 0
+sell: 0
+play: 0
+roll: -0,06300001
+upgrade: 0
+end: 0
+pick: 0
+LR1GO7HC2BC1TT2
+buy: -0,06300001
+sell: 0
+play: 0
+roll: 0
+upgrade: 0
+end: 0
+pick: 0
+LR1GO4HC3BC1TT2
+buy: -0,06300001
+sell: 0
+play: 0
+roll: 0
+upgrade: 0
+end: 0
+pick: 0
+LR1GO1HC4BC1TT2
+buy: 0
+sell: -0,06300001
+play: 0
+roll: 0
+upgrade: 0
+end: 0
+pick: 0
+LR1GO2HC4BC0TT2
+buy: 0
+sell: -0,06300001
+play: 0
+roll: -0,06300001
+upgrade: 0
+end: 0
+pick: 0
+LR1GO1HC4BC0TT2
+buy: 0
+sell: -0,06300001
+play: 0
+roll: -0,06300001
+upgrade: 0
+end: 0
+pick: 0
+LR1GO0HC4BC0TT2
+buy: 0
+sell: 0
+play: 0
+roll: 0
+upgrade: 0
+end: -0,06300001
+pick: 0
+LR1GO0HC0BC1TT1
+buy: 0
+sell: 0
+play: 0
+roll: 0
+upgrade: 0
+end: -0,06300001
+pick: 0
+LR1GO4HC0BC1TT1
+buy: 0
+sell: 0
+play: 0
+roll: 0
+upgrade: -0,06300001
+end: 0
+pick: 0
+LR1GO0HC0BC1TT2
+buy: 0
+sell: 0
+play: 0
+roll: 0
+upgrade: 0
+end: -0,0007093172
+pick: 0
+LR1GO5HC0BC1TT2
+buy: 0
+sell: 0
+play: 0
+roll: -0,007371
+upgrade: 0
+end: 0
+pick: 0
+LR1GO4HC0BC1TT2
+buy: -0,06300001
+sell: 0
+play: 0
+roll: -0,06300001
+upgrade: 0
+end: 0
+pick: 0
+LR1GO0HC1BC1TT2
+buy: 0
+sell: -0,06300001
+play: 0
+roll: 0
+upgrade: 0
+end: 0
+pick: 0
+LR1GO1HC1BC0TT2
+buy: 0
+sell: 0
+play: 0
+roll: -0,06300001
+upgrade: 0
+end: 0
+pick: 0
+LR1GO0HC1BC0TT2
+buy: 0
+sell: 0
+play: -0,06300001
+roll: 0
+upgrade: 0
+end: 0
+pick: 0
+LR1GO6HC0BC1TT2
+buy: 0
+sell: 0
+play: 0
+roll: -0,06300001
+upgrade: 0
+end: 0
+pick: 0
+LR1GO3HC0BC1TT2
+buy: 0
+sell: 0
+play: 0
+roll: -0,06300001
+upgrade: 0
+end: 0
+pick: 0
+LR1GO2HC0BC1TT2
+buy: 0
+sell: 0
+play: 0
+roll: -0,06300001
+upgrade: 0
+end: 0
+pick: 0
+LR1GO1HC0BC1TT2
+buy: 0
+sell: 0
+play: 0
+roll: -0,06300001
+upgrade: 0
+end: 0
+pick: 0
+LR0GO7HC0BC1TT2
+buy: -0,06300001
+sell: 0
+play: 0
+roll: 0
+upgrade: 0
+end: 0
+pick: 0
+LR1GO4HC1BC1TT2
+buy: 0
+sell: -0,06300001
+play: 0
+roll: 0
+upgrade: 0
+end: 0
+pick: 0
+LR1GO5HC1BC0TT2
+buy: 0
+sell: 0
+play: 0
+roll: -0,06300001
+upgrade: 0
+end: 0
+pick: 0
+LR1GO4HC1BC0TT2
+buy: 0
+sell: 0
+play: 0
+roll: 0
+upgrade: -0,06300001
+end: 0
+pick: 0
+LR1GO0HC1BC0TT3
+buy: 0
+sell: -0,06300001
+play: 0
+roll: 0
+upgrade: 0
+end: -0,06300001
+pick: 0
+LR0GO8HC1BC0TT3
+buy: 0
+sell: -0,06300001
+play: 0
+roll: 0
+upgrade: 0
+end: 0
+pick: 0
+LR1GO8HC1BC0TT3
+buy: 0
+sell: -0,06300001
+play: 0
+roll: -0,06300001
+upgrade: 0
+end: 0
+pick: 0
+LR1GO7HC1BC0TT3
+buy: 0
+sell: 0
+play: 0
+roll: -0,06300001
+upgrade: 0
+end: 0
+pick: 0
+LR1GO6HC1BC0TT3
+buy: -0,06300001
+sell: 0
+play: 0
+roll: 0
+upgrade: 0
+end: 0
+pick: 0
+LR1GO3HC2BC0TT3
+buy: -0,06300001
+sell: -0,06300001
+play: 0
+roll: 0
+upgrade: 0
+end: 0
+pick: 0
+LR1GO0HC3BC0TT3
+buy: 0
+sell: 0
+play: -0,06300001
+roll: 0
+upgrade: 0
+end: 0
+pick: 0
+LR1GO0HC2BC1TT3
+buy: 0
+sell: 0
+play: 0
+roll: 0
+upgrade: 0
+end: -0,06300001
+pick: 0
+LR0GO9HC2BC1TT3
+buy: 0
+sell: 0
+play: 0
+roll: -0,06300001
+upgrade: 0
+end: 0
+pick: 0
+LR1GO8HC2BC1TT3
+buy: 0
+sell: 0
+play: 0
+roll: -0,06300001
+upgrade: 0
+end: 0
+pick: 0
+LR1GO7HC2BC1TT3
+buy: 0
+sell: 0
+play: 0
+roll: 0
+upgrade: -0,06300001
+end: 0
+pick: 0
+LR1GO1HC2BC1TT4
+buy: 0
+sell: 0
+play: 0
+roll: -0,06300001
+upgrade: 0
+end: 0
+pick: 0
+LR1GO0HC2BC1TT4
+buy: 0
+sell: -0,06300001
+play: 0
+roll: 0
+upgrade: 0
+end: 0
+pick: 0
+LR1GO1HC2BC0TT4
+buy: 0
+sell: 0
+play: -0,06300001
+roll: 0
+upgrade: 0
+end: 0
+pick: 0
+LR1GO1HC1BC1TT4
+buy: 0
+sell: -0,06300001
+play: 0
+roll: 0
+upgrade: 0
+end: 0
+pick: 0
+LR1GO2HC1BC0TT4
+buy: 0
+sell: -6,507858E-05
+play: 0
+roll: -0,06300001
+upgrade: 0
+end: 0
+pick: 0
+LR1GO1HC1BC0TT4
+buy: 0
+sell: 0
+play: -0,06300001
+roll: 0
+upgrade: 0
+end: 0
+pick: 0
+LR1GO1HC0BC1TT4
+buy: 0
+sell: 0
+play: 0
+roll: -0,06300001
+upgrade: 0
+end: 0
+pick: 0
+LR1GO0HC0BC1TT4
+buy: 0
+sell: 0
+play: 0
+roll: 0
+upgrade: 0
+end: -0,06300001
+pick: 0
+LR0GO10HC0BC1TT4
+buy: 0
+sell: 0
+play: 0
+roll: 0
+upgrade: 0
+end: 0
+pick: 0
+LR1GO2HC0BC1TT5
+buy: 0
+sell: 0
+play: 0
+roll: 0
+upgrade: 0
+end: 0
+pick: 0
+LR1GO1HC0BC1TT5
+buy: 0
+sell: 0
+play: 0
+roll: 0
+upgrade: 0
+end: 0
+pick: 0

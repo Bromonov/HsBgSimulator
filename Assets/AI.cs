@@ -216,9 +216,9 @@ public class AI : MonoBehaviour
     private float learningRate;
     private float discount;
 
-    public bool learning;
+    //public bool learning;
     public float waitTime;
-    public bool readQTable;
+    //public bool readQTable;
     public int gamesToPlay;
 
     // Start is called before the first frame update
@@ -230,7 +230,7 @@ public class AI : MonoBehaviour
         SetupAllActionList();
         qTable = new List<QTable>();
 
-        if (readQTable == true)
+        if (gc.loadQTable == true)
             LoadQTable();
 
         lastAction = new Action();
@@ -270,18 +270,21 @@ public class AI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        waitTime = gc.waitTimeAI.value;
+        gc.waitTimeAIText.text = waitTime.ToString();
+
         //if(Input.GetKeyDown(KeyCode.C) && player.turn == true)
-        if(player.turn == true)// && player.GetPlayerGold() > 0)
+        if (player.turn == true)// && player.GetPlayerGold() > 0)
         {
             //GeneratePossibleActionsList();
             //Debug.Log("Possible actions number = " + possibleActions.Count);
             //UseRandomGameMechanic();
             //Learn();
-            if (Waited(waitTime) == true && learning == true)
+            if (Waited(waitTime) == true && gc.learning == true)
                 Learn();
-            else if (Waited(waitTime) == true && learning == false && readQTable == true)
+            else if (Waited(waitTime) == true && gc.learning == false && gc.loadQTable == true)
                 Learned();
-            else if (Waited(waitTime) == true && learning == false && readQTable == false)
+            else if (Waited(waitTime) == true && gc.learning == false && gc.loadQTable == false)
                 RandomActions();
             else
                 return;
@@ -867,12 +870,12 @@ public class AI : MonoBehaviour
                     //allActions[i].GetMinionB() != lastAction.GetMinionB() && allActions[i].GetPosMinionA() != lastAction.GetPosMinionA() &&
                     //allActions[i].GetPosMinionB() != lastAction.GetPosMinionB())
                 {
-                    QValue q = new QValue(allActions[i], 0.0f);
+                    QValue q = new QValue(allActions[i], gc.initValueQTable);
                     qvalues[i] = q;
                 }
                 else
                 {
-                    QValue q = new QValue(lastAction, 0.0f);
+                    QValue q = new QValue(lastAction, gc.initValueQTable);
                     qvalues[i] = q;
                 }
             }
@@ -1113,13 +1116,14 @@ public class AI : MonoBehaviour
 
     public void RandomActions()
     {
-        if(readQTable == false && learning == false)
+        if(gc.loadQTable == false && gc.learning == false)
         {
             GeneratePossibleActionsList();
             UseRandomGameMechanic();
         }
     }
 
+    /*
     public void SaveQTable()
     {
         //1 element: QState stan (lastFightResult, goldenMinionCounter, boardStats, gold, handCounter, boardCounter, tavernTier),
@@ -1136,7 +1140,7 @@ public class AI : MonoBehaviour
             writer.WriteLine(qTable[i].GetStateStr());
             for(int j = 0; j < qTable[i].GetValues().Length; j++)
             {
-                /*
+                
                 if (qTable[i].GetValues()[j].GetAction().GetMinionA() != null)
                 {
                     writer.WriteLine(qTable[i].GetValues()[j].GetAction().GetActionName() + "," + qTable[i].GetValues()[j].GetAction().GetMinionA().Name + "," +
@@ -1147,20 +1151,22 @@ public class AI : MonoBehaviour
                     writer.WriteLine(qTable[i].GetValues()[j].GetAction().GetActionName() + "," + 
                     qTable[i].GetValues()[j].GetAction().GetPosMinionA() + "," + qTable[i].GetValues()[j].GetValue());
                 }
-                */
+                
                 writer.WriteLine(qTable[i].GetValues()[j].GetAction().GetActionName() + ": " + qTable[i].GetValues()[j].GetValue());
             }
         }
 
         writer.Close();
     }
-
+    */
     public void LoadQTable()
     {
-        if(readQTable == true)
+        if(gc.loadQTable == true)
         {
-            string path = "Assets/Resources/q.txt";
-            List<string> qlines = File.ReadAllLines(path).ToList();
+            TextAsset t = Resources.Load<TextAsset>("qBEST");
+            //string path = "Assets/Resources/qBEST.txt";
+             //File.ReadAllLines(path).ToList();
+            string [] qlines = t.text.Split("\n"[0]);
             //Debug.Log(qlines.Count);
             QState q = new QState();
             string s = "";
@@ -1172,7 +1178,7 @@ public class AI : MonoBehaviour
             QValue end = new QValue();
             QValue pick = new QValue();
 
-            for (int i = 0; i < qlines.Count; i++)
+            for (int i = 0; i < qlines.Length; i++)
             {
                 if (i%8 == 0)
                 {
@@ -1224,6 +1230,7 @@ public class AI : MonoBehaviour
             }
             Debug.Log(qTable.Count);
 
+            /*
             //edit winsNR for stats
             string pathW = "Assets/Resources/winsX.txt";
             List<string> wins = File.ReadAllLines(pathW).ToList();
@@ -1233,6 +1240,7 @@ public class AI : MonoBehaviour
             string gameNR = str.Substring(str1, str2 - str1);
             int gameNR_i = int.Parse(gameNR);
             gc.gameNr = gameNR_i + 1;
+            */
         }
     }
 
