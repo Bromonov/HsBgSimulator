@@ -125,6 +125,9 @@ public class GameController : MonoBehaviour
     public Text gameNR;
 
     public string actionsEachTurn;
+    List<ShopPos> minionsInTavern;
+    List<ShopPos> minionsInHand;
+    List<ShopPos> minionsInBoard;
 
     // Start is called before the first frame update
     void Start()
@@ -185,6 +188,12 @@ public class GameController : MonoBehaviour
         minionsP2 = new List<MinionData>();
 
         actionsEachTurn = "";
+        minionsInTavern = new List<ShopPos>();
+        minionsInHand = new List<ShopPos>();
+        minionsInBoard = new List<ShopPos>();
+        UpdateMinionsShopList();
+        UpdateMinionsHandList();
+        UpdateMinionsBoardList();
     }
 
     // Update is called once per frame
@@ -570,6 +579,116 @@ public class GameController : MonoBehaviour
         else return -99;
     }
 
+    public struct ShopPos
+    {
+        public MinionData minion;
+        public int pos;
+
+        public ShopPos(MinionData newM, int newP)
+        {
+            minion = newM;
+            pos = newP;
+        }
+
+        public MinionData GetMinion()
+        {
+            return minion;
+        }
+
+        public int GetPos()
+        {
+            return pos;
+        }
+    }
+
+    public void UpdateMinionsShopList()
+    {
+        minionsInTavern.Clear();
+        for (int i = 0; i < shopSlots.Length; i++)
+        {
+            if (shopSlots[i].GetComponent<Minion>().blank == false)
+            {
+                ShopPos s = new ShopPos(shopSlots[i].GetComponent<Minion>().GetMinion(), i);
+                minionsInTavern.Add(s);
+            }
+        }
+    }
+
+    public void UpdateMinionsHandList()
+    {
+        minionsInHand.Clear();
+        for (int i = 0; i < handSlots.Length; i++)
+        {
+            if (handSlots[i].GetComponent<Minion>().blank == false)
+            {
+                ShopPos s = new ShopPos(handSlots[i].GetComponent<Minion>().GetMinion(), i);
+                minionsInHand.Add(s);
+            }
+        }
+    }
+
+    public void UpdateMinionsBoardList()
+    {
+        minionsInBoard.Clear();
+        for (int i = 0; i < minionSlots.Length; i++)
+        {
+            if (minionSlots[i].GetComponent<Minion>().blank == false)
+            {
+                ShopPos s = new ShopPos(minionSlots[i].GetComponent<Minion>().GetMinion(), i);
+                minionsInBoard.Add(s);
+            }
+        }
+    }
+
+    public int FindRandomUnit()
+    {
+        UpdateMinionsShopList();
+        int r = 99;
+        r = Random.Range(0, minionsInTavern.Count);
+        return r;
+    }
+
+    public void BuyRandomMinion()
+    {
+        UpdateMinionsShopList();
+        int o = FindRandomUnit();
+
+        BuyMinion(player1, shopSlots[minionsInTavern[o].GetPos()], handSlots, minionSlots);
+    }
+
+    public void PlayRandomMinion()
+    {
+        //find minion on hand
+        UpdateMinionsHandList();
+
+        int o = 99;
+        o = Random.Range(0, minionsInHand.Count);
+
+        //find free spot
+        int r = 99;
+        for(int i = 0; i < 10; i++)
+        {
+            if (handSlots[i].GetComponent<Minion>().blank == true)
+            {
+                r = i;
+                break;
+            }
+            else continue;
+        }
+
+        //play it
+        PlayMinionOnBoard(player1, handSlots[o], minionSlots[r], handSlots, minionSlots);
+    }
+
+    public void SellRandomMinion()
+    {
+        UpdateMinionsBoardList();
+        int o = 99;
+        o = Random.Range(0, minionsInBoard.Count);
+
+        SellMinion(player1, minionSlots[o]);
+    }
+
     //function for buy button on a scene(for a player)
     public int BuyMinionPlayer(Player player)
     {
@@ -680,6 +799,11 @@ public class GameController : MonoBehaviour
         }
 
         //RestoreHandsBoards();
+    }
+
+    public void RefreshMinions()
+    {
+        RefreshMinionsInTavernPlayer(player1);
     }
 
     //function for a scene (player)
@@ -811,6 +935,65 @@ public class GameController : MonoBehaviour
             return -1;
         }
         else return -99;
+    }
+
+    public void UpgradeTavernLevelButton()
+    {
+        if (player1.GetPlayerTavernTier() < 6 && player1.GetPlayerGold() >= player1.tavernTierUpgradeGold)
+        {
+            player1.tavernTierLevel++;
+            player1.AddPlayerGold(-player1.tavernTierUpgradeGold);
+            SetPLayerGoldStatus(player1);
+
+            if (player1.tavernTierLevel == 1)
+            {
+                player1.tavernTierUpgradeGold = player1.tavernCost1;
+            }
+            else if (player1.tavernTierLevel == 2)
+            {
+                player1.tavernTierUpgradeGold = player1.tavernCost2;
+                //tavernTierText.text = "Level: 2";
+                //tavernTierCostText.text = "7";
+            }
+            else if (player1.tavernTierLevel == 3)
+            {
+                player1.tavernTierUpgradeGold = player1.tavernCost3;
+                //tavernTierText.text = "Level: 3";
+                //tavernTierCostText.text = "8";
+            }
+            else if (player1.tavernTierLevel == 4)
+            {
+                player1.tavernTierUpgradeGold = player1.tavernCost4;
+                //tavernTierText.text = "Level: 4";
+                //tavernTierCostText.text = "9";
+            }
+            else if (player1.tavernTierLevel == 5)
+            {
+                player1.tavernTierUpgradeGold = player1.tavernCost5;
+                //tavernTierText.text = "Level: 5";
+                //tavernTierCostText.text = "10";
+            }
+
+            //UpdateTavernTierText();
+            //UpdateTavernTierCostText();
+
+            UpdateTavernTierCostText(player1, tavernTierCostText);
+            UpdateTavernTierText(player1, tavernTierText);
+        }
+        else if (player1.tavernTierLevel == 6 && player1.GetPlayerGold() >= player1.tavernTierUpgradeGold)
+        {
+            player1.tavernTierUpgradeGold = player1.tavernCost6;
+            //tavernTierText.text = "Level: 5";
+            tavernTierCostText.text = "0";
+
+            UpdateTavernTierCostText(player1, tavernTierCostText);
+            UpdateTavernTierText(player1, tavernTierText);
+        }
+        else if (player1.GetPlayerGold() < player1.tavernTierUpgradeGold)
+        {
+            UpdateTavernTierCostText(player1, tavernTierCostText);
+            UpdateTavernTierText(player1, tavernTierText);
+        }
     }
 
     public void UpdateTavernTierText(Player player, Text tavernTierText)
@@ -3169,7 +3352,7 @@ public class GameController : MonoBehaviour
 
             CreatePool();
 
-            if (gameNr == 501)
+            if (gameNr == (player2.GetComponent<AI>().gamesToPlay + 1))
                 Debug.Break();
         }
     }

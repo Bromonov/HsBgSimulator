@@ -219,6 +219,7 @@ public class AI : MonoBehaviour
     public bool learning;
     public float waitTime;
     public bool readQTable;
+    public int gamesToPlay;
 
     // Start is called before the first frame update
     void Start()
@@ -305,6 +306,10 @@ public class AI : MonoBehaviour
                                 "QSTATE ACT BC: " + q.boardCounter + ", CONVERTED bc: " + GetQStateFromStr(s).boardCounter +
                                     "QSTATE ACT TT: " + q.tavernTier + ", CONVERTED TT: " + GetQStateFromStr(s).tavernTier);
         }*/
+        if(Input.GetKey(KeyCode.P))
+        {
+            gc.EndTurnAI(minionSlots);
+        }
     }
 
     public GameObject[] GetShopSlots()
@@ -829,7 +834,8 @@ public class AI : MonoBehaviour
                         statePos = i;
                         for (int j = 0; j < qTable[i].GetValues().Length; j++)
                         {
-                            current.Add(qTable[i].GetValues()[j].GetValue());
+                            if(qTable[i].GetValues()[j].GetValue() != 0.0f)
+                                current.Add(qTable[i].GetValues()[j].GetValue());
                         }
                         break;
                     }
@@ -1076,6 +1082,10 @@ public class AI : MonoBehaviour
 
             //action with highest qvalue
             int test = 99;
+
+            if (actionPicks.Count == 0)
+                gc.EndTurnAI(minionSlots);
+
             for(int i = 0; i < actionPicks.Count; i++)
             {
                 Action bestAction = new Action(actionPicks[i].GetActionName());
