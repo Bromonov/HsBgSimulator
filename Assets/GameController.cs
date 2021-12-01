@@ -56,6 +56,28 @@ public class GameController : MonoBehaviour
     public Player player1;          //TODO: 2 PLAYERS PLAYING SIMULTANEOUSLY
     public Player player2;
 
+    public struct ShopPos
+    {
+        public MinionData minion;
+        public int pos;
+
+        public ShopPos(MinionData newM, int newP)
+        {
+            minion = newM;
+            pos = newP;
+        }
+
+        public MinionData GetMinion()
+        {
+            return minion;
+        }
+
+        public int GetPos()
+        {
+            return pos;
+        }
+    }
+
     public struct Pool
     {
         string name;
@@ -114,6 +136,7 @@ public class GameController : MonoBehaviour
     public int gameNr;
     public int winP1;
     public int winP2;
+    public int won;
 
     public Text hpAI;
     public Text hpPlayer;
@@ -121,9 +144,42 @@ public class GameController : MonoBehaviour
     public List<MinionData> minionsP1;
     public List<MinionData> minionsP2;
 
+    public Text gameNR;
+
+    public string actionsEachTurn;
+    public List<ShopPos> minionsInTavern;
+    public List<ShopPos> minionsInHand;
+    public List<ShopPos> minionsInBoard;
+
+    public Slider waitTimeAI;
+    public Slider waitTimeBot;
+    public Text waitTimeAIText;
+    public Text waitTimeBotText;
+
+    //SETUPS
+    public int settingSetup;
+    public bool clearHistory;
+    public float initValueQTable;
+    public bool botTurnedOn;
+    public Slider settings;
+    public Toggle bot;
+    public GameObject settingsPanel;
+    public bool loadQTable;
+    public Toggle loadQTableToggle;
+    public bool learning;
+    public Toggle learningToggle;
+
     // Start is called before the first frame update
     void Start()
     {
+        //SETUP
+        settingSetup = 1;
+        clearHistory = false;
+        initValueQTable = 0.0f;
+        botTurnedOn = false;
+        loadQTable = false;
+        learning = true;
+
         TextAsset textAsset = Resources.Load<TextAsset>("test_minion");
         minionDataXML = new XmlDocument();
         minionDataXML.LoadXml(textAsset.text);
@@ -170,12 +226,22 @@ public class GameController : MonoBehaviour
         gameNr = 1;
         winP1 = 0;
         winP2 = 0;
-        SaveHashtagsToFile();
+        won = 0;
+        //if(loadQTable == false)
+            //SaveHashtagsToFile();
 
         UpdateHPOnScene();
 
         minionsP1 = new List<MinionData>();
         minionsP2 = new List<MinionData>();
+
+        actionsEachTurn = "";
+        minionsInTavern = new List<ShopPos>();
+        minionsInHand = new List<ShopPos>();
+        minionsInBoard = new List<ShopPos>();
+        UpdateMinionsShopList();
+        UpdateMinionsHandList();
+        UpdateMinionsBoardList();
     }
 
     // Update is called once per frame
@@ -189,20 +255,80 @@ public class GameController : MonoBehaviour
         //}
 
         
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
+        //if(Input.GetKeyDown(KeyCode.Space))
+        //{
             /*
             fight.ShowFightBefore(0);
             Fight(player1, player2);
             fight.ShowFightBefore(1);
             ShowHideFightPanel(true);
             */
-            EndTurnAI(minionSlotsAI);
-        }
+            //EndTurnAI(minionSlotsAI);
+        //}
         //Debug.Log("P1 board counter: " + player1.GetPlayerBoard().Count);
         //Debug.Log("P2 board counter: " + player2.GetPlayerBoard().Count);
     }
 
+    public void SetupBot()
+    {
+        if (bot.isOn == true)
+            botTurnedOn = true;
+        else botTurnedOn = false;
+
+        EndTurnPlayer(player1);
+        EndTurnPlayer(player2);
+        fightPanel.SetActive(false);
+    }
+
+    public void SetupSettings()
+    {
+        settingSetup = (int)settings.value;
+
+        if(settingSetup == 1)
+        {
+            clearHistory = false;
+            initValueQTable = 0.0f;
+        }
+        else if (settingSetup == 2)
+        {
+            clearHistory = true;
+            initValueQTable = -10.0f;
+        }
+        else if (settingSetup == 3)
+        {
+            clearHistory = true;
+            initValueQTable = 10.0f;
+        }
+        else if (settingSetup == 4)
+        {
+            clearHistory = true;
+            initValueQTable = 0.0f;
+        }
+    }
+
+    public void SetupLoadingQTable()
+    {
+        if (loadQTableToggle.isOn == true)
+            loadQTable = true;
+        else loadQTable = false;
+    }
+
+    public void SetupLearning()
+    {
+        if (learningToggle.isOn == true)
+            learning = true;
+        else learning = false;
+    }
+
+    public void ConfirmSettings()
+    {
+        SetupBot();
+        SetupSettings();
+        SetupLoadingQTable();
+        SetupLearning();
+        settingsPanel.SetActive(false);
+    }
+    /*
     public void SaveWinNumberToFile()
     {
         string path = "Assets/Resources/wins.txt";
@@ -210,10 +336,26 @@ public class GameController : MonoBehaviour
         //Write some text to the test.txt file
         StreamWriter writer = new StreamWriter(path, true);
         writer.WriteLine("Game nr: " + gameNr);
-        writer.WriteLine("P1 win counter: " + winP1 + ", P2 win counter: " + winP2);
+        writer.WriteLine("P1 win counter: " + winP1 + ", P2 win counter: " + winP2 + ", final winner: P" + won);
+        writer.Close();
+
+        //excel thing
+        string path2 = "Assets/Resources/winsX.txt";
+        StreamWriter writer2 = new StreamWriter(path2, true);
+        writer2.WriteLine(gameNr + " " + winP1 + " " + winP2 + " " + won);
+        writer2.Close();
+    }
+    /*
+    public void SaveActionsToFile()
+    {
+        string path = "Assets/Resources/actions.txt";
+
+        //Write some text to the test.txt file
+        StreamWriter writer = new StreamWriter(path, true);
+        writer.WriteLine(player1.turnNumber + ". " + actionsEachTurn);
         writer.Close();
     }
-
+    
     public void SaveHashtagsToFile()
     {
         string path = "Assets/Resources/wins.txt";
@@ -266,7 +408,7 @@ public class GameController : MonoBehaviour
         }
         writer.Close();
     }
-
+    */
     public void CreatePool()
     {
         XmlNodeList minionsList = minionDataXML.SelectNodes("/minions/minion");
@@ -405,7 +547,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void BuyMinion(Player player, GameObject minion, GameObject[] handSlots, GameObject[] minionSlots)
+    public int BuyMinion(Player player, GameObject minion, GameObject[] handSlots, GameObject[] minionSlots)
     {
         if (player.GetPlayerGold() >= 3 && minion.GetComponent<Minion>().blank == false) //&& freeSpaceInHand == true)
         {
@@ -517,7 +659,7 @@ public class GameController : MonoBehaviour
             //remove from the pool
             for (int i = 0; i < pool.Count; i++)
             {
-                if(pool[i].GetName() == minionInstance.Name)
+                if (pool[i].GetName() == minionInstance.Name)
                 {
                     pool.RemoveAt(i);
                     copiedPool.RemoveAt(i);
@@ -525,33 +667,152 @@ public class GameController : MonoBehaviour
                 }
             }
 
-            
+            return 0;
         }
-        else if (player.GetPlayerGold() >= 3 && minion.GetComponent<Minion>().blank == true) //&& freeSpaceInHand == false)
+        else if (player.GetPlayerGold() >= 3 && minion.GetComponent<Minion>().blank == true)
+        { //&& freeSpaceInHand == false)
             Debug.Log("Cannot buy blank!");
+            return -1;
+        }
         else if (player.GetPlayerGold() < 3 && minion.GetComponent<Minion>().blank == true)
+        {
             Debug.Log("Not enough gold!");
+            return -1;
+        }
         else if (player.GetPlayerGold() < 3 && minion.GetComponent<Minion>().blank == false)
+        {
             Debug.Log("Not enough gold and cannot buy blank!");
+            return -1;
+        }
+        else return -99;
+    }
+
+    
+
+    public void UpdateMinionsShopList()
+    {
+        Debug.Log("przed klirkiem");
+        minionsInTavern = new List<ShopPos>();
+        Debug.Log("po klirkiem");
+        for (int i = 0; i < shopSlots.Length; i++)
+        {
+            if (shopSlots[i].GetComponent<Minion>().blank == false)
+            {
+                ShopPos s = new ShopPos(shopSlots[i].GetComponent<Minion>().GetMinion(), i);
+                minionsInTavern.Add(s);
+            }
+        }
+    }
+
+    public void UpdateMinionsHandList()
+    {
+        minionsInHand = new List<ShopPos>();
+        for (int i = 0; i < handSlots.Length; i++)
+        {
+            if (handSlots[i].GetComponent<Minion>().blank == false)
+            {
+                ShopPos s = new ShopPos(handSlots[i].GetComponent<Minion>().GetMinion(), i);
+                minionsInHand.Add(s);
+            }
+        }
+    }
+
+    public void UpdateMinionsBoardList()
+    {
+        minionsInBoard = new List<ShopPos>();
+        for (int i = 0; i < minionSlots.Length; i++)
+        {
+            if (minionSlots[i].GetComponent<Minion>().blank == false)
+            {
+                ShopPos s = new ShopPos(minionSlots[i].GetComponent<Minion>().GetMinion(), i);
+                minionsInBoard.Add(s);
+            }
+        }
+    }
+
+    public int FindRandomUnit()
+    {
+        UpdateMinionsShopList();
+        int r = 99;
+        r = Random.Range(0, minionsInTavern.Count);
+        return r;
+    }
+
+    public void BuyRandomMinion()
+    {
+        UpdateMinionsShopList();
+
+        if(minionsInTavern.Count > 0)
+        {
+            int o = FindRandomUnit();
+
+            BuyMinion(player1, shopSlots[minionsInTavern[o].GetPos()], handSlots, minionSlots);
+        }
+        
+    }
+
+    public void PlayRandomMinion()
+    {
+        //find minion on hand
+        UpdateMinionsHandList();
+
+        if(minionsInHand.Count > 0)
+        {
+            int o = 99;
+            o = Random.Range(0, minionsInHand.Count);
+
+            //find free spot
+            int r = 99;
+            for (int i = 0; i < 10; i++)
+            {
+                if (handSlots[i].GetComponent<Minion>().blank == true)
+                {
+                    r = i;
+                    break;
+                }
+                else continue;
+            }
+
+            //play it
+            PlayMinionOnBoard(player1, handSlots[minionsInHand[o].GetPos()], minionSlots[r], handSlots, minionSlots);
+        }
+
+        
+
+    }
+
+    public void SellRandomMinion()
+    {
+        UpdateMinionsBoardList();
+
+        if(minionsInBoard.Count > 0)
+        {
+            int o = 99;
+            o = Random.Range(0, minionsInBoard.Count);
+            Debug.Log("pos na boardzie" + minionsInBoard[o].GetPos());
+            Debug.Log(o);
+
+            SellMinion(player1, minionSlots[minionsInBoard[o].GetPos()]);
+        }
     }
 
     //function for buy button on a scene(for a player)
-    public void BuyMinionPlayer(Player player)
+    public int BuyMinionPlayer(Player player)
     {
         GameObject minionButton = EventSystem.current.currentSelectedGameObject;
         GameObject minion = minionButton.transform.parent.gameObject;
-        BuyMinion(player, minion, handSlots, minionSlots);
+        return BuyMinion(player, minion, handSlots, minionSlots);
     }
 
     //function for buy button on a scene(for a AI)
-    public void BuyMinionAI(Player player, GameObject minion)
+    public int BuyMinionAI(Player player, GameObject minion)
     {
         //GameObject minionButton = EventSystem.current.currentSelectedGameObject;
         //GameObject minion = minionButton.transform.parent.gameObject;
-        BuyMinion(player, minion, handSlotsAI, minionSlotsAI);
+        return BuyMinion(player, minion, handSlotsAI, minionSlotsAI);
     }
 
-    public void SellMinion(Player player, GameObject minion)
+    public int SellMinion(Player player, GameObject minion)
     {
         Debug.Log("Pool Size = " + pool.Count);
         
@@ -614,58 +875,78 @@ public class GameController : MonoBehaviour
         Debug.Log("Pool Size = " + pool.Count);
 
         //RestoreHandsBoards();
+        return 0;
     }
 
-    public void SellMinionPlayer(Player player)
+    public int SellMinionPlayer(Player player)
     {
         GameObject minionButton = EventSystem.current.currentSelectedGameObject;
         GameObject minion = minionButton.transform.parent.gameObject;
-        SellMinion(player, minion);
+        return SellMinion(player, minion);
     }
 
-    public void SellMinionAI(Player player, GameObject minion)
+    public int SellMinionAI(Player player, GameObject minion)
     {
-        SellMinion(player, minion);
+        return SellMinion(player, minion);
     }
 
-    public void RefreshMinionsInTavern(Player player, GameObject[] slots)
+    public int RefreshMinionsInTavern(Player player, GameObject[] slots)
     {
         if (player.GetPlayerGold() >= 1)
         {
             ShowMinionsInTavern(player, slots, 0);
             player.AddPlayerGold(-1);
             SetPLayerGoldStatus(player);
+            return 0;
         }
         else
+        {
             Debug.Log("Not enough gold for reroll!");
+            return -1;
+        }
 
         //RestoreHandsBoards();
     }
 
+    public void RefreshMinions()
+    {
+        RefreshMinionsInTavernPlayer(player1);
+    }
+
     //function for a scene (player)
-    public void RefreshMinionsInTavernPlayer(Player player)
+    public int RefreshMinionsInTavernPlayer(Player player)
     {
         if (player.GetPlayerGold() >= 1)
         {
             ShowMinionsInTavern(player, shopSlots, 0);
             player.AddPlayerGold(-1);
             SetPLayerGoldStatus(player);
+            return 0;
         }
         else
+        {
             Debug.Log("Not enough gold for reroll!");
+            return -1;
+        }
+            
     }
 
     //function for a scene(AI)
-    public void RefreshMinionsInTavernAI(Player player)
+    public int RefreshMinionsInTavernAI(Player player)
     {
         if (player.GetPlayerGold() >= 1)
         {
             ShowMinionsInTavern(player, shopSlotsAI, 0);
             player.AddPlayerGold(-1);
             SetPLayerGoldStatus(player);
+            return 0;
         }
         else
+        {
             Debug.Log("Not enough gold for reroll!");
+            return - 1;
+        }
+            
     }
 
     public void FreezeMinionsInTavern(Player player)
@@ -688,9 +969,9 @@ public class GameController : MonoBehaviour
         UpdateTavernTierText(player2, tavernTierTextAI);
     }
 
-    public void UpgradeTavernLevel(Player player)
+    public int UpgradeTavernLevel(Player player)
     {
-        if(player.GetPlayerTavernTier() < 6 && player.GetPlayerGold() >= player.tavernTierUpgradeGold)
+        if (player.GetPlayerTavernTier() < 6 && player.GetPlayerGold() >= player.tavernTierUpgradeGold)
         {
             player.tavernTierLevel++;
             player.AddPlayerGold(-player.tavernTierUpgradeGold);
@@ -727,19 +1008,99 @@ public class GameController : MonoBehaviour
 
             //UpdateTavernTierText();
             //UpdateTavernTierCostText();
+
+            UpdateTavernTierCostText(player1, tavernTierCostText);
+            UpdateTavernTierText(player1, tavernTierText);
+
+            UpdateTavernTierCostText(player2, tavernTierCostTextAI);
+            UpdateTavernTierText(player2, tavernTierTextAI);
+
+            return 0;
         }
-        if (player.tavernTierLevel == 6)
+        else if (player.tavernTierLevel == 6 && player.GetPlayerGold() >= player.tavernTierUpgradeGold)
         {
             player.tavernTierUpgradeGold = player.tavernCost6;
             //tavernTierText.text = "Level: 5";
             tavernTierCostText.text = "0";
+
+            UpdateTavernTierCostText(player1, tavernTierCostText);
+            UpdateTavernTierText(player1, tavernTierText);
+
+            UpdateTavernTierCostText(player2, tavernTierCostTextAI);
+            UpdateTavernTierText(player2, tavernTierTextAI);
+
+            return 0;
         }
+        else if (player.GetPlayerGold() < player.tavernTierUpgradeGold)
+        {
+            UpdateTavernTierCostText(player1, tavernTierCostText);
+            UpdateTavernTierText(player1, tavernTierText);
 
-        UpdateTavernTierCostText(player1, tavernTierCostText);
-        UpdateTavernTierText(player1, tavernTierText);
+            UpdateTavernTierCostText(player2, tavernTierCostTextAI);
+            UpdateTavernTierText(player2, tavernTierTextAI);
 
-        UpdateTavernTierCostText(player2, tavernTierCostTextAI);
-        UpdateTavernTierText(player2, tavernTierTextAI);
+            return -1;
+        }
+        else return -99;
+    }
+
+    public void UpgradeTavernLevelButton()
+    {
+        if (player1.GetPlayerTavernTier() < 6 && player1.GetPlayerGold() >= player1.tavernTierUpgradeGold)
+        {
+            player1.tavernTierLevel++;
+            player1.AddPlayerGold(-player1.tavernTierUpgradeGold);
+            SetPLayerGoldStatus(player1);
+
+            if (player1.tavernTierLevel == 1)
+            {
+                player1.tavernTierUpgradeGold = player1.tavernCost1;
+            }
+            else if (player1.tavernTierLevel == 2)
+            {
+                player1.tavernTierUpgradeGold = player1.tavernCost2;
+                //tavernTierText.text = "Level: 2";
+                //tavernTierCostText.text = "7";
+            }
+            else if (player1.tavernTierLevel == 3)
+            {
+                player1.tavernTierUpgradeGold = player1.tavernCost3;
+                //tavernTierText.text = "Level: 3";
+                //tavernTierCostText.text = "8";
+            }
+            else if (player1.tavernTierLevel == 4)
+            {
+                player1.tavernTierUpgradeGold = player1.tavernCost4;
+                //tavernTierText.text = "Level: 4";
+                //tavernTierCostText.text = "9";
+            }
+            else if (player1.tavernTierLevel == 5)
+            {
+                player1.tavernTierUpgradeGold = player1.tavernCost5;
+                //tavernTierText.text = "Level: 5";
+                //tavernTierCostText.text = "10";
+            }
+
+            //UpdateTavernTierText();
+            //UpdateTavernTierCostText();
+
+            UpdateTavernTierCostText(player1, tavernTierCostText);
+            UpdateTavernTierText(player1, tavernTierText);
+        }
+        else if (player1.tavernTierLevel == 6 && player1.GetPlayerGold() >= player1.tavernTierUpgradeGold)
+        {
+            player1.tavernTierUpgradeGold = player1.tavernCost6;
+            //tavernTierText.text = "Level: 5";
+            tavernTierCostText.text = "0";
+
+            UpdateTavernTierCostText(player1, tavernTierCostText);
+            UpdateTavernTierText(player1, tavernTierText);
+        }
+        else if (player1.GetPlayerGold() < player1.tavernTierUpgradeGold)
+        {
+            UpdateTavernTierCostText(player1, tavernTierCostText);
+            UpdateTavernTierText(player1, tavernTierText);
+        }
     }
 
     public void UpdateTavernTierText(Player player, Text tavernTierText)
@@ -997,11 +1358,9 @@ public class GameController : MonoBehaviour
         ShowMinionsInTavern(player2, shopSlotsAI, 0);
     }
 
-    public void EndTurnAI(GameObject[] minionSlots)               // czy na pewno zalezne od playera? jak dwaj gracze naraz to chyba nie, 
+    public int EndTurnAI(GameObject[] minionSlots)               // czy na pewno zalezne od playera? jak dwaj gracze naraz to chyba nie, 
                                                            //chyba, ze jakies czekanko jakby sie z bomby skonczylo ture a komp nie zdazylby, do rozkminy
     {
-        
-
         //end turn effects
         List<int> micromummy = new List<int>();
         List<int> microPos = new List<int>();
@@ -1241,7 +1600,7 @@ public class GameController : MonoBehaviour
         player2.fight = true;
         ShowHideFightPanel(true);
 
-        
+
         /*
         for (int turn = player1.turnNumber; turn < 99; turn++)
         {
@@ -1258,7 +1617,10 @@ public class GameController : MonoBehaviour
                 break;
             }
         }*/
-        
+
+        //SaveActionsToFile();
+        actionsEachTurn = "";
+
         player1.turnNumber++;
         player2.turnNumber++;
         Debug.Log("Player turn: " + player1.turnNumber);
@@ -1279,11 +1641,17 @@ public class GameController : MonoBehaviour
 
         if(player1.GetHealth() <= 0 || player2.GetHealth() <= 0)
         {
-            ResetGame();
             if (player1.GetHealth() <= 0)
+            {
                 player1.dead = true;
+                won = 2;
+            }
             else
+            {
                 player2.dead = true;
+                won = 1;
+            }
+            ResetGame();
         }
 
         SetPLayerGoldStatus(player1);
@@ -1303,12 +1671,14 @@ public class GameController : MonoBehaviour
 
         ChangeCanvasObjects("Player");
         ShowMinionsInTavern(player1, shopSlots, 0);
+
+        return 0;
     }
 
-    public void PlayMinionOnBoard(Player player, GameObject handSlot, GameObject minionSlot, GameObject[] handSlots, GameObject[] minionSlots)
+    public int PlayMinionOnBoard(Player player, GameObject handSlot, GameObject minionSlot, GameObject[] handSlots, GameObject[] minionSlots)
     {
         if (player.GetPlayerBoard().Count >= 7)
-            return;
+            return -1;
 
         //initialize minion on board
         //string minionName = handSlot.GetComponent<Minion>().minionName.text;
@@ -1871,7 +2241,7 @@ public class GameController : MonoBehaviour
 
         //initialize blank on hand
         handSlot.GetComponent<Minion>().InitializeBlank();
-
+        return 0;
     }
 
     public void SetPLayerGoldStatus(Player player)
@@ -2585,7 +2955,7 @@ public class GameController : MonoBehaviour
                 minionsP2.Add(minionSlotsAI[i].GetComponent<Minion>().GetMinion());
         }
         */
-        SavePlayerMinionsToFile();
+        //SavePlayerMinionsToFile();
         List<int> taunts1 = new List<int>();
         List<int> taunts2 = new List<int>();
 
@@ -2989,7 +3359,7 @@ public class GameController : MonoBehaviour
         player.goldenMinionCounter++;
     }*/
 
-    public void ChooseDiscoveredMinion(Player player)
+    public int ChooseDiscoveredMinion(Player player)
     {
         if(player.GetPlayerGold() >= 3)
         {
@@ -3001,13 +3371,15 @@ public class GameController : MonoBehaviour
         {
             player.AddPlayerGold(3);
             BuyMinionPlayer(player);
+            
         }
         SetPLayerGoldStatus(player);
         ShowHideDiscoverPanel(false);
+        return 0;
     }
 
     
-    public void ChooseDiscoveredMinionAI(Player player, GameObject minion)
+    public int ChooseDiscoveredMinionAI(Player player, GameObject minion)
     {
         if (player.GetPlayerGold() >= 3)
         {
@@ -3022,6 +3394,7 @@ public class GameController : MonoBehaviour
         }
         SetPLayerGoldStatus(player);
         ShowHideDiscoverPanel(false);
+        return 0;
     }
     
 
@@ -3068,14 +3441,26 @@ public class GameController : MonoBehaviour
             player1.Initialize();
             player2.Initialize();
 
-            SaveWinNumberToFile();
-            //player2.GetComponent<AI>().SaveQTable();
+            //SaveWinNumberToFile();
+            //if(learning == true)
+                //player2.GetComponent<AI>().SaveQTable();
 
             winP1 = 0;
             winP2 = 0;
+
+            if (clearHistory == true)
+            {
+                //Debug.Log("Clearing history...");
+                player2.GetComponent<AI>().ResetHistory();
+            }
+
             gameNr++;
+            UpdateGameNrDisplay();
 
             CreatePool();
+
+            if (gameNr == (player2.GetComponent<AI>().gamesToPlay + 1))
+                Debug.Break();
         }
     }
 
@@ -3142,6 +3527,10 @@ public class GameController : MonoBehaviour
     {
         hpAI.text = player2.GetHealth().ToString();
         hpPlayer.text = player1.GetHealth().ToString();
+    }
+    public void UpdateGameNrDisplay()
+    {
+        gameNR.text = gameNr.ToString();
     }
 
     //BATTLECRIES:

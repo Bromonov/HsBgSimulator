@@ -62,212 +62,231 @@ public class AIBot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        waitTime = gc.waitTimeBot.value;
+        gc.waitTimeBotText.text = waitTime.ToString();
+
         turnNr = p.turnNumber;
+        Debug.Log("bot jest " + gc.botTurnedOn);
 
-
-
-        if (p.turn == true && acted == false)
+        if(gc.botTurnedOn == true)
         {
-            if (Waited(waitTime) == false)
-                return;
-            else
-                timer = 0.0f;
-
-            acted = true;
-            UpdateMinionsShopList();
-
-            if (turnNr == 1)
+            if (p.turn == true && acted == false)
             {
-                //find token
-                for (int i = 0; i < minionsInTavern.Count; i++)
-                {
-                    //find free spot on hand
-                    int free = 99;
-                    for (int j = 0; j < gc.handSlots.Length; j++)
-                    {
-                        if (gc.handSlots[j].GetComponent<Minion>().blank == false)
-                        {
-                            free = j;
-                            break;
-                        }
-                    }
-
-                    if (minionsInTavern[i].GetMinion().Name == "Alleycat" && p.GetPlayerGold() == 3)
-                        gc.BuyMinion(p, gc.shopSlots[minionsInTavern[i].GetPos()], gc.handSlots, gc.minionSlots);
-                    else if (minionsInTavern[i].GetMinion().Name == "Murloc Tidehunter" && p.GetPlayerGold() == 3)
-                        gc.BuyMinion(p, gc.shopSlots[minionsInTavern[i].GetPos()], gc.handSlots, gc.minionSlots);
-                    UpdateMinionsShopList();
-                }
-                if (p.GetPlayerGold() == 3)
-                {
-                    int o = FindBestUnit();
-                    if (o != 99)
-                        gc.BuyMinion(p, gc.shopSlots[minionsInTavern[o].GetPos()], gc.handSlots, gc.minionSlots);
-                    UpdateMinionsShopList();
-                }
-                gc.PlayMinionOnBoard(p, gc.handSlots[0], gc.minionSlots[0], gc.handSlots, gc.minionSlots);
-
-                //end turn
-                //gc.EndTurnPlayer(p);
-
-            }
-            else if (turnNr == 2)
-            {
-                UpdateMinionsShopList();
-                gc.UpgradeTavernLevel(p);
-
-                //end turn
-                //gc.EndTurnPlayer(p);
-            }
-            else if (turnNr == 3)
-            {
-                UpdateMinionsShopList();
-                //if token bought
-                if ((gc.minionSlots[0].GetComponent<Minion>().GetMinion().Name == "Alleycat" &&
-                    gc.minionSlots[1].GetComponent<Minion>().GetMinion().Name == "Tabbycat") ||
-                        (gc.minionSlots[0].GetComponent<Minion>().GetMinion().Name == "Murloc Tidehunter" &&
-                            gc.minionSlots[1].GetComponent<Minion>().GetMinion().Name == "Murloc Scout"))
-                {
-                    gc.SellMinion(p, gc.minionSlots[1]);
-                }
+                if (Waited(waitTime) == false)
+                    return;
                 else
+                    timer = 0.0f;
+
+                acted = true;
+                UpdateMinionsShopList();
+
+                if (turnNr == 1)
+                {
+                    //find token
+                    for (int i = 0; i < minionsInTavern.Count; i++)
+                    {
+                        //find free spot on hand
+                        int free = 99;
+                        for (int j = 0; j < gc.handSlots.Length; j++)
+                        {
+                            if (gc.handSlots[j].GetComponent<Minion>().blank == false)
+                            {
+                                free = j;
+                                break;
+                            }
+                        }
+                        /*
+                        if (minionsInTavern[i].GetMinion().Name == "Alleycat" && p.GetPlayerGold() == 3)
+                            gc.BuyMinion(p, gc.shopSlots[minionsInTavern[i].GetPos()], gc.handSlots, gc.minionSlots);
+                        else if (minionsInTavern[i].GetMinion().Name == "Murloc Tidehunter" && p.GetPlayerGold() == 3)
+                            gc.BuyMinion(p, gc.shopSlots[minionsInTavern[i].GetPos()], gc.handSlots, gc.minionSlots);
+                        */
+                        UpdateMinionsShopList();
+                    }
+                    if (p.GetPlayerGold() == 3)
+                    {
+                        //int o = FindBestUnit();
+                        int o = FindRandomUnit();
+                        if (o != 99)
+                            gc.BuyMinion(p, gc.shopSlots[minionsInTavern[o].GetPos()], gc.handSlots, gc.minionSlots);
+                        UpdateMinionsShopList();
+                    }
+                    gc.PlayMinionOnBoard(p, gc.handSlots[0], gc.minionSlots[0], gc.handSlots, gc.minionSlots);
+
+                    //end turn
+                    //gc.EndTurnPlayer(p);
+
+                }
+                else if (turnNr == 2)
+                {
+                    UpdateMinionsShopList();
+                    gc.UpgradeTavernLevel(p);
+
+                    //end turn
+                    //gc.EndTurnPlayer(p);
+                }
+                else if (turnNr == 3)
+                {
+                    UpdateMinionsShopList();
+                    /*
+                    //if token bought
+                    if ((gc.minionSlots[0].GetComponent<Minion>().GetMinion().Name == "Alleycat" &&
+                        gc.minionSlots[1].GetComponent<Minion>().GetMinion().Name == "Tabbycat") ||
+                            (gc.minionSlots[0].GetComponent<Minion>().GetMinion().Name == "Murloc Tidehunter" &&
+                                gc.minionSlots[1].GetComponent<Minion>().GetMinion().Name == "Murloc Scout"))
+                    {
+                        gc.SellMinion(p, gc.minionSlots[1]);
+                    }
+                    else*/
+
                     gc.SellMinion(p, gc.minionSlots[0]);
 
-                //find best unit
-                int o1 = FindBestUnit();
-                if (o1 != 99)
-                    gc.BuyMinion(p, gc.shopSlots[minionsInTavern[o1].GetPos()], gc.handSlots, gc.minionSlots);
+                    //find best unit
+                    //int o1 = FindBestUnit();
+                    int o1 = FindRandomUnit();
+                    if (o1 != 99)
+                        gc.BuyMinion(p, gc.shopSlots[minionsInTavern[o1].GetPos()], gc.handSlots, gc.minionSlots);
 
-                //find first free spot on board
-                int free = 99;
-                free = FindFreeSpotOnBoard();
+                    //find first free spot on board
+                    int free = 99;
+                    free = FindFreeSpotOnBoard();
 
-                if (free != 99)
-                    gc.PlayMinionOnBoard(p, gc.handSlots[0], gc.minionSlots[free], gc.handSlots, gc.minionSlots);
+                    if (free != 99)
+                        gc.PlayMinionOnBoard(p, gc.handSlots[0], gc.minionSlots[free], gc.handSlots, gc.minionSlots);
 
-                UpdateMinionsShopList();
-                //find second best unit
-                o1 = FindBestUnit();
-                if (o1 != 99)
-                    gc.BuyMinion(p, gc.shopSlots[minionsInTavern[o1].GetPos()], gc.handSlots, gc.minionSlots);
+                    UpdateMinionsShopList();
+                    //find second best unit
+                    //o1 = FindBestUnit();
+                    o1 = FindRandomUnit();
+                    if (o1 != 99)
+                        gc.BuyMinion(p, gc.shopSlots[minionsInTavern[o1].GetPos()], gc.handSlots, gc.minionSlots);
 
-                //find first free spot on board
-                free = FindFreeSpotOnBoard();
+                    //find first free spot on board
+                    free = FindFreeSpotOnBoard();
 
 
-                if (free != 99)
-                    gc.PlayMinionOnBoard(p, gc.handSlots[0], gc.minionSlots[free], gc.handSlots, gc.minionSlots);
+                    if (free != 99)
+                        gc.PlayMinionOnBoard(p, gc.handSlots[0], gc.minionSlots[free], gc.handSlots, gc.minionSlots);
 
-                //end turn
-                //gc.EndTurnPlayer(p);
-            }
-            else if (turnNr == 4)
-            {
-                UpdateMinionsShopList();
-                //find best unit
-                int o1 = FindBestUnit();
-                if (o1 != 99)
-                    gc.BuyMinion(p, gc.shopSlots[minionsInTavern[o1].GetPos()], gc.handSlots, gc.minionSlots);
-
-                //find first free spot on board
-                int free = 99;
-                free = FindFreeSpotOnBoard();
-
-                if (free != 99)
-                    gc.PlayMinionOnBoard(p, gc.handSlots[0], gc.minionSlots[free], gc.handSlots, gc.minionSlots);
-
-                UpdateMinionsShopList();
-                //find second best unit
-                o1 = FindBestUnit();
-                if (o1 != 99)
-                    gc.BuyMinion(p, gc.shopSlots[minionsInTavern[o1].GetPos()], gc.handSlots, gc.minionSlots);
-
-                free = FindFreeSpotOnBoard();
-
-                if (free != 99)
-                    gc.PlayMinionOnBoard(p, gc.handSlots[0], gc.minionSlots[free], gc.handSlots, gc.minionSlots);
-
-                //end turn
-                //gc.EndTurnPlayer(p);
-            }
-            else if (turnNr == 5)
-            {
-                gc.UpgradeTavernLevel(p);
-
-                int free = 99;
-                free = FindFreeSpotOnBoard();
-
-                UpdateMinionsShopList();
-                int o = FindBestUnit();
-                if (o != 99)
-                    gc.BuyMinion(p, gc.shopSlots[minionsInTavern[o].GetPos()], gc.handSlots, gc.minionSlots);
-
-                if (free != 99)
-                {
-                    gc.PlayMinionOnBoard(p, gc.handSlots[0], gc.minionSlots[free], gc.handSlots, gc.minionSlots);
+                    //end turn
+                    //gc.EndTurnPlayer(p);
                 }
-
-                //end turn
-                //gc.EndTurnPlayer(p);
-            }
-            else if (turnNr == 6)
-            {
-                //5 minions on board
-                if (gc.minionSlots[5].GetComponent<Minion>().blank == true)
+                else if (turnNr == 4)
                 {
                     UpdateMinionsShopList();
-                    int o = FindBestUnit();
-                    if (o != 99)
-                    {
-                        gc.BuyMinion(p, gc.shopSlots[minionsInTavern[o].GetPos()], gc.handSlots, gc.minionSlots);
-                        gc.PlayMinionOnBoard(p, gc.handSlots[0], gc.minionSlots[5], gc.handSlots, gc.minionSlots);
-                    }
+                    //find best unit
+                    //int o1 = FindBestUnit();
+                    int o1 = FindRandomUnit();
+                    if (o1 != 99)
+                        gc.BuyMinion(p, gc.shopSlots[minionsInTavern[o1].GetPos()], gc.handSlots, gc.minionSlots);
+
+                    //find first free spot on board
+                    int free = 99;
+                    free = FindFreeSpotOnBoard();
+
+                    if (free != 99)
+                        gc.PlayMinionOnBoard(p, gc.handSlots[0], gc.minionSlots[free], gc.handSlots, gc.minionSlots);
+
                     UpdateMinionsShopList();
-                    o = FindBestUnit();
-                    if (o != 99)
-                    {
-                        gc.BuyMinion(p, gc.shopSlots[minionsInTavern[o].GetPos()], gc.handSlots, gc.minionSlots);
-                        gc.PlayMinionOnBoard(p, gc.handSlots[0], gc.minionSlots[6], gc.handSlots, gc.minionSlots);
-                    }
+                    //find second best unit
+                    //o1 = FindBestUnit();
+                    o1 = FindRandomUnit();
+                    if (o1 != 99)
+                        gc.BuyMinion(p, gc.shopSlots[minionsInTavern[o1].GetPos()], gc.handSlots, gc.minionSlots);
+
+                    free = FindFreeSpotOnBoard();
+
+                    if (free != 99)
+                        gc.PlayMinionOnBoard(p, gc.handSlots[0], gc.minionSlots[free], gc.handSlots, gc.minionSlots);
+
+                    //end turn
+                    //gc.EndTurnPlayer(p);
                 }
-                //6 minions on board
-                else if (gc.minionSlots[6].GetComponent<Minion>().blank == true)
+                else if (turnNr == 5)
+                {
+                    gc.UpgradeTavernLevel(p);
+
+                    int free = 99;
+                    free = FindFreeSpotOnBoard();
+
+                    UpdateMinionsShopList();
+                    //int o = FindBestUnit();
+                    int o = FindRandomUnit();
+                    if (o != 99)
+                        gc.BuyMinion(p, gc.shopSlots[minionsInTavern[o].GetPos()], gc.handSlots, gc.minionSlots);
+
+                    if (free != 99)
+                    {
+                        gc.PlayMinionOnBoard(p, gc.handSlots[0], gc.minionSlots[free], gc.handSlots, gc.minionSlots);
+                    }
+
+                    //end turn
+                    //gc.EndTurnPlayer(p);
+                }
+                else if (turnNr == 6)
+                {
+                    //5 minions on board
+                    if (gc.minionSlots[5].GetComponent<Minion>().blank == true)
+                    {
+                        UpdateMinionsShopList();
+                        //int o = FindBestUnit();
+                        int o = FindRandomUnit();
+                        if (o != 99)
+                        {
+                            gc.BuyMinion(p, gc.shopSlots[minionsInTavern[o].GetPos()], gc.handSlots, gc.minionSlots);
+                            gc.PlayMinionOnBoard(p, gc.handSlots[0], gc.minionSlots[5], gc.handSlots, gc.minionSlots);
+                        }
+                        UpdateMinionsShopList();
+                        //o = FindBestUnit();
+                        o = FindRandomUnit();
+                        if (o != 99)
+                        {
+                            gc.BuyMinion(p, gc.shopSlots[minionsInTavern[o].GetPos()], gc.handSlots, gc.minionSlots);
+                            gc.PlayMinionOnBoard(p, gc.handSlots[0], gc.minionSlots[6], gc.handSlots, gc.minionSlots);
+                        }
+                    }
+                    //6 minions on board
+                    else if (gc.minionSlots[6].GetComponent<Minion>().blank == true)
+                    {
+                        UpdateMinionsShopList();
+                        //int o = FindBestUnit();
+                        int o = FindRandomUnit();
+                        if (o != 99)
+                        {
+                            gc.BuyMinion(p, gc.shopSlots[minionsInTavern[o].GetPos()], gc.handSlots, gc.minionSlots);
+                            gc.PlayMinionOnBoard(p, gc.handSlots[0], gc.minionSlots[6], gc.handSlots, gc.minionSlots);
+                        }
+                    }
+                    //end turn
+                    //gc.EndTurnPlayer(p);
+                }
+                else if (turnNr > 6)
                 {
                     UpdateMinionsShopList();
-                    int o = FindBestUnit();
-                    if (o != 99)
+                    gc.UpgradeTavernLevel(p);
+                    if (p.GetPlayerGold() >= 1)
                     {
-                        gc.BuyMinion(p, gc.shopSlots[minionsInTavern[o].GetPos()], gc.handSlots, gc.minionSlots);
-                        gc.PlayMinionOnBoard(p, gc.handSlots[0], gc.minionSlots[6], gc.handSlots, gc.minionSlots);
+                        gc.RefreshMinionsInTavern(p, gc.shopSlots);
                     }
-                }
-                //end turn
-                //gc.EndTurnPlayer(p);
-            }
-            else if (turnNr > 6)
-            {
-                UpdateMinionsShopList();
-                gc.UpgradeTavernLevel(p);
-                if (p.GetPlayerGold() >= 1)
-                {
-                    gc.RefreshMinionsInTavern(p, gc.shopSlots);
+
+                    //end turn
+                    //gc.EndTurnPlayer(p);
                 }
 
-                //end turn
-                //gc.EndTurnPlayer(p);
             }
-           
+            //jakies pcozekanie na koniec tury by sie przydalo, jakos osobno rozpatrywanie end turn
+            if (acted == true && Waited(waitTime) == true)
+            {
+                acted = false;
+                gc.EndTurnPlayer(p);
+            }
+            else
+                return;
+
+            //timer = 0.0f;
         }
-        //jakies pcozekanie na koniec tury by sie przydalo, jakos osobno rozpatrywanie end turn
-        if (acted == true && Waited(waitTime) == true)
-        {
-            acted = false;
-            gc.EndTurnPlayer(p);
-        }
-        else
-            return;
 
-        //timer = 0.0f;
+
     }
 
     public int FindBestUnit()
@@ -299,6 +318,14 @@ public class AIBot : MonoBehaviour
         }
 
         return pos;
+    }
+
+    public int FindRandomUnit()
+    {
+        UpdateMinionsShopList();
+        int r = 99;
+        r = Random.Range(0, minionsInTavern.Count);
+        return r;
     }
 
     public int FindFreeSpotOnBoard()
